@@ -1,8 +1,59 @@
-/* Antes ponía height: 35px... cámbialo a esto para fotos de producto */
-.brand-logo { 
-    height: 180px; /* Hacemos la imagen más grande */
-    width: 100%;   /* Que ocupe el ancho disponible */
-    object-fit: contain; /* Que no se recorte */
-    margin-bottom: 20px; 
-    display: block; 
-}
+---
+import laptops from '../data/laptops.json';
+---
+
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Comparador de Portátiles para Ingeniería</title>
+    <style>
+        :root { --primary: #0071e3; --bg: #f5f5f7; --text: #1d1d1f; }
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); padding: 20px; margin: 0; }
+        
+        header { text-align: center; margin: 40px 0; }
+        h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        
+        .card { background: white; border-radius: 18px; padding: 25px; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .card:hover { transform: translateY(-5px); }
+        
+        /* Imagen ajustada para fotos reales */
+        .product-img { width: 100%; height: 180px; object-fit: contain; margin-bottom: 20px; }
+        
+        h2 { font-size: 1.1rem; min-height: 3em; }
+        
+        .price { font-size: 1.5rem; font-weight: bold; color: #111; display: block; margin: 15px 0; }
+        
+        .btn { background: var(--primary); color: white; padding: 10px 20px; border-radius: 20px; text-decoration: none; display: inline-block; width: 100%; text-align: center; box-sizing: border-box; }
+        .btn:hover { background: #005bb5; }
+        
+        .specs { font-size: 0.9rem; color: #666; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>💻 Top Laptops Ingeniería</h1>
+        <p>Selección manual de las mejores ofertas hoy.</p>
+    </header>
+
+    <main class="grid">
+        {laptops.map((laptop) => (
+            <article class="card">
+                <img src={laptop.brand_img} alt={laptop.name} class="product-img" />
+                <h2>{laptop.name}</h2>
+                
+                <div class="specs">
+                    <p>🧠 {laptop.specs.cpu}</p>
+                    <p>💾 {laptop.specs.ram} RAM</p>
+                </div>
+
+                <span class="price">{laptop.price_eur} €</span>
+                
+                <a href={`/laptops/${laptop.slug}`} class="btn">Ver Análisis</a>
+            </article>
+        ))}
+    </main>
+</body>
+</html>

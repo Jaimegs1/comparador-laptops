@@ -1,10 +1,10 @@
 import json
 import os
 
-# --- CONFIGURACIÓN ---
+# --- CONFIGURACIÓN DE RUTAS ---
 script_dir = os.path.dirname(os.path.abspath(__file__))
-# Guardamos en la carpeta SRC de la web para que Vercel lo pille
-output_path = os.path.join(script_dir, '..', 'website', 'src', 'data', 'database.json')
+# Ruta EXACTA: website/src/data/laptops.json
+output_path = os.path.join(script_dir, '..', 'website', 'src', 'data', 'laptops.json')
 
 # TU ID DE AFILIADO
 AFFILIATE_TAG = "comparadorjai-21"
@@ -14,14 +14,12 @@ def generate_link(name):
     query = name.replace(" ", "+")
     return f"{base}{query}&tag={AFFILIATE_TAG}"
 
-# --- DATOS MANUALES (CALIDAD > CANTIDAD) ---
-# Aquí es donde tú, como "CEO", decides qué vender.
-# Busca las fotos en Google Imágenes (clic derecho -> Copiar dirección de imagen)
+# --- DATOS MANUALES (TOP VENTAS) ---
 mis_laptops = [
     {
         "name": "Apple MacBook Air (2020) - Chip M1",
         "price_eur": 929.00,
-        "brand_img": "https://m.media-amazon.com/images/I/71vFKBpKakL._AC_SL1500_.jpg", # Foto REAL del producto
+        "brand_img": "https://m.media-amazon.com/images/I/71vFKBpKakL._AC_SL1500_.jpg",
         "specs": {
             "cpu": "Apple M1",
             "ram": "8 GB",
@@ -65,12 +63,11 @@ print("[INFO] Generando base de datos curada...")
 laptops_clean = []
 
 for index, item in enumerate(mis_laptops):
-    # Enriquecemos los datos manuales con slugs y links
     laptop = {
         "id": index,
         "name": item["name"],
         "slug": item["name"].lower().replace(" ", "-").replace("(", "").replace(")", ""),
-        "brand_img": item["brand_img"], # Aquí va la FOTO DEL PRODUCTO
+        "brand_img": item["brand_img"],
         "specs": item["specs"],
         "price_eur": item["price_eur"],
         "affiliate_link": generate_link(item["name"])
@@ -79,12 +76,12 @@ for index, item in enumerate(mis_laptops):
 
 # --- GUARDADO ---
 try:
-    # Asegurar que el directorio existe
+    # Crear carpeta si no existe
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(laptops_clean, f, indent=2, ensure_ascii=False)
-    print(f"[EXITO] Database generada con {len(laptops_clean)} productos TOP.")
-    print(f"Ruta: {output_path}")
+    # HEMOS QUITADO EL EMOJI AQUÍ PARA QUE WINDOWS NO FALLE
+    print(f"[EXITO] Archivo generado en: {output_path}")
 except Exception as e:
     print(f"[ERROR] {e}")

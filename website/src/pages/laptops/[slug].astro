@@ -1,46 +1,51 @@
 ---
-import laptops from '../database.json';
+import laptops from '../../data/laptops.json';
 
+// Esta función le dice a Astro qué páginas generar (una por cada portátil)
 export async function getStaticPaths() {
-  return laptops.map((laptop) => {
-    return {
-      params: { slug: laptop.slug },
-      props: { laptop },
-    };
-  });
+  return laptops.map((laptop) => ({
+    params: { slug: laptop.slug },
+    props: { laptop },
+  }));
 }
 
 const { laptop } = Astro.props;
 ---
 
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
     <title>{laptop.name} - Análisis</title>
-  </head>
-  <body style="font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px;">
-    
-    <a href="/" style="text-decoration: none;">&larr; Volver al inicio</a>
-    
-    <h1>{laptop.name}</h1>
-    
-    <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd;">
-      <h2>Especificaciones</h2>
-      <ul>
-        <li><strong>CPU:</strong> {laptop.specs.cpu}</li>
-        <li><strong>RAM:</strong> {laptop.specs.ram}</li>
-        <li><strong>Gráfica:</strong> {laptop.specs.gpu}</li>
-        <li><strong>Almacenamiento:</strong> {laptop.specs.storage}</li>
-      </ul>
+    <style>
+        body { font-family: system-ui, sans-serif; background: #f5f5f7; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .container { background: white; padding: 40px; border-radius: 20px; max-width: 800px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
+        img { max-height: 300px; max-width: 100%; object-fit: contain; margin-bottom: 30px; }
+        h1 { font-size: 2rem; margin-bottom: 20px; }
+        .price { font-size: 2.5rem; font-weight: 800; color: #0071e3; margin: 20px 0; }
+        .buy-btn { background: #0071e3; color: white; padding: 15px 40px; font-size: 1.2rem; border-radius: 30px; text-decoration: none; display: inline-block; font-weight: bold; }
+        .back-link { display: block; margin-top: 30px; color: #666; text-decoration: none; }
+        .specs-list { text-align: left; background: #f9f9f9; padding: 20px; border-radius: 10px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src={laptop.brand_img} alt={laptop.name} />
+        <h1>{laptop.name}</h1>
+        
+        <div class="specs-list">
+            <p><strong>Procesador:</strong> {laptop.specs.cpu}</p>
+            <p><strong>RAM:</strong> {laptop.specs.ram}</p>
+            <p><strong>Almacenamiento:</strong> {laptop.specs.storage}</p>
+        </div>
 
-      <h3>Precio estimado: <span style="color: green;">{laptop.price_approx}€</span></h3>
-      
-      <a href={laptop.affiliate_link} target="_blank" 
-         style="background-color: #f90; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">
-        Ver en Amazon &rarr;
-      </a>
+        <div class="price">{laptop.price_eur} €</div>
+
+        <a href={laptop.affiliate_link} target="_blank" class="buy-btn">
+            Ver Oferta en Amazon →
+        </a>
+
+        <a href="/" class="back-link">← Volver al listado</a>
     </div>
-
-  </body>
+</body>
 </html>
