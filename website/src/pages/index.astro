@@ -1,180 +1,255 @@
 ---
 import laptops from '../data/laptops.json';
+
+// Función para asignar una puntuación "fake" basada en el precio para que parezca profesional
+// (En el futuro esto podría ser real)
+function getScore(price) {
+    if (price > 900) return 98;
+    if (price > 700) return 94;
+    return 89;
+}
 ---
 
 <html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Comparador de Portátiles para Ingeniería</title>
+    <title>Comparador Tech - Nivel Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            /* Paleta de colores moderna */
-            --primary: #0071e3;
-            --primary-dark: #005bb5;
-            --text-dark: #1d1d1f;
-            --text-light: #6e6e73;
+            --bg-gradient: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 100%);
+            --card-bg: #ffffff;
+            --primary: #4f46e5; /* Morado azulado tipo Versus */
+            --text-main: #111827;
+            --text-muted: #6b7280;
+            --score-color: #2563eb;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient); /* Fondo Oscuro */
+            color: white;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             min-height: 100vh;
-
-            /* === NUEVO FONDO === */
-            /* 1. Degradado suave de azul claro a blanco */
-            background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
-            /* 2. Trama de puntos sutil para dar textura (opcional) */
-            background-image:
-                radial-gradient(#e0e5ec 1px, transparent 1px),
-                linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
-            background-size: 20px 20px, 100% 100%;
-            background-position: 0 0, 0 0;
         }
 
+        /* --- NAV SUPERIOR --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
+        .nav-links { display: flex; gap: 20px; font-size: 0.9rem; font-weight: 600; color: #ccc; }
+        .nav-links span:hover { color: white; cursor: pointer; }
+
+        /* --- HEADER --- */
         header {
             text-align: center;
-            margin: 60px 0 50px; /* Más espacio arriba y abajo */
-            padding: 0 20px;
+            padding: 60px 20px;
         }
 
-        /* === NUEVO TÍTULO === */
         h1 {
-            font-size: 3.5rem; /* Mucho más grande */
-            font-weight: 800; /* Más grueso */
-            margin-bottom: 15px;
-            letter-spacing: -0.02em;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 0;
             line-height: 1.1;
-
-            /* Efecto de texto degradado */
-            background: linear-gradient(90deg, var(--text-dark) 0%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block; /* Necesario para el degradado en el texto */
         }
+        
+        p.subtitle { color: #a5b4fc; font-size: 1.2rem; margin-top: 10px; }
 
-        header p {
-            color: var(--text-light);
-            font-size: 1.3rem;
-            max-width: 600px;
+        /* --- GRID --- */
+        .main-container {
+            max-width: 1400px;
             margin: 0 auto;
-            font-weight: 400;
+            padding: 0 20px 60px;
+            display: flex; /* Preparado para futura sidebar */
+            gap: 30px;
         }
+
+        /* Sidebar falsa para el look "Pro" */
+        .sidebar {
+            width: 250px;
+            display: none; /* Oculto en móvil */
+        }
+        @media (min-width: 1000px) { .sidebar { display: block; } }
+
+        .filter-box {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .filter-title { font-weight: bold; margin-bottom: 15px; display: block; }
+        .filter-item { display: block; color: #ccc; margin-bottom: 8px; font-size: 0.9rem; }
 
         .grid {
+            flex: 1;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-bottom: 60px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
         }
 
+        /* --- TARJETA PRO --- */
         .card {
-            background: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
-            backdrop-filter: blur(10px); /* Efecto de desenfoque tipo "cristal" */
-            border-radius: 24px; /* Bordes más redondeados */
-            padding: 30px;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border: 1px solid rgba(255,255,255,0.5); /* Borde sutil */
+            background: var(--card-bg);
+            color: var(--text-main);
+            border-radius: 16px;
+            padding: 25px;
+            position: relative; /* Para posicionar el círculo */
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
+
+        /* CÍRCULO DE PUNTUACIÓN (Estilo Versus) */
+        .score-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--score-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            line-height: 1;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+            z-index: 10;
+        }
+        .score-label { font-size: 0.6rem; font-weight: 400; opacity: 0.9; }
 
         .product-img {
             width: 100%;
-            height: 200px; /* Un poco más alto */
+            height: 180px;
             object-fit: contain;
-            margin-bottom: 25px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); /* Sombra suave para que el producto "flote" */
-        }
-
-        h2 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            min-height: 2.8em;
-            margin-bottom: 15px;
-        }
-
-        .price {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            display: block;
             margin: 20px 0;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
         }
 
+        h2 { font-size: 1.1rem; font-weight: 700; margin: 0 0 10px 0; line-height: 1.4; height: 3em; overflow: hidden; }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .spec-item {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .price-row {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .price { font-size: 1.5rem; font-weight: 800; color: #111; }
+        
         .btn {
             background: var(--primary);
             color: white;
-            padding: 14px 28px; /* Botón más grande */
-            border-radius: 30px;
-            text-decoration: none;
-            display: block;
-            width: 100%;
-            text-align: center;
-            box-sizing: border-box;
+            padding: 8px 16px;
+            border-radius: 8px;
             font-weight: 600;
-            font-size: 1rem;
+            text-decoration: none;
+            font-size: 0.9rem;
             transition: background 0.2s;
         }
+        .btn:hover { background: #3730a3; }
 
-        .btn:hover {
-            background: var(--primary-dark);
-        }
-
-        .specs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-        
-        .spec-tag {
-            background: rgba(0, 113, 227, 0.08); /* Fondo azul muy claro */
-            color: var(--primary);
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        /* Responsive para móviles */
-        @media (max-width: 600px) {
-            h1 { font-size: 2.5rem; }
-            header p { font-size: 1.1rem; }
-            .grid { grid-template-columns: 1fr; }
-        }
     </style>
 </head>
 <body>
+
+    <nav class="navbar">
+        <div class="logo">⚡ Comparador.pro</div>
+        <div class="nav-links">
+            <span>TOP 10</span>
+            <span>GAMING</span>
+            <span>ESTUDIANTES</span>
+        </div>
+    </nav>
+
     <header>
-        <h1>💻 Top Laptops Ingeniería</h1>
-        <p>Selección manual de las mejores ofertas hoy.</p>
+        <h1>Comparación de Portátiles</h1>
+        <p class="subtitle">Análisis técnico para ingenieros. Sin publicidad engañosa.</p>
     </header>
 
-    <main class="grid">
-        {laptops.map((laptop) => (
-            <article class="card">
-                <img src={laptop.brand_img} alt={laptop.name} class="product-img" />
-                <h2>{laptop.name}</h2>
-                
-                <div class="specs">
-                    <p>🧠 {laptop.specs.cpu}</p>
-                    <p>💾 {laptop.specs.ram} RAM</p>
+    <div class="main-container">
+        
+        <aside class="sidebar">
+            <div class="filter-box">
+                <span class="filter-title">ORDENAR POR</span>
+                <span class="filter-item">⚡ Puntuación</span>
+                <span class="filter-item">💰 Precio: Bajo a Alto</span>
+                <span class="filter-item">🆕 Más recientes</span>
+            </div>
+            <div class="filter-box">
+                <span class="filter-title">PRECIO</span>
+                <div style="height: 4px; background: #555; border-radius: 2px; margin: 15px 0;"></div>
+                <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:#aaa;">
+                    <span>200€</span><span>4000€+</span>
                 </div>
+            </div>
+        </aside>
 
-                <span class="price">{laptop.price_eur} €</span>
-                
-                <a href={`/laptops/${laptop.slug}`} class="btn">Ver Análisis</a>
-            </article>
-        ))}
-    </main>
+        <main class="grid">
+            {laptops.map((laptop) => (
+                <article class="card">
+                    <div class="score-badge">
+                        {getScore(laptop.price_eur)}
+                        <span class="score-label">PTS</span>
+                    </div>
+
+                    <img src={laptop.brand_img} alt={laptop.name} class="product-img" />
+                    
+                    <h2>{laptop.name}</h2>
+                    
+                    <div class="specs-grid">
+                        <div class="spec-item">🧠 {laptop.specs.cpu}</div>
+                        <div class="spec-item">💾 {laptop.specs.ram}</div>
+                        <div class="spec-item">💿 {laptop.specs.storage}</div>
+                        <div class="spec-item">⚖️ 1.4 kg</div> </div>
+
+                    <div class="price-row">
+                        <span class="price">{laptop.price_eur} €</span>
+                        <a href={`/laptops/${laptop.slug}`} class="btn">Ver Ficha</a>
+                    </div>
+                </article>
+            ))}
+        </main>
+    </div>
+
 </body>
 </html>
