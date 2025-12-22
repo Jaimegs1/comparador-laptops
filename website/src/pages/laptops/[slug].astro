@@ -1,0 +1,46 @@
+---
+import laptops from '../../data/database.json';
+
+export async function getStaticPaths() {
+  return laptops.map((laptop) => {
+    return {
+      params: { slug: laptop.slug },
+      props: { laptop },
+    };
+  });
+}
+
+const { laptop } = Astro.props;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{laptop.name} - Análisis</title>
+  </head>
+  <body style="font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px;">
+    
+    <a href="/" style="text-decoration: none;">&larr; Volver al inicio</a>
+    
+    <h1>{laptop.name}</h1>
+    
+    <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd;">
+      <h2>Especificaciones</h2>
+      <ul>
+        <li><strong>CPU:</strong> {laptop.specs.cpu}</li>
+        <li><strong>RAM:</strong> {laptop.specs.ram}</li>
+        <li><strong>Gráfica:</strong> {laptop.specs.gpu}</li>
+        <li><strong>Almacenamiento:</strong> {laptop.specs.storage}</li>
+      </ul>
+
+      <h3>Precio estimado: <span style="color: green;">{laptop.price_approx}€</span></h3>
+      
+      <a href={laptop.affiliate_link} target="_blank" 
+         style="background-color: #f90; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+        Ver en Amazon &rarr;
+      </a>
+    </div>
+
+  </body>
+</html>

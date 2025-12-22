@@ -1,0 +1,50 @@
+---
+import laptops from '../data/database.json';
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Comparador de Portátiles</title>
+  </head>
+  <body style="font-family: system-ui, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; background-color: #f3f4f6;">
+    
+    <header style="text-align: center; margin-bottom: 50px; padding: 40px 0;">
+      <h1 style="font-size: 2.5rem; color: #111827; margin-bottom: 10px;">💻 Buscador de Portátiles</h1>
+      <p style="color: #6b7280; font-size: 1.1rem;">Encuentra las mejores ofertas analizadas automáticamente.</p>
+    </header>
+
+    <main style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px;">
+      
+      {laptops.map((laptop) => (
+        <article style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); transition: transform 0.2s; border: 1px solid #e5e7eb;">
+          <div style="padding: 24px;">
+            <h2 style="font-size: 1.25rem; font-weight: 600; color: #1f2937; margin-bottom: 12px; line-height: 1.4;">
+              {laptop.name}
+            </h2>
+            
+            <div style="font-size: 0.9rem; color: #4b5563; margin-bottom: 20px; space-y: 8px;">
+              <p style="margin: 5px 0;">⚡ <strong>CPU:</strong> {laptop.specs.cpu}</p>
+              <p style="margin: 5px 0;">💾 <strong>RAM:</strong> {laptop.specs.ram}</p>
+              <p style="margin: 5px 0;">🖥️ <strong>Pantalla:</strong> {laptop.specs.screen}</p>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid #f3f4f6;">
+              <span style="font-size: 1.25rem; font-weight: 700; color: #059669;">
+                {laptop.price_approx}
+              </span>
+              
+              <a href={`/laptops/${laptop.slug}`} 
+                 style="background-color: #2563eb; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.9rem;">
+                Ver Ficha &rarr;
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+
+    </main>
+
+  </body>
+</html>
