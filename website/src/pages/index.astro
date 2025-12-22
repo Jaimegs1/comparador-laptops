@@ -8,28 +8,149 @@ import laptops from '../data/laptops.json';
     <meta name="viewport" content="width=device-width" />
     <title>Comparador de Portátiles para Ingeniería</title>
     <style>
-        :root { --primary: #0071e3; --bg: #f5f5f7; --text: #1d1d1f; }
-        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); padding: 20px; margin: 0; }
+        :root {
+            /* Paleta de colores moderna */
+            --primary: #0071e3;
+            --primary-dark: #005bb5;
+            --text-dark: #1d1d1f;
+            --text-light: #6e6e73;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+
+            /* === NUEVO FONDO === */
+            /* 1. Degradado suave de azul claro a blanco */
+            background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
+            /* 2. Trama de puntos sutil para dar textura (opcional) */
+            background-image:
+                radial-gradient(#e0e5ec 1px, transparent 1px),
+                linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
+            background-size: 20px 20px, 100% 100%;
+            background-position: 0 0, 0 0;
+        }
+
+        header {
+            text-align: center;
+            margin: 60px 0 50px; /* Más espacio arriba y abajo */
+            padding: 0 20px;
+        }
+
+        /* === NUEVO TÍTULO === */
+        h1 {
+            font-size: 3.5rem; /* Mucho más grande */
+            font-weight: 800; /* Más grueso */
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+
+            /* Efecto de texto degradado */
+            background: linear-gradient(90deg, var(--text-dark) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block; /* Necesario para el degradado en el texto */
+        }
+
+        header p {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 60px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+            backdrop-filter: blur(10px); /* Efecto de desenfoque tipo "cristal" */
+            border-radius: 24px; /* Bordes más redondeados */
+            padding: 30px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.5); /* Borde sutil */
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 200px; /* Un poco más alto */
+            object-fit: contain;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); /* Sombra suave para que el producto "flote" */
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            min-height: 2.8em;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            display: block;
+            margin: 20px 0;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            padding: 14px 28px; /* Botón más grande */
+            border-radius: 30px;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
         
-        header { text-align: center; margin: 40px 0; }
-        h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        
-        .card { background: white; border-radius: 18px; padding: 25px; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .card:hover { transform: translateY(-5px); }
-        
-        /* Imagen ajustada para fotos reales */
-        .product-img { width: 100%; height: 180px; object-fit: contain; margin-bottom: 20px; }
-        
-        h2 { font-size: 1.1rem; min-height: 3em; }
-        
-        .price { font-size: 1.5rem; font-weight: bold; color: #111; display: block; margin: 15px 0; }
-        
-        .btn { background: var(--primary); color: white; padding: 10px 20px; border-radius: 20px; text-decoration: none; display: inline-block; width: 100%; text-align: center; box-sizing: border-box; }
-        .btn:hover { background: #005bb5; }
-        
-        .specs { font-size: 0.9rem; color: #666; margin-bottom: 15px; }
+        .spec-tag {
+            background: rgba(0, 113, 227, 0.08); /* Fondo azul muy claro */
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Responsive para móviles */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            header p { font-size: 1.1rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
