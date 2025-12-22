@@ -9,7 +9,8 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 # Subimos un nivel (..) y entramos en 'data'
 data_dir = os.path.join(script_dir, '..', 'data')
 csv_path = os.path.join(data_dir, 'laptops_raw.csv')
-output_path = os.path.join(data_dir, 'database.json')
+# Guardamos el JSON directamente dentro de la app web para que Vercel lo vea
+output_path = os.path.join(script_dir, '..', 'website', 'src', 'data', 'database.json')
 
 print(f"[INFO] Buscando CSV en: {csv_path}")
 
