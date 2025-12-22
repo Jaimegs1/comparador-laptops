@@ -15,11 +15,13 @@ def generate_link(name):
     return f"{base}{query}&tag={AFFILIATE_TAG}"
 
 # --- DATOS MANUALES (TOP VENTAS) ---
+# --- DATOS MANUALES (CON FOTOS LOCALES) ---
 mis_laptops = [
     {
         "name": "Apple MacBook Air (2020) - Chip M1",
         "price_eur": 929.00,
-        "brand_img": "https://m.media-amazon.com/images/I/71vFKBpKakL._AC_SL1500_.jpg",
+        # Fíjate: La ruta empieza con /img/... (Astro sabe buscar en 'public')
+        "brand_img": "/img/macbook.jpg", 
         "specs": {
             "cpu": "Apple M1",
             "ram": "8 GB",
@@ -29,7 +31,7 @@ mis_laptops = [
     {
         "name": "Lenovo IdeaPad Slim 3 Gen 8",
         "price_eur": 499.00,
-        "brand_img": "https://m.media-amazon.com/images/I/71abc-M4ZBL._AC_SL1500_.jpg",
+        "brand_img": "/img/lenovo.jpg",
         "specs": {
             "cpu": "Intel Core i5-12450H",
             "ram": "16 GB",
@@ -39,7 +41,7 @@ mis_laptops = [
     {
         "name": "HP Victus 15-fa0012ns (Gaming)",
         "price_eur": 749.99,
-        "brand_img": "https://m.media-amazon.com/images/I/81+6f+3J+XL._AC_SL1500_.jpg",
+        "brand_img": "/img/hp.jpg",
         "specs": {
             "cpu": "Intel Core i5-12500H",
             "ram": "16 GB",
@@ -49,7 +51,7 @@ mis_laptops = [
     {
         "name": "ASUS TUF Gaming F15",
         "price_eur": 649.00,
-        "brand_img": "https://m.media-amazon.com/images/I/71ma2w-f+OL._AC_SL1500_.jpg",
+        "brand_img": "/img/asus.jpg",
         "specs": {
             "cpu": "Intel Core i5-11400H",
             "ram": "16 GB",
@@ -57,7 +59,6 @@ mis_laptops = [
         }
     }
 ]
-
 # --- PROCESAMIENTO ---
 print("[INFO] Generando base de datos curada...")
 laptops_clean = []

@@ -3,7 +3,7 @@
     "id": 0,
     "name": "Apple MacBook Air (2020) - Chip M1",
     "slug": "apple-macbook-air-2020---chip-m1",
-    "brand_img": "https://m.media-amazon.com/images/I/71vFKBpKakL._AC_SL1500_.jpg",
+    "brand_img": "/img/macbook.jpg",
     "specs": {
       "cpu": "Apple M1",
       "ram": "8 GB",
@@ -16,7 +16,7 @@
     "id": 1,
     "name": "Lenovo IdeaPad Slim 3 Gen 8",
     "slug": "lenovo-ideapad-slim-3-gen-8",
-    "brand_img": "https://m.media-amazon.com/images/I/71abc-M4ZBL._AC_SL1500_.jpg",
+    "brand_img": "/img/lenovo.jpg",
     "specs": {
       "cpu": "Intel Core i5-12450H",
       "ram": "16 GB",
@@ -29,7 +29,7 @@
     "id": 2,
     "name": "HP Victus 15-fa0012ns (Gaming)",
     "slug": "hp-victus-15-fa0012ns-gaming",
-    "brand_img": "https://m.media-amazon.com/images/I/81+6f+3J+XL._AC_SL1500_.jpg",
+    "brand_img": "/img/hp.jpg",
     "specs": {
       "cpu": "Intel Core i5-12500H",
       "ram": "16 GB",
@@ -42,7 +42,7 @@
     "id": 3,
     "name": "ASUS TUF Gaming F15",
     "slug": "asus-tuf-gaming-f15",
-    "brand_img": "https://m.media-amazon.com/images/I/71ma2w-f+OL._AC_SL1500_.jpg",
+    "brand_img": "/img/asus.jpg",
     "specs": {
       "cpu": "Intel Core i5-11400H",
       "ram": "16 GB",
