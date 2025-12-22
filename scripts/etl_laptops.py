@@ -53,7 +53,7 @@ def create_slug(text):
 
 def generate_affiliate_link(name):
     base = "https://www.amazon.es/s?k="
-    tag = "&tag=PROYECTO-21"
+    tag = "&tag=comparadorjai-21"
     query = name.replace(" ", "+")
     return f"{base}{query}{tag}"
 
