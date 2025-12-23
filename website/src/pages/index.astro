@@ -29,13 +29,11 @@ function getScore(price) {
             /* Paleta Dark Mode Premium */
             --bg-dark: #0f0c29;
             --bg-gradient: linear-gradient(to right, #0f0c29, #302b63, #24243e);
-            --primary-glow: radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.4), transparent 60%);
             --card-bg: rgba(255, 255, 255, 0.03);
             --card-border: rgba(255, 255, 255, 0.1);
             --text-main: #ffffff;
             --text-muted: #9ca3af;
             --accent: #8b5cf6; /* Violeta */
-            --accent-cyan: #06b6d4; /* Cyan para degradados */
         }
 
         body {
@@ -87,7 +85,7 @@ function getScore(price) {
         }
         .nav-btn:hover::after { width: 100%; }
 
-        /* --- HERO SECTION (LA PORTADA) --- */
+        /* --- HERO SECTION CON IMAGEN DE FONDO --- */
         .hero {
             position: relative;
             min-height: 85vh; /* Ocupa casi toda la pantalla */
@@ -98,18 +96,16 @@ function getScore(price) {
             text-align: center;
             padding: 0 20px;
             overflow: hidden;
-        }
 
-        /* El brillo de fondo */
-        .glow-bg {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px; height: 600px;
-            background: var(--primary-glow);
-            z-index: -1;
-            filter: blur(80px);
-            animation: pulse 8s infinite alternate;
+            /* IMAGEN DE FONDO + OSCURECIMIENTO */
+            background: 
+                linear-gradient(to bottom, rgba(15, 12, 41, 0.85), rgba(15, 12, 41, 1)), 
+                url('https://images.unsplash.com/photo-1517336714731-489689fd1ca4?q=80&w=1926&auto=format&fit=crop');
+            
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Efecto Parallax */
+            border-bottom: 1px solid var(--card-border);
         }
 
         .badge-pill {
@@ -287,8 +283,6 @@ function getScore(price) {
             .nav-links { display: none; } /* Ocultar links en móvil por ahora */
             .main-container { padding-top: 20px; }
         }
-
-        @keyframes pulse { 0% { opacity: 0.5; } 100% { opacity: 0.8; } }
     </style>
 </head>
 <body>
@@ -303,7 +297,6 @@ function getScore(price) {
     </nav>
 
     <section class="hero">
-        <div class="glow-bg"></div>
         <div class="badge-pill">✨ Algoritmo v2.0 Actualizado</div>
         <h1>Laptop <span class="gradient-text">Comparator</span></h1>
         <p class="subtitle">La herramienta definitiva para ingenieros y estudiantes. Filtra el marketing, encuentra la potencia real y ahorra dinero.</p>
