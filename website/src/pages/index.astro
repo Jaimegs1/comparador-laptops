@@ -18,6 +18,8 @@ function getScore(price) {
     <meta name="description" content="Comparador de portátiles con precios actualizados. Encuentra ofertas Gaming, Estudiantes y Ultrabooks." />
     <meta name="robots" content="index, follow" />
     
+    <meta name="google-site-verification" content="2V-eMT8DSm87ZaDNiAstEAIKi23tsD6-6IWgdFrmqyo" />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -226,7 +228,7 @@ function getScore(price) {
 
         function filterByCategory(category) {
             cards.forEach(card => {
-                const categories = card.dataset.category; // string tipo "gaming top"
+                const categories = card.dataset.category || "";
                 if (categories.includes(category)) {
                     card.style.display = 'flex';
                 } else {
