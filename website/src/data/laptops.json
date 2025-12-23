@@ -4,7 +4,7 @@
     "name": "Apple MacBook Air (2020) - Chip M1",
     "slug": "apple-macbook-air-2020---chip-m1",
     "brand_img": "/img/macbook.jpg",
-    "category": "top student",
+    "category": "top student business",
     "specs": {
       "cpu": "Apple M1",
       "ram": "8 GB",
@@ -76,8 +76,8 @@
   },
   {
     "id": 5,
-    "name": "MSI Thin GF63",
-    "slug": "msi-thin-gf63",
+    "name": "MSI Thin GF63 (Gaming Barato)",
+    "slug": "msi-thin-gf63-gaming-barato",
     "brand_img": "/img/msi.jpg",
     "category": "gaming",
     "specs": {
@@ -87,51 +87,96 @@
       "weight": "1.86 kg"
     },
     "price_eur": 849.0,
-    "affiliate_link": "https://www.amazon.es/s?k=MSI+Thin+GF63&tag=comparadorjai-21"
+    "affiliate_link": "https://www.amazon.es/s?k=MSI+Thin+GF63+(Gaming+Barato)&tag=comparadorjai-21"
   },
   {
     "id": 6,
-    "name": "Lenovo Legion 5 Gen 6",
-    "slug": "lenovo-legion-5-gen-6",
-    "brand_img": "/img/lenovo.jpg",
+    "name": "Acer Nitro 5 AN515",
+    "slug": "acer-nitro-5-an515",
+    "brand_img": "/img/nitro.jpg",
     "category": "gaming top",
     "specs": {
-      "cpu": "Ryzen 7 5800H",
+      "cpu": "Intel Core i5-11400H",
       "ram": "16 GB",
-      "storage": "1 TB SSD",
-      "weight": "2.40 kg"
+      "storage": "512 GB SSD",
+      "weight": "2.30 kg"
     },
-    "price_eur": 1149.0,
-    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+Legion+5+Gen+6&tag=comparadorjai-21"
+    "price_eur": 699.0,
+    "affiliate_link": "https://www.amazon.es/s?k=Acer+Nitro+5+AN515&tag=comparadorjai-21"
   },
   {
     "id": 7,
-    "name": "HP 15s-fq5085ns",
-    "slug": "hp-15s-fq5085ns",
-    "brand_img": "/img/hp.jpg",
+    "name": "ASUS VivoBook 15 F1500",
+    "slug": "asus-vivobook-15-f1500",
+    "brand_img": "/img/vivobook.jpg",
+    "category": "student top",
+    "specs": {
+      "cpu": "Intel Core i3-1115G4",
+      "ram": "8 GB",
+      "storage": "256 GB SSD",
+      "weight": "1.80 kg"
+    },
+    "price_eur": 449.0,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+VivoBook+15+F1500&tag=comparadorjai-21"
+  },
+  {
+    "id": 8,
+    "name": "HP Chromebook 14a",
+    "slug": "hp-chromebook-14a",
+    "brand_img": "/img/chromebook.jpg",
     "category": "student",
+    "specs": {
+      "cpu": "Intel Celeron N4500",
+      "ram": "4 GB",
+      "storage": "64 GB eMMC",
+      "weight": "1.46 kg"
+    },
+    "price_eur": 249.0,
+    "affiliate_link": "https://www.amazon.es/s?k=HP+Chromebook+14a&tag=comparadorjai-21"
+  },
+  {
+    "id": 9,
+    "name": "Apple MacBook Air (2022) - Chip M2",
+    "slug": "apple-macbook-air-2022---chip-m2",
+    "brand_img": "/img/macbook-m2.jpg",
+    "category": "top business",
+    "specs": {
+      "cpu": "Apple M2",
+      "ram": "8 GB",
+      "storage": "256 GB SSD",
+      "weight": "1.24 kg"
+    },
+    "price_eur": 1099.0,
+    "affiliate_link": "https://www.amazon.es/s?k=Apple+MacBook+Air+(2022)+-+Chip+M2&tag=comparadorjai-21"
+  },
+  {
+    "id": 10,
+    "name": "Lenovo V15 G3 (Oficina)",
+    "slug": "lenovo-v15-g3-oficina",
+    "brand_img": "/img/lenovo-v15.jpg",
+    "category": "business student",
     "specs": {
       "cpu": "Intel Core i3-1215U",
       "ram": "8 GB",
       "storage": "256 GB SSD",
-      "weight": "1.69 kg"
+      "weight": "1.70 kg"
     },
-    "price_eur": 399.0,
-    "affiliate_link": "https://www.amazon.es/s?k=HP+15s-fq5085ns&tag=comparadorjai-21"
+    "price_eur": 389.0,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+V15+G3+(Oficina)&tag=comparadorjai-21"
   },
   {
-    "id": 8,
-    "name": "ASUS ZenBook 14 OLED",
-    "slug": "asus-zenbook-14-oled",
-    "brand_img": "/img/asus.jpg",
-    "category": "business top",
+    "id": 11,
+    "name": "Dell Inspiron 15 3000",
+    "slug": "dell-inspiron-15-3000",
+    "brand_img": "/img/dell.jpg",
+    "category": "student business",
     "specs": {
-      "cpu": "Intel Core i7-1260P",
-      "ram": "16 GB",
+      "cpu": "Ryzen 5 5500U",
+      "ram": "8 GB",
       "storage": "512 GB SSD",
-      "weight": "1.39 kg"
+      "weight": "1.85 kg"
     },
-    "price_eur": 999.0,
-    "affiliate_link": "https://www.amazon.es/s?k=ASUS+ZenBook+14+OLED&tag=comparadorjai-21"
+    "price_eur": 549.0,
+    "affiliate_link": "https://www.amazon.es/s?k=Dell+Inspiron+15+3000&tag=comparadorjai-21"
   }
 ]

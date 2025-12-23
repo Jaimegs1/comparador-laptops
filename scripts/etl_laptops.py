@@ -1,24 +1,29 @@
 import json
 import os
 
-# --- CONFIGURACIÓN ---
+# --- CONFIGURACIÓN DE RUTAS ---
 script_dir = os.path.dirname(os.path.abspath(__file__))
+# Ruta donde se guardará el JSON para la web
 output_path = os.path.join(script_dir, '..', 'website', 'src', 'data', 'laptops.json')
+
+# TU ID DE AFILIADO DE AMAZON
 AFFILIATE_TAG = "comparadorjai-21"
 
 def generate_link(name):
+    """Genera un enlace de búsqueda en Amazon con tu tag de afiliado"""
     base = "https://www.amazon.es/s?k="
     query = name.replace(" ", "+")
     return f"{base}{query}&tag={AFFILIATE_TAG}"
 
-# --- DATOS: AÑADIMOS "category" ---
-# Categorías posibles: 'gaming', 'student', 'business', 'top'
+# --- BASE DE DATOS MAESTRA (12 MODELOS) ---
+# Asegúrate de tener las fotos en website/public/img/
 mis_laptops = [
+    # --- LOS CLÁSICOS (Que ya tenías) ---
     {
         "name": "Apple MacBook Air (2020) - Chip M1",
         "price_eur": 929.00,
         "brand_img": "/img/macbook.jpg",
-        "category": "top student", # Es Top ventas y para estudiantes
+        "category": "top student business",
         "specs": { "cpu": "Apple M1", "ram": "8 GB", "storage": "256 GB SSD", "weight": "1.29 kg" }
     },
     {
@@ -50,57 +55,90 @@ mis_laptops = [
         "specs": { "cpu": "Intel Core i5-1135G7", "ram": "12 GB", "storage": "1 TB SSD", "weight": "1.70 kg" }
     },
     {
-        "name": "MSI Thin GF63",
+        "name": "MSI Thin GF63 (Gaming Barato)",
         "price_eur": 849.00,
         "brand_img": "/img/msi.jpg",
         "category": "gaming",
         "specs": { "cpu": "Intel Core i7-12650H", "ram": "16 GB", "storage": "512 GB SSD", "weight": "1.86 kg" }
     },
-    # --- NUEVOS (Necesitas bajar las fotos) ---
+
+    # --- LOS NUEVOS (SUPERVENTAS AMAZON) ---
     {
-        "name": "Lenovo Legion 5 Gen 6",
-        "price_eur": 1149.00,
-        "brand_img": "/img/lenovo.jpg", # Reusa la foto de lenovo o baja otra
+        "name": "Acer Nitro 5 AN515",
+        "price_eur": 699.00,
+        "brand_img": "/img/nitro.jpg",
         "category": "gaming top",
-        "specs": { "cpu": "Ryzen 7 5800H", "ram": "16 GB", "storage": "1 TB SSD", "weight": "2.40 kg" }
+        "specs": { "cpu": "Intel Core i5-11400H", "ram": "16 GB", "storage": "512 GB SSD", "weight": "2.30 kg" }
     },
     {
-        "name": "HP 15s-fq5085ns",
-        "price_eur": 399.00,
-        "brand_img": "/img/hp.jpg",
+        "name": "ASUS VivoBook 15 F1500",
+        "price_eur": 449.00,
+        "brand_img": "/img/vivobook.jpg",
+        "category": "student top",
+        "specs": { "cpu": "Intel Core i3-1115G4", "ram": "8 GB", "storage": "256 GB SSD", "weight": "1.80 kg" }
+    },
+    {
+        "name": "HP Chromebook 14a",
+        "price_eur": 249.00,
+        "brand_img": "/img/chromebook.jpg",
         "category": "student",
-        "specs": { "cpu": "Intel Core i3-1215U", "ram": "8 GB", "storage": "256 GB SSD", "weight": "1.69 kg" }
+        "specs": { "cpu": "Intel Celeron N4500", "ram": "4 GB", "storage": "64 GB eMMC", "weight": "1.46 kg" }
     },
     {
-        "name": "ASUS ZenBook 14 OLED",
-        "price_eur": 999.00,
-        "brand_img": "/img/asus.jpg",
-        "category": "business top",
-        "specs": { "cpu": "Intel Core i7-1260P", "ram": "16 GB", "storage": "512 GB SSD", "weight": "1.39 kg" }
+        "name": "Apple MacBook Air (2022) - Chip M2",
+        "price_eur": 1099.00,
+        "brand_img": "/img/macbook-m2.jpg",
+        "category": "top business",
+        "specs": { "cpu": "Apple M2", "ram": "8 GB", "storage": "256 GB SSD", "weight": "1.24 kg" }
+    },
+    {
+        "name": "Lenovo V15 G3 (Oficina)",
+        "price_eur": 389.00,
+        "brand_img": "/img/lenovo-v15.jpg",
+        "category": "business student",
+        "specs": { "cpu": "Intel Core i3-1215U", "ram": "8 GB", "storage": "256 GB SSD", "weight": "1.70 kg" }
+    },
+    {
+        "name": "Dell Inspiron 15 3000",
+        "price_eur": 549.00,
+        "brand_img": "/img/dell.jpg",
+        "category": "student business",
+        "specs": { "cpu": "Ryzen 5 5500U", "ram": "8 GB", "storage": "512 GB SSD", "weight": "1.85 kg" }
     }
 ]
 
 # --- PROCESAMIENTO ---
-print("[INFO] Generando base de datos...")
+print("[INFO] Generando base de datos curada...")
 laptops_clean = []
 
 for index, item in enumerate(mis_laptops):
+    # Crear slug limpio (ej: "hp-victus-15")
+    slug = item["name"].lower().replace(" ", "-").replace("(", "").replace(")", "").replace(".", "")
+    
     laptop = {
         "id": index,
         "name": item["name"],
-        "slug": item["name"].lower().replace(" ", "-").replace("(", "").replace(")", ""),
+        "slug": slug,
         "brand_img": item["brand_img"],
-        "category": item["category"], # GUARDAMOS LA CATEGORÍA
+        "category": item["category"], # IMPORTANTE: Categoría para los filtros
         "specs": item["specs"],
         "price_eur": item["price_eur"],
         "affiliate_link": generate_link(item["name"])
     }
     laptops_clean.append(laptop)
 
+# --- GUARDADO ---
+# --- GUARDADO ---
 try:
+    # Crear carpetas si no existen
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    
+    # Escribir el archivo JSON
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(laptops_clean, f, indent=2, ensure_ascii=False)
-    print(f"[EXITO] {len(laptops_clean)} portátiles generados.")
+        
+    print(f"[EXITO] Archivo generado en: {output_path}")
+    print(f"[INFO] Total de portátiles: {len(laptops_clean)}")
+    print("[RECORDATORIO] Descarga las nuevas fotos en website/public/img/")
 except Exception as e:
     print(f"[ERROR] {e}")
