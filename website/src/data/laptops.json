@@ -1,6 +1,186 @@
 [
   {
     "id": 0,
+    "name": "Apple MacBook Air (2020) - Chip M1",
+    "slug": "apple-macbook-air-2020---chip-m1",
+    "brand_img": "/img/macbook.jpg",
+    "category": "top student business",
+    "specs": {
+      "cpu": "Apple M1",
+      "ram": "8 GB",
+      "storage": "256 GB SSD",
+      "weight": "1.29 kg"
+    },
+    "price_eur": 929.0,
+    "affiliate_link": "https://www.amazon.es/s?k=Apple+MacBook+Air+(2020)+-+Chip+M1&tag=comparadorjai-21"
+  },
+  {
+    "id": 1,
+    "name": "Lenovo IdeaPad Slim 3 Gen 8",
+    "slug": "lenovo-ideapad-slim-3-gen-8",
+    "brand_img": "/img/lenovo.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Intel Core i5-12450H",
+      "ram": "16 GB",
+      "storage": "512 GB SSD",
+      "weight": "1.62 kg"
+    },
+    "price_eur": 499.0,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+IdeaPad+Slim+3+Gen+8&tag=comparadorjai-21"
+  },
+  {
+    "id": 2,
+    "name": "HP Victus 15-fa0012ns (Gaming)",
+    "slug": "hp-victus-15-fa0012ns-gaming",
+    "brand_img": "/img/hp.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Intel Core i5-12500H",
+      "ram": "16 GB",
+      "storage": "512 GB SSD",
+      "weight": "2.29 kg"
+    },
+    "price_eur": 749.99,
+    "affiliate_link": "https://www.amazon.es/s?k=HP+Victus+15-fa0012ns+(Gaming)&tag=comparadorjai-21"
+  },
+  {
+    "id": 3,
+    "name": "ASUS TUF Gaming F15",
+    "slug": "asus-tuf-gaming-f15",
+    "brand_img": "/img/asus.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Intel Core i5-11400H",
+      "ram": "16 GB",
+      "storage": "512 GB SSD",
+      "weight": "2.30 kg"
+    },
+    "price_eur": 649.0,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+TUF+Gaming+F15&tag=comparadorjai-21"
+  },
+  {
+    "id": 4,
+    "name": "Acer Aspire 5 A515",
+    "slug": "acer-aspire-5-a515",
+    "brand_img": "/img/acer.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Intel Core i5-1135G7",
+      "ram": "12 GB",
+      "storage": "1 TB SSD",
+      "weight": "1.70 kg"
+    },
+    "price_eur": 529.0,
+    "affiliate_link": "https://www.amazon.es/s?k=Acer+Aspire+5+A515&tag=comparadorjai-21"
+  },
+  {
+    "id": 5,
+    "name": "MSI Thin GF63 (Gaming Barato)",
+    "slug": "msi-thin-gf63-gaming-barato",
+    "brand_img": "/img/msi.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Intel Core i7-12650H",
+      "ram": "16 GB",
+      "storage": "512 GB SSD",
+      "weight": "1.86 kg"
+    },
+    "price_eur": 849.0,
+    "affiliate_link": "https://www.amazon.es/s?k=MSI+Thin+GF63+(Gaming+Barato)&tag=comparadorjai-21"
+  },
+  {
+    "id": 6,
+    "name": "Acer Nitro 5 AN515",
+    "slug": "acer-nitro-5-an515",
+    "brand_img": "/img/nitro.jpg",
+    "category": "gaming top",
+    "specs": {
+      "cpu": "Intel Core i5-11400H",
+      "ram": "16 GB",
+      "storage": "512 GB SSD",
+      "weight": "2.30 kg"
+    },
+    "price_eur": 699.0,
+    "affiliate_link": "https://www.amazon.es/s?k=Acer+Nitro+5+AN515&tag=comparadorjai-21"
+  },
+  {
+    "id": 7,
+    "name": "ASUS VivoBook 15 F1500",
+    "slug": "asus-vivobook-15-f1500",
+    "brand_img": "/img/vivobook.jpg",
+    "category": "student top",
+    "specs": {
+      "cpu": "Intel Core i3-1115G4",
+      "ram": "8 GB",
+      "storage": "256 GB SSD",
+      "weight": "1.80 kg"
+    },
+    "price_eur": 449.0,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+VivoBook+15+F1500&tag=comparadorjai-21"
+  },
+  {
+    "id": 8,
+    "name": "HP Chromebook 14a",
+    "slug": "hp-chromebook-14a",
+    "brand_img": "/img/chromebook.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Intel Celeron N4500",
+      "ram": "4 GB",
+      "storage": "64 GB eMMC",
+      "weight": "1.46 kg"
+    },
+    "price_eur": 249.0,
+    "affiliate_link": "https://www.amazon.es/s?k=HP+Chromebook+14a&tag=comparadorjai-21"
+  },
+  {
+    "id": 9,
+    "name": "Apple MacBook Air (2022) - Chip M2",
+    "slug": "apple-macbook-air-2022---chip-m2",
+    "brand_img": "/img/macbook-m2.jpg",
+    "category": "top business",
+    "specs": {
+      "cpu": "Apple M2",
+      "ram": "8 GB",
+      "storage": "256 GB SSD",
+      "weight": "1.24 kg"
+    },
+    "price_eur": 1099.0,
+    "affiliate_link": "https://www.amazon.es/s?k=Apple+MacBook+Air+(2022)+-+Chip+M2&tag=comparadorjai-21"
+  },
+  {
+    "id": 10,
+    "name": "Lenovo V15 G3 (Oficina)",
+    "slug": "lenovo-v15-g3-oficina",
+    "brand_img": "/img/lenovo-v15.jpg",
+    "category": "business student",
+    "specs": {
+      "cpu": "Intel Core i3-1215U",
+      "ram": "8 GB",
+      "storage": "256 GB SSD",
+      "weight": "1.70 kg"
+    },
+    "price_eur": 389.0,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+V15+G3+(Oficina)&tag=comparadorjai-21"
+  },
+  {
+    "id": 11,
+    "name": "Dell Inspiron 15 3000",
+    "slug": "dell-inspiron-15-3000",
+    "brand_img": "/img/dell.jpg",
+    "category": "student business",
+    "specs": {
+      "cpu": "Ryzen 5 5500U",
+      "ram": "8 GB",
+      "storage": "512 GB SSD",
+      "weight": "1.85 kg"
+    },
+    "price_eur": 549.0,
+    "affiliate_link": "https://www.amazon.es/s?k=Dell+Inspiron+15+3000&tag=comparadorjai-21"
+  },
+  {
+    "id": 12,
     "name": "Lenovo Legion 5 Gen 6",
     "slug": "lenovo-legion-5-gen-6",
     "brand_img": "/img/legion.jpg",
@@ -15,7 +195,7 @@
     "affiliate_link": "https://www.amazon.es/s?k=Lenovo+Legion+5+Gen+6&tag=comparadorjai-21"
   },
   {
-    "id": 1,
+    "id": 13,
     "name": "Dell XPS 13 Plus",
     "slug": "dell-xps-13-plus",
     "brand_img": "/img/xps.jpg",
@@ -30,7 +210,7 @@
     "affiliate_link": "https://www.amazon.es/s?k=Dell+XPS+13+Plus&tag=comparadorjai-21"
   },
   {
-    "id": 2,
+    "id": 14,
     "name": "HP Pavilion x360 (Convertible)",
     "slug": "hp-pavilion-x360-convertible",
     "brand_img": "/img/x360.jpg",
@@ -45,7 +225,7 @@
     "affiliate_link": "https://www.amazon.es/s?k=HP+Pavilion+x360+(Convertible)&tag=comparadorjai-21"
   },
   {
-    "id": 3,
+    "id": 15,
     "name": "ASUS ROG Strix G16",
     "slug": "asus-rog-strix-g16",
     "brand_img": "/img/rog.jpg",
@@ -60,7 +240,7 @@
     "affiliate_link": "https://www.amazon.es/s?k=ASUS+ROG+Strix+G16&tag=comparadorjai-21"
   },
   {
-    "id": 4,
+    "id": 16,
     "name": "Microsoft Surface Laptop Go 2",
     "slug": "microsoft-surface-laptop-go-2",
     "brand_img": "/img/surface.jpg",
@@ -75,7 +255,7 @@
     "affiliate_link": "https://www.amazon.es/s?k=Microsoft+Surface+Laptop+Go+2&tag=comparadorjai-21"
   },
   {
-    "id": 5,
+    "id": 17,
     "name": "Lenovo IdeaPad 1 Gen 7",
     "slug": "lenovo-ideapad-1-gen-7",
     "brand_img": "/img/ideapad1.jpg",
@@ -90,7 +270,7 @@
     "affiliate_link": "https://www.amazon.es/s?k=Lenovo+IdeaPad+1+Gen+7&tag=comparadorjai-21"
   },
   {
-    "id": 6,
+    "id": 18,
     "name": "MSI Katana GF66",
     "slug": "msi-katana-gf66",
     "brand_img": "/img/katana.jpg",
@@ -105,7 +285,7 @@
     "affiliate_link": "https://www.amazon.es/s?k=MSI+Katana+GF66&tag=comparadorjai-21"
   },
   {
-    "id": 7,
+    "id": 19,
     "name": "LG Gram 14 (Ultraligero)",
     "slug": "lg-gram-14-ultraligero",
     "brand_img": "/img/gram.jpg",

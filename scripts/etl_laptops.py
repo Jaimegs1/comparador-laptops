@@ -15,11 +15,98 @@ def generate_link(name):
     query = name.replace(" ", "+")
     return f"{base}{query}&tag={AFFILIATE_TAG}"
 
-# --- BASE DE DATOS MAESTRA (12 MODELOS) ---
+# --- BASE DE DATOS MAESTRA (20 MODELOS) ---
 # Asegúrate de tener las fotos en website/public/img/
 mis_laptops = [
-    # --- LOS CLÁSICOS (Que ya tenías) ---
-    # --- BLOQUE DE EXPANSIÓN (LLEGAR A 20) ---
+    # --- GRUPO 1: LOS CLÁSICOS (6) ---
+    {
+        "name": "Apple MacBook Air (2020) - Chip M1",
+        "price_eur": 929.00,
+        "brand_img": "/img/macbook.jpg",
+        "category": "top student business",
+        "specs": { "cpu": "Apple M1", "ram": "8 GB", "storage": "256 GB SSD", "weight": "1.29 kg" }
+    },
+    {
+        "name": "Lenovo IdeaPad Slim 3 Gen 8",
+        "price_eur": 499.00,
+        "brand_img": "/img/lenovo.jpg",
+        "category": "student",
+        "specs": { "cpu": "Intel Core i5-12450H", "ram": "16 GB", "storage": "512 GB SSD", "weight": "1.62 kg" }
+    },
+    {
+        "name": "HP Victus 15-fa0012ns (Gaming)",
+        "price_eur": 749.99,
+        "brand_img": "/img/hp.jpg",
+        "category": "gaming",
+        "specs": { "cpu": "Intel Core i5-12500H", "ram": "16 GB", "storage": "512 GB SSD", "weight": "2.29 kg" }
+    },
+    {
+        "name": "ASUS TUF Gaming F15",
+        "price_eur": 649.00,
+        "brand_img": "/img/asus.jpg",
+        "category": "gaming",
+        "specs": { "cpu": "Intel Core i5-11400H", "ram": "16 GB", "storage": "512 GB SSD", "weight": "2.30 kg" }
+    },
+    {
+        "name": "Acer Aspire 5 A515",
+        "price_eur": 529.00,
+        "brand_img": "/img/acer.jpg",
+        "category": "student",
+        "specs": { "cpu": "Intel Core i5-1135G7", "ram": "12 GB", "storage": "1 TB SSD", "weight": "1.70 kg" }
+    },
+    {
+        "name": "MSI Thin GF63 (Gaming Barato)",
+        "price_eur": 849.00,
+        "brand_img": "/img/msi.jpg",
+        "category": "gaming",
+        "specs": { "cpu": "Intel Core i7-12650H", "ram": "16 GB", "storage": "512 GB SSD", "weight": "1.86 kg" }
+    },
+
+    # --- GRUPO 2: TOP VENTAS (6) ---
+    {
+        "name": "Acer Nitro 5 AN515",
+        "price_eur": 699.00,
+        "brand_img": "/img/nitro.jpg",
+        "category": "gaming top",
+        "specs": { "cpu": "Intel Core i5-11400H", "ram": "16 GB", "storage": "512 GB SSD", "weight": "2.30 kg" }
+    },
+    {
+        "name": "ASUS VivoBook 15 F1500",
+        "price_eur": 449.00,
+        "brand_img": "/img/vivobook.jpg",
+        "category": "student top",
+        "specs": { "cpu": "Intel Core i3-1115G4", "ram": "8 GB", "storage": "256 GB SSD", "weight": "1.80 kg" }
+    },
+    {
+        "name": "HP Chromebook 14a",
+        "price_eur": 249.00,
+        "brand_img": "/img/chromebook.jpg",
+        "category": "student",
+        "specs": { "cpu": "Intel Celeron N4500", "ram": "4 GB", "storage": "64 GB eMMC", "weight": "1.46 kg" }
+    },
+    {
+        "name": "Apple MacBook Air (2022) - Chip M2",
+        "price_eur": 1099.00,
+        "brand_img": "/img/macbook-m2.jpg",
+        "category": "top business",
+        "specs": { "cpu": "Apple M2", "ram": "8 GB", "storage": "256 GB SSD", "weight": "1.24 kg" }
+    },
+    {
+        "name": "Lenovo V15 G3 (Oficina)",
+        "price_eur": 389.00,
+        "brand_img": "/img/lenovo-v15.jpg",
+        "category": "business student",
+        "specs": { "cpu": "Intel Core i3-1215U", "ram": "8 GB", "storage": "256 GB SSD", "weight": "1.70 kg" }
+    },
+    {
+        "name": "Dell Inspiron 15 3000",
+        "price_eur": 549.00,
+        "brand_img": "/img/dell.jpg",
+        "category": "student business",
+        "specs": { "cpu": "Ryzen 5 5500U", "ram": "8 GB", "storage": "512 GB SSD", "weight": "1.85 kg" }
+    },
+
+    # --- GRUPO 3: NOVEDADES Y PREMIUM (8) ---
     {
         "name": "Lenovo Legion 5 Gen 6",
         "price_eur": 1049.00,
@@ -99,7 +186,6 @@ for index, item in enumerate(mis_laptops):
     laptops_clean.append(laptop)
 
 # --- GUARDADO ---
-# --- GUARDADO ---
 try:
     # Crear carpetas si no existen
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
@@ -110,6 +196,6 @@ try:
         
     print(f"[EXITO] Archivo generado en: {output_path}")
     print(f"[INFO] Total de portátiles: {len(laptops_clean)}")
-    print("[RECORDATORIO] Descarga las nuevas fotos en website/public/img/")
+    print("[RECORDATORIO] Asegúrate de tener las 20 fotos en website/public/img/")
 except Exception as e:
     print(f"[ERROR] {e}")
