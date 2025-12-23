@@ -302,7 +302,7 @@
   {
     "name": "Steam Deck OLED (1TB)",
     "price_eur": 679,
-    "brand_img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1675200/extras/steamdeck_oled_hero_01.jpg?t=1700180635",
+    "brand_img": "/img/steamdeck.jpg",
     "specs": {
         "cpu": "AMD Zen 2 (APU Custom)",
         "ram": "16 GB LPDDR5",
