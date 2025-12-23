@@ -1,7 +1,7 @@
 ---
 import laptops from '../data/laptops.json';
 
-// Función para asignar puntuación visual basada en precio (Simulación Pro)
+// Función para asignar puntuación visual
 function getScore(price) {
     if (price > 900) return 98;
     if (price > 700) return 94;
@@ -13,9 +13,8 @@ function getScore(price) {
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    
     <title>Comparador Tech - Los Mejores Portátiles Calidad-Precio 2025</title>
-    <meta name="description" content="Análisis técnico de portátiles para estudiantes e ingenieros. Compara precios, RAM, peso y procesadores (M1, Intel, AMD) sin publicidad engañosa." />
+    <meta name="description" content="Análisis técnico de portátiles. Compara precios, RAM, peso y procesadores." />
     <meta name="robots" content="index, follow" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,10 +52,8 @@ function getScore(price) {
 
         .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
         .nav-links { display: flex; gap: 20px; font-size: 0.9rem; font-weight: 600; color: #ccc; }
-        .nav-links span:hover { color: white; cursor: pointer; }
-
+        
         header { text-align: center; padding: 60px 20px; }
-
         h1 { font-size: 3.5rem; font-weight: 800; margin: 0; line-height: 1.1; }
         p.subtitle { color: #a5b4fc; font-size: 1.2rem; margin-top: 10px; }
 
@@ -78,7 +75,18 @@ function getScore(price) {
             margin-bottom: 20px;
         }
         .filter-title { font-weight: bold; margin-bottom: 15px; display: block; }
-        .filter-item { display: block; color: #ccc; margin-bottom: 8px; font-size: 0.9rem; }
+        
+        /* ESTILO PARA LOS BOTONES DE FILTRO ACTIVOS */
+        .filter-item { 
+            display: block; 
+            color: #ccc; 
+            margin-bottom: 12px; 
+            font-size: 0.9rem; 
+            cursor: pointer; 
+            transition: color 0.2s;
+        }
+        .filter-item:hover { color: white; text-decoration: underline; }
+        .filter-item.active { color: #4f46e5; font-weight: bold; }
 
         .grid {
             flex: 1;
@@ -98,7 +106,6 @@ function getScore(price) {
             flex-direction: column;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-
         .card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
 
         .score-badge {
@@ -156,15 +163,25 @@ function getScore(price) {
         <aside class="sidebar">
             <div class="filter-box">
                 <span class="filter-title">ORDENAR POR</span>
-                <span class="filter-item">⚡ Puntuación</span>
-                <span class="filter-item">💰 Precio: Bajo a Alto</span>
-                <span class="filter-item">🆕 Más recientes</span>
+                <div class="filter-item" id="sort-score">⚡ Puntuación (Mejor a Peor)</div>
+                <div class="filter-item" id="sort-price-asc">💰 Precio: Bajo a Alto</div>
+                <div class="filter-item" id="sort-price-desc">💎 Precio: Alto a Bajo</div>
+            </div>
+
+            <div class="filter-box">
+                <span class="filter-title">FILTRAR PRECIO</span>
+                <div class="filter-item" id="filter-all">🔄 Ver Todos</div>
+                <div class="filter-item" id="filter-under-600">📉 Menos de 600€</div>
+                <div class="filter-item" id="filter-over-800">📈 Más de 800€</div>
             </div>
         </aside>
 
-        <main class="grid">
+        <main class="grid" id="laptops-grid">
             {laptops.map((laptop) => (
-                <article class="card">
+                <article class="card" 
+                    data-price={laptop.price_eur} 
+                    data-score={getScore(laptop.price_eur)}
+                >
                     <div class="score-badge">
                         {getScore(laptop.price_eur)}
                         <span class="score-label">PTS</span>
@@ -189,6 +206,79 @@ function getScore(price) {
             ))}
         </main>
     </div>
+
+    <script>
+        // 1. Seleccionamos los elementos
+        const grid = document.getElementById('laptops-grid');
+        const cards = Array.from(document.querySelectorAll('.card')); // Convertimos a Array para poder ordenar
+
+        // BOTONES DE ORDENAR
+        const btnScore = document.getElementById('sort-score');
+        const btnPriceAsc = document.getElementById('sort-price-asc');
+        const btnPriceDesc = document.getElementById('sort-price-desc');
+
+        // BOTONES DE FILTRO
+        const btnAll = document.getElementById('filter-all');
+        const btnUnder600 = document.getElementById('filter-under-600');
+        const btnOver800 = document.getElementById('filter-over-800');
+
+        // --- FUNCIONES DE ORDENACIÓN ---
+
+        // Ordenar por Puntuación (Mayor a menor)
+        btnScore.addEventListener('click', () => {
+            const sorted = cards.sort((a, b) => b.dataset.score - a.dataset.score);
+            updateGrid(sorted);
+        });
+
+        // Ordenar por Precio (Menor a mayor)
+        btnPriceAsc.addEventListener('click', () => {
+            const sorted = cards.sort((a, b) => a.dataset.price - b.dataset.price);
+            updateGrid(sorted);
+        });
+
+        // Ordenar por Precio (Mayor a menor)
+        btnPriceDesc.addEventListener('click', () => {
+            const sorted = cards.sort((a, b) => b.dataset.price - a.dataset.price);
+            updateGrid(sorted);
+        });
+
+        // --- FUNCIONES DE FILTRADO (OCULTAR/MOSTRAR) ---
+
+        btnUnder600.addEventListener('click', () => {
+            cards.forEach(card => {
+                const price = parseFloat(card.dataset.price);
+                if (price < 600) {
+                    card.style.display = 'flex'; // Mostrar
+                } else {
+                    card.style.display = 'none'; // Ocultar
+                }
+            });
+        });
+
+        btnOver800.addEventListener('click', () => {
+            cards.forEach(card => {
+                const price = parseFloat(card.dataset.price);
+                if (price > 800) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        btnAll.addEventListener('click', () => {
+            cards.forEach(card => card.style.display = 'flex'); // Mostrar todos
+        });
+
+        // Función auxiliar para repintar el grid
+        function updateGrid(sortedCards) {
+            grid.innerHTML = ''; // Limpiamos el grid actual
+            sortedCards.forEach(card => {
+                card.style.display = 'flex'; // Aseguramos que se vean al reordenar
+                grid.appendChild(card); // Añadimos las tarjetas en el nuevo orden
+            });
+        }
+    </script>
 
 </body>
 </html>
