@@ -47,7 +47,7 @@ function getScore(price) {
         .navbar {
             position: fixed;
             top: 20px; left: 50%; transform: translateX(-50%);
-            width: 90%; max-width: 1100px; /* Un poco más ancho para que quepa el nuevo botón */
+            width: 90%; max-width: 1100px;
             display: flex; justify-content: space-between; align-items: center;
             padding: 12px 30px;
             background: rgba(15, 23, 42, 0.7);
@@ -64,16 +64,16 @@ function getScore(price) {
         .nav-btn { cursor: pointer; transition: color 0.3s; }
         .nav-btn:hover { color: white; text-shadow: 0 0 10px rgba(255,255,255,0.4); }
 
-        /* Estilo especial para el botón del comparador */
-        .btn-vs {
-            color: #4ade80; /* Verde neón */
+        /* Estilo para el enlace del comparador en el menú */
+        .nav-vs-link {
+            color: #4ade80; /* Verde neón suave */
             text-decoration: none;
             display: flex; align-items: center; gap: 5px;
             transition: transform 0.2s;
         }
-        .btn-vs:hover { transform: scale(1.05); color: #86efac; }
+        .nav-vs-link:hover { transform: scale(1.05); color: #86efac; }
 
-        /* --- HERO SECTION CON "MESH GRADIENT" --- */
+        /* --- HERO SECTION --- */
         .hero {
             position: relative;
             min-height: 85vh;
@@ -85,7 +85,7 @@ function getScore(price) {
             padding: 0 20px;
             overflow: hidden;
             
-            /* Fondo Degradado Vivo generado por código */
+            /* Mesh Gradient (Fondo vivo sin imágenes) */
             background: radial-gradient(at 0% 0%, #4c1d95 0px, transparent 50%), 
                         radial-gradient(at 100% 0%, #3b82f6 0px, transparent 50%), 
                         #1e1b4b;
@@ -116,7 +116,7 @@ function getScore(price) {
             line-height: 1.6;
         }
 
-        .cta-container { display: flex; gap: 15px; }
+        .cta-container { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
 
         .btn-primary {
             background: white; color: #1e1b4b; padding: 16px 40px;
@@ -127,12 +127,16 @@ function getScore(price) {
         .btn-primary:hover { transform: scale(1.05); }
 
         .btn-ghost {
-            background: rgba(255,255,255,0.1); color: white;
-            padding: 16px 40px; border-radius: 100px; font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.2); cursor: pointer; text-decoration: none;
-            transition: background 0.2s;
+            background: rgba(255,255,255,0.1); color: #4ade80; /* Texto verde neón para destacar VS */
+            padding: 16px 40px; border-radius: 100px; font-weight: 700;
+            border: 1px solid rgba(74, 222, 128, 0.3); /* Borde verdoso sutil */
+            cursor: pointer; text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
         }
-        .btn-ghost:hover { background: rgba(255,255,255,0.2); }
+        .btn-ghost:hover { 
+            background: rgba(74, 222, 128, 0.1); 
+            transform: scale(1.05);
+        }
 
         /* --- RESTO DE LA WEB --- */
         .main-container {
@@ -183,16 +187,15 @@ function getScore(price) {
         .price-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); }
         .price { font-size: 1.8rem; font-weight: 800; color: white; }
         .btn-card { 
-            background: white; color: #0f172a; padding: 12px 24px; border-radius: 10px; 
+            background: white; color: #0f172a; padding: 12px 24px; border-radius: 100px; 
             font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: background 0.2s;
         }
         .btn-card:hover { background: #e2e8f0; }
 
         @media (max-width: 768px) {
             h1 { font-size: 3rem; }
-            .navbar { width: 85%; flex-wrap: wrap; } 
-            .nav-links { display: none; } /* En móvil ocultamos el menú simple */
-            /* Podríamos hacer que el comparador se vea en móvil también, pero requeriría más CSS */
+            .navbar { width: 85%; } 
+            .nav-links { display: none; } /* En móvil se oculta el menú simple */
         }
     </style>
 </head>
@@ -200,9 +203,7 @@ function getScore(price) {
     <nav class="navbar">
         <div class="logo" id="reset-home">⚡ LaptopComparator</div>
         <div class="nav-links">
-            <a href="/comparar" class="btn-vs">
-                ⚖️ Comparador VS
-            </a>
+            <a href="/comparar" class="nav-vs-link">⚖️ Comparador VS</a>
             
             <span class="nav-btn" id="nav-top">Top Ventas</span>
             <span class="nav-btn" id="nav-gaming">Gaming</span>
@@ -219,8 +220,9 @@ function getScore(price) {
             <button class="btn-primary" onclick="document.getElementById('laptops-grid').scrollIntoView({behavior: 'smooth'})">
                 Ver Catálogo 👇
             </button>
-            <a href="https://twitter.com/MejoresLaptop" target="_blank" class="btn-ghost">
-                Saber más
+            
+            <a href="/comparar" class="btn-ghost">
+                ⚖️ Comparar VS
             </a>
         </div>
     </section>
