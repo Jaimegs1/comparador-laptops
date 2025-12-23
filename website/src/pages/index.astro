@@ -79,16 +79,11 @@ function getScore(price) {
         .nav-links { display: flex; gap: 25px; font-size: 0.85rem; font-weight: 600; color: #cbd5e1; }
         .nav-btn { cursor: pointer; transition: color 0.3s; position: relative; }
         .nav-btn:hover { color: white; }
-        .nav-btn::after {
-            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
-            background: var(--accent); transition: width 0.3s;
-        }
-        .nav-btn:hover::after { width: 100%; }
-
-        /* --- HERO SECTION (FONDO CORREGIDO) --- */
+        
+        /* --- HERO SECTION REVISADA (Método Capas) --- */
         .hero {
             position: relative;
-            min-height: 85vh; /* Ocupa casi toda la pantalla */
+            min-height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -96,21 +91,43 @@ function getScore(price) {
             text-align: center;
             padding: 0 20px;
             overflow: hidden;
+            background-color: #0f0c29; /* Fondo de seguridad */
+            border-bottom: 1px solid var(--card-border);
+        }
 
-            /* 1. Definimos color base por seguridad */
-            background-color: #0f0c29;
-
-            /* 2. Definimos la imagen explícitamente con el degradado encima */
-            /* El 0.6 es la transparencia: cuanto más bajo, más se ve la foto */
-            background-image: 
-                linear-gradient(to bottom, rgba(15, 12, 41, 0.6), rgba(15, 12, 41, 1)),
-                url('https://images.unsplash.com/photo-1517336714731-489689fd1ca4?auto=format&fit=crop&w=1926&q=80');
+        /* Esta es la capa de la imagen (Pseudoelemento) */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
             
+            /* IMAGEN DE FONDO */
+            background-image: url('https://images.unsplash.com/photo-1517336714731-489689fd1ca4?auto=format&fit=crop&w=1926&q=80');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
             
-            border-bottom: 1px solid var(--card-border);
+            /* TRUCOS VISUALES */
+            opacity: 0.3; /* Transparencia al 30% para que el texto se lea */
+            filter: blur(2px); /* Ligero desenfoque para dar efecto profundidad */
+            z-index: 0;
+        }
+
+        /* Capa de degradado encima de la imagen para integrar el color */
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0; height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, #0f0c29 100%);
+            z-index: 1;
+        }
+
+        /* Aseguramos que el contenido esté ENCIMA de las capas de fondo */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .badge-pill {
@@ -124,6 +141,7 @@ function getScore(price) {
             margin-bottom: 25px;
             display: inline-block;
             backdrop-filter: blur(5px);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
         }
 
         h1 { 
@@ -132,23 +150,22 @@ function getScore(price) {
             margin: 0; 
             line-height: 1.1; 
             letter-spacing: -2px; 
-            /* Sombra ligera para leer mejor sobre la foto */
-            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
         
         .gradient-text {
-            background: linear-gradient(135deg, #fff 30%, #8b5cf6 100%);
+            background: linear-gradient(135deg, #fff 40%, #a78bfa 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         p.subtitle { 
-            color: #cbd5e1; /* Un poco más claro para que resalte sobre el fondo */
+            color: #e2e8f0; 
             font-size: 1.25rem; 
             max-width: 600px; 
             margin: 25px auto 40px; 
             line-height: 1.6;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
 
         .cta-container {
@@ -159,31 +176,33 @@ function getScore(price) {
         .btn-primary {
             background: white;
             color: black;
-            padding: 14px 32px;
+            padding: 16px 36px;
             border-radius: 12px;
-            font-weight: 700;
+            font-weight: 800;
             text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.2s;
             border: none;
             cursor: pointer;
+            box-shadow: 0 0 20px rgba(255,255,255,0.15);
         }
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255,255,255,0.2);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
         }
 
         .btn-ghost {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
             color: white;
-            padding: 14px 32px;
+            padding: 16px 36px;
             border-radius: 12px;
             font-weight: 600;
             border: 1px solid rgba(255,255,255,0.2);
             cursor: pointer;
             transition: background 0.2s;
             backdrop-filter: blur(10px);
+            text-decoration: none;
         }
-        .btn-ghost:hover { background: rgba(255,255,255,0.2); }
+        .btn-ghost:hover { background: rgba(255,255,255,0.15); }
 
         /* --- LAYOUT PRINCIPAL --- */
         .main-container {
@@ -192,6 +211,8 @@ function getScore(price) {
             padding: 40px 20px 100px;
             display: flex;
             gap: 40px;
+            position: relative;
+            z-index: 2;
         }
 
         .sidebar { width: 240px; display: none; }
@@ -289,7 +310,7 @@ function getScore(price) {
             h1 { font-size: 2.5rem; }
             .navbar { width: 85%; padding: 12px 20px; }
             .logo { font-size: 0.9rem; }
-            .nav-links { display: none; } /* Ocultar links en móvil por ahora */
+            .nav-links { display: none; } 
             .main-container { padding-top: 20px; }
         }
     </style>
@@ -306,17 +327,19 @@ function getScore(price) {
     </nav>
 
     <section class="hero">
-        <div class="badge-pill">✨ Algoritmo v2.0 Actualizado</div>
-        <h1>Laptop <span class="gradient-text">Comparator</span></h1>
-        <p class="subtitle">La herramienta definitiva para ingenieros y estudiantes. Filtra el marketing, encuentra la potencia real y ahorra dinero.</p>
-        
-        <div class="cta-container">
-            <button class="btn-primary" onclick="document.getElementById('laptops-grid').scrollIntoView({behavior: 'smooth'})">
-                Ver Catálogo 👇
-            </button>
-            <a href="https://twitter.com" target="_blank" class="btn-ghost">
-                Saber más
-            </a>
+        <div class="hero-content">
+            <div class="badge-pill">✨ Algoritmo v2.0 Actualizado</div>
+            <h1>Laptop <span class="gradient-text">Comparator</span></h1>
+            <p class="subtitle">La herramienta definitiva para ingenieros y estudiantes. Filtra el marketing, encuentra la potencia real y ahorra dinero.</p>
+            
+            <div class="cta-container">
+                <button class="btn-primary" onclick="document.getElementById('laptops-grid').scrollIntoView({behavior: 'smooth'})">
+                    Ver Catálogo 👇
+                </button>
+                <a href="https://twitter.com/MejoresLaptop" target="_blank" class="btn-ghost">
+                    Saber más
+                </a>
+            </div>
         </div>
     </section>
 
