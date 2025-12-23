@@ -19,91 +19,62 @@ def generate_link(name):
 # Asegúrate de tener las fotos en website/public/img/
 mis_laptops = [
     # --- LOS CLÁSICOS (Que ya tenías) ---
+    # --- BLOQUE DE EXPANSIÓN (LLEGAR A 20) ---
     {
-        "name": "Apple MacBook Air (2020) - Chip M1",
-        "price_eur": 929.00,
-        "brand_img": "/img/macbook.jpg",
-        "category": "top student business",
-        "specs": { "cpu": "Apple M1", "ram": "8 GB", "storage": "256 GB SSD", "weight": "1.29 kg" }
-    },
-    {
-        "name": "Lenovo IdeaPad Slim 3 Gen 8",
-        "price_eur": 499.00,
-        "brand_img": "/img/lenovo.jpg",
-        "category": "student",
-        "specs": { "cpu": "Intel Core i5-12450H", "ram": "16 GB", "storage": "512 GB SSD", "weight": "1.62 kg" }
-    },
-    {
-        "name": "HP Victus 15-fa0012ns (Gaming)",
-        "price_eur": 749.99,
-        "brand_img": "/img/hp.jpg",
-        "category": "gaming",
-        "specs": { "cpu": "Intel Core i5-12500H", "ram": "16 GB", "storage": "512 GB SSD", "weight": "2.29 kg" }
-    },
-    {
-        "name": "ASUS TUF Gaming F15",
-        "price_eur": 649.00,
-        "brand_img": "/img/asus.jpg",
-        "category": "gaming",
-        "specs": { "cpu": "Intel Core i5-11400H", "ram": "16 GB", "storage": "512 GB SSD", "weight": "2.30 kg" }
-    },
-    {
-        "name": "Acer Aspire 5 A515",
-        "price_eur": 529.00,
-        "brand_img": "/img/acer.jpg",
-        "category": "student",
-        "specs": { "cpu": "Intel Core i5-1135G7", "ram": "12 GB", "storage": "1 TB SSD", "weight": "1.70 kg" }
-    },
-    {
-        "name": "MSI Thin GF63 (Gaming Barato)",
-        "price_eur": 849.00,
-        "brand_img": "/img/msi.jpg",
-        "category": "gaming",
-        "specs": { "cpu": "Intel Core i7-12650H", "ram": "16 GB", "storage": "512 GB SSD", "weight": "1.86 kg" }
-    },
-
-    # --- LOS NUEVOS (SUPERVENTAS AMAZON) ---
-    {
-        "name": "Acer Nitro 5 AN515",
-        "price_eur": 699.00,
-        "brand_img": "/img/nitro.jpg",
+        "name": "Lenovo Legion 5 Gen 6",
+        "price_eur": 1049.00,
+        "brand_img": "/img/legion.jpg",
         "category": "gaming top",
-        "specs": { "cpu": "Intel Core i5-11400H", "ram": "16 GB", "storage": "512 GB SSD", "weight": "2.30 kg" }
+        "specs": { "cpu": "Ryzen 7 5800H", "ram": "16 GB", "storage": "1 TB SSD", "weight": "2.40 kg" }
     },
     {
-        "name": "ASUS VivoBook 15 F1500",
-        "price_eur": 449.00,
-        "brand_img": "/img/vivobook.jpg",
-        "category": "student top",
-        "specs": { "cpu": "Intel Core i3-1115G4", "ram": "8 GB", "storage": "256 GB SSD", "weight": "1.80 kg" }
+        "name": "Dell XPS 13 Plus",
+        "price_eur": 1499.00,
+        "brand_img": "/img/xps.jpg",
+        "category": "business top",
+        "specs": { "cpu": "Intel Core i7-1260P", "ram": "16 GB", "storage": "512 GB SSD", "weight": "1.23 kg" }
     },
     {
-        "name": "HP Chromebook 14a",
-        "price_eur": 249.00,
-        "brand_img": "/img/chromebook.jpg",
+        "name": "HP Pavilion x360 (Convertible)",
+        "price_eur": 649.00,
+        "brand_img": "/img/x360.jpg",
         "category": "student",
-        "specs": { "cpu": "Intel Celeron N4500", "ram": "4 GB", "storage": "64 GB eMMC", "weight": "1.46 kg" }
+        "specs": { "cpu": "Intel Core i5-1235U", "ram": "8 GB", "storage": "512 GB SSD", "weight": "1.51 kg" }
     },
     {
-        "name": "Apple MacBook Air (2022) - Chip M2",
-        "price_eur": 1099.00,
-        "brand_img": "/img/macbook-m2.jpg",
-        "category": "top business",
-        "specs": { "cpu": "Apple M2", "ram": "8 GB", "storage": "256 GB SSD", "weight": "1.24 kg" }
+        "name": "ASUS ROG Strix G16",
+        "price_eur": 1399.00,
+        "brand_img": "/img/rog.jpg",
+        "category": "gaming",
+        "specs": { "cpu": "Intel Core i7-13650HX", "ram": "16 GB", "storage": "512 GB SSD", "weight": "2.50 kg" }
     },
     {
-        "name": "Lenovo V15 G3 (Oficina)",
-        "price_eur": 389.00,
-        "brand_img": "/img/lenovo-v15.jpg",
-        "category": "business student",
-        "specs": { "cpu": "Intel Core i3-1215U", "ram": "8 GB", "storage": "256 GB SSD", "weight": "1.70 kg" }
-    },
-    {
-        "name": "Dell Inspiron 15 3000",
-        "price_eur": 549.00,
-        "brand_img": "/img/dell.jpg",
+        "name": "Microsoft Surface Laptop Go 2",
+        "price_eur": 599.00,
+        "brand_img": "/img/surface.jpg",
         "category": "student business",
-        "specs": { "cpu": "Ryzen 5 5500U", "ram": "8 GB", "storage": "512 GB SSD", "weight": "1.85 kg" }
+        "specs": { "cpu": "Intel Core i5-1135G7", "ram": "8 GB", "storage": "128 GB SSD", "weight": "1.12 kg" }
+    },
+    {
+        "name": "Lenovo IdeaPad 1 Gen 7",
+        "price_eur": 299.00,
+        "brand_img": "/img/ideapad1.jpg",
+        "category": "student",
+        "specs": { "cpu": "AMD 3020e", "ram": "4 GB", "storage": "128 GB SSD", "weight": "1.40 kg" }
+    },
+    {
+        "name": "MSI Katana GF66",
+        "price_eur": 999.00,
+        "brand_img": "/img/katana.jpg",
+        "category": "gaming",
+        "specs": { "cpu": "Intel Core i7-11800H", "ram": "16 GB", "storage": "1 TB SSD", "weight": "2.25 kg" }
+    },
+    {
+        "name": "LG Gram 14 (Ultraligero)",
+        "price_eur": 1199.00,
+        "brand_img": "/img/gram.jpg",
+        "category": "business top",
+        "specs": { "cpu": "Intel Core i7-1260P", "ram": "16 GB", "storage": "512 GB SSD", "weight": "0.99 kg" }
     }
 ]
 

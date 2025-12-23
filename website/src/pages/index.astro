@@ -3,7 +3,8 @@ import laptops from '../data/laptops.json';
 
 // Función para asignar puntuación visual
 function getScore(price) {
-    if (price > 900) return 98;
+    if (price > 1200) return 99;
+    if (price > 900) return 97;
     if (price > 700) return 94;
     return 89;
 }
@@ -14,9 +15,9 @@ function getScore(price) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Comparador Tech - Los Mejores Portátiles Calidad-Precio 2025</title>
-    <meta name="description" content="Análisis técnico de portátiles. Compara precios, RAM, peso y procesadores." />
+    <meta name="description" content="Comparador de portátiles con precios actualizados. Encuentra ofertas Gaming, Estudiantes y Ultrabooks." />
     <meta name="robots" content="index, follow" />
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -50,9 +51,12 @@ function getScore(price) {
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
+        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; cursor: pointer; }
         .nav-links { display: flex; gap: 20px; font-size: 0.9rem; font-weight: 600; color: #ccc; }
         
+        .nav-btn { cursor: pointer; transition: color 0.3s; }
+        .nav-btn:hover, .nav-btn.active { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+
         header { text-align: center; padding: 60px 20px; }
         h1 { font-size: 3.5rem; font-weight: 800; margin: 0; line-height: 1.1; }
         p.subtitle { color: #a5b4fc; font-size: 1.2rem; margin-top: 10px; }
@@ -76,7 +80,6 @@ function getScore(price) {
         }
         .filter-title { font-weight: bold; margin-bottom: 15px; display: block; }
         
-        /* ESTILO PARA LOS BOTONES DE FILTRO ACTIVOS */
         .filter-item { 
             display: block; 
             color: #ccc; 
@@ -86,7 +89,6 @@ function getScore(price) {
             transition: color 0.2s;
         }
         .filter-item:hover { color: white; text-decoration: underline; }
-        .filter-item.active { color: #4f46e5; font-weight: bold; }
 
         .grid {
             flex: 1;
@@ -148,9 +150,11 @@ function getScore(price) {
 <body>
 
     <nav class="navbar">
-        <div class="logo">⚡ Comparador.pro</div>
+        <div class="logo" id="reset-home">⚡ Comparador.pro</div>
         <div class="nav-links">
-            <span>TOP 10</span><span>GAMING</span><span>ESTUDIANTES</span>
+            <span class="nav-btn" id="nav-top">TOP VENTAS</span>
+            <span class="nav-btn" id="nav-gaming">GAMING</span>
+            <span class="nav-btn" id="nav-student">ESTUDIANTES</span>
         </div>
     </nav>
 
@@ -169,10 +173,11 @@ function getScore(price) {
             </div>
 
             <div class="filter-box">
-                <span class="filter-title">FILTRAR PRECIO</span>
+                <span class="filter-title">RANGO DE PRECIO</span>
                 <div class="filter-item" id="filter-all">🔄 Ver Todos</div>
-                <div class="filter-item" id="filter-under-600">📉 Menos de 600€</div>
-                <div class="filter-item" id="filter-over-800">📈 Más de 800€</div>
+                <div class="filter-item" id="filter-under-500">📉 Menos de 500€</div>
+                <div class="filter-item" id="filter-under-800">⚖️ Menos de 800€</div>
+                <div class="filter-item" id="filter-over-1000">🚀 Gama Alta (+1000€)</div>
             </div>
         </aside>
 
@@ -181,6 +186,7 @@ function getScore(price) {
                 <article class="card" 
                     data-price={laptop.price_eur} 
                     data-score={getScore(laptop.price_eur)}
+                    data-category={laptop.category}
                 >
                     <div class="score-badge">
                         {getScore(laptop.price_eur)}
@@ -208,77 +214,88 @@ function getScore(price) {
     </div>
 
     <script>
-        // 1. Seleccionamos los elementos
+        // ELEMENTOS
         const grid = document.getElementById('laptops-grid');
-        const cards = Array.from(document.querySelectorAll('.card')); // Convertimos a Array para poder ordenar
+        const cards = Array.from(document.querySelectorAll('.card'));
+        
+        // --- 1. FILTRADO POR CATEGORÍA (NAVBAR) ---
+        const navTop = document.getElementById('nav-top');
+        const navGaming = document.getElementById('nav-gaming');
+        const navStudent = document.getElementById('nav-student');
+        const logo = document.getElementById('reset-home');
 
-        // BOTONES DE ORDENAR
-        const btnScore = document.getElementById('sort-score');
-        const btnPriceAsc = document.getElementById('sort-price-asc');
-        const btnPriceDesc = document.getElementById('sort-price-desc');
-
-        // BOTONES DE FILTRO
-        const btnAll = document.getElementById('filter-all');
-        const btnUnder600 = document.getElementById('filter-under-600');
-        const btnOver800 = document.getElementById('filter-over-800');
-
-        // --- FUNCIONES DE ORDENACIÓN ---
-
-        // Ordenar por Puntuación (Mayor a menor)
-        btnScore.addEventListener('click', () => {
-            const sorted = cards.sort((a, b) => b.dataset.score - a.dataset.score);
-            updateGrid(sorted);
-        });
-
-        // Ordenar por Precio (Menor a mayor)
-        btnPriceAsc.addEventListener('click', () => {
-            const sorted = cards.sort((a, b) => a.dataset.price - b.dataset.price);
-            updateGrid(sorted);
-        });
-
-        // Ordenar por Precio (Mayor a menor)
-        btnPriceDesc.addEventListener('click', () => {
-            const sorted = cards.sort((a, b) => b.dataset.price - a.dataset.price);
-            updateGrid(sorted);
-        });
-
-        // --- FUNCIONES DE FILTRADO (OCULTAR/MOSTRAR) ---
-
-        btnUnder600.addEventListener('click', () => {
+        function filterByCategory(category) {
             cards.forEach(card => {
-                const price = parseFloat(card.dataset.price);
-                if (price < 600) {
-                    card.style.display = 'flex'; // Mostrar
-                } else {
-                    card.style.display = 'none'; // Ocultar
-                }
-            });
-        });
-
-        btnOver800.addEventListener('click', () => {
-            cards.forEach(card => {
-                const price = parseFloat(card.dataset.price);
-                if (price > 800) {
+                const categories = card.dataset.category; // string tipo "gaming top"
+                if (categories.includes(category)) {
                     card.style.display = 'flex';
                 } else {
                     card.style.display = 'none';
                 }
             });
+        }
+
+        navTop.addEventListener('click', () => filterByCategory('top'));
+        navGaming.addEventListener('click', () => filterByCategory('gaming'));
+        navStudent.addEventListener('click', () => filterByCategory('student'));
+        
+        // Reset al pulsar el logo
+        logo.addEventListener('click', () => {
+            cards.forEach(card => card.style.display = 'flex');
         });
 
-        btnAll.addEventListener('click', () => {
-            cards.forEach(card => card.style.display = 'flex'); // Mostrar todos
+        // --- 2. ORDENACIÓN ---
+        document.getElementById('sort-score').addEventListener('click', () => {
+            const sorted = cards.sort((a, b) => b.dataset.score - a.dataset.score);
+            updateGrid(sorted);
         });
 
-        // Función auxiliar para repintar el grid
+        document.getElementById('sort-price-asc').addEventListener('click', () => {
+            const sorted = cards.sort((a, b) => a.dataset.price - b.dataset.price);
+            updateGrid(sorted);
+        });
+
+        document.getElementById('sort-price-desc').addEventListener('click', () => {
+            const sorted = cards.sort((a, b) => b.dataset.price - a.dataset.price);
+            updateGrid(sorted);
+        });
+
+        // --- 3. FILTRO DE PRECIOS ---
+        document.getElementById('filter-all').addEventListener('click', () => {
+            cards.forEach(card => card.style.display = 'flex');
+        });
+
+        document.getElementById('filter-under-500').addEventListener('click', () => {
+            filterByPrice(0, 500);
+        });
+        
+        document.getElementById('filter-under-800').addEventListener('click', () => {
+            filterByPrice(0, 800);
+        });
+
+        document.getElementById('filter-over-1000').addEventListener('click', () => {
+            filterByPrice(1000, 99999);
+        });
+
+        function filterByPrice(min, max) {
+            cards.forEach(card => {
+                const price = parseFloat(card.dataset.price);
+                if (price >= min && price <= max) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Helper para repintar
         function updateGrid(sortedCards) {
-            grid.innerHTML = ''; // Limpiamos el grid actual
+            grid.innerHTML = '';
             sortedCards.forEach(card => {
-                card.style.display = 'flex'; // Aseguramos que se vean al reordenar
-                grid.appendChild(card); // Añadimos las tarjetas en el nuevo orden
+                card.style.display = 'flex'; // Aseguramos que se vea al reordenar
+                grid.appendChild(card);
             });
         }
     </script>
-
 </body>
 </html>
