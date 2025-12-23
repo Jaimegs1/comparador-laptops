@@ -16,14 +16,16 @@ function getScore(price) {
     <title>Laptop Comparator - Encuentra tu Portátil Ideal</title>
     <meta name="description" content="Comparador de portátiles. Ofertas Gaming, Estudiantes y Ultrabooks." />
     
+    <meta name="google-site-verification" content="2V-eMT8DSm87ZaDNiAstEAIKi23tsD6-6IWgdFrmqyo" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* Paleta VIVA (Ya no es negro triste) */
-            --bg-body: #0f172a; /* Azul noche (no negro) */
+            /* Paleta VIVA (Mesh Gradient Theme) */
+            --bg-body: #0f172a; /* Azul noche */
             --card-bg: rgba(255, 255, 255, 0.05);
             --card-border: rgba(255, 255, 255, 0.1);
             --text-main: #ffffff;
@@ -45,10 +47,10 @@ function getScore(price) {
         .navbar {
             position: fixed;
             top: 20px; left: 50%; transform: translateX(-50%);
-            width: 90%; max-width: 1000px;
+            width: 90%; max-width: 1100px; /* Un poco más ancho para que quepa el nuevo botón */
             display: flex; justify-content: space-between; align-items: center;
             padding: 12px 30px;
-            background: rgba(15, 23, 42, 0.7); /* Semitransparente sobre el fondo azul */
+            background: rgba(15, 23, 42, 0.7);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 100px;
@@ -56,11 +58,22 @@ function getScore(price) {
         }
 
         .logo { font-size: 1.1rem; font-weight: 800; color: white; cursor: pointer; }
-        .nav-links { display: flex; gap: 25px; font-size: 0.85rem; font-weight: 600; color: #e2e8f0; }
+        
+        .nav-links { display: flex; gap: 25px; font-size: 0.85rem; font-weight: 600; color: #e2e8f0; align-items: center; }
+        
         .nav-btn { cursor: pointer; transition: color 0.3s; }
         .nav-btn:hover { color: white; text-shadow: 0 0 10px rgba(255,255,255,0.4); }
 
-        /* --- HERO SECTION CON "MESH GRADIENT" (COLOR VIVO) --- */
+        /* Estilo especial para el botón del comparador */
+        .btn-vs {
+            color: #4ade80; /* Verde neón */
+            text-decoration: none;
+            display: flex; align-items: center; gap: 5px;
+            transition: transform 0.2s;
+        }
+        .btn-vs:hover { transform: scale(1.05); color: #86efac; }
+
+        /* --- HERO SECTION CON "MESH GRADIENT" --- */
         .hero {
             position: relative;
             min-height: 85vh;
@@ -72,10 +85,10 @@ function getScore(price) {
             padding: 0 20px;
             overflow: hidden;
             
-            /* AQUÍ ESTÁ LA MAGIA: Fondo Degradado Vivo */
+            /* Fondo Degradado Vivo generado por código */
             background: radial-gradient(at 0% 0%, #4c1d95 0px, transparent 50%), 
                         radial-gradient(at 100% 0%, #3b82f6 0px, transparent 50%), 
-                        #1e1b4b; /* Color base Indigo Oscuro (No negro) */
+                        #1e1b4b;
             
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
@@ -93,7 +106,6 @@ function getScore(price) {
         h1 { 
             font-size: 5rem; font-weight: 800; margin: 0; 
             line-height: 1; letter-spacing: -2px; 
-            /* Texto blanco sólido para contraste máximo sobre fondo colorido */
             color: #ffffff;
             text-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
@@ -178,7 +190,9 @@ function getScore(price) {
 
         @media (max-width: 768px) {
             h1 { font-size: 3rem; }
-            .navbar { width: 85%; } .nav-links { display: none; }
+            .navbar { width: 85%; flex-wrap: wrap; } 
+            .nav-links { display: none; } /* En móvil ocultamos el menú simple */
+            /* Podríamos hacer que el comparador se vea en móvil también, pero requeriría más CSS */
         }
     </style>
 </head>
@@ -186,6 +200,10 @@ function getScore(price) {
     <nav class="navbar">
         <div class="logo" id="reset-home">⚡ LaptopComparator</div>
         <div class="nav-links">
+            <a href="/comparar" class="btn-vs">
+                ⚖️ Comparador VS
+            </a>
+            
             <span class="nav-btn" id="nav-top">Top Ventas</span>
             <span class="nav-btn" id="nav-gaming">Gaming</span>
             <span class="nav-btn" id="nav-student">Estudiantes</span>
