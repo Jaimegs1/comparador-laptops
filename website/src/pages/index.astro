@@ -15,7 +15,6 @@ function getScore(price) {
     <meta name="viewport" content="width=device-width" />
     <title>Laptop Comparator - Encuentra tu Portátil Ideal</title>
     <meta name="description" content="Comparador de portátiles. Ofertas Gaming, Estudiantes y Ultrabooks." />
-    
     <meta name="google-site-verification" content="2V-eMT8DSm87ZaDNiAstEAIKi23tsD6-6IWgdFrmqyo" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,205 +23,93 @@ function getScore(price) {
 
     <style>
         :root {
-            /* Paleta VIVA (Mesh Gradient Theme) */
-            --bg-body: #0f172a; /* Azul noche */
+            --bg-body: #0f172a;
             --card-bg: rgba(255, 255, 255, 0.05);
             --card-border: rgba(255, 255, 255, 0.1);
             --text-main: #ffffff;
             --text-muted: #cbd5e1;
-            --accent: #818cf8; /* Indigo claro */
+            --accent: #818cf8; 
         }
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* --- NAVBAR --- */
-        .navbar {
-            position: fixed;
-            top: 20px; left: 50%; transform: translateX(-50%);
-            width: 90%; max-width: 1100px;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 12px 30px;
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 100px;
-            z-index: 1000;
-        }
-
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
+        
+        /* NAVBAR */
+        .navbar { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1100px; display: flex; justify-content: space-between; align-items: center; padding: 12px 30px; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 100px; z-index: 1000; }
         .logo { font-size: 1.1rem; font-weight: 800; color: white; cursor: pointer; }
-        
         .nav-links { display: flex; gap: 25px; font-size: 0.85rem; font-weight: 600; color: #e2e8f0; align-items: center; }
-        
         .nav-btn { cursor: pointer; transition: color 0.3s; }
-        .nav-btn:hover { color: white; text-shadow: 0 0 10px rgba(255,255,255,0.4); }
-
-        /* Estilo para el enlace del comparador en el menú */
-        .nav-vs-link {
-            color: #4ade80; /* Verde neón suave */
-            text-decoration: none;
-            display: flex; align-items: center; gap: 5px;
-            transition: transform 0.2s;
-        }
+        .nav-btn:hover { color: white; }
+        .nav-vs-link { color: #4ade80; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: transform 0.2s; }
         .nav-vs-link:hover { transform: scale(1.05); color: #86efac; }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            position: relative;
-            min-height: 85vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            overflow: hidden;
-            
-            /* Mesh Gradient (Fondo vivo sin imágenes) */
-            background: radial-gradient(at 0% 0%, #4c1d95 0px, transparent 50%), 
-                        radial-gradient(at 100% 0%, #3b82f6 0px, transparent 50%), 
-                        #1e1b4b;
-            
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .badge-pill {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #e0e7ff;
-            padding: 6px 16px; border-radius: 50px;
-            font-size: 0.8rem; font-weight: 600;
-            margin-bottom: 30px;
-            backdrop-filter: blur(4px);
-        }
-
-        h1 { 
-            font-size: 5rem; font-weight: 800; margin: 0; 
-            line-height: 1; letter-spacing: -2px; 
-            color: #ffffff;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
         
-        p.subtitle { 
-            color: #e2e8f0; font-size: 1.3rem; 
-            max-width: 600px; margin: 30px auto 45px; 
-            line-height: 1.6;
-        }
+        /* LANGUAGE SWITCHER */
+        .lang-switch { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.75rem; cursor: pointer; margin-left: 15px; }
 
+        /* HERO */
+        .hero { position: relative; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; overflow: hidden; background: radial-gradient(at 0% 0%, #4c1d95 0px, transparent 50%), radial-gradient(at 100% 0%, #3b82f6 0px, transparent 50%), #1e1b4b; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .badge-pill { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #e0e7ff; padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; margin-bottom: 30px; backdrop-filter: blur(4px); }
+        h1 { font-size: 5rem; font-weight: 800; margin: 0; line-height: 1; letter-spacing: -2px; color: #ffffff; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        p.subtitle { color: #e2e8f0; font-size: 1.3rem; max-width: 600px; margin: 30px auto 45px; line-height: 1.6; }
+        
         .cta-container { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
-
-        .btn-primary {
-            background: white; color: #1e1b4b; padding: 16px 40px;
-            border-radius: 100px; font-weight: 800; border: none; cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
+        .btn-primary { background: white; color: #1e1b4b; padding: 16px 40px; border-radius: 100px; font-weight: 800; border: none; cursor: pointer; transition: transform 0.2s; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
         .btn-primary:hover { transform: scale(1.05); }
+        .btn-ghost { background: rgba(255,255,255,0.1); color: #4ade80; padding: 16px 40px; border-radius: 100px; font-weight: 700; border: 1px solid rgba(74, 222, 128, 0.3); cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+        .btn-ghost:hover { background: rgba(74, 222, 128, 0.1); transform: scale(1.05); }
 
-        .btn-ghost {
-            background: rgba(255,255,255,0.1); color: #4ade80; /* Texto verde neón para destacar VS */
-            padding: 16px 40px; border-radius: 100px; font-weight: 700;
-            border: 1px solid rgba(74, 222, 128, 0.3); /* Borde verdoso sutil */
-            cursor: pointer; text-decoration: none;
-            transition: background 0.2s, transform 0.2s;
-        }
-        .btn-ghost:hover { 
-            background: rgba(74, 222, 128, 0.1); 
-            transform: scale(1.05);
-        }
-
-        /* --- RESTO DE LA WEB --- */
-        .main-container {
-            max-width: 1400px; margin: 0 auto; padding: 60px 20px 100px;
-            display: flex; gap: 50px;
-        }
-
+        /* MAIN */
+        .main-container { max-width: 1400px; margin: 0 auto; padding: 60px 20px 100px; display: flex; gap: 50px; }
         .sidebar { width: 260px; display: none; }
         @media (min-width: 1000px) { .sidebar { display: block; } }
-
-        .filter-box { background: transparent; border: none; padding: 0; margin-bottom: 40px; }
-        .filter-title { font-weight: 700; margin-bottom: 20px; display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; }
-        .filter-item { display: block; color: var(--text-muted); margin-bottom: 14px; cursor: pointer; transition: 0.2s; font-size: 1rem; }
+        .filter-box { margin-bottom: 40px; }
+        .filter-title { font-weight: 700; margin-bottom: 20px; display: block; font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; }
+        .filter-item { display: block; color: var(--text-muted); margin-bottom: 14px; cursor: pointer; transition: 0.2s; }
         .filter-item:hover { color: white; transform: translateX(5px); }
-
         .grid { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
 
-        .card {
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.4) 100%);
-            border: 1px solid var(--card-border);
-            border-radius: 24px; padding: 30px; position: relative;
-            display: flex; flex-direction: column; transition: 0.3s;
-        }
-        .card:hover { 
-            transform: translateY(-8px); border-color: #818cf8;
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.4);
-            background: rgba(30, 41, 59, 0.9);
-        }
-
-        .score-badge {
-            position: absolute; top: 20px; right: 20px;
-            width: 50px; height: 50px; background: #3b82f6; color: white;
-            border-radius: 14px; display: flex; flex-direction: column;
-            align-items: center; justify-content: center; font-weight: 800;
-        }
+        /* CARD */
+        .card { background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.4) 100%); border: 1px solid var(--card-border); border-radius: 24px; padding: 30px; position: relative; display: flex; flex-direction: column; transition: 0.3s; }
+        .card:hover { transform: translateY(-8px); border-color: #818cf8; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.4); background: rgba(30, 41, 59, 0.9); }
+        .score-badge { position: absolute; top: 20px; right: 20px; width: 50px; height: 50px; background: #3b82f6; color: white; border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 800; }
         .score-label { font-size: 0.6rem; font-weight: 600; text-transform: uppercase; }
-
         .product-img { width: 100%; height: 220px; object-fit: contain; margin: 15px 0 30px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.4)); }
-        
         h2 { font-size: 1.3rem; font-weight: 700; margin: 0 0 15px 0; height: 3em; overflow: hidden; line-height: 1.4; }
-
-        .specs-grid { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; 
-            background: rgba(0,0,0,0.2); padding: 15px; border-radius: 16px; 
-        }
+        .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 16px; }
         .spec-item { font-size: 0.85rem; color: #cbd5e1; display: flex; gap: 8px; align-items: center;}
-
+        
+        /* PRECIOS DINÁMICOS */
         .price-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); }
-        .price { font-size: 1.8rem; font-weight: 800; color: white; }
-        .btn-card { 
-            background: white; color: #0f172a; padding: 12px 24px; border-radius: 100px; 
-            font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: background 0.2s;
-        }
+        .price-display { font-size: 1.6rem; font-weight: 800; color: white; }
+        .price-secondary { font-size: 0.9rem; color: #94a3b8; font-weight: 500; display: none; } /* Se activa con JS */
+        
+        .btn-card { background: white; color: #0f172a; padding: 12px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: background 0.2s; }
         .btn-card:hover { background: #e2e8f0; }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            .navbar { width: 85%; } 
-            .nav-links { display: none; } /* En móvil se oculta el menú simple */
-        }
+        @media (max-width: 768px) { h1 { font-size: 3rem; } .navbar { width: 85%; } .nav-links { display: none; } }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="logo" id="reset-home">⚡ LaptopComparator</div>
         <div class="nav-links">
-            <a href="/comparar" class="nav-vs-link">⚖️ Comparador VS</a>
-            
-            <span class="nav-btn" id="nav-top">Top Ventas</span>
+            <a href="/comparar" class="nav-vs-link" data-i18n="nav_vs">⚖️ Compare VS</a>
+            <span class="nav-btn" id="nav-top" data-i18n="nav_top">Top Sellers</span>
             <span class="nav-btn" id="nav-gaming">Gaming</span>
-            <span class="nav-btn" id="nav-student">Estudiantes</span>
+            <span class="nav-btn" id="nav-student" data-i18n="nav_student">Students</span>
+            <button id="lang-toggle" class="lang-switch">🇪🇸 ES</button>
         </div>
     </nav>
 
     <section class="hero">
-        <div class="badge-pill">✨ Algoritmo v2.0 Actualizado</div>
+        <div class="badge-pill" data-i18n="badge">✨ Algorithm v2.0 Updated</div>
         <h1>Laptop <br /> Comparator</h1>
-        <p class="subtitle">La herramienta definitiva para ingenieros y estudiantes. Filtra el marketing, encuentra la potencia real y ahorra dinero.</p>
+        <p class="subtitle" data-i18n="subtitle">The ultimate tool for engineers and students. Cut through the marketing, find real power, and save money.</p>
         
         <div class="cta-container">
-            <button class="btn-primary" onclick="document.getElementById('laptops-grid').scrollIntoView({behavior: 'smooth'})">
-                Ver Catálogo 👇
+            <button class="btn-primary" onclick="document.getElementById('laptops-grid').scrollIntoView({behavior: 'smooth'})" data-i18n="btn_catalog">
+                View Catalog 👇
             </button>
-            
-            <a href="/comparar" class="btn-ghost">
-                ⚖️ Comparar VS
+            <a href="/comparar" class="btn-ghost" data-i18n="btn_vs">
+                ⚖️ Compare VS
             </a>
         </div>
     </section>
@@ -230,17 +117,17 @@ function getScore(price) {
     <div class="main-container">
         <aside class="sidebar">
             <div class="filter-box">
-                <span class="filter-title">Ordenar Por</span>
-                <div class="filter-item" id="sort-score">⚡ Mejor Puntuación</div>
-                <div class="filter-item" id="sort-price-asc">💰 Precio: Bajo a Alto</div>
-                <div class="filter-item" id="sort-price-desc">💎 Precio: Alto a Bajo</div>
+                <span class="filter-title" data-i18n="filter_sort">Sort By</span>
+                <div class="filter-item" id="sort-score" data-i18n="sort_score">⚡ Best Score</div>
+                <div class="filter-item" id="sort-price-asc" data-i18n="sort_asc">💰 Price: Low to High</div>
+                <div class="filter-item" id="sort-price-desc" data-i18n="sort_desc">💎 Price: High to Low</div>
             </div>
             <div class="filter-box">
-                <span class="filter-title">Rango de Precio</span>
-                <div class="filter-item" id="filter-all">🔄 Ver Todos</div>
-                <div class="filter-item" id="filter-under-500">📉 Menos de 500€</div>
-                <div class="filter-item" id="filter-under-800">⚖️ Menos de 800€</div>
-                <div class="filter-item" id="filter-over-1000">🚀 Gama Alta (+1000€)</div>
+                <span class="filter-title" data-i18n="filter_price">Price Range</span>
+                <div class="filter-item" id="filter-all" data-i18n="filter_all">🔄 View All</div>
+                <div class="filter-item" id="filter-under-500">📉 &lt; 500</div>
+                <div class="filter-item" id="filter-under-800">⚖️ &lt; 800</div>
+                <div class="filter-item" id="filter-over-1000">🚀 High End (+1000)</div>
             </div>
         </aside>
 
@@ -259,8 +146,11 @@ function getScore(price) {
                         <div class="spec-item">⚖️ {laptop.specs.weight}</div>
                     </div>
                     <div class="price-row">
-                        <span class="price">{laptop.price_eur} €</span>
-                        <a href={`/laptops/${laptop.slug}`} class="btn-card">Ver Ficha</a>
+                        <div class="price-container">
+                            <span class="price-display" data-eur={laptop.price_eur}>${Math.round(laptop.price_eur * 1.08)}</span>
+                            <span class="price-secondary">{laptop.price_eur} €</span>
+                        </div>
+                        <a href={`/laptops/${laptop.slug}`} class="btn-card" data-i18n="btn_card">View Specs</a>
                     </div>
                 </article>
             ))}
@@ -268,6 +158,82 @@ function getScore(price) {
     </div>
 
     <script>
+        // Diccionario de textos
+        const translations = {
+            es: {
+                nav_vs: "⚖️ Comparador VS",
+                nav_top: "Top Ventas",
+                nav_student: "Estudiantes",
+                badge: "✨ Algoritmo v2.0 Actualizado",
+                subtitle: "La herramienta definitiva para ingenieros y estudiantes. Filtra el marketing, encuentra la potencia real y ahorra dinero.",
+                btn_catalog: "Ver Catálogo 👇",
+                btn_vs: "⚖️ Comparar Ahora",
+                filter_sort: "Ordenar Por",
+                sort_score: "⚡ Mejor Puntuación",
+                sort_asc: "💰 Precio: Bajo a Alto",
+                sort_desc: "💎 Precio: Alto a Bajo",
+                filter_price: "Rango de Precio",
+                filter_all: "🔄 Ver Todos",
+                btn_card: "Ver Ficha"
+            },
+            en: {
+                nav_vs: "⚖️ Compare VS",
+                nav_top: "Top Sellers",
+                nav_student: "Students",
+                badge: "✨ Algorithm v2.0 Updated",
+                subtitle: "The ultimate tool for engineers and students. Cut through the marketing, find real power, and save money.",
+                btn_catalog: "View Catalog 👇",
+                btn_vs: "⚖️ Compare VS",
+                filter_sort: "Sort By",
+                sort_score: "⚡ Best Score",
+                sort_asc: "💰 Price: Low to High",
+                sort_desc: "💎 Price: High to Low",
+                filter_price: "Price Range",
+                filter_all: "🔄 View All",
+                btn_card: "View Specs"
+            }
+        };
+
+        const langToggle = document.getElementById('lang-toggle');
+        const priceDisplays = document.querySelectorAll('.price-display');
+        
+        // 1. DETECTAR IDIOMA DEL NAVEGADOR AL ENTRAR
+        const userLang = navigator.language || navigator.userLanguage; 
+        let currentLang = userLang.startsWith('es') ? 'es' : 'en';
+
+        // Función para aplicar idioma
+        function setLanguage(lang) {
+            currentLang = lang;
+            
+            // Cambiar textos simples
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if(translations[lang][key]) el.innerText = translations[lang][key];
+            });
+
+            // Cambiar Precios (Dólares vs Euros)
+            priceDisplays.forEach(price => {
+                const eurVal = parseInt(price.getAttribute('data-eur'));
+                if (lang === 'es') {
+                    price.innerText = eurVal + " €"; // Mostrar Euros
+                } else {
+                    price.innerText = "$" + Math.round(eurVal * 1.08); // Mostrar Dólares
+                }
+            });
+
+            // Cambiar botón de idioma
+            langToggle.innerText = lang === 'es' ? '🇺🇸 EN' : '🇪🇸 ES';
+        }
+
+        // Ejecutar al inicio
+        setLanguage(currentLang);
+
+        // Permitir cambio manual con el botón
+        langToggle.addEventListener('click', () => {
+            setLanguage(currentLang === 'es' ? 'en' : 'es');
+        });
+
+        // --- Lógica del resto de la web (Filtros, etc) ---
         const grid = document.getElementById('laptops-grid');
         const cards = Array.from(document.querySelectorAll('.card'));
         const navTop = document.getElementById('nav-top');
@@ -291,19 +257,11 @@ function getScore(price) {
             cards.forEach(card => card.style.display = 'flex');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-
-        document.getElementById('sort-score').addEventListener('click', () => {
-            const sorted = cards.sort((a, b) => b.dataset.score - a.dataset.score);
-            updateGrid(sorted);
-        });
-        document.getElementById('sort-price-asc').addEventListener('click', () => {
-            const sorted = cards.sort((a, b) => a.dataset.price - b.dataset.price);
-            updateGrid(sorted);
-        });
-        document.getElementById('sort-price-desc').addEventListener('click', () => {
-            const sorted = cards.sort((a, b) => b.dataset.price - a.dataset.price);
-            updateGrid(sorted);
-        });
+        
+        // Filtros (Simplificados para que funcionen en ambos idiomas)
+        document.getElementById('sort-score').addEventListener('click', () => updateGrid(cards.sort((a, b) => b.dataset.score - a.dataset.score)));
+        document.getElementById('sort-price-asc').addEventListener('click', () => updateGrid(cards.sort((a, b) => a.dataset.price - b.dataset.price)));
+        document.getElementById('sort-price-desc').addEventListener('click', () => updateGrid(cards.sort((a, b) => b.dataset.price - a.dataset.price)));
         document.getElementById('filter-all').addEventListener('click', () => cards.forEach(c => c.style.display = 'flex'));
         document.getElementById('filter-under-500').addEventListener('click', () => filterByPrice(0, 500));
         document.getElementById('filter-under-800').addEventListener('click', () => filterByPrice(0, 800));
