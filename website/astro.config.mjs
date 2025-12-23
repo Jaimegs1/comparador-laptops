@@ -1,5 +1,8 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
-// https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  // SUSTITUYE ESTO POR TU ENLACE REAL DE VERCEL
+    site: 'https://comparador-laptops.vercel.app', 
+    integrations: [sitemap()],
+});
