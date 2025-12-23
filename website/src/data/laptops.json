@@ -50,5 +50,31 @@
     },
     "price_eur": 649.0,
     "affiliate_link": "https://www.amazon.es/s?k=ASUS+TUF+Gaming+F15&tag=comparadorjai-21"
+  },
+  {
+    "id": 4,
+    "name": "Acer Aspire 5 A515",
+    "slug": "acer-aspire-5-a515",
+    "brand_img": "/img/acer.jpg",
+    "specs": {
+      "cpu": "Intel Core i5-1135G7",
+      "ram": "12 GB",
+      "storage": "1 TB SSD"
+    },
+    "price_eur": 529.0,
+    "affiliate_link": "https://www.amazon.es/s?k=Acer+Aspire+5+A515&tag=comparadorjai-21"
+  },
+  {
+    "id": 5,
+    "name": "MSI Thin GF63 (Gaming Barato)",
+    "slug": "msi-thin-gf63-gaming-barato",
+    "brand_img": "/img/msi.jpg",
+    "specs": {
+      "cpu": "Intel Core i7-12650H",
+      "ram": "16 GB",
+      "storage": "512 GB SSD"
+    },
+    "price_eur": 849.0,
+    "affiliate_link": "https://www.amazon.es/s?k=MSI+Thin+GF63+(Gaming+Barato)&tag=comparadorjai-21"
   }
 ]

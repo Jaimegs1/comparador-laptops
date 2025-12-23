@@ -1,8 +1,7 @@
 ---
 import laptops from '../data/laptops.json';
 
-// Función para asignar una puntuación "fake" basada en el precio para que parezca profesional
-// (En el futuro esto podría ser real)
+// Función para asignar puntuación visual
 function getScore(price) {
     if (price > 900) return 98;
     if (price > 700) return 94;
@@ -14,7 +13,11 @@ function getScore(price) {
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Comparador Tech - Nivel Pro</title>
+    
+    <title>Comparador Tech - Los Mejores Portátiles Calidad-Precio 2025</title>
+    <meta name="description" content="Análisis técnico de portátiles para estudiantes e ingenieros. Compara precios, RAM y procesadores (M1, Intel, AMD) sin publicidad engañosa." />
+    <meta name="robots" content="index, follow" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -23,7 +26,7 @@ function getScore(price) {
         :root {
             --bg-gradient: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 100%);
             --card-bg: #ffffff;
-            --primary: #4f46e5; /* Morado azulado tipo Versus */
+            --primary: #4f46e5;
             --text-main: #111827;
             --text-muted: #6b7280;
             --score-color: #2563eb;
@@ -31,14 +34,13 @@ function getScore(price) {
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--bg-gradient); /* Fondo Oscuro */
+            background: var(--bg-gradient);
             color: white;
             margin: 0;
             padding: 0;
             min-height: 100vh;
         }
 
-        /* --- NAV SUPERIOR --- */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -53,35 +55,20 @@ function getScore(price) {
         .nav-links { display: flex; gap: 20px; font-size: 0.9rem; font-weight: 600; color: #ccc; }
         .nav-links span:hover { color: white; cursor: pointer; }
 
-        /* --- HEADER --- */
-        header {
-            text-align: center;
-            padding: 60px 20px;
-        }
+        header { text-align: center; padding: 60px 20px; }
 
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin: 0;
-            line-height: 1.1;
-        }
-        
+        h1 { font-size: 3.5rem; font-weight: 800; margin: 0; line-height: 1.1; }
         p.subtitle { color: #a5b4fc; font-size: 1.2rem; margin-top: 10px; }
 
-        /* --- GRID --- */
         .main-container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px 60px;
-            display: flex; /* Preparado para futura sidebar */
+            display: flex;
             gap: 30px;
         }
 
-        /* Sidebar falsa para el look "Pro" */
-        .sidebar {
-            width: 250px;
-            display: none; /* Oculto en móvil */
-        }
+        .sidebar { width: 250px; display: none; }
         @media (min-width: 1000px) { .sidebar { display: block; } }
 
         .filter-box {
@@ -100,94 +87,55 @@ function getScore(price) {
             gap: 25px;
         }
 
-        /* --- TARJETA PRO --- */
         .card {
             background: var(--card-bg);
             color: var(--text-main);
             border-radius: 16px;
             padding: 25px;
-            position: relative; /* Para posicionar el círculo */
+            position: relative;
             transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
             flex-direction: column;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
 
-        /* CÍRCULO DE PUNTUACIÓN (Estilo Versus) */
         .score-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
+            position: absolute; top: 20px; right: 20px;
+            width: 50px; height: 50px;
             background: var(--score-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.1rem;
-            line-height: 1;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
-            z-index: 10;
+            color: white; border-radius: 50%;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            font-weight: 800; font-size: 1.1rem; line-height: 1;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); z-index: 10;
         }
         .score-label { font-size: 0.6rem; font-weight: 400; opacity: 0.9; }
 
         .product-img {
-            width: 100%;
-            height: 180px;
-            object-fit: contain;
-            margin: 20px 0;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+            width: 100%; height: 180px; object-fit: contain;
+            margin: 20px 0; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
         }
 
         h2 { font-size: 1.1rem; font-weight: 700; margin: 0 0 10px 0; line-height: 1.4; height: 3em; overflow: hidden; }
 
-        .specs-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .spec-item {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+        .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .spec-item { font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
 
         .price-row {
-            margin-top: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
+            margin-top: auto; display: flex; justify-content: space-between;
+            align-items: center; border-top: 1px solid #eee; padding-top: 15px;
         }
 
         .price { font-size: 1.5rem; font-weight: 800; color: #111; }
         
         .btn {
-            background: var(--primary);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: background 0.2s;
+            background: var(--primary); color: white; padding: 8px 16px;
+            border-radius: 8px; font-weight: 600; text-decoration: none;
+            font-size: 0.9rem; transition: background 0.2s;
         }
         .btn:hover { background: #3730a3; }
-
     </style>
 </head>
 <body>
@@ -195,9 +143,7 @@ function getScore(price) {
     <nav class="navbar">
         <div class="logo">⚡ Comparador.pro</div>
         <div class="nav-links">
-            <span>TOP 10</span>
-            <span>GAMING</span>
-            <span>ESTUDIANTES</span>
+            <span>TOP 10</span><span>GAMING</span><span>ESTUDIANTES</span>
         </div>
     </nav>
 
@@ -207,7 +153,6 @@ function getScore(price) {
     </header>
 
     <div class="main-container">
-        
         <aside class="sidebar">
             <div class="filter-box">
                 <span class="filter-title">ORDENAR POR</span>
@@ -240,7 +185,8 @@ function getScore(price) {
                         <div class="spec-item">🧠 {laptop.specs.cpu}</div>
                         <div class="spec-item">💾 {laptop.specs.ram}</div>
                         <div class="spec-item">💿 {laptop.specs.storage}</div>
-                        <div class="spec-item">⚖️ 1.4 kg</div> </div>
+                        <div class="spec-item">⚖️ 1.4 kg</div>
+                    </div>
 
                     <div class="price-row">
                         <span class="price">{laptop.price_eur} €</span>
