@@ -1,7 +1,7 @@
 ---
 import laptops from '../data/laptops.json';
 
-// Función para asignar puntuación visual
+// Función para asignar puntuación visual basada en precio (Simulación Pro)
 function getScore(price) {
     if (price > 900) return 98;
     if (price > 700) return 94;
@@ -15,7 +15,7 @@ function getScore(price) {
     <meta name="viewport" content="width=device-width" />
     
     <title>Comparador Tech - Los Mejores Portátiles Calidad-Precio 2025</title>
-    <meta name="description" content="Análisis técnico de portátiles para estudiantes e ingenieros. Compara precios, RAM y procesadores (M1, Intel, AMD) sin publicidad engañosa." />
+    <meta name="description" content="Análisis técnico de portátiles para estudiantes e ingenieros. Compara precios, RAM, peso y procesadores (M1, Intel, AMD) sin publicidad engañosa." />
     <meta name="robots" content="index, follow" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -160,13 +160,6 @@ function getScore(price) {
                 <span class="filter-item">💰 Precio: Bajo a Alto</span>
                 <span class="filter-item">🆕 Más recientes</span>
             </div>
-            <div class="filter-box">
-                <span class="filter-title">PRECIO</span>
-                <div style="height: 4px; background: #555; border-radius: 2px; margin: 15px 0;"></div>
-                <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:#aaa;">
-                    <span>200€</span><span>4000€+</span>
-                </div>
-            </div>
         </aside>
 
         <main class="grid">
@@ -185,7 +178,7 @@ function getScore(price) {
                         <div class="spec-item">🧠 {laptop.specs.cpu}</div>
                         <div class="spec-item">💾 {laptop.specs.ram}</div>
                         <div class="spec-item">💿 {laptop.specs.storage}</div>
-                        <div class="spec-item">⚖️ 1.4 kg</div>
+                        <div class="spec-item">⚖️ {laptop.specs.weight}</div>
                     </div>
 
                     <div class="price-row">

@@ -7,7 +7,8 @@
     "specs": {
       "cpu": "Apple M1",
       "ram": "8 GB",
-      "storage": "256 GB SSD"
+      "storage": "256 GB SSD",
+      "weight": "1.29 kg"
     },
     "price_eur": 929.0,
     "affiliate_link": "https://www.amazon.es/s?k=Apple+MacBook+Air+(2020)+-+Chip+M1&tag=comparadorjai-21"
@@ -20,7 +21,8 @@
     "specs": {
       "cpu": "Intel Core i5-12450H",
       "ram": "16 GB",
-      "storage": "512 GB SSD"
+      "storage": "512 GB SSD",
+      "weight": "1.62 kg"
     },
     "price_eur": 499.0,
     "affiliate_link": "https://www.amazon.es/s?k=Lenovo+IdeaPad+Slim+3+Gen+8&tag=comparadorjai-21"
@@ -33,7 +35,8 @@
     "specs": {
       "cpu": "Intel Core i5-12500H",
       "ram": "16 GB",
-      "storage": "512 GB SSD"
+      "storage": "512 GB SSD",
+      "weight": "2.29 kg"
     },
     "price_eur": 749.99,
     "affiliate_link": "https://www.amazon.es/s?k=HP+Victus+15-fa0012ns+(Gaming)&tag=comparadorjai-21"
@@ -46,7 +49,8 @@
     "specs": {
       "cpu": "Intel Core i5-11400H",
       "ram": "16 GB",
-      "storage": "512 GB SSD"
+      "storage": "512 GB SSD",
+      "weight": "2.30 kg"
     },
     "price_eur": 649.0,
     "affiliate_link": "https://www.amazon.es/s?k=ASUS+TUF+Gaming+F15&tag=comparadorjai-21"
@@ -59,7 +63,8 @@
     "specs": {
       "cpu": "Intel Core i5-1135G7",
       "ram": "12 GB",
-      "storage": "1 TB SSD"
+      "storage": "1 TB SSD",
+      "weight": "1.70 kg"
     },
     "price_eur": 529.0,
     "affiliate_link": "https://www.amazon.es/s?k=Acer+Aspire+5+A515&tag=comparadorjai-21"
@@ -72,7 +77,8 @@
     "specs": {
       "cpu": "Intel Core i7-12650H",
       "ram": "16 GB",
-      "storage": "512 GB SSD"
+      "storage": "512 GB SSD",
+      "weight": "1.86 kg"
     },
     "price_eur": 849.0,
     "affiliate_link": "https://www.amazon.es/s?k=MSI+Thin+GF63+(Gaming+Barato)&tag=comparadorjai-21"
