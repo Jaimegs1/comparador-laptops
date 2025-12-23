@@ -85,7 +85,7 @@ function getScore(price) {
         }
         .nav-btn:hover::after { width: 100%; }
 
-        /* --- HERO SECTION CON IMAGEN DE FONDO --- */
+        /* --- HERO SECTION CON IMAGEN DE FONDO (CORREGIDO) --- */
         .hero {
             position: relative;
             min-height: 85vh; /* Ocupa casi toda la pantalla */
@@ -97,9 +97,9 @@ function getScore(price) {
             padding: 0 20px;
             overflow: hidden;
 
-            /* IMAGEN DE FONDO + OSCURECIMIENTO */
+            /* AQUÍ ESTABA EL ERROR: He bajado la opacidad al 0.5 (50%) para que se vea la foto */
             background: 
-                linear-gradient(to bottom, rgba(15, 12, 41, 0.85), rgba(15, 12, 41, 1)), 
+                linear-gradient(to bottom, rgba(15, 12, 41, 0.5), rgba(15, 12, 41, 1)), 
                 url('https://images.unsplash.com/photo-1517336714731-489689fd1ca4?q=80&w=1926&auto=format&fit=crop');
             
             background-size: cover;
