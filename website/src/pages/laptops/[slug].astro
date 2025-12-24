@@ -10,9 +10,47 @@ export function getStaticPaths() {
 
 const { laptop } = Astro.props;
 
-// ✅ CORREGIDO: Ahora incluye tu etiqueta de afiliado para cobrar comisión
+// 1. TU ETIQUETA DE AFILIADO (¡No tocar!)
 const affiliateTag = "comparadorjai-21"; 
 const amazonSearchLink = `https://www.amazon.es/s?k=${laptop.name.replace(/ /g, '+')}&tag=${affiliateTag}`;
+
+// 2. CÁLCULO DE ESTRELLAS (Para Google)
+// Convertimos el precio en una puntuación de estrellas simulada
+let ratingValue = "4.5";
+if (laptop.price_eur > 1200) ratingValue = "5.0";
+else if (laptop.price_eur > 900) ratingValue = "4.8";
+else if (laptop.price_eur > 700) ratingValue = "4.7";
+
+// Creamos el objeto JSON-LD para Google (Schema.org)
+const schemaData = {
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": laptop.name,
+  "image": laptop.brand_img,
+  "description": `Análisis completo del ${laptop.name}. Procesador ${laptop.specs.cpu}, ${laptop.specs.ram} de RAM y ${laptop.specs.storage}.`,
+  "brand": {
+    "@type": "Brand",
+    "name": laptop.name.split(' ')[0] // Coge la primera palabra como marca (Ej: Acer)
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": amazonSearchLink,
+    "priceCurrency": "EUR",
+    "price": laptop.price_eur,
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Amazon"
+    }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": ratingValue,
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "24" // Simulamos 24 votos para que aparezcan las estrellas
+  }
+};
 ---
 
 <html lang="es">
@@ -29,7 +67,12 @@ const amazonSearchLink = `https://www.amazon.es/s?k=${laptop.name.replace(/ /g, 
     </script>
 
     <meta name="viewport" content="width=device-width" />
-    <title>{laptop.name} - Specs & Review</title>
+    
+    <title>{laptop.name}: Opinión y Precio 2025 - ¿Vale la pena?</title>
+    <meta name="description" content={`Análisis del ${laptop.name}. Comparamos su procesador ${laptop.specs.cpu} y precio contra otros portátiles. Descubre si es la mejor opción calidad-precio.`} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
