@@ -2,7 +2,7 @@
     {
         "name": "MacBook Air M1",
         "price_eur": 930,
-        "brand_img": "https://m.media-amazon.com/images/I/71vFKBpKakL._AC_SX679_.jpg",
+        "brand_img": "/img/macbook.jpg",
         "cpu_score": 15000,
         "specs": {
             "cpu": "Apple M1 Chip",
@@ -16,7 +16,7 @@
     {
         "name": "HP Victus 15 Gaming",
         "price_eur": 649,
-        "brand_img": "https://m.media-amazon.com/images/I/71s1jG4A5CL._AC_SX679_.jpg",
+        "brand_img": "/img/hp.jpg",
         "cpu_score": 12000,
         "specs": {
             "cpu": "Intel Core i5-12500H",
@@ -30,7 +30,7 @@
     {
         "name": "Lenovo Legion 5 Gen 6",
         "price_eur": 1099,
-        "brand_img": "https://m.media-amazon.com/images/I/61p3lA4N3uL._AC_SX679_.jpg",
+        "brand_img": "/img/legion.jpg",
         "cpu_score": 21000,
         "specs": {
             "cpu": "AMD Ryzen 7 5800H",
@@ -44,7 +44,7 @@
     {
         "name": "ASUS TUF Gaming F15",
         "price_eur": 799,
-        "brand_img": "https://m.media-amazon.com/images/I/71J15XgX+IL._AC_SX679_.jpg",
+        "brand_img": "/img/asus.jpg",
         "cpu_score": 18000,
         "specs": {
             "cpu": "Intel Core i7-11800H",
@@ -58,7 +58,7 @@
     {
         "name": "Acer Nitro 5",
         "price_eur": 699,
-        "brand_img": "https://m.media-amazon.com/images/I/81bc8mA3nKL._AC_SX679_.jpg",
+        "brand_img": "/img/nitro.jpg",
         "cpu_score": 12000,
         "specs": {
             "cpu": "Intel Core i5-11400H",
@@ -72,7 +72,7 @@
     {
         "name": "MacBook Air M2",
         "price_eur": 1199,
-        "brand_img": "https://m.media-amazon.com/images/I/710TJuHTMhL._AC_SX679_.jpg",
+        "brand_img": "/img/macbook-m2.jpg",
         "cpu_score": 21000,
         "specs": {
             "cpu": "Apple M2 Chip",
@@ -86,7 +86,7 @@
     {
         "name": "ASUS ZenBook 14",
         "price_eur": 850,
-        "brand_img": "https://m.media-amazon.com/images/I/71G12W05iDL._AC_SX679_.jpg",
+        "brand_img": "/img/vivobook.jpg", 
         "cpu_score": 15000,
         "specs": {
             "cpu": "Intel Core i5-1240P",
@@ -100,7 +100,7 @@
     {
         "name": "Steam Deck OLED (1TB)",
         "price_eur": 679,
-        "brand_img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1675200/extras/steamdeck_oled_hero_01.jpg?t=1700180635",
+        "brand_img": "/img/steamdeck.jpg",
         "cpu_score": 4000,
         "specs": {
             "cpu": "AMD Zen 2 (APU Custom)",
@@ -114,7 +114,7 @@
     {
         "name": "Steam Deck LCD (256GB)",
         "price_eur": 419,
-        "brand_img": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1675200/extras/deck_01.jpg?t=1700180635",
+        "brand_img": "/img/steamdeck.jpg",
         "cpu_score": 4000,
         "specs": {
             "cpu": "AMD Zen 2 (APU Custom)",
