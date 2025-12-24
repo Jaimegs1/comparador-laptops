@@ -10,22 +10,24 @@ export function getStaticPaths() {
 
 const { laptop } = Astro.props;
 
-// Calculamos la búsqueda de Amazon segura
-const amazonSearchLink = `https://www.amazon.es/s?k=${laptop.name.replace(/ /g, '+')}`;
+// ✅ CORREGIDO: Ahora incluye tu etiqueta de afiliado para cobrar comisión
+const affiliateTag = "comparadorjai-21"; 
+const amazonSearchLink = `https://www.amazon.es/s?k=${laptop.name.replace(/ /g, '+')}&tag=${affiliateTag}`;
 ---
 
 <html lang="es">
 <head>
     <meta charset="utf-8" />
-    <!-- Google tag (gtag.js) -->
+    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DHN4XB4R6G"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    gtag('config', 'G-DHN4XB4R6G');
+      gtag('config', 'G-DHN4XB4R6G');
     </script>
+
     <meta name="viewport" content="width=device-width" />
     <title>{laptop.name} - Specs & Review</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +43,6 @@ const amazonSearchLink = `https://www.amazon.es/s?k=${laptop.name.replace(/ /g, 
             --text-muted: #94a3b8;
         }
 
-        /* SOLUCIÓN AL "FLASHBANG": Fondo oscuro igual que la portada */
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-body);
@@ -81,7 +82,6 @@ const amazonSearchLink = `https://www.amazon.es/s?k=${laptop.name.replace(/ /g, 
         }
         .specs-list li strong { color: white; }
 
-        /* BOTÓN DE AMAZON CORREGIDO */
         .btn-amazon {
             background: #f59e0b; color: #1e1b4b; text-decoration: none;
             padding: 15px 30px; border-radius: 100px; font-weight: 800; display: inline-flex;
