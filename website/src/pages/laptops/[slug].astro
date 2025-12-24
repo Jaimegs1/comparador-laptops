@@ -17,6 +17,15 @@ const amazonSearchLink = `https://www.amazon.es/s?k=${laptop.name.replace(/ /g, 
 <html lang="es">
 <head>
     <meta charset="utf-8" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DHN4XB4R6G"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DHN4XB4R6G');
+    </script>
     <meta name="viewport" content="width=device-width" />
     <title>{laptop.name} - Specs & Review</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
