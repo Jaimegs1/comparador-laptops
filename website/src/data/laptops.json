@@ -124,5 +124,117 @@
         },
         "category": ["gaming"],
         "slug": "steam-deck-lcd-256gb"
+    },
+    {
+        "name": "MSI Katana GF66",
+        "price_eur": 999,
+        "brand_img": "/img/katana.jpg",
+        "cpu_score": 18000,
+        "specs": {
+            "cpu": "Intel Core i7-11800H",
+            "ram": "16 GB DDR4",
+            "storage": "1 TB SSD",
+            "weight": "2.25 kg"
+        },
+        "category": ["gaming"],
+        "slug": "msi-katana"
+    },
+    {
+        "name": "LG Gram 17",
+        "price_eur": 1399,
+        "brand_img": "/img/gram.jpg",
+        "cpu_score": 16000,
+        "specs": {
+            "cpu": "Intel Core i7-1260P",
+            "ram": "16 GB LPDDR5",
+            "storage": "512 GB SSD",
+            "weight": "1.35 kg"
+        },
+        "category": ["top", "student"],
+        "slug": "lg-gram-17"
+    },
+    {
+        "name": "ASUS ROG Strix",
+        "price_eur": 1699,
+        "brand_img": "/img/rog.jpg",
+        "cpu_score": 25000,
+        "specs": {
+            "cpu": "AMD Ryzen 9 5900HX",
+            "ram": "32 GB DDR4",
+            "storage": "1 TB NVMe SSD",
+            "weight": "2.50 kg"
+        },
+        "category": ["gaming", "top"],
+        "slug": "asus-rog-strix"
+    },
+    {
+        "name": "Dell XPS 13",
+        "price_eur": 1299,
+        "brand_img": "/img/xps.jpg",
+        "cpu_score": 16000,
+        "specs": {
+            "cpu": "Intel Core i7-1165G7",
+            "ram": "16 GB LPDDR4",
+            "storage": "512 GB SSD",
+            "weight": "1.20 kg"
+        },
+        "category": ["top", "student"],
+        "slug": "dell-xps-13"
+    },
+    {
+        "name": "Microsoft Surface Pro 9",
+        "price_eur": 1159,
+        "brand_img": "/img/surface.jpg",
+        "cpu_score": 15000,
+        "specs": {
+            "cpu": "Intel Core i5-1235U",
+            "ram": "8 GB LPDDR5",
+            "storage": "256 GB SSD",
+            "weight": "0.87 kg"
+        },
+        "category": ["student"],
+        "slug": "surface-pro-9"
+    },
+    {
+        "name": "HP Pavilion x360",
+        "price_eur": 699,
+        "brand_img": "/img/x360.jpg",
+        "cpu_score": 12000,
+        "specs": {
+            "cpu": "Intel Core i5-1135G7",
+            "ram": "8 GB DDR4",
+            "storage": "512 GB SSD",
+            "weight": "1.61 kg"
+        },
+        "category": ["student"],
+        "slug": "hp-x360"
+    },
+    {
+        "name": "Lenovo IdeaPad 1",
+        "price_eur": 299,
+        "brand_img": "/img/ideapad1.jpg",
+        "cpu_score": 6000,
+        "specs": {
+            "cpu": "Intel Celeron N4020",
+            "ram": "4 GB DDR4",
+            "storage": "128 GB eMMC",
+            "weight": "1.54 kg"
+        },
+        "category": ["student"],
+        "slug": "lenovo-ideapad-1"
+    },
+    {
+        "name": "Acer Chromebook 314",
+        "price_eur": 249,
+        "brand_img": "/img/chromebook.jpg",
+        "cpu_score": 3000,
+        "specs": {
+            "cpu": "Intel Celeron N4000",
+            "ram": "4 GB LPDDR4",
+            "storage": "64 GB eMMC",
+            "weight": "1.50 kg"
+        },
+        "category": ["student"],
+        "slug": "acer-chromebook"
     }
 ]
