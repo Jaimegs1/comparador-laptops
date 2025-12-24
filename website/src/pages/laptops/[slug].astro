@@ -1,66 +1,141 @@
 ---
 import laptops from '../../data/laptops.json';
 
-export async function getStaticPaths() {
-  return laptops.map((laptop) => ({
+export function getStaticPaths() {
+  return laptops.map(laptop => ({
     params: { slug: laptop.slug },
     props: { laptop },
   }));
 }
 
 const { laptop } = Astro.props;
+
+// Calculamos la búsqueda de Amazon segura
+const amazonSearchLink = `https://www.amazon.es/s?k=${laptop.name.replace(/ /g, '+')}`;
 ---
 
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <title>{laptop.name} - Análisis y Precio</title>
-    <meta name="description" content={`Compra el ${laptop.name} al mejor precio. Especificaciones: ${laptop.specs.cpu}, ${laptop.specs.ram}, peso ${laptop.specs.weight}.`} />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{laptop.name} - Specs & Review</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: system-ui, sans-serif; background: #f5f5f7; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .container { background: white; padding: 40px; border-radius: 20px; max-width: 800px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
-        img { max-height: 300px; max-width: 100%; object-fit: contain; margin-bottom: 30px; }
-        h1 { font-size: 2rem; margin-bottom: 20px; color: #111; }
-        .price { font-size: 2.5rem; font-weight: 800; color: #0071e3; margin: 20px 0; }
-        
-        .buy-btn { 
-            background: #FF9900; 
-            color: black; 
-            padding: 15px 40px; 
-            font-size: 1.2rem; 
-            border-radius: 8px; 
-            text-decoration: none; 
-            display: inline-block; 
-            font-weight: bold; 
-            border: 1px solid #b36b00;
+        :root {
+            --bg-body: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --accent: #818cf8;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
         }
-        .buy-btn:hover { background: #ffac31; cursor: pointer; }
+
+        /* SOLUCIÓN AL "FLASHBANG": Fondo oscuro igual que la portada */
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            margin: 0; padding: 0; min-height: 100vh;
+            background: radial-gradient(at 0% 0%, #4c1d95 0px, transparent 50%), 
+                        radial-gradient(at 100% 0%, #3b82f6 0px, transparent 50%), #1e1b4b;
+        }
+
+        .navbar {
+            padding: 20px 40px; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 20px;
+        }
+        .logo { font-weight: 800; font-size: 1.2rem; text-decoration: none; color: white; }
+        .back-link { text-decoration: none; color: var(--text-muted); font-weight: 600; display: flex; align-items: center; gap: 5px; transition: color 0.2s;}
+        .back-link:hover { color: white; }
+
+        .container {
+            max-width: 900px; margin: 40px auto; padding: 0 20px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start;
+        }
+
+        .image-box {
+            background: rgba(255,255,255,0.05); padding: 40px; border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .product-img { width: 100%; max-height: 300px; object-fit: contain; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5)); }
+
+        .info-box h1 { font-size: 2.5rem; margin: 0 0 20px 0; line-height: 1.1; }
+        .price-tag { font-size: 2rem; font-weight: 800; color: #4ade80; margin-bottom: 30px; display: block; }
         
-        .back-link { display: block; margin-top: 30px; color: #666; text-decoration: none; }
-        .specs-list { text-align: left; background: #f9f9f9; padding: 20px; border-radius: 10px; margin: 20px 0; }
+        .specs-list { list-style: none; padding: 0; margin-bottom: 40px; }
+        .specs-list li {
+            padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex; justify-content: space-between; color: var(--text-muted);
+        }
+        .specs-list li strong { color: white; }
+
+        /* BOTÓN DE AMAZON CORREGIDO */
+        .btn-amazon {
+            background: #f59e0b; color: #1e1b4b; text-decoration: none;
+            padding: 15px 30px; border-radius: 100px; font-weight: 800; display: inline-flex;
+            align-items: center; gap: 10px; transition: transform 0.2s; width: 100%; justify-content: center;
+            box-sizing: border-box;
+        }
+        .btn-amazon:hover { transform: translateY(-3px); background: #fbbf24; }
+
+        @media (max-width: 768px) { .container { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src={laptop.brand_img} alt={laptop.name} />
-        <h1>{laptop.name}</h1>
-        
-        <div class="specs-list">
-            <p><strong>Procesador:</strong> {laptop.specs.cpu}</p>
-            <p><strong>RAM:</strong> {laptop.specs.ram}</p>
-            <p><strong>Almacenamiento:</strong> {laptop.specs.storage}</p>
-            <p><strong>Peso:</strong> {laptop.specs.weight}</p>
+    <nav class="navbar">
+        <a href="/" class="back-link" data-i18n="back">← Volver</a>
+        <a href="/" class="logo">⚡ LaptopComparator</a>
+    </nav>
+
+    <main class="container">
+        <div class="image-box">
+            <img src={laptop.brand_img} alt={laptop.name} class="product-img" />
         </div>
 
-        <div class="price">{laptop.price_eur} €</div>
+        <div class="info-box">
+            <h1>{laptop.name}</h1>
+            
+            <span class="price-tag" data-eur={laptop.price_eur}>
+                {laptop.price_eur} €
+            </span>
 
-        <a href={laptop.affiliate_link} target="_blank" rel="nofollow sponsored" class="buy-btn">
-            Ver Oferta en Amazon →
-        </a>
+            <ul class="specs-list">
+                <li><span data-i18n="cpu">Procesador</span> <strong>{laptop.specs.cpu}</strong></li>
+                <li>RAM <strong>{laptop.specs.ram}</strong></li>
+                <li><span data-i18n="storage">Almacenamiento</span> <strong>{laptop.specs.storage}</strong></li>
+                <li><span data-i18n="weight">Peso</span> <strong>{laptop.specs.weight}</strong></li>
+            </ul>
 
-        <a href="/" class="back-link">← Volver al listado</a>
-    </div>
+            <a href={amazonSearchLink} target="_blank" rel="noopener noreferrer" class="btn-amazon">
+                🛒 <span data-i18n="buy">Ver precio en Amazon</span>
+            </a>
+        </div>
+    </main>
+
+    <script>
+        const translations = {
+            es: { back: "← Volver", cpu: "Procesador", storage: "Almacenamiento", weight: "Peso", buy: "Ver precio en Amazon" },
+            en: { back: "← Back", cpu: "Processor", storage: "Storage", weight: "Weight", buy: "Check Price on Amazon" }
+        };
+
+        const userLang = navigator.language || navigator.userLanguage; 
+        const isEnglish = !userLang.startsWith('es');
+
+        if (isEnglish) {
+            // Traducir textos
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if(translations.en[key]) el.innerText = translations.en[key];
+            });
+
+            // Cambiar Precio a Dólares
+            const priceTag = document.querySelector('.price-tag');
+            const eur = parseFloat(priceTag.getAttribute('data-eur'));
+            priceTag.innerText = "$" + Math.round(eur * 1.08);
+        }
+    </script>
 </body>
 </html>
