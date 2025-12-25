@@ -20,6 +20,9 @@ import laptops from '../data/laptops.json';
             --text-muted: #94a3b8;
             --win-color: #4ade80;
             --lose-color: #f87171;
+            /* COLORES PSICOLÓGICOS PARA LOS BOTONES */
+            --btn-hot: #f59e0b; /* Naranja Amazon - Incita a la acción */
+            --btn-cold: #334155; /* Gris apagado - Opción secundaria */
         }
 
         body {
@@ -59,6 +62,27 @@ import laptops from '../data/laptops.json';
         .winner { color: var(--win-color); font-weight: 700; text-shadow: 0 0 10px rgba(74, 222, 128, 0.3); }
         .loser { color: var(--text-muted); opacity: 0.6; text-decoration: line-through; }
         
+        /* ESTILOS DE LOS NUEVOS BOTONES AMAZON */
+        .btn-amazon {
+            display: inline-block; padding: 12px 20px; border-radius: 8px; 
+            text-decoration: none; font-weight: 700; font-size: 0.9rem;
+            transition: transform 0.2s, box-shadow 0.2s; width: 80%;
+        }
+        .btn-amazon:hover { transform: translateY(-2px); }
+        
+        /* El botón "Ganador" (Barato) */
+        .btn-highlight { 
+            background: var(--btn-hot); color: #1e1b4b; 
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+        }
+        
+        /* El botón "Perdedor" (Caro) */
+        .btn-ghost { 
+            background: var(--btn-cold); color: #cbd5e1; 
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .btn-ghost:hover { background: #475569; color: white; }
+
         @media (max-width: 768px) { .vs-controls { flex-direction: column; } select { width: 100%; } }
     </style>
 </head>
@@ -135,6 +159,11 @@ import laptops from '../data/laptops.json';
                     <td class="col-label" data-i18n="row_weight">PESO</td>
                     <td class="col-laptop data-point" id="weight2"></td>
                 </tr>
+                <tr>
+                    <td class="col-laptop" id="buy1-container"></td>
+                    <td class="col-label">🛒</td>
+                    <td class="col-laptop" id="buy2-container"></td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -159,7 +188,8 @@ import laptops from '../data/laptops.json';
                 row_price: "PRECIO",
                 row_disk: "DISCO",
                 row_weight: "PESO",
-                row_cpu: "PROCESADOR"
+                row_cpu: "PROCESADOR",
+                buy_btn: "Ver Precio"
             },
             en: {
                 back_btn: "← Back to Home",
@@ -173,7 +203,8 @@ import laptops from '../data/laptops.json';
                 row_price: "PRICE",
                 row_disk: "STORAGE",
                 row_weight: "WEIGHT",
-                row_cpu: "PROCESSOR"
+                row_cpu: "PROCESSOR",
+                buy_btn: "Check Price"
             }
         };
 
@@ -228,10 +259,9 @@ import laptops from '../data/laptops.json';
             }
             renderRow('price', p1, p2, currency + p1, currency + p2, true);
 
-            // 2. CPU (LÓGICA NUEVA)
+            // 2. CPU
             const cpuScore1 = lap1.cpu_score || 0;
             const cpuScore2 = lap2.cpu_score || 0;
-            // Pasamos 'false' porque mayor puntuación es mejor
             renderRow('cpu', cpuScore1, cpuScore2, lap1.specs.cpu, lap2.specs.cpu, false);
 
             // 3. RAM
@@ -251,6 +281,25 @@ import laptops from '../data/laptops.json';
             const w1 = parseNum(lap1.specs.weight);
             const w2 = parseNum(lap2.specs.weight);
             renderRow('weight', w1, w2, lap1.specs.weight, lap2.specs.weight, true);
+
+            // 6. BOTONES DE COMPRA (MAGIA AQUÍ) ✨
+            const tag = "comparadorjai-21";
+            const link1 = `https://www.amazon.es/s?k=${lap1.name.replace(/ /g, '+')}&tag=${tag}`;
+            const link2 = `https://www.amazon.es/s?k=${lap2.name.replace(/ /g, '+')}&tag=${tag}`;
+
+            // Determinar cuál es el "Smart Choice" (El barato)
+            // Si el precio de 1 es menor, es el destacado.
+            const is1Cheaper = p1 <= p2;
+            
+            const btnClass1 = is1Cheaper ? 'btn-highlight' : 'btn-ghost';
+            const btnClass2 = !is1Cheaper ? 'btn-highlight' : 'btn-ghost';
+            const btnText = translations[currentLang].buy_btn;
+
+            document.getElementById('buy1-container').innerHTML = 
+                `<a href="${link1}" target="_blank" class="btn-amazon ${btnClass1}">${btnText} ➚</a>`;
+            
+            document.getElementById('buy2-container').innerHTML = 
+                `<a href="${link2}" target="_blank" class="btn-amazon ${btnClass2}">${btnText} ➚</a>`;
         }
 
         btn.addEventListener('click', () => {
