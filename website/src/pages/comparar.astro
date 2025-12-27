@@ -302,5 +302,49 @@ import laptops from '../data/laptops.json';
             else { el1.classList.add('loser'); el2.classList.add('winner'); }
         }
     </script>
+    <div id="telegram-banner" style="
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #2AABEE, #229ED9);
+    color: white;
+    padding: 12px;
+    z-index: 99999;
+    font-family: system-ui, sans-serif;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    border-top: 3px solid #FFD700;
+">
+    <div style="display: flex; flex-direction: column;">
+        <span style="font-weight: 700; font-size: 15px;">🔥 ¿Buscas las ofertas?</span>
+        <span style="font-size: 12px; opacity: 0.9;">El bot avisa de bajadas aquí:</span>
+    </div>
+
+    <a href="https://t.me/PreciosPortatilesES" target="_blank" style="
+        background-color: #FFD700;
+        color: #000;
+        text-decoration: none;
+        padding: 8px 24px;
+        border-radius: 50px;
+        font-weight: 800;
+        font-size: 14px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        text-transform: uppercase;
+    ">
+        🚀 UNIRME
+    </a>
+
+    <button onclick="document.getElementById('telegram-banner').style.display='none'" style="
+        background: none; border: none; color: white; font-size: 24px; cursor: pointer; padding: 0 10px; line-height: 1;
+    ">×</button>
+</div>
+
+<div style="height: 70px;"></div> ```
+
+
 </body>
 </html>
