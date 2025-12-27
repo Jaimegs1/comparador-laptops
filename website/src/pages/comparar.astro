@@ -2,11 +2,21 @@
 import laptops from '../data/laptops.json';
 ---
 
-<html lang="es">
+<html lang="es-ES">
 <head>
     <meta charset="utf-8" />
+    <meta name="geo.region" content="ES" />
     <meta name="viewport" content="width=device-width" />
-    <title>VS Comparator - LaptopComparator</title>
+    <title>Comparador Cara a Cara - LaptopComparator</title>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DHN4XB4R6G"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DHN4XB4R6G');
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -39,8 +49,6 @@ import laptops from '../data/laptops.json';
         .back-btn { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 0.9rem; }
         .back-btn:hover { color: white; }
         
-        .lang-switch { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.75rem; cursor: pointer; margin-left: 10px; }
-
         .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; text-align: center; }
 
         h1 { font-size: 2.5rem; margin-bottom: 40px; background: linear-gradient(to right, #fff, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -59,7 +67,6 @@ import laptops from '../data/laptops.json';
         .winner { color: var(--win-color); font-weight: 700; text-shadow: 0 0 10px rgba(74, 222, 128, 0.3); }
         .loser { color: var(--text-muted); opacity: 0.6; text-decoration: line-through; }
         
-        /* ESTILOS DE LOS BOTONES QUE AHORA SÍ SE APLICARÁN */
         .btn-amazon {
             display: inline-flex; align-items: center; justify-content: center; gap: 8px;
             padding: 14px 24px; border-radius: 12px; 
@@ -70,10 +77,9 @@ import laptops from '../data/laptops.json';
         }
         .btn-amazon:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
         
-        /* El botón "Ganador" (Barato) - Naranja vibrante */
         .btn-highlight { 
             background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
-            color: white !important; /* Importante para que no salga azul */
+            color: white !important; 
             box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
             border: none;
         }
@@ -81,7 +87,6 @@ import laptops from '../data/laptops.json';
             box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
         }
         
-        /* El botón "Perdedor" (Caro) - Elegante oscuro */
         .btn-ghost { 
             background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
             color: #e2e8f0 !important; 
@@ -99,19 +104,16 @@ import laptops from '../data/laptops.json';
 
     <nav class="navbar">
         <a href="/" class="logo">⚡ LaptopComparator</a>
-        <div>
-            <a href="/" class="back-btn" data-i18n="back_btn">← Volver al inicio</a>
-            <button id="lang-toggle" class="lang-switch">🇪🇸 ES</button>
-        </div>
+        <a href="/" class="back-btn">← Volver al inicio</a>
     </nav>
 
     <div class="container">
-        <h1 data-i18n="title">Cara a Cara</h1>
-        <p style="color: #94a3b8; margin-bottom: 30px;" data-i18n="subtitle">Selecciona dos modelos para ver sus diferencias técnicas.</p>
+        <h1>Cara a Cara</h1>
+        <p style="color: #94a3b8; margin-bottom: 30px;">Selecciona dos modelos para ver sus diferencias técnicas y quién gana.</p>
 
         <div class="vs-controls">
             <select id="select1">
-                <option value="" disabled selected data-i18n="select_a">Elige el Portátil A</option>
+                <option value="" disabled selected>Elige el Portátil A</option>
                 {laptops.map((laptop, index) => (
                     <option value={index}>{laptop.name}</option>
                 ))}
@@ -120,37 +122,37 @@ import laptops from '../data/laptops.json';
             <div class="vs-badge">VS</div>
 
             <select id="select2">
-                <option value="" disabled selected data-i18n="select_b">Elige el Portátil B</option>
+                <option value="" disabled selected>Elige el Portátil B</option>
                 {laptops.map((laptop, index) => (
                     <option value={index}>{laptop.name}</option>
                 ))}
             </select>
         </div>
 
-        <button class="btn-compare" id="compareBtn" data-i18n="btn_compare">Comparar Ahora 🔥</button>
+        <button class="btn-compare" id="compareBtn">Comparar Ahora 🔥</button>
 
         <table class="comparison-table" id="resultsTable">
             <thead>
                 <tr>
                     <th id="name1">Modelo A</th>
-                    <th data-i18n="col_spec">Especificación</th>
+                    <th>Especificación</th>
                     <th id="name2">Modelo B</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td class="col-laptop"><img id="img1" src="" class="laptop-img"></td>
-                    <td class="col-label" data-i18n="row_design">DISEÑO</td>
+                    <td class="col-label">DISEÑO</td>
                     <td class="col-laptop"><img id="img2" src="" class="laptop-img"></td>
                 </tr>
                 <tr>
                     <td class="col-laptop data-point" id="price1"></td>
-                    <td class="col-label" data-i18n="row_price">PRECIO</td>
+                    <td class="col-label">PRECIO</td>
                     <td class="col-laptop data-point" id="price2"></td>
                 </tr>
                 <tr>
                     <td class="col-laptop data-point" id="cpu1"></td>
-                    <td class="col-label" data-i18n="row_cpu">CPU</td>
+                    <td class="col-label">CPU</td>
                     <td class="col-laptop data-point" id="cpu2"></td>
                 </tr>
                 <tr>
@@ -160,12 +162,12 @@ import laptops from '../data/laptops.json';
                 </tr>
                 <tr>
                     <td class="col-laptop data-point" id="storage1"></td>
-                    <td class="col-label" data-i18n="row_disk">DISCO</td>
+                    <td class="col-label">DISCO</td>
                     <td class="col-laptop data-point" id="storage2"></td>
                 </tr>
                 <tr>
                     <td class="col-laptop data-point" id="weight1"></td>
-                    <td class="col-label" data-i18n="row_weight">PESO</td>
+                    <td class="col-label">PESO</td>
                     <td class="col-laptop data-point" id="weight2"></td>
                 </tr>
                 <tr>
@@ -182,59 +184,6 @@ import laptops from '../data/laptops.json';
         const table = document.getElementById('resultsTable');
         const select1 = document.getElementById('select1');
         const select2 = document.getElementById('select2');
-        const langToggle = document.getElementById('lang-toggle');
-
-        const translations = {
-            es: {
-                back_btn: "← Volver al inicio",
-                title: "Cara a Cara",
-                subtitle: "Selecciona dos modelos para ver sus diferencias técnicas.",
-                select_a: "Elige el Portátil A",
-                select_b: "Elige el Portátil B",
-                btn_compare: "Comparar Ahora 🔥",
-                col_spec: "Especificación",
-                row_design: "DISEÑO",
-                row_price: "PRECIO",
-                row_disk: "DISCO",
-                row_weight: "PESO",
-                row_cpu: "PROCESADOR",
-                buy_btn: "Ver Precio"
-            },
-            en: {
-                back_btn: "← Back to Home",
-                title: "Head to Head",
-                subtitle: "Select two models to check technical differences.",
-                select_a: "Choose Laptop A",
-                select_b: "Choose Laptop B",
-                btn_compare: "Compare Now 🔥",
-                col_spec: "Specification",
-                row_design: "DESIGN",
-                row_price: "PRICE",
-                row_disk: "STORAGE",
-                row_weight: "WEIGHT",
-                row_cpu: "PROCESSOR",
-                buy_btn: "Check Price"
-            }
-        };
-
-        const userLang = navigator.language || navigator.userLanguage; 
-        let currentLang = userLang.startsWith('es') ? 'es' : 'en';
-
-        function setLanguage(lang) {
-            currentLang = lang;
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if(translations[lang][key]) el.innerText = translations[lang][key];
-            });
-            langToggle.innerText = lang === 'es' ? '🇺🇸 EN' : '🇪🇸 ES';
-            if(table.style.display === "table") runComparison(); 
-        }
-
-        setLanguage(currentLang);
-
-        langToggle.addEventListener('click', () => {
-            setLanguage(currentLang === 'es' ? 'en' : 'es');
-        });
 
         const parseNum = (str) => {
             if(!str) return 0;
@@ -259,14 +208,8 @@ import laptops from '../data/laptops.json';
             // 1. PRECIO
             let p1 = parseFloat(lap1.price_eur);
             let p2 = parseFloat(lap2.price_eur);
-            let currency = "€";
-            
-            if (currentLang === 'en') {
-                p1 = Math.round(p1 * 1.08);
-                p2 = Math.round(p2 * 1.08);
-                currency = "$";
-            }
-            renderRow('price', p1, p2, currency + p1, currency + p2, true);
+            // Mostrar siempre EURO
+            renderRow('price', p1, p2, p1 + " €", p2 + " €", true);
 
             // 2. CPU
             const cpuScore1 = lap1.cpu_score || 0;
@@ -291,29 +234,27 @@ import laptops from '../data/laptops.json';
             const w2 = parseNum(lap2.specs.weight);
             renderRow('weight', w1, w2, lap1.specs.weight, lap2.specs.weight, true);
 
-            // 6. BOTONES DE COMPRA (MAGIA AQUÍ) ✨
+            // 6. BOTONES DE COMPRA
             const tag = "comparadorjai-21";
             const link1 = `https://www.amazon.es/s?k=${lap1.name.replace(/ /g, '+')}&tag=${tag}`;
             const link2 = `https://www.amazon.es/s?k=${lap2.name.replace(/ /g, '+')}&tag=${tag}`;
 
-            // Determinar cuál es el "Smart Choice" (El barato)
-            // Si el precio de 1 es menor, es el destacado.
+            // Determinar cuál es el más barato
             const is1Cheaper = p1 <= p2;
             
             const btnClass1 = is1Cheaper ? 'btn-highlight' : 'btn-ghost';
             const btnClass2 = !is1Cheaper ? 'btn-highlight' : 'btn-ghost';
-            const btnText = translations[currentLang].buy_btn;
-
+            
             document.getElementById('buy1-container').innerHTML = 
-                `<a href="${link1}" target="_blank" class="btn-amazon ${btnClass1}">${btnText} ➚</a>`;
+                `<a href="${link1}" target="_blank" class="btn-amazon ${btnClass1}">Ver Precio ➚</a>`;
             
             document.getElementById('buy2-container').innerHTML = 
-                `<a href="${link2}" target="_blank" class="btn-amazon ${btnClass2}">${btnText} ➚</a>`;
+                `<a href="${link2}" target="_blank" class="btn-amazon ${btnClass2}">Ver Precio ➚</a>`;
         }
 
         btn.addEventListener('click', () => {
              if (select1.value === "" || select2.value === "") {
-                alert(currentLang === 'es' ? "Selecciona dos modelos" : "Select two models");
+                alert("Por favor, selecciona dos modelos para comparar.");
                 return;
             }
             runComparison();
