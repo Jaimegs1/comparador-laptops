@@ -60,11 +60,29 @@ function getScore(price) {
         h1 { font-size: 5rem; font-weight: 800; margin: 0; line-height: 1; letter-spacing: -2px; color: #ffffff; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         p.subtitle { color: #e2e8f0; font-size: 1.3rem; max-width: 600px; margin: 30px auto 45px; line-height: 1.6; }
         
-        .cta-container { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
-        .btn-primary { background: white; color: #1e1b4b; padding: 16px 40px; border-radius: 100px; font-weight: 800; border: none; cursor: pointer; transition: transform 0.2s; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-        .btn-primary:hover { transform: scale(1.05); }
-        .btn-ghost { background: rgba(255,255,255,0.1); color: #4ade80; padding: 16px 40px; border-radius: 100px; font-weight: 700; border: 1px solid rgba(74, 222, 128, 0.3); cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.2s; }
-        .btn-ghost:hover { background: rgba(74, 222, 128, 0.1); transform: scale(1.05); }
+        .cta-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; align-items: center; }
+        
+        /* BOTÓN TELEGRAM GIGANTE */
+        .btn-telegram-hero { 
+            background: linear-gradient(135deg, #2AABEE 0%, #229ED9 100%);
+            color: white; 
+            padding: 18px 45px; 
+            border-radius: 100px; 
+            font-weight: 800; 
+            font-size: 1.1rem;
+            text-decoration: none;
+            border: none; 
+            cursor: pointer; 
+            transition: transform 0.2s, box-shadow 0.2s; 
+            box-shadow: 0 10px 30px rgba(42, 171, 238, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-telegram-hero:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 15px 40px rgba(42, 171, 238, 0.6); }
+
+        .btn-ghost { background: rgba(255,255,255,0.05); color: #cbd5e1; padding: 16px 30px; border-radius: 100px; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.1); cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+        .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); color: white; transform: scale(1.02); }
 
         /* MAIN */
         .main-container { max-width: 1400px; margin: 0 auto; padding: 60px 20px 100px; display: flex; gap: 50px; }
@@ -102,25 +120,7 @@ function getScore(price) {
             <span class="nav-btn" id="nav-top">Top Ventas</span>
             <span class="nav-btn" id="nav-gaming">Gaming</span>
             <span class="nav-btn" id="nav-student">Estudiantes</span>
-            
-            <a href="https://t.me/PreciosPortatilesES" target="_blank" style="
-                background-color: #2AABEE; 
-                color: white; 
-                padding: 6px 14px; 
-                border-radius: 50px; 
-                text-decoration: none; 
-                font-weight: 700; 
-                font-size: 0.85rem;
-                display: flex; 
-                align-items: center; 
-                gap: 5px;
-                box-shadow: 0 4px 10px rgba(42, 171, 238, 0.3);
-                transition: transform 0.2s;
-                margin-left: 10px;
-            " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                ✈️ Ofertas
-            </a>
-            </div>
+        </div>
     </nav>
 
     <section class="hero">
@@ -129,12 +129,13 @@ function getScore(price) {
         <p class="subtitle">La herramienta definitiva para ingenieros y estudiantes. Filtra el marketing, encuentra la potencia real y ahorra dinero.</p>
         
         <div class="cta-container">
-            <button class="btn-primary" onclick="document.getElementById('laptops-grid').scrollIntoView({behavior: 'smooth'})">
-                Ver Catálogo 👇
-            </button>
-            <a href="/comparar" class="btn-ghost">
-                ⚖️ Comparar Modelos
+            <a href="https://t.me/PreciosPortatilesES" target="_blank" class="btn-telegram-hero">
+                ✈️ Únete al Canal de Ofertas
             </a>
+            
+            <button class="btn-ghost" onclick="document.getElementById('laptops-grid').scrollIntoView({behavior: 'smooth'})">
+                Ver Catálogo Web 👇
+            </button>
         </div>
     </section>
 
