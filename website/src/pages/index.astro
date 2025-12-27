@@ -62,27 +62,40 @@ function getScore(price) {
         
         .cta-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; align-items: center; }
         
-        /* BOTÓN TELEGRAM GIGANTE */
+        /* BOTÓN TELEGRAM HERO */
         .btn-telegram-hero { 
             background: linear-gradient(135deg, #2AABEE 0%, #229ED9 100%);
             color: white; 
-            padding: 18px 45px; 
+            padding: 16px 35px; 
             border-radius: 100px; 
             font-weight: 800; 
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-decoration: none;
             border: none; 
             cursor: pointer; 
             transition: transform 0.2s, box-shadow 0.2s; 
-            box-shadow: 0 10px 30px rgba(42, 171, 238, 0.4);
+            box-shadow: 0 10px 30px rgba(42, 171, 238, 0.3);
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        .btn-telegram-hero:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 15px 40px rgba(42, 171, 238, 0.6); }
+        .btn-telegram-hero:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 15px 40px rgba(42, 171, 238, 0.5); }
 
-        .btn-ghost { background: rgba(255,255,255,0.05); color: #cbd5e1; padding: 16px 30px; border-radius: 100px; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.1); cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.2s; }
-        .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); color: white; transform: scale(1.02); }
+        /* BOTÓN COMPARAR HERO (Blanco Sólido) */
+        .btn-compare-hero {
+            background: white;
+            color: #0f172a;
+            padding: 16px 35px; 
+            border-radius: 100px; 
+            font-weight: 800; 
+            font-size: 1rem;
+            text-decoration: none;
+            border: none; 
+            cursor: pointer; 
+            transition: transform 0.2s, box-shadow 0.2s; 
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        }
+        .btn-compare-hero:hover { transform: scale(1.05) translateY(-3px); background-color: #f8fafc; }
 
         /* MAIN */
         .main-container { max-width: 1400px; margin: 0 auto; padding: 60px 20px 100px; display: flex; gap: 50px; }
@@ -120,6 +133,24 @@ function getScore(price) {
             <span class="nav-btn" id="nav-top">Top Ventas</span>
             <span class="nav-btn" id="nav-gaming">Gaming</span>
             <span class="nav-btn" id="nav-student">Estudiantes</span>
+            
+            <a href="https://t.me/PreciosPortatilesES" target="_blank" style="
+                background-color: #2AABEE; 
+                color: white; 
+                padding: 6px 14px; 
+                border-radius: 50px; 
+                text-decoration: none; 
+                font-weight: 700; 
+                font-size: 0.85rem;
+                display: flex; 
+                align-items: center; 
+                gap: 5px;
+                box-shadow: 0 4px 10px rgba(42, 171, 238, 0.3);
+                transition: transform 0.2s;
+                margin-left: 10px;
+            " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                ✈️ Ofertas
+            </a>
         </div>
     </nav>
 
@@ -133,9 +164,9 @@ function getScore(price) {
                 ✈️ Únete al Canal de Ofertas
             </a>
             
-            <button class="btn-ghost" onclick="document.getElementById('laptops-grid').scrollIntoView({behavior: 'smooth'})">
-                Ver Catálogo Web 👇
-            </button>
+            <a href="/comparar" class="btn-compare-hero">
+                ⚖️ Ir al Comparador VS
+            </a>
         </div>
     </section>
 
