@@ -11,7 +11,8 @@
             "weight": "1.29 kg"
         },
         "category": ["student", "top"],
-        "slug": "macbook-air-m1"
+        "slug": "macbook-air-m1",
+        "verdict": "La compra más inteligente para estudiantes. La batería dura días y la pantalla es brutal. No sirve para juegos exigentes, pero para todo lo demás es invencible."
     },
     {
         "name": "HP Victus 15 Gaming",
@@ -25,7 +26,8 @@
             "weight": "2.29 kg"
         },
         "category": ["gaming"],
-        "slug": "hp-victus-15"
+        "slug": "hp-victus-15",
+        "verdict": "El rey del gaming barato. Se siente un poco 'de plástico', pero por este precio es imposible encontrar algo que mueva mejor el Fortnite o el Valorant."
     },
     {
         "name": "Lenovo Legion 5 Gen 6",
@@ -39,7 +41,8 @@
             "weight": "2.40 kg"
         },
         "category": ["gaming", "top"],
-        "slug": "lenovo-legion-5"
+        "slug": "lenovo-legion-5",
+        "verdict": "Una bestia todoterreno. Tiene una refrigeración excelente (no se calienta tanto como otros). Perfecto si eres ingeniero y gamer a la vez. Eso sí, el cargador pesa un ladrillo."
     },
     {
         "name": "ASUS TUF Gaming F15",
@@ -53,7 +56,8 @@
             "weight": "2.30 kg"
         },
         "category": ["gaming"],
-        "slug": "asus-tuf-f15"
+        "slug": "asus-tuf-f15",
+        "verdict": "Robusto como un tanque. Si eres un poco torpe y lo vas a llevar en la mochila a diario, este aguanta golpes. Potencia de sobra para 1080p."
     },
     {
         "name": "Acer Nitro 5",
@@ -67,7 +71,8 @@
             "weight": "2.20 kg"
         },
         "category": ["gaming"],
-        "slug": "acer-nitro-5"
+        "slug": "acer-nitro-5",
+        "verdict": "La alternativa clásica al Victus. Estética muy 'gamer' (rojo y negro). Ojo: los ventiladores hacen bastante ruido cuando juegas a tope."
     },
     {
         "name": "MacBook Air M2",
@@ -81,7 +86,8 @@
             "weight": "1.24 kg"
         },
         "category": ["student", "top"],
-        "slug": "macbook-air-m2"
+        "slug": "macbook-air-m2",
+        "verdict": "Más bonito y ligero que el M1, con pantalla un poco mejor. ¿Vale la pena pagar el extra? Solo si te sobra el dinero o te encanta el diseño nuevo."
     },
     {
         "name": "ASUS ZenBook 14",
@@ -95,7 +101,8 @@
             "weight": "1.39 kg"
         },
         "category": ["student"],
-        "slug": "asus-zenbook-14"
+        "slug": "asus-zenbook-14",
+        "verdict": "La pantalla OLED es una locura para ver series. Muy elegante para llevar a la oficina o universidad sin parecer un gamer. Batería decente."
     },
     {
         "name": "Steam Deck OLED (1TB)",
@@ -109,7 +116,8 @@
             "weight": "0.64 kg"
         },
         "category": ["gaming", "top"],
-        "slug": "steam-deck-oled-1tb"
+        "slug": "steam-deck-oled-1tb",
+        "verdict": "No es un portátil, es una consola. Si solo quieres jugar y no necesitas escribir trabajos, esto es mejor que cualquier portátil de 600€. La pantalla OLED se ve increíble."
     },
     {
         "name": "Steam Deck LCD (256GB)",
@@ -123,7 +131,8 @@
             "weight": "0.66 kg"
         },
         "category": ["gaming"],
-        "slug": "steam-deck-lcd-256gb"
+        "slug": "steam-deck-lcd-256gb",
+        "verdict": "La entrada más barata al PC Gaming. Por 400€ no existe nada que mueva juegos así. Ideal si tienes poco presupuesto y ya tienes un PC para estudiar."
     },
     {
         "name": "MSI Katana GF66",
@@ -137,7 +146,8 @@
             "weight": "2.25 kg"
         },
         "category": ["gaming"],
-        "slug": "msi-katana"
+        "slug": "msi-katana",
+        "verdict": "Puro músculo. MSI prioriza el rendimiento sobre la batería (que dura poco). Si lo vas a tener enchufado casi siempre jugando, es buena compra."
     },
     {
         "name": "LG Gram 17",
@@ -151,7 +161,8 @@
             "weight": "1.35 kg"
         },
         "category": ["top", "student"],
-        "slug": "lg-gram-17"
+        "slug": "lg-gram-17",
+        "verdict": "Parece brujería lo poco que pesa para ser de 17 pulgadas. Si viajas mucho y necesitas pantalla grande para Excel o programación, este es tu portátil."
     },
     {
         "name": "ASUS ROG Strix",
@@ -165,7 +176,8 @@
             "weight": "2.50 kg"
         },
         "category": ["gaming", "top"],
-        "slug": "asus-rog-strix"
+        "slug": "asus-rog-strix",
+        "verdict": "Gama alta sin concesiones. Tira cualquier juego moderno en Ultra. Tiene muchas luces RGB (te tiene que gustar eso). Es caro, pero es una inversión a 5 años."
     },
     {
         "name": "Dell XPS 13",
@@ -179,7 +191,8 @@
             "weight": "1.20 kg"
         },
         "category": ["top", "student"],
-        "slug": "dell-xps-13"
+        "slug": "dell-xps-13",
+        "verdict": "El Windows que quiere ser un MacBook. Calidad de construcción premium, pantalla sin bordes preciosa. Ideal para ejecutivos o estudiantes que quieren lo mejor."
     },
     {
         "name": "Microsoft Surface Pro 9",
@@ -193,7 +206,8 @@
             "weight": "0.87 kg"
         },
         "category": ["student"],
-        "slug": "surface-pro-9"
+        "slug": "surface-pro-9",
+        "verdict": "Mitad tablet, mitad portátil. Si tomas apuntes con lápiz digital en la carrera, esto es lo mejor que puedes comprar. El teclado se suele vender aparte, ojo."
     },
     {
         "name": "HP Pavilion x360",
@@ -207,7 +221,8 @@
             "weight": "1.61 kg"
         },
         "category": ["student"],
-        "slug": "hp-x360"
+        "slug": "hp-x360",
+        "verdict": "Pantalla táctil que se gira. Muy versátil para ver pelis en la cama o enseñar presentaciones. Rendimiento correcto para ofimática y universidad."
     },
     {
         "name": "Lenovo IdeaPad 1",
@@ -221,7 +236,8 @@
             "weight": "1.54 kg"
         },
         "category": ["student"],
-        "slug": "lenovo-ideapad-1"
+        "slug": "lenovo-ideapad-1",
+        "verdict": "Básico, básico. Sirve para escribir en Word, navegar y poco más. Si le pides mucho irá lento. Solo cómpralo si tu presupuesto es muy ajustado."
     },
     {
         "name": "Acer Chromebook 314",
@@ -235,6 +251,7 @@
             "weight": "1.50 kg"
         },
         "category": ["student"],
-        "slug": "acer-chromebook"
+        "slug": "acer-chromebook",
+        "verdict": "¡OJO! No tiene Windows, tiene ChromeOS (como un móvil). Perfecto para niños o institutos donde todo se hace en Google Docs. La batería dura mucho."
     }
 ]

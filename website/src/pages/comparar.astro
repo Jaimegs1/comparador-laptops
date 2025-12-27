@@ -221,8 +221,17 @@ import laptops from '../data/laptops.json';
             const lap2 = laptops[idx2];
             table.style.display = "table";
             
-            document.getElementById('img1').src = lap1.brand_img;
-            document.getElementById('img2').src = lap2.brand_img;
+            // IMÁGENES & SEO DINÁMICO
+            const img1 = document.getElementById('img1');
+            const img2 = document.getElementById('img2');
+            
+            img1.src = lap1.brand_img;
+            img2.src = lap2.brand_img;
+            
+            // Inyectamos keywords para que Google lea qué se está comparando
+            img1.alt = `Comparativa: ${lap1.name} vs ${lap2.name} - Vista ${lap1.name}`;
+            img2.alt = `Comparativa: ${lap1.name} vs ${lap2.name} - Vista ${lap2.name}`;
+
             document.getElementById('name1').innerText = lap1.name;
             document.getElementById('name2').innerText = lap2.name;
 

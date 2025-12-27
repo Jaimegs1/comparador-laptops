@@ -10,37 +10,33 @@ export function getStaticPaths() {
 
 const { laptop } = Astro.props;
 
-// TU ETIQUETA DE AFILIADO
+// ETIQUETA DE AFILIADO
 const affiliateTag = "comparadorjai-21"; 
 const amazonSearchLink = `https://www.amazon.es/s?k=${laptop.name.replace(/ /g, '+')}&tag=${affiliateTag}`;
 
-// CÁLCULO DE ESTRELLAS
+// SEO DE IMÁGENES: Keyword Stuffing ético
+const imageAlt = `Portátil ${laptop.name} - Análisis de precio y características para ${laptop.category.join(' y ')}`;
+
+// CÁLCULO DE ESTRELLAS Y SCHEMA
 let ratingValue = "4.5";
 if (laptop.price_eur > 1200) ratingValue = "5.0";
 else if (laptop.price_eur > 900) ratingValue = "4.8";
 else if (laptop.price_eur > 700) ratingValue = "4.7";
 
-// JSON-LD (Schema.org) FORZADO A EUR
 const schemaData = {
   "@context": "https://schema.org/",
   "@type": "Product",
   "name": laptop.name,
   "image": laptop.brand_img,
-  "description": `Análisis completo del ${laptop.name}. Procesador ${laptop.specs.cpu}, ${laptop.specs.ram} de RAM y ${laptop.specs.storage}. Precio en España.`,
-  "brand": {
-    "@type": "Brand",
-    "name": laptop.name.split(' ')[0]
-  },
+  "description": laptop.verdict || `Análisis del ${laptop.name}.`,
+  "brand": { "@type": "Brand", "name": laptop.name.split(' ')[0] },
   "offers": {
     "@type": "Offer",
     "url": amazonSearchLink,
     "priceCurrency": "EUR",
     "price": laptop.price_eur,
     "availability": "https://schema.org/InStock",
-    "seller": {
-      "@type": "Organization",
-      "name": "Amazon"
-    }
+    "seller": { "@type": "Organization", "name": "Amazon" }
   },
   "aggregateRating": {
     "@type": "AggregateRating",
@@ -56,6 +52,11 @@ const schemaData = {
 <head>
     <meta charset="utf-8" />
     <meta name="geo.region" content="ES" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{laptop.name}: Opinión Honesta y Precio 2025</title>
+    <meta name="description" content={`${laptop.verdict} Comparamos el ${laptop.name} contra sus rivales.`} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DHN4XB4R6G"></script>
     <script>
@@ -65,13 +66,6 @@ const schemaData = {
       gtag('config', 'G-DHN4XB4R6G');
     </script>
 
-    <meta name="viewport" content="width=device-width" />
-    
-    <title>{laptop.name}: Precio y Características España 2025</title>
-    <meta name="description" content={`Análisis del ${laptop.name} en España. Comparamos su procesador ${laptop.specs.cpu}. Descubre si es la mejor opción calidad-precio hoy.`} />
-
-    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -79,7 +73,6 @@ const schemaData = {
     <style>
         :root {
             --bg-body: #0f172a;
-            --card-bg: rgba(30, 41, 59, 0.7);
             --accent: #818cf8;
             --text-main: #ffffff;
             --text-muted: #94a3b8;
@@ -87,25 +80,18 @@ const schemaData = {
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
+            background-color: var(--bg-body); color: var(--text-main);
             margin: 0; padding: 0; min-height: 100vh;
             background: radial-gradient(at 0% 0%, #4c1d95 0px, transparent 50%), 
                         radial-gradient(at 100% 0%, #3b82f6 0px, transparent 50%), #1e1b4b;
         }
 
-        .navbar {
-            padding: 20px 40px; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 20px;
-        }
+        .navbar { padding: 20px 40px; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 20px; }
         .logo { font-weight: 800; font-size: 1.2rem; text-decoration: none; color: white; }
         .back-link { text-decoration: none; color: var(--text-muted); font-weight: 600; display: flex; align-items: center; gap: 5px; transition: color 0.2s;}
         .back-link:hover { color: white; }
 
-        .container {
-            max-width: 900px; margin: 40px auto; padding: 0 20px;
-            display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start;
-        }
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
 
         .image-box {
             background: rgba(255,255,255,0.05); padding: 40px; border-radius: 24px;
@@ -115,20 +101,28 @@ const schemaData = {
         .product-img { width: 100%; max-height: 300px; object-fit: contain; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5)); }
 
         .info-box h1 { font-size: 2.5rem; margin: 0 0 20px 0; line-height: 1.1; }
-        .price-tag { font-size: 2rem; font-weight: 800; color: #4ade80; margin-bottom: 30px; display: block; }
+        .price-tag { font-size: 2rem; font-weight: 800; color: #4ade80; margin-bottom: 20px; display: block; }
         
-        .specs-list { list-style: none; padding: 0; margin-bottom: 40px; }
-        .specs-list li {
-            padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
-            display: flex; justify-content: space-between; color: var(--text-muted);
+        /* ESTILO NUEVO: LA CAJA DE VEREDICTO */
+        .verdict-box {
+            background: rgba(129, 140, 248, 0.1);
+            border-left: 4px solid #818cf8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
         }
+        .verdict-title { font-weight: 800; color: #818cf8; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 5px; display: block;}
+        .verdict-text { font-size: 1rem; line-height: 1.5; color: #e0e7ff; margin: 0; font-style: italic;}
+
+        .specs-list { list-style: none; padding: 0; margin-bottom: 40px; }
+        .specs-list li { padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; color: var(--text-muted); }
         .specs-list li strong { color: white; }
 
         .btn-amazon {
             background: #f59e0b; color: #1e1b4b; text-decoration: none;
             padding: 15px 30px; border-radius: 100px; font-weight: 800; display: inline-flex;
             align-items: center; gap: 10px; transition: transform 0.2s; width: 100%; justify-content: center;
-            box-sizing: border-box;
+            box-sizing: border-box; box-shadow: 0 10px 20px rgba(245, 158, 11, 0.2);
         }
         .btn-amazon:hover { transform: translateY(-3px); background: #fbbf24; }
 
@@ -143,7 +137,7 @@ const schemaData = {
 
     <main class="container">
         <div class="image-box">
-            <img src={laptop.brand_img} alt={laptop.name} class="product-img" />
+            <img src={laptop.brand_img} alt={imageAlt} title={imageAlt} class="product-img" />
         </div>
 
         <div class="info-box">
@@ -153,6 +147,13 @@ const schemaData = {
                 {laptop.price_eur} €
             </span>
 
+            {laptop.verdict && (
+                <div class="verdict-box">
+                    <span class="verdict-title">💡 Veredicto Rápido</span>
+                    <p class="verdict-text">"{laptop.verdict}"</p>
+                </div>
+            )}
+
             <ul class="specs-list">
                 <li><span>Procesador</span> <strong>{laptop.specs.cpu}</strong></li>
                 <li>RAM <strong>{laptop.specs.ram}</strong></li>
@@ -161,7 +162,7 @@ const schemaData = {
             </ul>
 
             <a href={amazonSearchLink} target="_blank" rel="noopener noreferrer" class="btn-amazon">
-                🛒 Ver precio en Amazon
+                🛒 Ver precio y opiniones en Amazon
             </a>
         </div>
     </main>
