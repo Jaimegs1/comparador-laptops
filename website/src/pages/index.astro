@@ -37,13 +37,15 @@ function getScore(price) {
     <style>
         :root {
             --bg-body: #0f172a;
+            --bg-footer: #020617; /* Color más oscuro para el footer */
             --card-bg: rgba(255, 255, 255, 0.05);
             --card-border: rgba(255, 255, 255, 0.1);
             --text-main: #ffffff;
             --text-muted: #cbd5e1;
+            --text-legal: #64748b;
             --accent: #818cf8; 
         }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; display: flex; flex-direction: column; }
         
         /* NAVBAR */
         .navbar { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1100px; display: flex; justify-content: space-between; align-items: center; padding: 12px 30px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 100px; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
@@ -98,7 +100,7 @@ function getScore(price) {
         .btn-compare-hero:hover { transform: scale(1.05) translateY(-3px); background-color: #f8fafc; }
 
         /* MAIN */
-        .main-container { max-width: 1400px; margin: 0 auto; padding: 60px 20px 100px; display: flex; gap: 50px; }
+        .main-container { max-width: 1400px; margin: 0 auto; padding: 60px 20px 100px; display: flex; gap: 50px; flex: 1; }
         .sidebar { width: 260px; display: none; }
         @media (min-width: 1000px) { .sidebar { display: block; } }
         .filter-box { margin-bottom: 40px; }
@@ -122,7 +124,48 @@ function getScore(price) {
         .btn-card { background: white; color: #0f172a; padding: 12px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: background 0.2s; }
         .btn-card:hover { background: #e2e8f0; }
 
-        @media (max-width: 768px) { h1 { font-size: 3rem; } .navbar { width: 85%; } .nav-links { display: none; } }
+        /* FOOTER */
+        .site-footer {
+            background-color: var(--bg-footer);
+            border-top: 1px solid var(--card-border);
+            padding: 60px 20px 40px;
+            margin-top: auto;
+        }
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+            text-align: center;
+        }
+        .footer-brand h3 { margin: 0; font-size: 1.2rem; color: white; }
+        .footer-brand p { font-size: 0.9rem; color: var(--text-muted); margin-top: 5px; }
+        .footer-links { display: flex; gap: 20px; font-size: 0.9rem; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; transition: 0.2s; }
+        .footer-links a:hover { color: white; }
+
+        .amazon-legal-box {
+            max-width: 800px;
+            margin: 40px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+        .legal-text {
+            font-size: 0.75rem;
+            color: var(--text-legal);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        @media (min-width: 768px) { 
+            h1 { font-size: 3rem; } 
+            .navbar { width: 85%; } 
+            .nav-links { display: none; } 
+            .footer-content { flex-direction: row; justify-content: space-between; text-align: left; }
+        }
     </style>
 </head>
 <body>
@@ -212,6 +255,28 @@ function getScore(price) {
         </main>
     </div>
 
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>LaptopComparator</h3>
+                <p>&copy; {new Date().getFullYear()} - Calidad/Precio Garantizada.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Aviso Legal</a>
+                <a href="#">Privacidad</a>
+                <a href="#">Contacto</a>
+            </div>
+        </div>
+
+        <div class="amazon-legal-box">
+            <p class="legal-text">
+                Esta web participa en el Programa de Afiliados de Amazon EU, un programa de publicidad para afiliados diseñado para ofrecer a sitios web un modo de obtener comisiones por publicidad, publicitando e incluyendo enlaces a Amazon.es.
+                <br />
+                En calidad de Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.
+                Amazon y el logotipo de Amazon son marcas comerciales de Amazon.com, Inc. o de sociedades de su grupo.
+            </p>
+        </div>
+    </footer>
     <script>
         const grid = document.getElementById('laptops-grid');
         const cards = Array.from(document.querySelectorAll('.card'));
