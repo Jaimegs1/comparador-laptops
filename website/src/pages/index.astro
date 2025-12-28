@@ -45,13 +45,15 @@ function getScore(price) {
             --text-legal: #64748b;
             --accent: #818cf8; 
         }
-        /* FIX: Width 100% para evitar que se colapse la rejilla */
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; display: flex; flex-direction: column; width: 100%; }
         
         /* NAVBAR */
         .navbar { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1100px; display: flex; justify-content: space-between; align-items: center; padding: 12px 30px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 100px; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .logo { font-size: 1.1rem; font-weight: 800; color: white; cursor: pointer; text-decoration: none; }
+        
+        /* AQUÍ ESTÁN TUS SECTORES: */
         .nav-links { display: flex; gap: 25px; font-size: 0.85rem; font-weight: 600; color: #e2e8f0; align-items: center; }
+        
         .nav-btn { cursor: pointer; transition: color 0.3s; }
         .nav-btn:hover { color: white; }
         .nav-vs-link { color: #4ade80; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: transform 0.2s; }
@@ -81,7 +83,7 @@ function getScore(price) {
         }
         .btn-compare-hero:hover { transform: scale(1.05) translateY(-3px); background-color: #f8fafc; }
 
-        /* MAIN CONTAINER (Ancho 100% para arreglar grid) */
+        /* MAIN CONTAINER */
         .main-container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 60px 20px 100px; display: flex; gap: 50px; flex: 1; box-sizing: border-box; }
         
         .sidebar { width: 260px; display: none; flex-shrink: 0; }
@@ -92,8 +94,8 @@ function getScore(price) {
         .filter-item { display: block; color: var(--text-muted); margin-bottom: 14px; cursor: pointer; transition: 0.2s; }
         .filter-item:hover { color: white; transform: translateX(5px); }
 
-        /* GRID ARREGLADO: minmax bajado a 280px para asegurar 3 columnas */
-        .grid { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; width: 100%; }
+        /* GRID MEJORADO: minmax a 250px para asegurar 3 filas */
+        .grid { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; width: 100%; }
 
         /* CARD */
         .card { background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.4) 100%); border: 1px solid var(--card-border); border-radius: 24px; padding: 30px; position: relative; display: flex; flex-direction: column; transition: 0.3s; }
@@ -116,7 +118,7 @@ function getScore(price) {
             border-top: 1px solid var(--card-border);
             padding: 60px 20px 40px;
             margin-top: auto;
-            width: 100%; box-sizing: border-box; /* Asegura ancho completo */
+            width: 100%; box-sizing: border-box;
         }
         .footer-content {
             max-width: 1100px;
@@ -147,17 +149,23 @@ function getScore(price) {
             margin: 0;
         }
 
+        /* MEDIA QUERIES */
         @media (min-width: 768px) { 
             h1 { font-size: 3rem; } 
             .navbar { width: 85%; } 
-            .nav-links { display: none; } 
             .footer-content { flex-direction: row; justify-content: space-between; text-align: left; }
+        }
+        
+        /* Solo ocultamos los links en móviles MUY pequeños (<600px) */
+        @media (max-width: 600px) {
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <a href="/" class="logo" id="reset-home">⚡ LaptopComparator</a>
+        
         <div class="nav-links">
             <a href="/comparar" class="nav-vs-link">⚖️ Comparador VS</a>
             <span class="nav-btn" id="nav-top">Top Ventas</span>
@@ -264,6 +272,7 @@ function getScore(price) {
             </p>
         </div>
     </footer>
+
     <script>
         const grid = document.getElementById('laptops-grid');
         const cards = Array.from(document.querySelectorAll('.card'));
