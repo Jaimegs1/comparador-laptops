@@ -37,7 +37,7 @@ function getScore(price) {
     <style>
         :root {
             --bg-body: #0f172a;
-            --bg-footer: #020617; /* Color más oscuro para el footer */
+            --bg-footer: #020617; 
             --card-bg: rgba(255, 255, 255, 0.05);
             --card-border: rgba(255, 255, 255, 0.1);
             --text-main: #ffffff;
@@ -45,7 +45,8 @@ function getScore(price) {
             --text-legal: #64748b;
             --accent: #818cf8; 
         }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; display: flex; flex-direction: column; }
+        /* FIX: Width 100% para evitar que se colapse la rejilla */
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; display: flex; flex-direction: column; width: 100%; }
         
         /* NAVBAR */
         .navbar { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1100px; display: flex; justify-content: space-between; align-items: center; padding: 12px 30px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 100px; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
@@ -64,50 +65,35 @@ function getScore(price) {
         
         .cta-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; align-items: center; }
         
-        /* BOTÓN TELEGRAM HERO */
+        /* BOTONES HERO */
         .btn-telegram-hero { 
             background: linear-gradient(135deg, #2AABEE 0%, #229ED9 100%);
-            color: white; 
-            padding: 16px 35px; 
-            border-radius: 100px; 
-            font-weight: 800; 
-            font-size: 1rem;
-            text-decoration: none;
-            border: none; 
-            cursor: pointer; 
-            transition: transform 0.2s, box-shadow 0.2s; 
-            box-shadow: 0 10px 30px rgba(42, 171, 238, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            color: white; padding: 16px 35px; border-radius: 100px; font-weight: 800; font-size: 1rem;
+            text-decoration: none; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; 
+            box-shadow: 0 10px 30px rgba(42, 171, 238, 0.3); display: flex; align-items: center; gap: 10px;
         }
         .btn-telegram-hero:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 15px 40px rgba(42, 171, 238, 0.5); }
 
-        /* BOTÓN COMPARAR HERO (Blanco Sólido) */
         .btn-compare-hero {
-            background: white;
-            color: #0f172a;
-            padding: 16px 35px; 
-            border-radius: 100px; 
-            font-weight: 800; 
-            font-size: 1rem;
-            text-decoration: none;
-            border: none; 
-            cursor: pointer; 
-            transition: transform 0.2s, box-shadow 0.2s; 
+            background: white; color: #0f172a; padding: 16px 35px; border-radius: 100px; font-weight: 800; font-size: 1rem;
+            text-decoration: none; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; 
             box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
         }
         .btn-compare-hero:hover { transform: scale(1.05) translateY(-3px); background-color: #f8fafc; }
 
-        /* MAIN */
-        .main-container { max-width: 1400px; margin: 0 auto; padding: 60px 20px 100px; display: flex; gap: 50px; flex: 1; }
-        .sidebar { width: 260px; display: none; }
+        /* MAIN CONTAINER (Ancho 100% para arreglar grid) */
+        .main-container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 60px 20px 100px; display: flex; gap: 50px; flex: 1; box-sizing: border-box; }
+        
+        .sidebar { width: 260px; display: none; flex-shrink: 0; }
         @media (min-width: 1000px) { .sidebar { display: block; } }
+        
         .filter-box { margin-bottom: 40px; }
         .filter-title { font-weight: 700; margin-bottom: 20px; display: block; font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; }
         .filter-item { display: block; color: var(--text-muted); margin-bottom: 14px; cursor: pointer; transition: 0.2s; }
         .filter-item:hover { color: white; transform: translateX(5px); }
-        .grid { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+
+        /* GRID ARREGLADO: minmax bajado a 280px para asegurar 3 columnas */
+        .grid { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; width: 100%; }
 
         /* CARD */
         .card { background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.4) 100%); border: 1px solid var(--card-border); border-radius: 24px; padding: 30px; position: relative; display: flex; flex-direction: column; transition: 0.3s; }
@@ -130,6 +116,7 @@ function getScore(price) {
             border-top: 1px solid var(--card-border);
             padding: 60px 20px 40px;
             margin-top: auto;
+            width: 100%; box-sizing: border-box; /* Asegura ancho completo */
         }
         .footer-content {
             max-width: 1100px;
@@ -270,7 +257,7 @@ function getScore(price) {
 
         <div class="amazon-legal-box">
             <p class="legal-text">
-                Esta web participa en el Programa de Afiliados de Amazon EU, un programa de publicidad para afiliados diseñado para ofrecer a sitios web un modo de obtener comisiones por publicidad, publicitando e incluyendo enlaces a Amazon.es.
+                Esta web participa en el Programa de Afiliados de Amazon.es, un programa de publicidad para afiliados diseñado para ofrecer a sitios web un modo de obtener comisiones por publicidad, publicitando e incluyendo enlaces a Amazon.es.
                 <br />
                 En calidad de Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.
                 Amazon y el logotipo de Amazon son marcas comerciales de Amazon.com, Inc. o de sociedades de su grupo.
