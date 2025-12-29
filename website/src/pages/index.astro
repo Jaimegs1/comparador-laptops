@@ -236,7 +236,10 @@ function getScore(price) {
                     <img id="wiz-img" src="" style="width: 150px; margin: 0 auto; display:block;" />
                     <h4 id="wiz-name" style="margin: 10px 0; color: #818cf8;"></h4>
                     <p id="wiz-price" style="font-size: 1.5rem; font-weight: 800; color: white;"></p>
-                    <a id="wiz-link" href="#" class="btn-amazon" style="display:block; margin-top:15px; background: #3b82f6; padding: 10px; border-radius: 8px; color: white; text-decoration: none;">Ver Ficha Completa</a>
+                    
+                    <a id="wiz-link" href="#" class="btn-amazon" style="display:block; margin-top:15px; background: #3b82f6; padding: 12px; border-radius: 8px; color: white; text-decoration: none; font-weight: bold; transition: 0.3s;">
+                        🛒 Ver Oferta en Amazon
+                    </a>
                 </div>
                 
                 <button onclick="resetWizard()" style="margin-top: 20px; background: none; border: none; color: #94a3b8; cursor: pointer; text-decoration: underline;">Volver a empezar</button>
@@ -455,6 +458,9 @@ function getScore(price) {
                 // Si está vacío, coger el más barato del total
                 let winner = filtered.length > 0 ? filtered[0] : laptops[0];
 
+                // --- GENERAR ENLACE AMAZON ---
+                const amazonLink = `https://www.amazon.es/s?k=${winner.name.replace(/ /g, '+')}&tag=comparadorjai-21`;
+
                 // Mostrar Resultado
                 document.getElementById('wizard-loading').style.display = 'none';
                 document.getElementById('wizard-match').style.display = 'block';
@@ -462,7 +468,13 @@ function getScore(price) {
                 document.getElementById('wiz-img').src = winner.brand_img;
                 document.getElementById('wiz-name').innerText = winner.name;
                 document.getElementById('wiz-price').innerText = winner.price_eur + ' €';
-                document.getElementById('wiz-link').href = `/laptops/${winner.slug}`;
+                
+                // Configurar Botón
+                const wizLinkBtn = document.getElementById('wiz-link');
+                wizLinkBtn.href = amazonLink;
+                wizLinkBtn.innerText = '🛒 Ver Oferta en Amazon';
+                wizLinkBtn.target = '_blank'; 
+                wizLinkBtn.rel = 'noopener noreferrer';
 
             }, 800); // Pequeño delay para dar emoción
         }
