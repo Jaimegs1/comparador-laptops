@@ -25,7 +25,7 @@ function getScore(price) {
       gtag('config', 'G-DHN4XB4R6G');
     </script>
 
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Laptop Comparator - Encuentra tu Portátil Ideal</title>
     <meta name="description" content="Comparador de portátiles en España. Ofertas Gaming, Estudiantes y Ultrabooks. Análisis técnico sin marketing." />
     <meta name="google-site-verification" content="2V-eMT8DSm87ZaDNiAstEAIKi23tsD6-6IWgdFrmqyo" />
@@ -48,8 +48,8 @@ function getScore(price) {
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; display: flex; flex-direction: column; width: 100%; }
         
         /* NAVBAR */
-        .navbar { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1100px; display: flex; justify-content: space-between; align-items: center; padding: 12px 30px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 100px; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .logo { font-size: 1.1rem; font-weight: 800; color: white; cursor: pointer; text-decoration: none; }
+        .navbar { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1100px; display: flex; justify-content: space-between; align-items: center; padding: 12px 30px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 100px; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); box-sizing: border-box; }
+        .logo { font-size: 1.1rem; font-weight: 800; color: white; cursor: pointer; text-decoration: none; white-space: nowrap; }
         
         .nav-links { display: flex; gap: 25px; font-size: 0.85rem; font-weight: 600; color: #e2e8f0; align-items: center; }
         
@@ -193,15 +193,81 @@ function getScore(price) {
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* MEDIA QUERIES */
-        @media (min-width: 768px) { h1 { font-size: 3rem; } .navbar { width: 85%; } .footer-content { flex-direction: row; justify-content: space-between; text-align: left; } }
-        @media (max-width: 600px) {
-            .nav-links { display: none; }
-            .flash-deal-card { flex-direction: column; text-align: center; gap: 15px; padding: 25px 15px; margin-top: 10px; }
-            .flash-content { flex-direction: column; gap: 10px; }
-            .flash-price { align-items: center; }
-            .flash-text p { display: none; }
-            .wizard-fab { bottom: 20px; right: 20px; font-size: 0.9rem; padding: 12px 20px; }
+        /* ==========================================================================
+           🎨 OPTIMIZACIÓN MÓVIL (CORRECCIÓN LIMPIEZA)
+           ========================================================================== */
+        @media (min-width: 768px) { 
+            h1 { font-size: 3rem; } 
+            .navbar { width: 85%; } 
+            .footer-content { flex-direction: row; justify-content: space-between; text-align: left; } 
+        }
+
+        @media (max-width: 768px) {
+            /* Navbar más compacta */
+            .navbar {
+                width: 95%;
+                padding: 10px 15px;
+            }
+            .logo { font-size: 1rem; }
+            .nav-links { display: none; } /* Menú hamburguesa sería ideal, pero ocultamos por limpieza */
+
+            /* Hero más limpio */
+            .hero {
+                min-height: auto;
+                padding-top: 100px; /* Espacio para navbar */
+                padding-bottom: 40px;
+            }
+
+            /* Título controlado */
+            h1 { 
+                font-size: 2.6rem !important; 
+                line-height: 1.1 !important; 
+                margin-bottom: 15px !important;
+                word-break: keep-all; 
+            }
+
+            /* Subtítulo legible */
+            p.subtitle { 
+                font-size: 1rem !important; 
+                line-height: 1.4; 
+                padding: 0 15px; 
+                margin-bottom: 25px !important; 
+            }
+
+            /* Botones Hero apilados */
+            .cta-container { 
+                flex-direction: column; 
+                width: 100%; 
+                gap: 15px; 
+            }
+            .btn-telegram-hero, .btn-compare-hero { 
+                width: 90%; 
+                justify-content: center; 
+                font-size: 0.95rem;
+                padding: 14px 20px;
+            }
+
+            /* Flash Card (Top Ventas) estática */
+            .flash-deal-wrapper { margin-top: 0; padding: 0 15px; }
+            .flash-deal-card { 
+                flex-direction: column; 
+                text-align: center; 
+                gap: 15px; 
+                padding: 20px; 
+                margin-top: 20px;
+            }
+            .flash-content { flex-direction: column; gap: 5px; }
+            .flash-text p { display: none; } /* Ocultar texto secundario para limpiar */
+            .flash-price { align-items: center; width: 100%; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; margin-top: 5px; }
+
+            /* Wizard FAB (Botón flotante) - Evitar solapamiento */
+            .wizard-fab { 
+                bottom: 20px !important; 
+                right: 20px !important; 
+                font-size: 0.9rem !important; 
+                padding: 12px 20px !important;
+                z-index: 9999;
+            }
         }
     </style>
 </head>
