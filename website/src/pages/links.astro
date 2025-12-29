@@ -2,10 +2,17 @@
 // TUS ENLACES (Configúralos aquí)
 const links = [
   {
-    title: "🔥 ¡OFERTA TIKTOK: PORTÁTIL 279€!",
-    subtitle: "Antes 900€ (Marketing) - Ideal Estudiantes",
+    title: "🖱️ RATÓN LOGITECH: 4,95€",
+    subtitle: "¡Precio ridículo! Ideal para salir del paso",
+    url: "https://amzn.to/49iQsJ7", // <--- TU NUEVO ENLACE CORTO PUESTO AQUÍ
+    type: "featured", // Rojo destacado + Animación
+    icon: "🔥"
+  },
+  {
+    title: "💻 PORTÁTIL ESTUDIANTES 279€",
+    subtitle: "Rebaja del 70% (Ruzava) - El del vídeo",
     url: "https://amzn.to/4qpBAPZ",
-    type: "featured", // Estilo rojo destacado
+    type: "standard", // Estilo normal para no saturar
     icon: "💣"
   },
   {
@@ -67,10 +74,9 @@ const links = [
             align-items: center;
         }
 
-        /* Contenedor principal */
         .container {
             width: 100%;
-            max-width: 480px; /* Ancho típico de móvil */
+            max-width: 480px;
             padding: 40px 20px;
             display: flex;
             flex-direction: column;
@@ -78,7 +84,6 @@ const links = [
             gap: 20px;
         }
 
-        /* Perfil */
         .profile-img-container {
             width: 100px;
             height: 100px;
@@ -97,13 +102,12 @@ const links = [
             align-items: center;
             justify-content: center;
             font-size: 40px;
-            border: 3px solid #0f172a; /* Borde falso para separar */
+            border: 3px solid #0f172a;
         }
 
         h1 { margin: 0; font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; }
         p.bio { color: var(--text-muted); text-align: center; font-size: 0.9rem; line-height: 1.5; margin-top: 5px; margin-bottom: 20px; }
 
-        /* Botones de Enlace */
         .link-card {
             width: 100%;
             text-decoration: none;
@@ -115,7 +119,7 @@ const links = [
             transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.2s;
             position: relative;
             overflow: hidden;
-            box-sizing: border-box; /* Para que el padding no rompa el ancho */
+            box-sizing: border-box;
         }
 
         .link-card:hover {
@@ -123,7 +127,7 @@ const links = [
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        /* Estilos específicos de botones */
+        /* ESTILOS DE BOTONES */
         .featured {
             background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
             color: white;
@@ -133,13 +137,13 @@ const links = [
         }
 
         .telegram {
-            background: linear-gradient(135deg, #0088cc 0%, #005f8f 100%); /* Azul Telegram */
+            background: linear-gradient(135deg, #0088cc 0%, #005f8f 100%);
             color: white;
             border: 1px solid rgba(255,255,255,0.1);
         }
 
         .standard {
-            background: rgba(30, 41, 59, 0.7); /* Glassmorphism oscuro */
+            background: rgba(30, 41, 59, 0.7);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: white;
@@ -148,13 +152,11 @@ const links = [
             background: rgba(255, 255, 255, 0.1);
         }
 
-        /* Texto dentro de los botones */
         .icon { font-size: 1.5rem; }
         .text-content { display: flex; flex-direction: column; }
         .link-title { font-weight: 700; font-size: 1rem; line-height: 1.2; }
         .link-subtitle { font-size: 0.75rem; opacity: 0.8; margin-top: 2px; font-weight: 400; }
 
-        /* Footer */
         footer {
             margin-top: auto;
             padding: 30px 20px;
@@ -164,7 +166,6 @@ const links = [
             max-width: 400px;
         }
 
-        /* Animaciones */
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -188,8 +189,8 @@ const links = [
         <div>
             <h1 style="text-align: center;">@LaptopComparator</h1>
             <p class="bio">
-                Encuentra las mejores ofertas de portátiles sin marketing engañoso.
-                <br>👇 <b>¡OFERTAS DEL DÍA!</b> 👇
+                Ofertas verificadas de tecnología.<br>
+                👇 <b>CHOLLOS ACTIVOS</b> 👇
             </p>
         </div>
 
@@ -205,7 +206,7 @@ const links = [
     </div>
 
     <footer>
-        <p>Participamos en el Programa de Afiliados de Amazon.es. Obtenemos ingresos por las compras adscritas que cumplen los requisitos.</p>
+        <p>Participamos en el Programa de Afiliados de Amazon.es.</p>
         <p style="margin-top: 10px;">&copy; {new Date().getFullYear()} LaptopComparator</p>
     </footer>
 
