@@ -51,7 +51,6 @@ function getScore(price) {
         .navbar { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1100px; display: flex; justify-content: space-between; align-items: center; padding: 12px 30px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 100px; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .logo { font-size: 1.1rem; font-weight: 800; color: white; cursor: pointer; text-decoration: none; }
         
-        /* AQUÍ ESTÁN TUS SECTORES: */
         .nav-links { display: flex; gap: 25px; font-size: 0.85rem; font-weight: 600; color: #e2e8f0; align-items: center; }
         
         .nav-btn { cursor: pointer; transition: color 0.3s; }
@@ -83,6 +82,72 @@ function getScore(price) {
         }
         .btn-compare-hero:hover { transform: scale(1.05) translateY(-3px); background-color: #f8fafc; }
 
+        /* 🔥 ESTILOS OFERTA FLASH (NUEVO) 🔥 */
+        .flash-deal-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: -40px; /* Para que pise el hero */
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+            box-sizing: border-box;
+        }
+
+        .flash-deal-card {
+            background: linear-gradient(90deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid #dc2626; /* Borde Rojo */
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+            width: 100%;
+            max-width: 900px;
+            border-radius: 20px;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .flash-deal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.6);
+            background: linear-gradient(90deg, #283548 0%, #172033 100%);
+        }
+
+        .flash-badge {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #dc2626;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-bottom-right-radius: 10px;
+            text-transform: uppercase;
+            animation: pulse-red 2s infinite;
+        }
+
+        .flash-content { display: flex; align-items: center; gap: 20px; }
+        .flash-icon { font-size: 2.5rem; }
+        .flash-text h3 { margin: 0; color: #fca5a5; font-size: 1.1rem; font-weight: 800; }
+        .flash-text p { margin: 4px 0 0 0; color: #94a3b8; font-size: 0.85rem; max-width: 400px; }
+
+        .flash-price { display: flex; flex-direction: column; align-items: flex-end; justify-content: center; }
+        .old-price { text-decoration: line-through; color: #64748b; font-size: 0.8rem; }
+        .new-price { color: #ef4444; font-size: 1.5rem; font-weight: 800; }
+        .btn-grab { background: white; color: #dc2626; font-size: 0.7rem; font-weight: 800; padding: 4px 10px; border-radius: 4px; margin-top: 5px; }
+
+        @keyframes pulse-red {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
         /* MAIN CONTAINER */
         .main-container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 60px 20px 100px; display: flex; gap: 50px; flex: 1; box-sizing: border-box; }
         
@@ -94,26 +159,26 @@ function getScore(price) {
         .filter-item { display: block; color: var(--text-muted); margin-bottom: 14px; cursor: pointer; transition: 0.2s; }
         .filter-item:hover { color: white; transform: translateX(5px); }
 
-        /* GRID MEJORADO: minmax a 250px para asegurar 3 filas */
+        /* GRID */
         .grid { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; width: 100%; }
 
         /* CARD */
         .card { background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.4) 100%); border: 1px solid var(--card-border); border-radius: 24px; padding: 30px; position: relative; display: flex; flex-direction: column; transition: 0.3s; }
         .card:hover { transform: translateY(-8px); border-color: #818cf8; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.4); background: rgba(30, 41, 59, 0.9); }
         
-        /* FIX Z-INDEX PARA QUE NO SE TAPE */
+        /* Z-INDEX FIX */
         .score-badge { position: absolute; top: 20px; right: 20px; width: 50px; height: 50px; background: #3b82f6; color: white; border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 800; z-index: 20; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .score-label { font-size: 0.6rem; font-weight: 600; text-transform: uppercase; }
         
-        /* FIX ESTÉTICO IMAGEN: Estilo Tarjeta Blanca */
+        /* ESTILO TARJETA BLANCA PARA IMÁGENES */
         .product-img { 
             width: 100%; 
             height: 220px; 
             object-fit: contain; 
             margin: 15px 0 30px; 
-            background: #ffffff; /* Fondo blanco */
-            border-radius: 16px; /* Bordes redondeados */
-            padding: 20px; /* Relleno interno */
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 20px;
             box-sizing: border-box; 
             position: relative;
             z-index: 1;
@@ -174,9 +239,13 @@ function getScore(price) {
             .footer-content { flex-direction: row; justify-content: space-between; text-align: left; }
         }
         
-        /* Solo ocultamos los links en móviles MUY pequeños (<600px) */
+        /* MÓVIL */
         @media (max-width: 600px) {
             .nav-links { display: none; }
+            .flash-deal-card { flex-direction: column; text-align: center; gap: 15px; padding: 25px 15px; margin-top: 10px; }
+            .flash-content { flex-direction: column; gap: 10px; }
+            .flash-price { align-items: center; }
+            .flash-text p { display: none; } /* Ocultar desc en móvil */
         }
     </style>
 </head>
@@ -225,6 +294,24 @@ function getScore(price) {
             </a>
         </div>
     </section>
+
+    <div class="flash-deal-wrapper">
+        <a href="https://amzn.to/49iQsJ7" target="_blank" class="flash-deal-card">
+            <div class="flash-badge">🔥 TOP VENTAS</div>
+            <div class="flash-content">
+                <span class="flash-icon">🖱️</span>
+                <div class="flash-text">
+                    <h3>¡Ratón Logitech B100 por 4€!</h3>
+                    <p>Precio ridículo. Ideal para salir del paso o tener de repuesto.</p>
+                </div>
+            </div>
+            <div class="flash-price">
+                <span class="old-price">12,00€</span>
+                <span class="new-price">4,95€</span>
+                <span class="btn-grab">VER OFERTA ➜</span>
+            </div>
+        </a>
+    </div>
 
     <div class="main-container">
         <aside class="sidebar">
