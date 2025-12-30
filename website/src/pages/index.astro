@@ -36,8 +36,7 @@ function getScore(price) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Laptop Comparator - Encuentra tu Portátil Ideal</title>
     <meta name="description" content="Comparador de portátiles en España. Ofertas Gaming, Estudiantes y Ultrabooks. Análisis técnico sin marketing." />
-    <meta name="google-site-verification" content="2V-eMT8DSm87ZaDNiAstEAIKi23tsD6-6IWgdFrmqyo" />
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -52,6 +51,7 @@ function getScore(price) {
             --text-muted: #cbd5e1;
             --text-legal: #64748b;
             --accent: #818cf8; 
+            --gold: #fbbf24; /* Color Dorado para el ganador */
         }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; display: flex; flex-direction: column; width: 100%; }
         
@@ -60,20 +60,21 @@ function getScore(price) {
         .logo { font-size: 1.1rem; font-weight: 800; color: white; cursor: pointer; text-decoration: none; white-space: nowrap; }
         
         .nav-links { display: flex; gap: 25px; font-size: 0.85rem; font-weight: 600; color: #e2e8f0; align-items: center; }
-        
         .nav-btn { cursor: pointer; transition: color 0.3s; }
         .nav-btn:hover { color: white; }
         .nav-vs-link { color: #4ade80; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: transform 0.2s; }
         .nav-vs-link:hover { transform: scale(1.05); color: #86efac; }
         
-        /* HERO */
+        /* HERO (Titular Agresivo) */
         .hero { position: relative; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; overflow: hidden; background: radial-gradient(at 0% 0%, #4c1d95 0px, transparent 50%), radial-gradient(at 100% 0%, #3b82f6 0px, transparent 50%), #1e1b4b; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .badge-pill { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #e0e7ff; padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; margin-bottom: 30px; backdrop-filter: blur(4px); }
-        h1 { font-size: 5rem; font-weight: 800; margin: 0; line-height: 1; letter-spacing: -2px; color: #ffffff; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        p.subtitle { color: #e2e8f0; font-size: 1.3rem; max-width: 600px; margin: 30px auto 45px; line-height: 1.6; }
+        
+        h1 { font-size: 4rem; font-weight: 800; margin: 0; line-height: 1.1; letter-spacing: -2px; color: #ffffff; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        h1 span { color: #818cf8; }
+
+        p.subtitle { color: #e2e8f0; font-size: 1.2rem; max-width: 600px; margin: 30px auto 45px; line-height: 1.6; }
         
         .cta-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; align-items: center; }
-        
         .btn-telegram-hero { 
             background: linear-gradient(135deg, #2AABEE 0%, #229ED9 100%);
             color: white; padding: 16px 35px; border-radius: 100px; font-weight: 800; font-size: 1rem;
@@ -81,7 +82,6 @@ function getScore(price) {
             box-shadow: 0 10px 30px rgba(42, 171, 238, 0.3); display: flex; align-items: center; gap: 10px;
         }
         .btn-telegram-hero:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 15px 40px rgba(42, 171, 238, 0.5); }
-
         .btn-compare-hero {
             background: white; color: #0f172a; padding: 16px 35px; border-radius: 100px; font-weight: 800; font-size: 1rem;
             text-decoration: none; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; 
@@ -89,10 +89,8 @@ function getScore(price) {
         }
         .btn-compare-hero:hover { transform: scale(1.05) translateY(-3px); background-color: #f8fafc; }
 
-        /* 🔥 OFERTA FLASH 🔥 */
-        .flash-deal-wrapper {
-            width: 100%; display: flex; justify-content: center; margin-top: -40px; padding: 0 20px; position: relative; z-index: 10; box-sizing: border-box;
-        }
+        /* 🔥 OFERTA FLASH (Ratón) 🔥 */
+        .flash-deal-wrapper { width: 100%; display: flex; justify-content: center; margin-top: -40px; padding: 0 20px; position: relative; z-index: 10; box-sizing: border-box; }
         .flash-deal-card {
             background: linear-gradient(90deg, #1e293b 0%, #0f172a 100%); border: 1px solid #dc2626; box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
             width: 100%; max-width: 900px; border-radius: 20px; padding: 15px 30px; display: flex; align-items: center; justify-content: space-between;
@@ -108,15 +106,12 @@ function getScore(price) {
         .old-price { text-decoration: line-through; color: #64748b; font-size: 0.8rem; }
         .new-price { color: #ef4444; font-size: 1.5rem; font-weight: 800; }
         .btn-grab { background: white; color: #dc2626; font-size: 0.7rem; font-weight: 800; padding: 4px 10px; border-radius: 4px; margin-top: 5px; }
-
         @keyframes pulse-red { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
 
-        /* MAIN CONTAINER */
+        /* MAIN & SIDEBAR */
         .main-container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 60px 20px 100px; display: flex; gap: 50px; flex: 1; box-sizing: border-box; }
-        
         .sidebar { width: 260px; display: none; flex-shrink: 0; }
         @media (min-width: 1000px) { .sidebar { display: block; } }
-        
         .filter-box { margin-bottom: 40px; }
         .filter-title { font-weight: 700; margin-bottom: 20px; display: block; font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; }
         .filter-item { display: block; color: var(--text-muted); margin-bottom: 14px; cursor: pointer; transition: 0.2s; }
@@ -124,9 +119,30 @@ function getScore(price) {
 
         .grid { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; width: 100%; }
 
-        /* CARD */
-        .card { background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.4) 100%); border: 1px solid var(--card-border); border-radius: 24px; padding: 30px; position: relative; display: flex; flex-direction: column; transition: 0.3s; }
+        /* CARD (Tarjeta de Producto) */
+        .card { 
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.4) 100%); 
+            border: 1px solid var(--card-border); 
+            border-radius: 24px; padding: 30px; 
+            position: relative; display: flex; flex-direction: column; 
+            transition: 0.3s; 
+        }
         .card:hover { transform: translateY(-8px); border-color: #818cf8; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.4); background: rgba(30, 41, 59, 0.9); }
+        
+        /* 🏆 ESTILOS DEL GANADOR (Highlight) 🏆 */
+        .winner-card {
+            border: 2px solid var(--gold);
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.15);
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.9) 0%, rgba(66, 50, 15, 0.2) 100%);
+            transform: scale(1.02); /* Ligeramente más grande */
+        }
+        .winner-badge-label {
+            position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+            background: var(--gold); color: #0f172a;
+            font-size: 0.7rem; font-weight: 800; padding: 6px 16px; border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4); z-index: 30; white-space: nowrap; text-transform: uppercase;
+        }
+
         .score-badge { position: absolute; top: 20px; right: 20px; width: 50px; height: 50px; background: #3b82f6; color: white; border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 800; z-index: 20; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .score-label { font-size: 0.6rem; font-weight: 600; text-transform: uppercase; }
         
@@ -138,6 +154,8 @@ function getScore(price) {
         .spec-item { font-size: 0.85rem; color: #cbd5e1; display: flex; gap: 8px; align-items: center;}
         
         .price-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .price-container { display: flex; flex-direction: column; align-items: flex-start; }
+        .old-price-anchor { text-decoration: line-through; color: #64748b; font-size: 0.85rem; margin-bottom: 0px; }
         .price-display { font-size: 1.6rem; font-weight: 800; color: white; }
         .btn-card { background: white; color: #0f172a; padding: 12px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: background 0.2s; }
         .btn-card:hover { background: #e2e8f0; }
@@ -153,169 +171,66 @@ function getScore(price) {
         .amazon-legal-box { max-width: 800px; margin: 40px auto 0; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
         .legal-text { font-size: 0.75rem; color: var(--text-legal); line-height: 1.6; margin: 0; }
 
-        /* 🧙‍♂️ WIZARD (RECOMENDADOR) STYLES 🧙‍♂️ */
-        .wizard-fab {
-            position: fixed; bottom: 30px; right: 30px;
-            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-            color: white; padding: 15px 25px; border-radius: 50px;
-            font-weight: 800; font-size: 1rem; box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
-            cursor: pointer; z-index: 100; transition: transform 0.3s, box-shadow 0.3s;
-            display: flex; align-items: center; gap: 10px;
-        }
+        /* WIZARD & MÓVIL (Styles) */
+        .wizard-fab { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); color: white; padding: 15px 25px; border-radius: 50px; font-weight: 800; font-size: 1rem; box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4); cursor: pointer; z-index: 100; transition: transform 0.3s, box-shadow 0.3s; display: flex; align-items: center; gap: 10px; }
         .wizard-fab:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 15px 35px rgba(124, 58, 237, 0.6); }
-
-        .wizard-modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(10px);
-            z-index: 200; display: none; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 0.3s ease;
-        }
+        .wizard-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(10px); z-index: 200; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
         .wizard-modal.active { display: flex; opacity: 1; }
-        
-        .wizard-content {
-            background: #1e293b; border: 1px solid #334155; border-radius: 24px;
-            width: 90%; max-width: 500px; padding: 40px; position: relative;
-            text-align: center; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            transform: translateY(20px); transition: transform 0.3s ease;
-        }
+        .wizard-content { background: #1e293b; border: 1px solid #334155; border-radius: 24px; width: 90%; max-width: 500px; padding: 40px; position: relative; text-align: center; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); transform: translateY(20px); transition: transform 0.3s ease; }
         .wizard-modal.active .wizard-content { transform: translateY(0); }
-
         .step-container { display: none; }
         .step-container.active { display: block; animation: fadeIn 0.4s ease; }
-        
         .wizard-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; color: white; }
-        .wizard-btn {
-            display: block; width: 100%; padding: 15px; margin-bottom: 10px;
-            background: #334155; border: 1px solid #475569; border-radius: 12px;
-            color: white; font-weight: 600; cursor: pointer; transition: 0.2s;
-            text-align: left;
-        }
+        .wizard-btn { display: block; width: 100%; padding: 15px; margin-bottom: 10px; background: #334155; border: 1px solid #475569; border-radius: 12px; color: white; font-weight: 600; cursor: pointer; transition: 0.2s; text-align: left; }
         .wizard-btn:hover { background: #475569; border-color: #818cf8; transform: translateX(5px); }
-        
         .result-card { display: none; margin-top: 20px; }
         .result-card.show { display: block; }
-        .wizard-close {
-            position: absolute; top: 20px; right: 20px; background: none; border: none;
-            color: #94a3b8; font-size: 1.5rem; cursor: pointer;
-        }
-
+        .wizard-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: #94a3b8; font-size: 1.5rem; cursor: pointer; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* ==========================================================================
-           🎨 OPTIMIZACIÓN MÓVIL (CORRECCIÓN LIMPIEZA)
-           ========================================================================== */
-        @media (min-width: 768px) { 
-            h1 { font-size: 3rem; } 
-            .navbar { width: 85%; } 
-            .footer-content { flex-direction: row; justify-content: space-between; text-align: left; } 
-        }
-
+        @media (min-width: 768px) { h1 { font-size: 3rem; } .navbar { width: 85%; } .footer-content { flex-direction: row; justify-content: space-between; text-align: left; } }
         @media (max-width: 768px) {
-            /* Navbar más compacta */
-            .navbar {
-                width: 95%;
-                padding: 10px 15px;
-            }
-            .logo { font-size: 1rem; }
-            .nav-links { display: none; } /* Menú hamburguesa sería ideal, pero ocultamos por limpieza */
-
-            /* Hero más limpio */
-            .hero {
-                min-height: auto;
-                padding-top: 100px; /* Espacio para navbar */
-                padding-bottom: 40px;
-            }
-
-            /* Título controlado */
-            h1 { 
-                font-size: 2.6rem !important; 
-                line-height: 1.1 !important; 
-                margin-bottom: 15px !important;
-                word-break: keep-all; 
-            }
-
-            /* Subtítulo legible */
-            p.subtitle { 
-                font-size: 1rem !important; 
-                line-height: 1.4; 
-                padding: 0 15px; 
-                margin-bottom: 25px !important; 
-            }
-
-            /* Botones Hero apilados */
-            .cta-container { 
-                flex-direction: column; 
-                width: 100%; 
-                gap: 15px; 
-            }
-            .btn-telegram-hero, .btn-compare-hero { 
-                width: 90%; 
-                justify-content: center; 
-                font-size: 0.95rem;
-                padding: 14px 20px;
-            }
-
-            /* Flash Card (Top Ventas) estática */
+            .navbar { width: 95%; padding: 10px 15px; } .logo { font-size: 1rem; } .nav-links { display: none; }
+            .hero { min-height: auto; padding-top: 100px; padding-bottom: 40px; }
+            h1 { font-size: 2.3rem !important; line-height: 1.1 !important; margin-bottom: 15px !important; word-break: keep-all; }
+            p.subtitle { font-size: 1rem !important; line-height: 1.4; padding: 0 15px; margin-bottom: 25px !important; }
+            .cta-container { flex-direction: column; width: 100%; gap: 15px; }
+            .btn-telegram-hero, .btn-compare-hero { width: 90%; justify-content: center; font-size: 0.95rem; padding: 14px 20px; }
             .flash-deal-wrapper { margin-top: 0; padding: 0 15px; }
-            .flash-deal-card { 
-                flex-direction: column; 
-                text-align: center; 
-                gap: 15px; 
-                padding: 20px; 
-                margin-top: 20px;
-            }
+            .flash-deal-card { flex-direction: column; text-align: center; gap: 15px; padding: 20px; margin-top: 20px; }
             .flash-content { flex-direction: column; gap: 5px; }
-            .flash-text p { display: none; } /* Ocultar texto secundario para limpiar */
-            .flash-price { align-items: center; width: 100%; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; margin-top: 5px; }
-
-            /* Wizard FAB (Botón flotante) - Evitar solapamiento */
-            .wizard-fab { 
-                bottom: 20px !important; 
-                right: 20px !important; 
-                font-size: 0.9rem !important; 
-                padding: 12px 20px !important;
-                z-index: 9999;
-            }
+            .flash-text p { display: none; } .flash-price { align-items: center; width: 100%; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; margin-top: 5px; }
+            .wizard-fab { bottom: 20px !important; right: 20px !important; font-size: 0.9rem !important; padding: 12px 20px !important; z-index: 9999; }
         }
     </style>
 </head>
 <body>
-    <button id="wizard-trigger" class="wizard-fab">
-        🧙‍♂️ ¿Te ayudo a elegir?
-    </button>
+    <button id="wizard-trigger" class="wizard-fab">🧙‍♂️ ¿Te ayudo a elegir?</button>
 
     <div id="wizard-overlay" class="wizard-modal">
         <div class="wizard-content">
             <button id="close-wizard" class="wizard-close">&times;</button>
-            
             <div id="step-1" class="step-container active">
                 <h3 class="wizard-title">💰 ¿Cuál es tu presupuesto máximo?</h3>
                 <button class="wizard-btn" onclick="nextStep(1, 500)">📉 Menos de 500€</button>
                 <button class="wizard-btn" onclick="nextStep(1, 800)">⚖️ Entre 500€ y 800€</button>
                 <button class="wizard-btn" onclick="nextStep(1, 2000)">🚀 Más de 1000€ (Sin límite)</button>
             </div>
-
             <div id="step-2" class="step-container">
                 <h3 class="wizard-title">🎯 ¿Para qué lo vas a usar?</h3>
                 <button class="wizard-btn" onclick="nextStep(2, 'student')">🎓 Universidad / Ofimática / Netflix</button>
                 <button class="wizard-btn" onclick="nextStep(2, 'gaming')">🎮 Gaming (Jugar a todo)</button>
                 <button class="wizard-btn" onclick="nextStep(2, 'code')">💻 Programación / Edición Video</button>
             </div>
-
             <div id="step-result" class="step-container">
                 <h3 class="wizard-title">✨ Tu Portátil Ideal es:</h3>
                 <div id="wizard-loading">Calculando...</div>
-                
                 <div id="wizard-match" class="result-card">
                     <img id="wiz-img" src="" style="width: 150px; margin: 0 auto; display:block;" />
                     <h4 id="wiz-name" style="margin: 10px 0; color: #818cf8;"></h4>
                     <p id="wiz-price" style="font-size: 1.5rem; font-weight: 800; color: white;"></p>
-                    
-                    <a id="wiz-link" href="#" class="btn-amazon" style="display:block; margin-top:15px; background: #3b82f6; padding: 12px; border-radius: 8px; color: white; text-decoration: none; font-weight: bold; transition: 0.3s;">
-                        🛒 Ver Oferta en Amazon
-                    </a>
+                    <a id="wiz-link" href="#" class="btn-amazon" style="display:block; margin-top:15px; background: #3b82f6; padding: 12px; border-radius: 8px; color: white; text-decoration: none; font-weight: bold; transition: 0.3s;">🛒 Ver Oferta en Amazon</a>
                 </div>
-                
                 <button onclick="resetWizard()" style="margin-top: 20px; background: none; border: none; color: #94a3b8; cursor: pointer; text-decoration: underline;">Volver a empezar</button>
             </div>
         </div>
@@ -323,25 +238,22 @@ function getScore(price) {
 
     <nav class="navbar">
         <a href="/" class="logo" id="reset-home">⚡ LaptopComparator</a>
-        
         <div class="nav-links">
             <a href="/comparar" class="nav-vs-link">⚖️ Comparador VS</a>
             <span class="nav-btn" id="nav-top">Top Ventas</span>
             <span class="nav-btn" id="nav-gaming">Gaming</span>
             <span class="nav-btn" id="nav-student">Estudiantes</span>
-            
-            <a href="https://t.me/PreciosPortatilesES" target="_blank" style="
-                background-color: #2AABEE; color: white; padding: 6px 14px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; gap: 5px; box-shadow: 0 4px 10px rgba(42, 171, 238, 0.3); transition: transform 0.2s; margin-left: 10px;
-            " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                ✈️ Ofertas
-            </a>
+            <a href="https://t.me/PreciosPortatilesES" target="_blank" style="background-color: #2AABEE; color: white; padding: 6px 14px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; gap: 5px; box-shadow: 0 4px 10px rgba(42, 171, 238, 0.3); transition: transform 0.2s; margin-left: 10px;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">✈️ Ofertas</a>
         </div>
     </nav>
 
     <section class="hero">
-        <div class="badge-pill">✨ Algoritmo v2.0 Actualizado (España)</div>
-        <h1>Laptop <br /> Comparator</h1>
-        <p class="subtitle">La herramienta definitiva para ingenieros y estudiantes. Filtra el marketing, encuentra la potencia real y ahorra dinero.</p>
+        <div class="badge-pill">✨ Algoritmo v2.1 Actualizado</div>
+        <h1>¿Miedo a tirar 500€ <br /> en un portátil lento?</h1>
+        <p class="subtitle">
+            Las tiendas intentan venderte stock viejo. Nosotros analizamos el hardware real.
+            <br> <span style="color: #4ade80; font-weight: bold;">⚡ Encuentra el mejor calidad-precio en 3 clics.</span>
+        </p>
         
         <div class="cta-container">
             <a href="https://t.me/PreciosPortatilesES" target="_blank" class="btn-telegram-hero">✈️ Únete al Canal de Ofertas</a>
@@ -385,8 +297,16 @@ function getScore(price) {
         </aside>
 
         <main class="grid" id="laptops-grid">
-            {laptops.map((laptop) => (
-                <article class="card" data-price={laptop.price_eur} data-score={getScore(laptop.price_eur)} data-category={laptop.category}>
+            {laptops.map((laptop, index) => (
+                <article 
+                    class={`card ${index === 0 ? 'winner-card' : ''}`} 
+                    data-price={laptop.price_eur} 
+                    data-score={getScore(laptop.price_eur)} 
+                    data-category={laptop.category}
+                >
+                    {/* SI ES EL PRIMERO, PONEMOS LA CORONA */}
+                    {index === 0 && <div class="winner-badge-label">🏆 MEJOR OPCIÓN 2024</div>}
+
                     <div class="score-badge">
                         {getScore(laptop.price_eur)} <span class="score-label">PTS</span>
                     </div>
@@ -400,6 +320,7 @@ function getScore(price) {
                     </div>
                     <div class="price-row">
                         <div class="price-container">
+                            <span class="old-price-anchor">{(laptop.price_eur * 1.2).toFixed(0)}€</span>
                             <span class="price-display">{laptop.price_eur} €</span>
                         </div>
                         <a href={`/laptops/${laptop.slug}`} class="btn-card">Ver Ficha</a>
@@ -432,8 +353,10 @@ function getScore(price) {
     </footer>
 
     <script define:vars={{laptops}}>
-        // --- 1. LÓGICA DE FILTROS DE LA GRID (Ya existente) ---
+        // --- 1. LÓGICA DE FILTROS DE LA GRID ---
         const grid = document.getElementById('laptops-grid');
+        // Importante: Actualizamos el selector para incluir 'winner-card' si es necesario, 
+        // pero .card sigue siendo la clase base, así que funciona igual.
         const cards = Array.from(document.querySelectorAll('.card'));
         
         function filterByCategory(category) {
@@ -516,26 +439,20 @@ function getScore(price) {
                 let filtered = laptops.filter(l => l.price_eur <= wizardData.maxPrice);
                 
                 if (wizardData.use === 'gaming') {
-                    // Priorizar Gaming: Buscar palabras clave o categorías
                     let gaming = filtered.filter(l => l.category.includes('gaming') || l.name.toLowerCase().includes('rtx'));
                     if(gaming.length > 0) filtered = gaming;
                 } else if (wizardData.use === 'student') {
-                    // Priorizar baratos y ligeros. Ordenar por precio ascendente
                     filtered.sort((a,b) => a.price_eur - b.price_eur);
                 } else if (wizardData.use === 'code') {
-                    // Priorizar RAM o CPU. Si hay 16GB mejor.
                     let pro = filtered.filter(l => l.specs.ram.includes('16GB'));
                     if(pro.length > 0) filtered = pro;
                 }
 
-                // Elegir el mejor de los filtrados (el primero de la lista o el mejor puntuado)
-                // Si está vacío, coger el más barato del total
                 let winner = filtered.length > 0 ? filtered[0] : laptops[0];
 
                 // --- GENERAR ENLACE AMAZON ---
                 const amazonLink = `https://www.amazon.es/s?k=${winner.name.replace(/ /g, '+')}&tag=comparadorjai-21`;
 
-                // Mostrar Resultado
                 document.getElementById('wizard-loading').style.display = 'none';
                 document.getElementById('wizard-match').style.display = 'block';
                 
@@ -543,14 +460,13 @@ function getScore(price) {
                 document.getElementById('wiz-name').innerText = winner.name;
                 document.getElementById('wiz-price').innerText = winner.price_eur + ' €';
                 
-                // Configurar Botón
                 const wizLinkBtn = document.getElementById('wiz-link');
                 wizLinkBtn.href = amazonLink;
                 wizLinkBtn.innerText = '🛒 Ver Oferta en Amazon';
                 wizLinkBtn.target = '_blank'; 
                 wizLinkBtn.rel = 'noopener noreferrer';
 
-            }, 800); // Pequeño delay para dar emoción
+            }, 800);
         }
     </script>
 </body>
