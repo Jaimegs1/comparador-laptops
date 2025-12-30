@@ -138,19 +138,22 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         .filter-item { display: block; color: var(--text-muted); margin-bottom: 14px; cursor: pointer; transition: 0.2s; }
         .filter-item:hover { color: white; transform: translateX(5px); }
 
-        /* --- GRID CORREGIDA: EVITA QUE LAS TARJETAS SE ESTIREN --- */
+        /* =========================================================
+           🔧 FIX GRID: FLEXBOX PARA EVITAR ESTIRAMIENTO GIGANTE
+           ========================================================= */
         .grid { 
             flex: 1; 
-            display: grid; 
-            /* Aumentamos el mínimo a 280px para que no sean tan estrechas y usamos auto-fill */
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-            gap: 30px; 
+            /* Cambiamos de 'grid' a 'flex' para control total */
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 25px; 
             width: 100%; 
-            /* Centramos los items para que si solo hay 1, no se estire */
-            justify-items: center; 
+            /* Alineación al inicio: si hay 1, se queda a la izq, no se centra ni estira */
+            justify-content: flex-start;
+            align-content: flex-start;
         }
 
-        /* CARD CORREGIDA: LÍMITE DE ANCHURA */
+        /* CARD CORREGIDA: TAMAÑO FIJO Y CONTROLADO */
         .card { 
             background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.4) 100%); 
             border: 1px solid var(--card-border); 
@@ -160,9 +163,12 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             display: flex; 
             flex-direction: column; 
             transition: 0.3s;
-            /* PROPIEDADES NUEVAS ANTI-ESTIRAMIENTO */
-            width: 100%; 
-            max-width: 400px; /* Cinturón de seguridad */
+            
+            /* TAMAÑO MÁGICO */
+            flex: 1 1 300px; /* Base ideal de 300px, puede crecer o encoger */
+            max-width: 340px; /* TOPE DE ANCHURA: Nunca será más ancha que esto */
+            min-width: 280px; /* Mínimo para que no se rompa en móviles muy viejos */
+            
             box-sizing: border-box;
         }
         
@@ -224,6 +230,10 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             .flash-content { flex-direction: column; gap: 5px; }
             .flash-text p { display: none; } .flash-price { align-items: center; width: 100%; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; margin-top: 5px; }
             .wizard-fab { bottom: 20px !important; right: 20px !important; font-size: 0.9rem !important; padding: 12px 20px !important; z-index: 9999; }
+            
+            /* En móvil sí queremos centrar si solo hay 1 */
+            .grid { justify-content: center; }
+            .card { max-width: 400px; } /* En móvil un poco más de margen */
         }
     </style>
 </head>
