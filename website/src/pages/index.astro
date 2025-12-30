@@ -101,8 +101,35 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         .nav-vs-link { color: #4ade80; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: transform 0.2s; }
         .nav-vs-link:hover { transform: scale(1.05); color: #86efac; }
         
-        /* HERO */
-        .hero { position: relative; min-height: auto; padding-top: 140px; padding-bottom: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding-left: 20px; padding-right: 20px; overflow: hidden; background: radial-gradient(at 0% 0%, #4c1d95 0px, transparent 50%), radial-gradient(at 100% 0%, #3b82f6 0px, transparent 50%), #1e1b4b; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        /* HERO ANIMADO (NUEVO) */
+        .hero { 
+            position: relative; 
+            min-height: auto; 
+            padding-top: 140px; 
+            padding-bottom: 60px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            padding-left: 20px; 
+            padding-right: 20px; 
+            overflow: hidden; 
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            
+            /* EFECTO MOVIMIENTO SUAVE */
+            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #0f172a);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        /* DEFINICIÓN DE LA ANIMACIÓN */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .badge-pill { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #e0e7ff; padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; margin-bottom: 30px; backdrop-filter: blur(4px); }
         h1 { font-size: 4rem; font-weight: 800; margin: 0; line-height: 1.1; letter-spacing: -2px; color: #ffffff; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         h1 span { color: #818cf8; }
