@@ -10,9 +10,7 @@ function getScore(price) {
 }
 
 // Extraemos las marcas únicas y RAMs disponibles del JSON para generar los filtros dinámicamente
-// (Esto evita que pongas filtros vacíos si no tienes laptops de esa marca)
 const allBrands = [...new Set(laptops.map(l => l.name.split(' ')[0]))].sort();
-// Simplificación para RAM: Buscamos 8GB, 16GB, 32GB en las specs
 const ramOptions = ["8GB", "16GB", "32GB"];
 ---
 
@@ -117,22 +115,20 @@ const ramOptions = ["8GB", "16GB", "32GB"];
 
         /* MAIN & SIDEBAR */
         .main-container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 60px 20px 100px; display: flex; gap: 50px; flex: 1; box-sizing: border-box; }
-        .sidebar { width: 280px; display: none; flex-shrink: 0; } /* Un poco más ancha para los filtros */
+        .sidebar { width: 280px; display: none; flex-shrink: 0; }
         @media (min-width: 1000px) { .sidebar { display: block; } }
 
-        /* --- ESTILOS DE LOS FILTROS AVANZADOS --- */
+        /* FILTROS */
         .filter-box { margin-bottom: 35px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 25px; }
         .filter-box:last-child { border-bottom: none; }
         .filter-title { font-weight: 700; margin-bottom: 15px; display: block; font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 1px; }
         
-        /* Checkboxes Personalizados */
         .custom-checkbox { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; cursor: pointer; font-size: 0.9rem; color: #cbd5e1; transition: 0.2s; }
         .custom-checkbox:hover { color: white; }
         .custom-checkbox input { appearance: none; width: 18px; height: 18px; border: 2px solid #475569; border-radius: 4px; background: transparent; cursor: pointer; position: relative; }
         .custom-checkbox input:checked { background-color: #818cf8; border-color: #818cf8; }
         .custom-checkbox input:checked::after { content: '✔'; position: absolute; color: white; font-size: 12px; top: -1px; left: 3px; }
 
-        /* Range Slider Styling */
         .range-container { width: 100%; }
         .range-header { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.9rem; color: white; font-weight: bold; }
         input[type=range] { width: 100%; -webkit-appearance: none; background: transparent; cursor: pointer; }
@@ -142,10 +138,34 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         .filter-item { display: block; color: var(--text-muted); margin-bottom: 14px; cursor: pointer; transition: 0.2s; }
         .filter-item:hover { color: white; transform: translateX(5px); }
 
-        .grid { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; width: 100%; }
+        /* --- GRID CORREGIDA: EVITA QUE LAS TARJETAS SE ESTIREN --- */
+        .grid { 
+            flex: 1; 
+            display: grid; 
+            /* Aumentamos el mínimo a 280px para que no sean tan estrechas y usamos auto-fill */
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 30px; 
+            width: 100%; 
+            /* Centramos los items para que si solo hay 1, no se estire */
+            justify-items: center; 
+        }
 
-        /* CARD */
-        .card { background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.4) 100%); border: 1px solid var(--card-border); border-radius: 24px; padding: 30px; position: relative; display: flex; flex-direction: column; transition: 0.3s; }
+        /* CARD CORREGIDA: LÍMITE DE ANCHURA */
+        .card { 
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.4) 100%); 
+            border: 1px solid var(--card-border); 
+            border-radius: 24px; 
+            padding: 30px; 
+            position: relative; 
+            display: flex; 
+            flex-direction: column; 
+            transition: 0.3s;
+            /* PROPIEDADES NUEVAS ANTI-ESTIRAMIENTO */
+            width: 100%; 
+            max-width: 400px; /* Cinturón de seguridad */
+            box-sizing: border-box;
+        }
+        
         .card:hover { transform: translateY(-8px); border-color: #818cf8; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.4); background: rgba(30, 41, 59, 0.9); }
         .winner-card { border: 2px solid var(--gold); box-shadow: 0 0 30px rgba(251, 191, 36, 0.15); background: linear-gradient(145deg, rgba(30, 41, 59, 0.9) 0%, rgba(66, 50, 15, 0.2) 100%); transform: scale(1.02); }
         .winner-badge-label { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #0f172a; font-size: 0.7rem; font-weight: 800; padding: 6px 16px; border-radius: 50px; box-shadow: 0 5px 15px rgba(0,0,0,0.4); z-index: 30; white-space: nowrap; text-transform: uppercase; }
@@ -393,7 +413,6 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         const grid = document.getElementById('laptops-grid');
         const cards = Array.from(document.querySelectorAll('.card'));
         
-        // Estado inicial de los filtros
         let state = {
             maxPrice: 2500,
             brands: [],
@@ -401,9 +420,6 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             category: 'all'
         };
 
-        // 1. ESCUCHADORES DE EVENTOS
-        
-        // Slider de Precio
         const priceSlider = document.getElementById('price-slider');
         const priceDisplay = document.getElementById('price-value-display');
         
@@ -413,7 +429,6 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             applyFilters();
         });
 
-        // Checkboxes de Marca
         document.querySelectorAll('.brand-filter').forEach(cb => {
             cb.addEventListener('change', (e) => {
                 const value = e.target.value;
@@ -423,7 +438,6 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             });
         });
 
-        // Checkboxes de RAM
         document.querySelectorAll('.ram-filter').forEach(cb => {
             cb.addEventListener('change', (e) => {
                 const value = e.target.value;
@@ -433,12 +447,10 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             });
         });
 
-        // Botones de Ordenación
         document.getElementById('sort-score').addEventListener('click', () => sortGrid('score'));
         document.getElementById('sort-price-asc').addEventListener('click', () => sortGrid('price-asc'));
         document.getElementById('sort-price-desc').addEventListener('click', () => sortGrid('price-desc'));
 
-        // Navbar Quick Filters (Categorías)
         const navTop = document.getElementById('nav-top');
         const navGaming = document.getElementById('nav-gaming');
         const navStudent = document.getElementById('nav-student');
@@ -447,11 +459,8 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         if(navStudent) navStudent.addEventListener('click', () => setCategory('student'));
         document.getElementById('reset-home').addEventListener('click', () => setCategory('all'));
 
-
-        // 2. LÓGICA DE FILTRADO MAESTRA
         function setCategory(cat) {
             state.category = cat;
-            // Si cambian categoría, resetear scroll
             window.scrollTo({ top: 0, behavior: 'smooth' });
             applyFilters();
         }
@@ -463,16 +472,9 @@ const ramOptions = ["8GB", "16GB", "32GB"];
                 const ram = card.dataset.ram;
                 const categories = card.dataset.category || "";
 
-                // Condición 1: Precio
                 let matchPrice = price <= state.maxPrice;
-
-                // Condición 2: Marca (Si no hay marcas seleccionadas, pasan todas)
                 let matchBrand = state.brands.length === 0 || state.brands.some(b => name.includes(b));
-
-                // Condición 3: RAM (Si no hay RAM seleccionada, pasan todas)
                 let matchRam = state.ram.length === 0 || state.ram.some(r => ram.includes(r));
-
-                // Condición 4: Categoría (Botones Navbar)
                 let matchCat = state.category === 'all' || categories.includes(state.category);
 
                 if (matchPrice && matchBrand && matchRam && matchCat) {
@@ -493,8 +495,7 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             sortedCards.forEach(card => { card.style.display = 'flex'; grid.appendChild(card); applyFilters(); });
         }
 
-
-        // --- LÓGICA DEL WIZARD (RECOMENDADOR) ---
+        // --- WIZARD ---
         let wizardData = { maxPrice: 9999, use: '' };
         const modal = document.getElementById('wizard-overlay');
         document.getElementById('wizard-trigger').addEventListener('click', () => modal.classList.add('active'));
@@ -525,7 +526,6 @@ const ramOptions = ["8GB", "16GB", "32GB"];
 
             setTimeout(() => {
                 let filtered = laptops.filter(l => l.price_eur <= wizardData.maxPrice);
-                
                 if (wizardData.use === 'gaming') {
                     let gaming = filtered.filter(l => l.category.includes('gaming') || l.name.toLowerCase().includes('rtx'));
                     if(gaming.length > 0) filtered = gaming;
@@ -535,23 +535,19 @@ const ramOptions = ["8GB", "16GB", "32GB"];
                     let pro = filtered.filter(l => l.specs.ram.includes('16GB'));
                     if(pro.length > 0) filtered = pro;
                 }
-
                 let winner = filtered.length > 0 ? filtered[0] : laptops[0];
                 const amazonLink = `https://www.amazon.es/s?k=${winner.name.replace(/ /g, '+')}&tag=comparadorjai-21`;
 
                 document.getElementById('wizard-loading').style.display = 'none';
                 document.getElementById('wizard-match').style.display = 'block';
-                
                 document.getElementById('wiz-img').src = winner.brand_img;
                 document.getElementById('wiz-name').innerText = winner.name;
                 document.getElementById('wiz-price').innerText = winner.price_eur + ' €';
-                
                 const wizLinkBtn = document.getElementById('wiz-link');
                 wizLinkBtn.href = amazonLink;
                 wizLinkBtn.innerText = '🛒 Ver Oferta en Amazon';
                 wizLinkBtn.target = '_blank'; 
                 wizLinkBtn.rel = 'noopener noreferrer';
-
             }, 800);
         }
     </script>
