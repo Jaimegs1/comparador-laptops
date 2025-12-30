@@ -1,12 +1,19 @@
 ---
 import laptops from '../data/laptops.json';
 
+// Función para calcular puntuación
 function getScore(price) {
     if (price > 1200) return 99;
     if (price > 900) return 97;
     if (price > 700) return 94;
     return 89;
 }
+
+// Extraemos las marcas únicas y RAMs disponibles del JSON para generar los filtros dinámicamente
+// (Esto evita que pongas filtros vacíos si no tienes laptops de esa marca)
+const allBrands = [...new Set(laptops.map(l => l.name.split(' ')[0]))].sort();
+// Simplificación para RAM: Buscamos 8GB, 16GB, 32GB en las specs
+const ramOptions = ["8GB", "16GB", "32GB"];
 ---
 
 <html lang="es-ES">
@@ -51,7 +58,7 @@ function getScore(price) {
             --text-muted: #cbd5e1;
             --text-legal: #64748b;
             --accent: #818cf8; 
-            --gold: #fbbf24; /* Color Dorado para el ganador */
+            --gold: #fbbf24; 
         }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; display: flex; flex-direction: column; width: 100%; }
         
@@ -65,7 +72,7 @@ function getScore(price) {
         .nav-vs-link { color: #4ade80; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: transform 0.2s; }
         .nav-vs-link:hover { transform: scale(1.05); color: #86efac; }
         
-        /* HERO (Titular Agresivo) */
+        /* HERO */
         .hero { position: relative; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; overflow: hidden; background: radial-gradient(at 0% 0%, #4c1d95 0px, transparent 50%), radial-gradient(at 100% 0%, #3b82f6 0px, transparent 50%), #1e1b4b; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .badge-pill { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #e0e7ff; padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; margin-bottom: 30px; backdrop-filter: blur(4px); }
         
@@ -89,7 +96,7 @@ function getScore(price) {
         }
         .btn-compare-hero:hover { transform: scale(1.05) translateY(-3px); background-color: #f8fafc; }
 
-        /* 🔥 OFERTA FLASH (Ratón) 🔥 */
+        /* 🔥 OFERTA FLASH 🔥 */
         .flash-deal-wrapper { width: 100%; display: flex; justify-content: center; margin-top: -40px; padding: 0 20px; position: relative; z-index: 10; box-sizing: border-box; }
         .flash-deal-card {
             background: linear-gradient(90deg, #1e293b 0%, #0f172a 100%); border: 1px solid #dc2626; box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
@@ -110,49 +117,45 @@ function getScore(price) {
 
         /* MAIN & SIDEBAR */
         .main-container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 60px 20px 100px; display: flex; gap: 50px; flex: 1; box-sizing: border-box; }
-        .sidebar { width: 260px; display: none; flex-shrink: 0; }
+        .sidebar { width: 280px; display: none; flex-shrink: 0; } /* Un poco más ancha para los filtros */
         @media (min-width: 1000px) { .sidebar { display: block; } }
-        .filter-box { margin-bottom: 40px; }
-        .filter-title { font-weight: 700; margin-bottom: 20px; display: block; font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; }
+
+        /* --- ESTILOS DE LOS FILTROS AVANZADOS --- */
+        .filter-box { margin-bottom: 35px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 25px; }
+        .filter-box:last-child { border-bottom: none; }
+        .filter-title { font-weight: 700; margin-bottom: 15px; display: block; font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 1px; }
+        
+        /* Checkboxes Personalizados */
+        .custom-checkbox { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; cursor: pointer; font-size: 0.9rem; color: #cbd5e1; transition: 0.2s; }
+        .custom-checkbox:hover { color: white; }
+        .custom-checkbox input { appearance: none; width: 18px; height: 18px; border: 2px solid #475569; border-radius: 4px; background: transparent; cursor: pointer; position: relative; }
+        .custom-checkbox input:checked { background-color: #818cf8; border-color: #818cf8; }
+        .custom-checkbox input:checked::after { content: '✔'; position: absolute; color: white; font-size: 12px; top: -1px; left: 3px; }
+
+        /* Range Slider Styling */
+        .range-container { width: 100%; }
+        .range-header { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.9rem; color: white; font-weight: bold; }
+        input[type=range] { width: 100%; -webkit-appearance: none; background: transparent; cursor: pointer; }
+        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 6px; background: #334155; border-radius: 10px; }
+        input[type=range]::-webkit-slider-thumb { height: 20px; width: 20px; border-radius: 50%; background: #818cf8; -webkit-appearance: none; margin-top: -7px; box-shadow: 0 0 10px rgba(129, 140, 248, 0.5); border: 2px solid #1e293b; }
+        
         .filter-item { display: block; color: var(--text-muted); margin-bottom: 14px; cursor: pointer; transition: 0.2s; }
         .filter-item:hover { color: white; transform: translateX(5px); }
 
         .grid { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; width: 100%; }
 
-        /* CARD (Tarjeta de Producto) */
-        .card { 
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.4) 100%); 
-            border: 1px solid var(--card-border); 
-            border-radius: 24px; padding: 30px; 
-            position: relative; display: flex; flex-direction: column; 
-            transition: 0.3s; 
-        }
+        /* CARD */
+        .card { background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.4) 100%); border: 1px solid var(--card-border); border-radius: 24px; padding: 30px; position: relative; display: flex; flex-direction: column; transition: 0.3s; }
         .card:hover { transform: translateY(-8px); border-color: #818cf8; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.4); background: rgba(30, 41, 59, 0.9); }
-        
-        /* 🏆 ESTILOS DEL GANADOR (Highlight) 🏆 */
-        .winner-card {
-            border: 2px solid var(--gold);
-            box-shadow: 0 0 30px rgba(251, 191, 36, 0.15);
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.9) 0%, rgba(66, 50, 15, 0.2) 100%);
-            transform: scale(1.02); /* Ligeramente más grande */
-        }
-        .winner-badge-label {
-            position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-            background: var(--gold); color: #0f172a;
-            font-size: 0.7rem; font-weight: 800; padding: 6px 16px; border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.4); z-index: 30; white-space: nowrap; text-transform: uppercase;
-        }
-
+        .winner-card { border: 2px solid var(--gold); box-shadow: 0 0 30px rgba(251, 191, 36, 0.15); background: linear-gradient(145deg, rgba(30, 41, 59, 0.9) 0%, rgba(66, 50, 15, 0.2) 100%); transform: scale(1.02); }
+        .winner-badge-label { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #0f172a; font-size: 0.7rem; font-weight: 800; padding: 6px 16px; border-radius: 50px; box-shadow: 0 5px 15px rgba(0,0,0,0.4); z-index: 30; white-space: nowrap; text-transform: uppercase; }
         .score-badge { position: absolute; top: 20px; right: 20px; width: 50px; height: 50px; background: #3b82f6; color: white; border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 800; z-index: 20; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .score-label { font-size: 0.6rem; font-weight: 600; text-transform: uppercase; }
-        
         .product-img { width: 100%; height: 220px; object-fit: contain; margin: 15px 0 30px; background: #ffffff; border-radius: 16px; padding: 20px; box-sizing: border-box; position: relative; z-index: 1; transition: transform 0.3s ease; }
         .product-img:hover { transform: scale(1.02); }
-
         h2 { font-size: 1.3rem; font-weight: 700; margin: 0 0 15px 0; height: 3em; overflow: hidden; line-height: 1.4; }
         .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 16px; }
         .spec-item { font-size: 0.85rem; color: #cbd5e1; display: flex; gap: 8px; align-items: center;}
-        
         .price-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); }
         .price-container { display: flex; flex-direction: column; align-items: flex-start; }
         .old-price-anchor { text-decoration: line-through; color: #64748b; font-size: 0.85rem; margin-bottom: 0px; }
@@ -171,7 +174,7 @@ function getScore(price) {
         .amazon-legal-box { max-width: 800px; margin: 40px auto 0; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
         .legal-text { font-size: 0.75rem; color: var(--text-legal); line-height: 1.6; margin: 0; }
 
-        /* WIZARD & MÓVIL (Styles) */
+        /* WIZARD & MÓVIL */
         .wizard-fab { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); color: white; padding: 15px 25px; border-radius: 50px; font-weight: 800; font-size: 1rem; box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4); cursor: pointer; z-index: 100; transition: transform 0.3s, box-shadow 0.3s; display: flex; align-items: center; gap: 10px; }
         .wizard-fab:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 15px 35px rgba(124, 58, 237, 0.6); }
         .wizard-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(10px); z-index: 200; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
@@ -249,10 +252,10 @@ function getScore(price) {
 
     <section class="hero">
         <div class="badge-pill">✨ Algoritmo v2.1 Actualizado</div>
-        <h1>¿Miedo a tirar 500€ <br /> en un portátil lento?</h1>
+        <h1>No pagues por el logo. <br /> <span>Paga por el rendimiento.</span></h1>
         <p class="subtitle">
-            Las tiendas intentan venderte stock viejo. Nosotros analizamos el hardware real.
-            <br> <span style="color: #4ade80; font-weight: bold;">⚡ Encuentra el mejor calidad-precio en 3 clics.</span>
+            Analizamos el mercado diariamente para encontrar los portátiles que realmente valen lo que cuestan.
+            <br> <span style="color: #4ade80; font-weight: bold;">⚡ Potencia real al mejor precio.</span>
         </p>
         
         <div class="cta-container">
@@ -283,16 +286,48 @@ function getScore(price) {
         <aside class="sidebar">
             <div class="filter-box">
                 <span class="filter-title">Ordenar Por</span>
-                <div class="filter-item" id="sort-score">⚡ Mejor Puntuación</div>
-                <div class="filter-item" id="sort-price-asc">💰 Precio: Bajo a Alto</div>
-                <div class="filter-item" id="sort-price-desc">💎 Precio: Alto a Bajo</div>
+                <label class="custom-checkbox">
+                    <input type="radio" name="sort" id="sort-score" checked>
+                    <span>⚡ Mejor Puntuación</span>
+                </label>
+                <label class="custom-checkbox">
+                    <input type="radio" name="sort" id="sort-price-asc">
+                    <span>💰 Precio: Bajo a Alto</span>
+                </label>
+                <label class="custom-checkbox">
+                    <input type="radio" name="sort" id="sort-price-desc">
+                    <span>💎 Precio: Alto a Bajo</span>
+                </label>
             </div>
+
             <div class="filter-box">
-                <span class="filter-title">Rango de Precio</span>
-                <div class="filter-item" id="filter-all">🔄 Ver Todos</div>
-                <div class="filter-item" id="filter-under-500">📉 Menos de 500€</div>
-                <div class="filter-item" id="filter-under-800">⚖️ Menos de 800€</div>
-                <div class="filter-item" id="filter-over-1000">🚀 Gama Alta (+1000€)</div>
+                <div class="range-header">
+                    <span>Presupuesto Máx.</span>
+                    <span id="price-value-display">2500€</span>
+                </div>
+                <div class="range-container">
+                    <input type="range" id="price-slider" min="200" max="2500" step="50" value="2500">
+                </div>
+            </div>
+
+            <div class="filter-box">
+                <span class="filter-title">Marcas</span>
+                {allBrands.map(brand => (
+                    <label class="custom-checkbox">
+                        <input type="checkbox" class="brand-filter" value={brand}>
+                        <span>{brand}</span>
+                    </label>
+                ))}
+            </div>
+
+             <div class="filter-box">
+                <span class="filter-title">Memoria RAM</span>
+                {ramOptions.map(ram => (
+                    <label class="custom-checkbox">
+                        <input type="checkbox" class="ram-filter" value={ram}>
+                        <span>{ram}</span>
+                    </label>
+                ))}
             </div>
         </aside>
 
@@ -303,8 +338,9 @@ function getScore(price) {
                     data-price={laptop.price_eur} 
                     data-score={getScore(laptop.price_eur)} 
                     data-category={laptop.category}
+                    data-name={laptop.name}
+                    data-ram={laptop.specs.ram}
                 >
-                    {/* SI ES EL PRIMERO, PONEMOS LA CORONA */}
                     {index === 0 && <div class="winner-badge-label">🏆 MEJOR OPCIÓN 2024</div>}
 
                     <div class="score-badge">
@@ -353,64 +389,117 @@ function getScore(price) {
     </footer>
 
     <script define:vars={{laptops}}>
-        // --- 1. LÓGICA DE FILTROS DE LA GRID ---
+        // --- GESTIÓN DE FILTROS AVANZADA ---
         const grid = document.getElementById('laptops-grid');
-        // Importante: Actualizamos el selector para incluir 'winner-card' si es necesario, 
-        // pero .card sigue siendo la clase base, así que funciona igual.
         const cards = Array.from(document.querySelectorAll('.card'));
         
-        function filterByCategory(category) {
-            cards.forEach(card => {
-                const categories = card.dataset.category || "";
-                if (categories.includes(category)) card.style.display = 'flex';
-                else card.style.display = 'none';
-            });
-            grid.scrollIntoView({behavior: 'smooth'});
-        }
+        // Estado inicial de los filtros
+        let state = {
+            maxPrice: 2500,
+            brands: [],
+            ram: [],
+            category: 'all'
+        };
 
+        // 1. ESCUCHADORES DE EVENTOS
+        
+        // Slider de Precio
+        const priceSlider = document.getElementById('price-slider');
+        const priceDisplay = document.getElementById('price-value-display');
+        
+        priceSlider.addEventListener('input', (e) => {
+            state.maxPrice = parseInt(e.target.value);
+            priceDisplay.innerText = state.maxPrice + '€';
+            applyFilters();
+        });
+
+        // Checkboxes de Marca
+        document.querySelectorAll('.brand-filter').forEach(cb => {
+            cb.addEventListener('change', (e) => {
+                const value = e.target.value;
+                if(e.target.checked) state.brands.push(value);
+                else state.brands = state.brands.filter(b => b !== value);
+                applyFilters();
+            });
+        });
+
+        // Checkboxes de RAM
+        document.querySelectorAll('.ram-filter').forEach(cb => {
+            cb.addEventListener('change', (e) => {
+                const value = e.target.value;
+                if(e.target.checked) state.ram.push(value);
+                else state.ram = state.ram.filter(r => r !== value);
+                applyFilters();
+            });
+        });
+
+        // Botones de Ordenación
+        document.getElementById('sort-score').addEventListener('click', () => sortGrid('score'));
+        document.getElementById('sort-price-asc').addEventListener('click', () => sortGrid('price-asc'));
+        document.getElementById('sort-price-desc').addEventListener('click', () => sortGrid('price-desc'));
+
+        // Navbar Quick Filters (Categorías)
         const navTop = document.getElementById('nav-top');
         const navGaming = document.getElementById('nav-gaming');
         const navStudent = document.getElementById('nav-student');
-        if(navTop) navTop.addEventListener('click', () => filterByCategory('top'));
-        if(navGaming) navGaming.addEventListener('click', () => filterByCategory('gaming'));
-        if(navStudent) navStudent.addEventListener('click', () => filterByCategory('student'));
-        
-        document.getElementById('reset-home').addEventListener('click', () => {
-            cards.forEach(card => card.style.display = 'flex');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-        
-        document.getElementById('sort-score').addEventListener('click', () => updateGrid(cards.sort((a, b) => b.dataset.score - a.dataset.score)));
-        document.getElementById('sort-price-asc').addEventListener('click', () => updateGrid(cards.sort((a, b) => a.dataset.price - b.dataset.price)));
-        document.getElementById('sort-price-desc').addEventListener('click', () => updateGrid(cards.sort((a, b) => b.dataset.price - a.dataset.price)));
-        
-        document.getElementById('filter-all').addEventListener('click', () => cards.forEach(c => c.style.display = 'flex'));
-        document.getElementById('filter-under-500').addEventListener('click', () => filterByPrice(0, 500));
-        document.getElementById('filter-under-800').addEventListener('click', () => filterByPrice(0, 800));
-        document.getElementById('filter-over-1000').addEventListener('click', () => filterByPrice(1000, 99999));
+        if(navTop) navTop.addEventListener('click', () => setCategory('top'));
+        if(navGaming) navGaming.addEventListener('click', () => setCategory('gaming'));
+        if(navStudent) navStudent.addEventListener('click', () => setCategory('student'));
+        document.getElementById('reset-home').addEventListener('click', () => setCategory('all'));
 
-        function filterByPrice(min, max) {
+
+        // 2. LÓGICA DE FILTRADO MAESTRA
+        function setCategory(cat) {
+            state.category = cat;
+            // Si cambian categoría, resetear scroll
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            applyFilters();
+        }
+
+        function applyFilters() {
             cards.forEach(card => {
                 const price = parseFloat(card.dataset.price);
-                if (price >= min && price <= max) card.style.display = 'flex';
-                else card.style.display = 'none';
+                const name = card.dataset.name;
+                const ram = card.dataset.ram;
+                const categories = card.dataset.category || "";
+
+                // Condición 1: Precio
+                let matchPrice = price <= state.maxPrice;
+
+                // Condición 2: Marca (Si no hay marcas seleccionadas, pasan todas)
+                let matchBrand = state.brands.length === 0 || state.brands.some(b => name.includes(b));
+
+                // Condición 3: RAM (Si no hay RAM seleccionada, pasan todas)
+                let matchRam = state.ram.length === 0 || state.ram.some(r => ram.includes(r));
+
+                // Condición 4: Categoría (Botones Navbar)
+                let matchCat = state.category === 'all' || categories.includes(state.category);
+
+                if (matchPrice && matchBrand && matchRam && matchCat) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
             });
         }
-        function updateGrid(sortedCards) {
+
+        function sortGrid(criteria) {
+            let sortedCards = cards.sort((a, b) => {
+                if (criteria === 'score') return b.dataset.score - a.dataset.score;
+                if (criteria === 'price-asc') return a.dataset.price - b.dataset.price;
+                if (criteria === 'price-desc') return b.dataset.price - a.dataset.price;
+            });
             grid.innerHTML = '';
-            sortedCards.forEach(card => { card.style.display = 'flex'; grid.appendChild(card); });
+            sortedCards.forEach(card => { card.style.display = 'flex'; grid.appendChild(card); applyFilters(); });
         }
 
 
-        // --- 2. LÓGICA DEL WIZARD (RECOMENDADOR) ---
+        // --- LÓGICA DEL WIZARD (RECOMENDADOR) ---
         let wizardData = { maxPrice: 9999, use: '' };
-        
-        // Abrir/Cerrar Modal
         const modal = document.getElementById('wizard-overlay');
         document.getElementById('wizard-trigger').addEventListener('click', () => modal.classList.add('active'));
         document.getElementById('close-wizard').addEventListener('click', () => modal.classList.remove('active'));
 
-        // Hacer las funciones globales para que el HTML las vea
         window.nextStep = function(step, value) {
             if (step === 1) {
                 wizardData.maxPrice = value;
@@ -435,7 +524,6 @@ function getScore(price) {
             document.getElementById('wizard-match').style.display = 'none';
 
             setTimeout(() => {
-                // ALGORITMO DE FILTRADO
                 let filtered = laptops.filter(l => l.price_eur <= wizardData.maxPrice);
                 
                 if (wizardData.use === 'gaming') {
@@ -449,8 +537,6 @@ function getScore(price) {
                 }
 
                 let winner = filtered.length > 0 ? filtered[0] : laptops[0];
-
-                // --- GENERAR ENLACE AMAZON ---
                 const amazonLink = `https://www.amazon.es/s?k=${winner.name.replace(/ /g, '+')}&tag=comparadorjai-21`;
 
                 document.getElementById('wizard-loading').style.display = 'none';
