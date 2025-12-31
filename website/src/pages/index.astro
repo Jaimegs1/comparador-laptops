@@ -1,7 +1,7 @@
 ---
 import laptops from '../data/laptops.json';
 
-// --- CONFIGURACIÓN DE OFERTAS FLASH (AQUÍ AÑADES TUS PRODUCTOS) ---
+// --- CONFIGURACIÓN DE OFERTAS FLASH ---
 const flashOffers = [
     {
         name: "Auriculares Bluetooth 5.4 (2025)",
@@ -101,7 +101,7 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         .nav-vs-link { color: #4ade80; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: transform 0.2s; }
         .nav-vs-link:hover { transform: scale(1.05); color: #86efac; }
         
-        /* HERO ANIMADO (NUEVO) */
+        /* HERO ANIMADO */
         .hero { 
             position: relative; 
             min-height: auto; 
@@ -123,7 +123,6 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             animation: gradientBG 15s ease infinite;
         }
 
-        /* DEFINICIÓN DE LA ANIMACIÓN */
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -144,7 +143,7 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         .flash-section {
             width: 100%;
             max-width: 1200px;
-            margin: -40px auto 0; /* Solapamiento con Hero */
+            margin: -40px auto 0;
             padding: 0 20px;
             z-index: 10;
             position: relative;
@@ -163,7 +162,7 @@ const ramOptions = ["8GB", "16GB", "32GB"];
 
         .offer-card {
             background: #1e293b;
-            border: 1px solid rgba(239, 68, 68, 0.3); /* Borde rojizo sutil */
+            border: 1px solid rgba(239, 68, 68, 0.3);
             border-radius: 16px;
             padding: 15px;
             display: flex;
@@ -235,22 +234,18 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         .filter-item { display: block; color: var(--text-muted); margin-bottom: 14px; cursor: pointer; transition: 0.2s; }
         .filter-item:hover { color: white; transform: translateX(5px); }
 
-        /* =========================================================
-           🔧 FIX GRID: FLEXBOX PARA EVITAR ESTIRAMIENTO GIGANTE
-           ========================================================= */
+        /* GRID Y CARDS */
         .grid { 
             flex: 1; 
-            /* Cambiamos de 'grid' a 'flex' para control total */
             display: flex; 
             flex-wrap: wrap; 
             gap: 25px; 
             width: 100%; 
-            /* Alineación al inicio: si hay 1, se queda a la izq, no se centra ni estira */
             justify-content: flex-start;
             align-content: flex-start;
         }
 
-        /* CARD CORREGIDA: TAMAÑO FIJO Y CONTROLADO */
+        /* CARD CORREGIDA: AHORA ES UN ENLACE 'A' */
         .card { 
             background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.4) 100%); 
             border: 1px solid var(--card-border); 
@@ -260,13 +255,14 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             display: flex; 
             flex-direction: column; 
             transition: 0.3s;
+            text-decoration: none !important; /* Quitar subrayado del enlace */
+            color: var(--text-main); /* Forzar color de texto */
             
-            /* TAMAÑO MÁGICO */
-            flex: 1 1 300px; /* Base ideal de 300px, puede crecer o encoger */
-            max-width: 340px; /* TOPE DE ANCHURA: Nunca será más ancha que esto */
-            min-width: 280px; /* Mínimo para que no se rompa en móviles muy viejos */
-            
+            flex: 1 1 300px;
+            max-width: 340px;
+            min-width: 280px;
             box-sizing: border-box;
+            cursor: pointer;
         }
         
         .card:hover { transform: translateY(-8px); border-color: #818cf8; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.4); background: rgba(30, 41, 59, 0.9); }
@@ -276,15 +272,17 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         .score-label { font-size: 0.6rem; font-weight: 600; text-transform: uppercase; }
         .product-img { width: 100%; height: 220px; object-fit: contain; margin: 15px 0 30px; background: #ffffff; border-radius: 16px; padding: 20px; box-sizing: border-box; position: relative; z-index: 1; transition: transform 0.3s ease; }
         .product-img:hover { transform: scale(1.02); }
-        h2 { font-size: 1.3rem; font-weight: 700; margin: 0 0 15px 0; height: 3em; overflow: hidden; line-height: 1.4; }
+        h2 { font-size: 1.3rem; font-weight: 700; margin: 0 0 15px 0; height: 3em; overflow: hidden; line-height: 1.4; color: white; }
         .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 16px; }
         .spec-item { font-size: 0.85rem; color: #cbd5e1; display: flex; gap: 8px; align-items: center;}
         .price-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); }
         .price-container { display: flex; flex-direction: column; align-items: flex-start; }
         .old-price-anchor { text-decoration: line-through; color: #64748b; font-size: 0.85rem; margin-bottom: 0px; }
         .price-display { font-size: 1.6rem; font-weight: 800; color: white; }
-        .btn-card { background: white; color: #0f172a; padding: 12px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: background 0.2s; }
-        .btn-card:hover { background: #e2e8f0; }
+        
+        /* ESTILO NUEVO DEL BOTÓN FALSO */
+        .btn-card { background: white; color: #0f172a; padding: 10px 18px; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 0.85rem; transition: background 0.2s; white-space: nowrap; }
+        .card:hover .btn-card { background: #e2e8f0; }
 
         /* FOOTER */
         .site-footer { background-color: var(--bg-footer); border-top: 1px solid var(--card-border); padding: 60px 20px 40px; margin-top: auto; width: 100%; box-sizing: border-box; }
@@ -324,11 +322,8 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             .btn-telegram-hero, .btn-compare-hero { width: 90%; justify-content: center; font-size: 0.95rem; padding: 14px 20px; }
             .wizard-fab { bottom: 20px !important; right: 20px !important; font-size: 0.9rem !important; padding: 12px 20px !important; z-index: 9999; }
             
-            /* En móvil sí queremos centrar si solo hay 1 */
             .grid { justify-content: center; }
-            .card { max-width: 400px; } /* En móvil un poco más de margen */
-            
-            /* Ajuste Ofertas Flash en Móvil */
+            .card { max-width: 400px; }
             .offers-grid { grid-template-columns: 1fr; }
             .flash-section { margin-top: 0; padding: 20px; }
         }
@@ -356,7 +351,7 @@ const ramOptions = ["8GB", "16GB", "32GB"];
                 <h3 class="wizard-title">✨ Tu Portátil Ideal es:</h3>
                 <div id="wizard-loading">Calculando...</div>
                 <div id="wizard-match" class="result-card">
-                    <img id="wiz-img" src="" style="width: 150px; margin: 0 auto; display:block;" />
+                    <img id="wiz-img" src="" style="width: 150px; margin: 0 auto; display:block; cursor:pointer;" />
                     <h4 id="wiz-name" style="margin: 10px 0; color: #818cf8;"></h4>
                     <p id="wiz-price" style="font-size: 1.5rem; font-weight: 800; color: white;"></p>
                     <a id="wiz-link" href="#" class="btn-amazon" style="display:block; margin-top:15px; background: #3b82f6; padding: 12px; border-radius: 8px; color: white; text-decoration: none; font-weight: bold; transition: 0.3s;">🛒 Ver Oferta en Amazon</a>
@@ -466,8 +461,15 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         </aside>
 
         <main class="grid" id="laptops-grid">
-            {laptops.map((laptop, index) => (
-                <article 
+            {laptops.map((laptop, index) => {
+                // GENERAR LINK AMAZON AFILIADO
+                const amazonLink = `https://www.amazon.es/s?k=${laptop.name.replace(/ /g, '+')}&tag=comparadorjai-21`;
+                
+                return (
+                <a 
+                    href={amazonLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     class={`card ${index === 0 ? 'winner-card' : ''}`} 
                     data-price={laptop.price_eur} 
                     data-score={getScore(laptop.price_eur)} 
@@ -493,10 +495,11 @@ const ramOptions = ["8GB", "16GB", "32GB"];
                             <span class="old-price-anchor">{(laptop.price_eur * 1.2).toFixed(0)}€</span>
                             <span class="price-display">{laptop.price_eur} €</span>
                         </div>
-                        <a href={`/laptops/${laptop.slug}`} class="btn-card">Ver Ficha</a>
+                        {/* Botón visual (es un span porque ya estamos dentro de un <a>) */}
+                        <span class="btn-card">Ver en Amazon ➔</span>
                     </div>
-                </article>
-            ))}
+                </a>
+            )})}
         </main>
     </div>
 
@@ -654,7 +657,15 @@ const ramOptions = ["8GB", "16GB", "32GB"];
 
                 document.getElementById('wizard-loading').style.display = 'none';
                 document.getElementById('wizard-match').style.display = 'block';
-                document.getElementById('wiz-img').src = winner.brand_img;
+                
+                const imgElement = document.getElementById('wiz-img');
+                imgElement.src = winner.brand_img;
+                
+                // --- NUEVO: HACER CLICABLE LA IMAGEN DEL MAGO ---
+                imgElement.onclick = function() {
+                    window.open(amazonLink, '_blank');
+                };
+                
                 document.getElementById('wiz-name').innerText = winner.name;
                 document.getElementById('wiz-price').innerText = winner.price_eur + ' €';
                 const wizLinkBtn = document.getElementById('wiz-link');
