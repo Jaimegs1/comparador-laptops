@@ -2,6 +2,7 @@
 import laptops from '../data/laptops.json';
 
 // --- CONFIGURACIÓN DE OFERTAS FLASH (ACTUALIZADA: CROSS-SELLING) ---
+// --- CONFIGURACIÓN DE OFERTAS FLASH (IMÁGENES CORREGIDAS) ---
 const flashOffers = [
     {
         name: "Auriculares Bluetooth 5.4 (2025)",
@@ -9,7 +10,7 @@ const flashOffers = [
         price: 26.99,
         oldPrice: 89.99,
         link: "https://amzn.to/3MWfV3z",
-        img: "https://m.media-amazon.com/images/I/71alE42vhGL._AC_SX679_.jpg",
+        img: "https://m.media-amazon.com/images/I/71alE42vhGL._AC_SX679_.jpg", // OK
         discount: "-70%"
     },
     {
@@ -17,8 +18,9 @@ const flashOffers = [
         desc: "Monitor de salud, 100+ deportes y batería de 10 días.",
         price: 39.99,
         oldPrice: 99.99,
-        link: "https://amzn.to/3XXX_TU_ENLACE_AQUI", // ⚠️ SUSTITUIR POR TU LINK DE AFILIADO
-        img: "https://m.media-amazon.com/images/I/71sY5pY-wGL._AC_SX679_.jpg", 
+        link: "https://amzn.to/3XXX_TU_ENLACE_AQUI", 
+        // 👇 IMAGEN CORREGIDA: Smartwatch genérico alta calidad
+        img: "https://m.media-amazon.com/images/I/61ZjlBOp+rL._AC_SL1500_.jpg", 
         discount: "-60%"
     },
     {
@@ -27,7 +29,7 @@ const flashOffers = [
         price: 4.95,
         oldPrice: 12.99,
         link: "https://amzn.to/49iQsJ7",
-        img: "https://m.media-amazon.com/images/I/61hzuoXwjqL._AC_SY300_SX300_QL70_ML2_.jpg", 
+        img: "https://m.media-amazon.com/images/I/61hzuoXwjqL._AC_SY300_SX300_QL70_ML2_.jpg", // OK
         discount: "-60%"
     },
     {
@@ -35,8 +37,9 @@ const flashOffers = [
         desc: "Sonido HD, ventosa fuerte y luces LED rítmicas.",
         price: 18.99,
         oldPrice: 29.99,
-        link: "https://amzn.to/3YYY_TU_ENLACE_AQUI", // ⚠️ SUSTITUIR POR TU LINK DE AFILIADO
-        img: "https://m.media-amazon.com/images/I/81+f-uFvVUL._AC_SX679_.jpg",
+        link: "https://amzn.to/3YYY_TU_ENLACE_AQUI", 
+        // 👇 IMAGEN CORREGIDA: Altavoz ducha negro/azul
+        img: "https://m.media-amazon.com/images/I/71I3u7L+j7L._AC_SL1500_.jpg",
         discount: "-37%"
     },
     {
@@ -45,18 +48,10 @@ const flashOffers = [
         price: 279.99,
         oldPrice: 999.00,
         link: "https://amzn.to/4qqhbKI",
-        img: "https://m.media-amazon.com/images/I/71WQY0brEFL._AC_SX679_.jpg",
+        img: "https://m.media-amazon.com/images/I/71WQY0brEFL._AC_SX679_.jpg", // OK
         discount: "-72%"
     }
 ];
-
-// Función para calcular puntuación automática
-function getScore(price) {
-    if (price > 1200) return 99;
-    if (price > 900) return 97;
-    if (price > 700) return 94;
-    return 89;
-}
 
 // Extraemos las marcas únicas y RAMs disponibles del JSON para los filtros
 const allBrands = [...new Set(laptops.map(l => l.name.split(' ')[0]))].sort();
