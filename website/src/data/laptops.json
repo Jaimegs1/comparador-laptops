@@ -1,257 +1,1502 @@
 [
-    {
-        "name": "MacBook Air M1",
-        "price_eur": 930,
-        "brand_img": "/img/macbook.jpg",
-        "cpu_score": 15000,
-        "specs": {
-            "cpu": "Apple M1 Chip",
-            "ram": "8 GB",
-            "storage": "256 GB SSD",
-            "weight": "1.29 kg"
-        },
-        "category": ["student", "top"],
-        "slug": "macbook-air-m1",
-        "verdict": "La compra más inteligente para estudiantes. La batería dura días y la pantalla es brutal. No sirve para juegos exigentes, pero para todo lo demás es invencible."
+  {
+    "id": "mock-0",
+    "name": "HP Victus 15 (Intel Core i7-12700H, 16GB, 512GB SSD)",
+    "slug": "hp-victus-15-0",
+    "brand_img": "/img/hp.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Intel Core i7-12700H",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
     },
-    {
-        "name": "HP Victus 15 Gaming",
-        "price_eur": 649,
-        "brand_img": "/img/hp.jpg",
-        "cpu_score": 12000,
-        "specs": {
-            "cpu": "Intel Core i5-12500H",
-            "ram": "16 GB DDR4",
-            "storage": "512 GB SSD",
-            "weight": "2.29 kg"
-        },
-        "category": ["gaming"],
-        "slug": "hp-victus-15",
-        "verdict": "El rey del gaming barato. Se siente un poco 'de plástico', pero por este precio es imposible encontrar algo que mueva mejor el Fortnite o el Valorant."
+    "price_eur": 897,
+    "affiliate_link": "https://www.amazon.es/s?k=HP+Victus+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-1",
+    "name": "Dell Inspiron 15 (Intel Core i3-1215U, 16GB, 256GB SSD)",
+    "slug": "dell-inspiron-15-1",
+    "brand_img": "/img/dell.jpg",
+    "category": "business",
+    "specs": {
+      "cpu": "Intel Core i3-1215U",
+      "ram": "16GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
     },
-    {
-        "name": "Lenovo Legion 5 Gen 6",
-        "price_eur": 1099,
-        "brand_img": "/img/legion.jpg",
-        "cpu_score": 21000,
-        "specs": {
-            "cpu": "AMD Ryzen 7 5800H",
-            "ram": "16 GB DDR4",
-            "storage": "1 TB SSD",
-            "weight": "2.40 kg"
-        },
-        "category": ["gaming", "top"],
-        "slug": "lenovo-legion-5",
-        "verdict": "Una bestia todoterreno. Tiene una refrigeración excelente (no se calienta tanto como otros). Perfecto si eres ingeniero y gamer a la vez. Eso sí, el cargador pesa un ladrillo."
+    "price_eur": 443,
+    "affiliate_link": "https://www.amazon.es/s?k=Dell+Inspiron+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-2",
+    "name": "HP Victus 15 (Ryzen 7 5800H, 32GB, 1TB SSD)",
+    "slug": "hp-victus-15-2",
+    "brand_img": "/img/hp.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "32GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
     },
-    {
-        "name": "ASUS TUF Gaming F15",
-        "price_eur": 799,
-        "brand_img": "/img/asus.jpg",
-        "cpu_score": 18000,
-        "specs": {
-            "cpu": "Intel Core i7-11800H",
-            "ram": "16 GB DDR4",
-            "storage": "512 GB SSD",
-            "weight": "2.30 kg"
-        },
-        "category": ["gaming"],
-        "slug": "asus-tuf-f15",
-        "verdict": "Robusto como un tanque. Si eres un poco torpe y lo vas a llevar en la mochila a diario, este aguanta golpes. Potencia de sobra para 1080p."
+    "price_eur": 1030,
+    "affiliate_link": "https://www.amazon.es/s?k=HP+Victus+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-3",
+    "name": "HP Victus 15 (Apple M2, 32GB, 512GB SSD)",
+    "slug": "hp-victus-15-3",
+    "brand_img": "/img/hp.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Apple M2",
+      "ram": "32GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
     },
-    {
-        "name": "Acer Nitro 5",
-        "price_eur": 699,
-        "brand_img": "/img/nitro.jpg",
-        "cpu_score": 12000,
-        "specs": {
-            "cpu": "Intel Core i5-11400H",
-            "ram": "16 GB DDR4",
-            "storage": "512 GB SSD",
-            "weight": "2.20 kg"
-        },
-        "category": ["gaming"],
-        "slug": "acer-nitro-5",
-        "verdict": "La alternativa clásica al Victus. Estética muy 'gamer' (rojo y negro). Ojo: los ventiladores hacen bastante ruido cuando juegas a tope."
+    "price_eur": 1222,
+    "affiliate_link": "https://www.amazon.es/s?k=HP+Victus+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-4",
+    "name": "ASUS Vivobook 15 (Ryzen 5 5600H, 32GB, 512GB SSD)",
+    "slug": "asus-vivobook-15-4",
+    "brand_img": "/img/vivobook.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Ryzen 5 5600H",
+      "ram": "32GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
     },
-    {
-        "name": "MacBook Air M2",
-        "price_eur": 1199,
-        "brand_img": "/img/macbook-m2.jpg",
-        "cpu_score": 21000,
-        "specs": {
-            "cpu": "Apple M2 Chip",
-            "ram": "8 GB",
-            "storage": "256 GB SSD",
-            "weight": "1.24 kg"
-        },
-        "category": ["student", "top"],
-        "slug": "macbook-air-m2",
-        "verdict": "Más bonito y ligero que el M1, con pantalla un poco mejor. ¿Vale la pena pagar el extra? Solo si te sobra el dinero o te encanta el diseño nuevo."
+    "price_eur": 583,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+Vivobook+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-5",
+    "name": "Lenovo V15 G3 (Intel Core i5-12500H, 8GB, 256GB SSD)",
+    "slug": "lenovo-v15-g3-5",
+    "brand_img": "/img/lenovo-v15.jpg",
+    "category": "business student",
+    "specs": {
+      "cpu": "Intel Core i5-12500H",
+      "ram": "8GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
     },
-    {
-        "name": "ASUS ZenBook 14",
-        "price_eur": 850,
-        "brand_img": "/img/vivobook.jpg", 
-        "cpu_score": 15000,
-        "specs": {
-            "cpu": "Intel Core i5-1240P",
-            "ram": "16 GB LPDDR5",
-            "storage": "512 GB SSD",
-            "weight": "1.39 kg"
-        },
-        "category": ["student"],
-        "slug": "asus-zenbook-14",
-        "verdict": "La pantalla OLED es una locura para ver series. Muy elegante para llevar a la oficina o universidad sin parecer un gamer. Batería decente."
+    "price_eur": 355,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+V15+G3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-6",
+    "name": "ASUS TUF Gaming F15 (Apple M1, 16GB, 1TB SSD)",
+    "slug": "asus-tuf-gaming-f15-6",
+    "brand_img": "/img/asus.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Apple M1",
+      "ram": "16GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
     },
-    {
-        "name": "Steam Deck OLED (1TB)",
-        "price_eur": 679,
-        "brand_img": "/img/steamdeck.jpg",
-        "cpu_score": 4000,
-        "specs": {
-            "cpu": "AMD Zen 2 (APU Custom)",
-            "ram": "16 GB LPDDR5",
-            "storage": "1 TB NVMe SSD",
-            "weight": "0.64 kg"
-        },
-        "category": ["gaming", "top"],
-        "slug": "steam-deck-oled-1tb",
-        "verdict": "No es un portátil, es una consola. Si solo quieres jugar y no necesitas escribir trabajos, esto es mejor que cualquier portátil de 600€. La pantalla OLED se ve increíble."
+    "price_eur": 1069,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+TUF+Gaming+F15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-7",
+    "name": "ASUS Vivobook 15 (Ryzen 5 5600H, 8GB, 1TB SSD)",
+    "slug": "asus-vivobook-15-7",
+    "brand_img": "/img/vivobook.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Ryzen 5 5600H",
+      "ram": "8GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
     },
-    {
-        "name": "Steam Deck LCD (256GB)",
-        "price_eur": 419,
-        "brand_img": "/img/steamdeck.jpg",
-        "cpu_score": 4000,
-        "specs": {
-            "cpu": "AMD Zen 2 (APU Custom)",
-            "ram": "16 GB LPDDR5",
-            "storage": "256 GB NVMe SSD",
-            "weight": "0.66 kg"
-        },
-        "category": ["gaming"],
-        "slug": "steam-deck-lcd-256gb",
-        "verdict": "La entrada más barata al PC Gaming. Por 400€ no existe nada que mueva juegos así. Ideal si tienes poco presupuesto y ya tienes un PC para estudiar."
+    "price_eur": 373,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+Vivobook+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-8",
+    "name": "Lenovo IdeaPad Slim 3 (Apple M2, 8GB, 1TB SSD)",
+    "slug": "lenovo-ideapad-slim-3-8",
+    "brand_img": "/img/lenovo.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Apple M2",
+      "ram": "8GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
     },
-    {
-        "name": "MSI Katana GF66",
-        "price_eur": 999,
-        "brand_img": "/img/katana.jpg",
-        "cpu_score": 18000,
-        "specs": {
-            "cpu": "Intel Core i7-11800H",
-            "ram": "16 GB DDR4",
-            "storage": "1 TB SSD",
-            "weight": "2.25 kg"
-        },
-        "category": ["gaming"],
-        "slug": "msi-katana",
-        "verdict": "Puro músculo. MSI prioriza el rendimiento sobre la batería (que dura poco). Si lo vas a tener enchufado casi siempre jugando, es buena compra."
+    "price_eur": 866,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+IdeaPad+Slim+3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-9",
+    "name": "ASUS TUF Gaming F15 (Ryzen 7 5800H, 16GB, 1TB SSD)",
+    "slug": "asus-tuf-gaming-f15-9",
+    "brand_img": "/img/asus.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "16GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
     },
-    {
-        "name": "LG Gram 17",
-        "price_eur": 1399,
-        "brand_img": "/img/gram.jpg",
-        "cpu_score": 16000,
-        "specs": {
-            "cpu": "Intel Core i7-1260P",
-            "ram": "16 GB LPDDR5",
-            "storage": "512 GB SSD",
-            "weight": "1.35 kg"
-        },
-        "category": ["top", "student"],
-        "slug": "lg-gram-17",
-        "verdict": "Parece brujería lo poco que pesa para ser de 17 pulgadas. Si viajas mucho y necesitas pantalla grande para Excel o programación, este es tu portátil."
+    "price_eur": 881,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+TUF+Gaming+F15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-10",
+    "name": "Lenovo IdeaPad Slim 3 (Apple M1, 32GB, 512GB SSD)",
+    "slug": "lenovo-ideapad-slim-3-10",
+    "brand_img": "/img/lenovo.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Apple M1",
+      "ram": "32GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
     },
-    {
-        "name": "ASUS ROG Strix",
-        "price_eur": 1699,
-        "brand_img": "/img/rog.jpg",
-        "cpu_score": 25000,
-        "specs": {
-            "cpu": "AMD Ryzen 9 5900HX",
-            "ram": "32 GB DDR4",
-            "storage": "1 TB NVMe SSD",
-            "weight": "2.50 kg"
-        },
-        "category": ["gaming", "top"],
-        "slug": "asus-rog-strix",
-        "verdict": "Gama alta sin concesiones. Tira cualquier juego moderno en Ultra. Tiene muchas luces RGB (te tiene que gustar eso). Es caro, pero es una inversión a 5 años."
+    "price_eur": 1050,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+IdeaPad+Slim+3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-11",
+    "name": "Lenovo V15 G3 (Intel Core i3-1215U, 8GB, 256GB SSD)",
+    "slug": "lenovo-v15-g3-11",
+    "brand_img": "/img/lenovo-v15.jpg",
+    "category": "business student",
+    "specs": {
+      "cpu": "Intel Core i3-1215U",
+      "ram": "8GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
     },
-    {
-        "name": "Dell XPS 13",
-        "price_eur": 1299,
-        "brand_img": "/img/xps.jpg",
-        "cpu_score": 16000,
-        "specs": {
-            "cpu": "Intel Core i7-1165G7",
-            "ram": "16 GB LPDDR4",
-            "storage": "512 GB SSD",
-            "weight": "1.20 kg"
-        },
-        "category": ["top", "student"],
-        "slug": "dell-xps-13",
-        "verdict": "El Windows que quiere ser un MacBook. Calidad de construcción premium, pantalla sin bordes preciosa. Ideal para ejecutivos o estudiantes que quieren lo mejor."
+    "price_eur": 381,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+V15+G3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-12",
+    "name": "HP Victus 15 (Apple M2, 32GB, 1TB SSD)",
+    "slug": "hp-victus-15-12",
+    "brand_img": "/img/hp.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Apple M2",
+      "ram": "32GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
     },
-    {
-        "name": "Microsoft Surface Pro 9",
-        "price_eur": 1159,
-        "brand_img": "/img/surface.jpg",
-        "cpu_score": 15000,
-        "specs": {
-            "cpu": "Intel Core i5-1235U",
-            "ram": "8 GB LPDDR5",
-            "storage": "256 GB SSD",
-            "weight": "0.87 kg"
-        },
-        "category": ["student"],
-        "slug": "surface-pro-9",
-        "verdict": "Mitad tablet, mitad portátil. Si tomas apuntes con lápiz digital en la carrera, esto es lo mejor que puedes comprar. El teclado se suele vender aparte, ojo."
+    "price_eur": 1206,
+    "affiliate_link": "https://www.amazon.es/s?k=HP+Victus+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-13",
+    "name": "LG Gram 14 (Apple M1, 32GB, 512GB SSD)",
+    "slug": "lg-gram-14-13",
+    "brand_img": "/img/gram.jpg",
+    "category": "business top",
+    "specs": {
+      "cpu": "Apple M1",
+      "ram": "32GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
     },
-    {
-        "name": "HP Pavilion x360",
-        "price_eur": 699,
-        "brand_img": "/img/x360.jpg",
-        "cpu_score": 12000,
-        "specs": {
-            "cpu": "Intel Core i5-1135G7",
-            "ram": "8 GB DDR4",
-            "storage": "512 GB SSD",
-            "weight": "1.61 kg"
-        },
-        "category": ["student"],
-        "slug": "hp-x360",
-        "verdict": "Pantalla táctil que se gira. Muy versátil para ver pelis en la cama o enseñar presentaciones. Rendimiento correcto para ofimática y universidad."
+    "price_eur": 1061,
+    "affiliate_link": "https://www.amazon.es/s?k=LG+Gram+14&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-14",
+    "name": "Lenovo V15 G3 (Ryzen 5 5600H, 32GB, 512GB SSD)",
+    "slug": "lenovo-v15-g3-14",
+    "brand_img": "/img/lenovo-v15.jpg",
+    "category": "business student",
+    "specs": {
+      "cpu": "Ryzen 5 5600H",
+      "ram": "32GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
     },
-    {
-        "name": "Lenovo IdeaPad 1",
-        "price_eur": 299,
-        "brand_img": "/img/ideapad1.jpg",
-        "cpu_score": 6000,
-        "specs": {
-            "cpu": "Intel Celeron N4020",
-            "ram": "4 GB DDR4",
-            "storage": "128 GB eMMC",
-            "weight": "1.54 kg"
-        },
-        "category": ["student"],
-        "slug": "lenovo-ideapad-1",
-        "verdict": "Básico, básico. Sirve para escribir en Word, navegar y poco más. Si le pides mucho irá lento. Solo cómpralo si tu presupuesto es muy ajustado."
+    "price_eur": 565,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+V15+G3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-15",
+    "name": "LG Gram 14 (Apple M1, 32GB, 256GB SSD)",
+    "slug": "lg-gram-14-15",
+    "brand_img": "/img/gram.jpg",
+    "category": "business top",
+    "specs": {
+      "cpu": "Apple M1",
+      "ram": "32GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
     },
-    {
-        "name": "Acer Chromebook 314",
-        "price_eur": 249,
-        "brand_img": "/img/chromebook.jpg",
-        "cpu_score": 3000,
-        "specs": {
-            "cpu": "Intel Celeron N4000",
-            "ram": "4 GB LPDDR4",
-            "storage": "64 GB eMMC",
-            "weight": "1.50 kg"
-        },
-        "category": ["student"],
-        "slug": "acer-chromebook",
-        "verdict": "¡OJO! No tiene Windows, tiene ChromeOS (como un móvil). Perfecto para niños o institutos donde todo se hace en Google Docs. La batería dura mucho."
-    }
+    "price_eur": 1037,
+    "affiliate_link": "https://www.amazon.es/s?k=LG+Gram+14&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-16",
+    "name": "MacBook Air M1 (Apple M1, 8GB, 1TB SSD)",
+    "slug": "macbook-air-m1-16",
+    "brand_img": "/img/macbook.jpg",
+    "category": "top business student",
+    "specs": {
+      "cpu": "Apple M1",
+      "ram": "8GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 862,
+    "affiliate_link": "https://www.amazon.es/s?k=MacBook+Air+M1&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-17",
+    "name": "Lenovo IdeaPad Slim 3 (Ryzen 5 5600H, 8GB, 512GB SSD)",
+    "slug": "lenovo-ideapad-slim-3-17",
+    "brand_img": "/img/lenovo.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Ryzen 5 5600H",
+      "ram": "8GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 372,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+IdeaPad+Slim+3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-18",
+    "name": "Lenovo IdeaPad Slim 3 (Intel Core i7-12700H, 8GB, 512GB SSD)",
+    "slug": "lenovo-ideapad-slim-3-18",
+    "brand_img": "/img/lenovo.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Intel Core i7-12700H",
+      "ram": "8GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 674,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+IdeaPad+Slim+3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-19",
+    "name": "LG Gram 14 (Apple M1, 32GB, 1TB SSD)",
+    "slug": "lg-gram-14-19",
+    "brand_img": "/img/gram.jpg",
+    "category": "business top",
+    "specs": {
+      "cpu": "Apple M1",
+      "ram": "32GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 1042,
+    "affiliate_link": "https://www.amazon.es/s?k=LG+Gram+14&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-20",
+    "name": "MSI Thin GF63 (Apple M2, 8GB, 256GB SSD)",
+    "slug": "msi-thin-gf63-20",
+    "brand_img": "/img/msi.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Apple M2",
+      "ram": "8GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 1015,
+    "affiliate_link": "https://www.amazon.es/s?k=MSI+Thin+GF63&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-21",
+    "name": "MSI Thin GF63 (Ryzen 7 5800H, 8GB, 512GB SSD)",
+    "slug": "msi-thin-gf63-21",
+    "brand_img": "/img/msi.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "8GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 826,
+    "affiliate_link": "https://www.amazon.es/s?k=MSI+Thin+GF63&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-22",
+    "name": "MacBook Air M1 (Ryzen 7 5800H, 16GB, 512GB SSD)",
+    "slug": "macbook-air-m1-22",
+    "brand_img": "/img/macbook.jpg",
+    "category": "top business student",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 722,
+    "affiliate_link": "https://www.amazon.es/s?k=MacBook+Air+M1&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-23",
+    "name": "ASUS TUF Gaming F15 (Apple M1, 8GB, 256GB SSD)",
+    "slug": "asus-tuf-gaming-f15-23",
+    "brand_img": "/img/asus.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Apple M1",
+      "ram": "8GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 999,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+TUF+Gaming+F15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-24",
+    "name": "LG Gram 14 (Intel Core i7-12700H, 16GB, 1TB SSD)",
+    "slug": "lg-gram-14-24",
+    "brand_img": "/img/gram.jpg",
+    "category": "business top",
+    "specs": {
+      "cpu": "Intel Core i7-12700H",
+      "ram": "16GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 768,
+    "affiliate_link": "https://www.amazon.es/s?k=LG+Gram+14&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-25",
+    "name": "Lenovo V15 G3 (Intel Core i7-12700H, 8GB, 512GB SSD)",
+    "slug": "lenovo-v15-g3-25",
+    "brand_img": "/img/lenovo-v15.jpg",
+    "category": "business student",
+    "specs": {
+      "cpu": "Intel Core i7-12700H",
+      "ram": "8GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 686,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+V15+G3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-26",
+    "name": "LG Gram 14 (Intel Core i3-1215U, 16GB, 512GB SSD)",
+    "slug": "lg-gram-14-26",
+    "brand_img": "/img/gram.jpg",
+    "category": "business top",
+    "specs": {
+      "cpu": "Intel Core i3-1215U",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 448,
+    "affiliate_link": "https://www.amazon.es/s?k=LG+Gram+14&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-27",
+    "name": "MSI Thin GF63 (Apple M1, 16GB, 512GB SSD)",
+    "slug": "msi-thin-gf63-27",
+    "brand_img": "/img/msi.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Apple M1",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 1104,
+    "affiliate_link": "https://www.amazon.es/s?k=MSI+Thin+GF63&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-28",
+    "name": "LG Gram 14 (Apple M2, 32GB, 512GB SSD)",
+    "slug": "lg-gram-14-28",
+    "brand_img": "/img/gram.jpg",
+    "category": "business top",
+    "specs": {
+      "cpu": "Apple M2",
+      "ram": "32GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 1056,
+    "affiliate_link": "https://www.amazon.es/s?k=LG+Gram+14&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-29",
+    "name": "MSI Thin GF63 (Intel Core i7-12700H, 32GB, 1TB SSD)",
+    "slug": "msi-thin-gf63-29",
+    "brand_img": "/img/msi.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Intel Core i7-12700H",
+      "ram": "32GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 1001,
+    "affiliate_link": "https://www.amazon.es/s?k=MSI+Thin+GF63&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-30",
+    "name": "Acer Nitro 5 (Ryzen 7 5800H, 8GB, 1TB SSD)",
+    "slug": "acer-nitro-5-30",
+    "brand_img": "/img/nitro.jpg",
+    "category": "gaming top",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "8GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 796,
+    "affiliate_link": "https://www.amazon.es/s?k=Acer+Nitro+5&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-31",
+    "name": "Acer Nitro 5 (Intel Core i5-12500H, 16GB, 512GB SSD)",
+    "slug": "acer-nitro-5-31",
+    "brand_img": "/img/nitro.jpg",
+    "category": "gaming top",
+    "specs": {
+      "cpu": "Intel Core i5-12500H",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 578,
+    "affiliate_link": "https://www.amazon.es/s?k=Acer+Nitro+5&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-32",
+    "name": "Dell Inspiron 15 (Ryzen 7 5800H, 32GB, 512GB SSD)",
+    "slug": "dell-inspiron-15-32",
+    "brand_img": "/img/dell.jpg",
+    "category": "business",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "32GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 881,
+    "affiliate_link": "https://www.amazon.es/s?k=Dell+Inspiron+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-33",
+    "name": "Lenovo V15 G3 (Apple M1, 8GB, 512GB SSD)",
+    "slug": "lenovo-v15-g3-33",
+    "brand_img": "/img/lenovo-v15.jpg",
+    "category": "business student",
+    "specs": {
+      "cpu": "Apple M1",
+      "ram": "8GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 882,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+V15+G3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-34",
+    "name": "Lenovo V15 G3 (Apple M2, 32GB, 512GB SSD)",
+    "slug": "lenovo-v15-g3-34",
+    "brand_img": "/img/lenovo-v15.jpg",
+    "category": "business student",
+    "specs": {
+      "cpu": "Apple M2",
+      "ram": "32GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 1066,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+V15+G3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-35",
+    "name": "Lenovo V15 G3 (Ryzen 7 5800H, 32GB, 1TB SSD)",
+    "slug": "lenovo-v15-g3-35",
+    "brand_img": "/img/lenovo-v15.jpg",
+    "category": "business student",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "32GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 830,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+V15+G3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-36",
+    "name": "MacBook Air M1 (Intel Core i7-12700H, 8GB, 1TB SSD)",
+    "slug": "macbook-air-m1-36",
+    "brand_img": "/img/macbook.jpg",
+    "category": "top business student",
+    "specs": {
+      "cpu": "Intel Core i7-12700H",
+      "ram": "8GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 678,
+    "affiliate_link": "https://www.amazon.es/s?k=MacBook+Air+M1&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-37",
+    "name": "Lenovo IdeaPad Slim 3 (Intel Core i7-12700H, 8GB, 256GB SSD)",
+    "slug": "lenovo-ideapad-slim-3-37",
+    "brand_img": "/img/lenovo.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Intel Core i7-12700H",
+      "ram": "8GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 632,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+IdeaPad+Slim+3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-38",
+    "name": "HP Victus 15 (Ryzen 5 5600H, 16GB, 1TB SSD)",
+    "slug": "hp-victus-15-38",
+    "brand_img": "/img/hp.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Ryzen 5 5600H",
+      "ram": "16GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 601,
+    "affiliate_link": "https://www.amazon.es/s?k=HP+Victus+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-39",
+    "name": "ASUS TUF Gaming F15 (Ryzen 5 5600H, 32GB, 1TB SSD)",
+    "slug": "asus-tuf-gaming-f15-39",
+    "brand_img": "/img/asus.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Ryzen 5 5600H",
+      "ram": "32GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 725,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+TUF+Gaming+F15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-40",
+    "name": "ASUS TUF Gaming F15 (Apple M1, 16GB, 256GB SSD)",
+    "slug": "asus-tuf-gaming-f15-40",
+    "brand_img": "/img/asus.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Apple M1",
+      "ram": "16GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 1090,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+TUF+Gaming+F15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-41",
+    "name": "Lenovo V15 G3 (Intel Core i7-12700H, 32GB, 1TB SSD)",
+    "slug": "lenovo-v15-g3-41",
+    "brand_img": "/img/lenovo-v15.jpg",
+    "category": "business student",
+    "specs": {
+      "cpu": "Intel Core i7-12700H",
+      "ram": "32GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 881,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+V15+G3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-42",
+    "name": "LG Gram 14 (Intel Core i3-1215U, 8GB, 512GB SSD)",
+    "slug": "lg-gram-14-42",
+    "brand_img": "/img/gram.jpg",
+    "category": "business top",
+    "specs": {
+      "cpu": "Intel Core i3-1215U",
+      "ram": "8GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 350,
+    "affiliate_link": "https://www.amazon.es/s?k=LG+Gram+14&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-43",
+    "name": "ASUS Vivobook 15 (Intel Core i3-1215U, 32GB, 256GB SSD)",
+    "slug": "asus-vivobook-15-43",
+    "brand_img": "/img/vivobook.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Intel Core i3-1215U",
+      "ram": "32GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 588,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+Vivobook+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-44",
+    "name": "MacBook Air M1 (Intel Core i7-12700H, 16GB, 512GB SSD)",
+    "slug": "macbook-air-m1-44",
+    "brand_img": "/img/macbook.jpg",
+    "category": "top business student",
+    "specs": {
+      "cpu": "Intel Core i7-12700H",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 726,
+    "affiliate_link": "https://www.amazon.es/s?k=MacBook+Air+M1&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-45",
+    "name": "MSI Thin GF63 (Intel Core i3-1215U, 8GB, 256GB SSD)",
+    "slug": "msi-thin-gf63-45",
+    "brand_img": "/img/msi.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Intel Core i3-1215U",
+      "ram": "8GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 493,
+    "affiliate_link": "https://www.amazon.es/s?k=MSI+Thin+GF63&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-46",
+    "name": "Lenovo V15 G3 (Intel Core i5-12500H, 8GB, 512GB SSD)",
+    "slug": "lenovo-v15-g3-46",
+    "brand_img": "/img/lenovo-v15.jpg",
+    "category": "business student",
+    "specs": {
+      "cpu": "Intel Core i5-12500H",
+      "ram": "8GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 353,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+V15+G3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-47",
+    "name": "HP Victus 15 (Intel Core i7-12700H, 8GB, 256GB SSD)",
+    "slug": "hp-victus-15-47",
+    "brand_img": "/img/hp.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Intel Core i7-12700H",
+      "ram": "8GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 836,
+    "affiliate_link": "https://www.amazon.es/s?k=HP+Victus+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-48",
+    "name": "MacBook Air M1 (Ryzen 5 5600H, 8GB, 1TB SSD)",
+    "slug": "macbook-air-m1-48",
+    "brand_img": "/img/macbook.jpg",
+    "category": "top business student",
+    "specs": {
+      "cpu": "Ryzen 5 5600H",
+      "ram": "8GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 377,
+    "affiliate_link": "https://www.amazon.es/s?k=MacBook+Air+M1&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-49",
+    "name": "MSI Thin GF63 (Ryzen 5 5600H, 32GB, 1TB SSD)",
+    "slug": "msi-thin-gf63-49",
+    "brand_img": "/img/msi.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Ryzen 5 5600H",
+      "ram": "32GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 730,
+    "affiliate_link": "https://www.amazon.es/s?k=MSI+Thin+GF63&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-50",
+    "name": "ASUS TUF Gaming F15 (Apple M1, 16GB, 1TB SSD)",
+    "slug": "asus-tuf-gaming-f15-50",
+    "brand_img": "/img/asus.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Apple M1",
+      "ram": "16GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 1060,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+TUF+Gaming+F15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-51",
+    "name": "Lenovo V15 G3 (Intel Core i7-12700H, 8GB, 256GB SSD)",
+    "slug": "lenovo-v15-g3-51",
+    "brand_img": "/img/lenovo-v15.jpg",
+    "category": "business student",
+    "specs": {
+      "cpu": "Intel Core i7-12700H",
+      "ram": "8GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 662,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+V15+G3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-52",
+    "name": "MacBook Air M1 (Ryzen 5 5600H, 16GB, 256GB SSD)",
+    "slug": "macbook-air-m1-52",
+    "brand_img": "/img/macbook.jpg",
+    "category": "top business student",
+    "specs": {
+      "cpu": "Ryzen 5 5600H",
+      "ram": "16GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 418,
+    "affiliate_link": "https://www.amazon.es/s?k=MacBook+Air+M1&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-53",
+    "name": "ASUS Vivobook 15 (Intel Core i7-12700H, 32GB, 256GB SSD)",
+    "slug": "asus-vivobook-15-53",
+    "brand_img": "/img/vivobook.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Intel Core i7-12700H",
+      "ram": "32GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 868,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+Vivobook+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-54",
+    "name": "ASUS Vivobook 15 (Intel Core i5-12500H, 8GB, 256GB SSD)",
+    "slug": "asus-vivobook-15-54",
+    "brand_img": "/img/vivobook.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Intel Core i5-12500H",
+      "ram": "8GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 377,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+Vivobook+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-55",
+    "name": "MSI Thin GF63 (Apple M2, 32GB, 256GB SSD)",
+    "slug": "msi-thin-gf63-55",
+    "brand_img": "/img/msi.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Apple M2",
+      "ram": "32GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 1186,
+    "affiliate_link": "https://www.amazon.es/s?k=MSI+Thin+GF63&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-56",
+    "name": "HP Victus 15 (Apple M2, 8GB, 256GB SSD)",
+    "slug": "hp-victus-15-56",
+    "brand_img": "/img/hp.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Apple M2",
+      "ram": "8GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 1034,
+    "affiliate_link": "https://www.amazon.es/s?k=HP+Victus+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-57",
+    "name": "ASUS TUF Gaming F15 (Ryzen 7 5800H, 16GB, 512GB SSD)",
+    "slug": "asus-tuf-gaming-f15-57",
+    "brand_img": "/img/asus.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 889,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+TUF+Gaming+F15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-58",
+    "name": "ASUS TUF Gaming F15 (Intel Core i7-12700H, 16GB, 1TB SSD)",
+    "slug": "asus-tuf-gaming-f15-58",
+    "brand_img": "/img/asus.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Intel Core i7-12700H",
+      "ram": "16GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 920,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+TUF+Gaming+F15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-59",
+    "name": "Lenovo IdeaPad Slim 3 (Ryzen 7 5800H, 32GB, 256GB SSD)",
+    "slug": "lenovo-ideapad-slim-3-59",
+    "brand_img": "/img/lenovo.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "32GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 874,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+IdeaPad+Slim+3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-60",
+    "name": "Lenovo IdeaPad Slim 3 (Intel Core i5-12500H, 16GB, 1TB SSD)",
+    "slug": "lenovo-ideapad-slim-3-60",
+    "brand_img": "/img/lenovo.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Intel Core i5-12500H",
+      "ram": "16GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 421,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+IdeaPad+Slim+3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-61",
+    "name": "Lenovo IdeaPad Slim 3 (Intel Core i3-1215U, 16GB, 256GB SSD)",
+    "slug": "lenovo-ideapad-slim-3-61",
+    "brand_img": "/img/lenovo.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Intel Core i3-1215U",
+      "ram": "16GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 462,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+IdeaPad+Slim+3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-62",
+    "name": "Lenovo IdeaPad Slim 3 (Intel Core i5-12500H, 8GB, 512GB SSD)",
+    "slug": "lenovo-ideapad-slim-3-62",
+    "brand_img": "/img/lenovo.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Intel Core i5-12500H",
+      "ram": "8GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 380,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+IdeaPad+Slim+3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-63",
+    "name": "Lenovo IdeaPad Slim 3 (Ryzen 7 5800H, 16GB, 512GB SSD)",
+    "slug": "lenovo-ideapad-slim-3-63",
+    "brand_img": "/img/lenovo.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 725,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+IdeaPad+Slim+3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-64",
+    "name": "ASUS Vivobook 15 (Apple M2, 16GB, 256GB SSD)",
+    "slug": "asus-vivobook-15-64",
+    "brand_img": "/img/vivobook.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Apple M2",
+      "ram": "16GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 934,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+Vivobook+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-65",
+    "name": "ASUS Vivobook 15 (Intel Core i5-12500H, 32GB, 256GB SSD)",
+    "slug": "asus-vivobook-15-65",
+    "brand_img": "/img/vivobook.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Intel Core i5-12500H",
+      "ram": "32GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 531,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+Vivobook+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-66",
+    "name": "Lenovo IdeaPad Slim 3 (Ryzen 7 5800H, 16GB, 256GB SSD)",
+    "slug": "lenovo-ideapad-slim-3-66",
+    "brand_img": "/img/lenovo.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "16GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 769,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+IdeaPad+Slim+3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-67",
+    "name": "Acer Nitro 5 (Apple M2, 16GB, 256GB SSD)",
+    "slug": "acer-nitro-5-67",
+    "brand_img": "/img/nitro.jpg",
+    "category": "gaming top",
+    "specs": {
+      "cpu": "Apple M2",
+      "ram": "16GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 1094,
+    "affiliate_link": "https://www.amazon.es/s?k=Acer+Nitro+5&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-68",
+    "name": "Lenovo V15 G3 (Apple M2, 16GB, 1TB SSD)",
+    "slug": "lenovo-v15-g3-68",
+    "brand_img": "/img/lenovo-v15.jpg",
+    "category": "business student",
+    "specs": {
+      "cpu": "Apple M2",
+      "ram": "16GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 932,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+V15+G3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-69",
+    "name": "Lenovo IdeaPad Slim 3 (Intel Core i3-1215U, 8GB, 512GB SSD)",
+    "slug": "lenovo-ideapad-slim-3-69",
+    "brand_img": "/img/lenovo.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Intel Core i3-1215U",
+      "ram": "8GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 338,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+IdeaPad+Slim+3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-70",
+    "name": "MSI Thin GF63 (Apple M2, 8GB, 256GB SSD)",
+    "slug": "msi-thin-gf63-70",
+    "brand_img": "/img/msi.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Apple M2",
+      "ram": "8GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 1008,
+    "affiliate_link": "https://www.amazon.es/s?k=MSI+Thin+GF63&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-71",
+    "name": "MacBook Air M1 (Intel Core i7-12700H, 8GB, 512GB SSD)",
+    "slug": "macbook-air-m1-71",
+    "brand_img": "/img/macbook.jpg",
+    "category": "top business student",
+    "specs": {
+      "cpu": "Intel Core i7-12700H",
+      "ram": "8GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 673,
+    "affiliate_link": "https://www.amazon.es/s?k=MacBook+Air+M1&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-72",
+    "name": "Lenovo V15 G3 (Ryzen 7 5800H, 32GB, 1TB SSD)",
+    "slug": "lenovo-v15-g3-72",
+    "brand_img": "/img/lenovo-v15.jpg",
+    "category": "business student",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "32GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 869,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+V15+G3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-73",
+    "name": "LG Gram 14 (Apple M1, 16GB, 512GB SSD)",
+    "slug": "lg-gram-14-73",
+    "brand_img": "/img/gram.jpg",
+    "category": "business top",
+    "specs": {
+      "cpu": "Apple M1",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 956,
+    "affiliate_link": "https://www.amazon.es/s?k=LG+Gram+14&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-74",
+    "name": "Lenovo IdeaPad Slim 3 (Intel Core i7-12700H, 8GB, 1TB SSD)",
+    "slug": "lenovo-ideapad-slim-3-74",
+    "brand_img": "/img/lenovo.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Intel Core i7-12700H",
+      "ram": "8GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 635,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+IdeaPad+Slim+3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-75",
+    "name": "Lenovo V15 G3 (Ryzen 5 5600H, 16GB, 256GB SSD)",
+    "slug": "lenovo-v15-g3-75",
+    "brand_img": "/img/lenovo-v15.jpg",
+    "category": "business student",
+    "specs": {
+      "cpu": "Ryzen 5 5600H",
+      "ram": "16GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 467,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+V15+G3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-76",
+    "name": "Lenovo IdeaPad Slim 3 (Intel Core i5-12500H, 32GB, 512GB SSD)",
+    "slug": "lenovo-ideapad-slim-3-76",
+    "brand_img": "/img/lenovo.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Intel Core i5-12500H",
+      "ram": "32GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 559,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+IdeaPad+Slim+3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-77",
+    "name": "MSI Thin GF63 (Intel Core i5-12500H, 32GB, 512GB SSD)",
+    "slug": "msi-thin-gf63-77",
+    "brand_img": "/img/msi.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Intel Core i5-12500H",
+      "ram": "32GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 724,
+    "affiliate_link": "https://www.amazon.es/s?k=MSI+Thin+GF63&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-78",
+    "name": "LG Gram 14 (Intel Core i3-1215U, 16GB, 512GB SSD)",
+    "slug": "lg-gram-14-78",
+    "brand_img": "/img/gram.jpg",
+    "category": "business top",
+    "specs": {
+      "cpu": "Intel Core i3-1215U",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 414,
+    "affiliate_link": "https://www.amazon.es/s?k=LG+Gram+14&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-79",
+    "name": "Lenovo V15 G3 (Apple M2, 16GB, 256GB SSD)",
+    "slug": "lenovo-v15-g3-79",
+    "brand_img": "/img/lenovo-v15.jpg",
+    "category": "business student",
+    "specs": {
+      "cpu": "Apple M2",
+      "ram": "16GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 941,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+V15+G3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-80",
+    "name": "HP Victus 15 (Intel Core i7-12700H, 16GB, 512GB SSD)",
+    "slug": "hp-victus-15-80",
+    "brand_img": "/img/hp.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Intel Core i7-12700H",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 864,
+    "affiliate_link": "https://www.amazon.es/s?k=HP+Victus+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-81",
+    "name": "ASUS Vivobook 15 (Ryzen 5 5600H, 32GB, 512GB SSD)",
+    "slug": "asus-vivobook-15-81",
+    "brand_img": "/img/vivobook.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Ryzen 5 5600H",
+      "ram": "32GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 536,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+Vivobook+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-82",
+    "name": "Lenovo V15 G3 (Intel Core i7-12700H, 8GB, 512GB SSD)",
+    "slug": "lenovo-v15-g3-82",
+    "brand_img": "/img/lenovo-v15.jpg",
+    "category": "business student",
+    "specs": {
+      "cpu": "Intel Core i7-12700H",
+      "ram": "8GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 676,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+V15+G3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-83",
+    "name": "LG Gram 14 (Ryzen 7 5800H, 16GB, 256GB SSD)",
+    "slug": "lg-gram-14-83",
+    "brand_img": "/img/gram.jpg",
+    "category": "business top",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "16GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 753,
+    "affiliate_link": "https://www.amazon.es/s?k=LG+Gram+14&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-84",
+    "name": "MSI Thin GF63 (Ryzen 5 5600H, 16GB, 512GB SSD)",
+    "slug": "msi-thin-gf63-84",
+    "brand_img": "/img/msi.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Ryzen 5 5600H",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 596,
+    "affiliate_link": "https://www.amazon.es/s?k=MSI+Thin+GF63&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-85",
+    "name": "LG Gram 14 (Ryzen 7 5800H, 16GB, 1TB SSD)",
+    "slug": "lg-gram-14-85",
+    "brand_img": "/img/gram.jpg",
+    "category": "business top",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "16GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 726,
+    "affiliate_link": "https://www.amazon.es/s?k=LG+Gram+14&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-86",
+    "name": "MSI Thin GF63 (Ryzen 5 5600H, 16GB, 512GB SSD)",
+    "slug": "msi-thin-gf63-86",
+    "brand_img": "/img/msi.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Ryzen 5 5600H",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 571,
+    "affiliate_link": "https://www.amazon.es/s?k=MSI+Thin+GF63&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-87",
+    "name": "Lenovo IdeaPad Slim 3 (Intel Core i5-12500H, 16GB, 256GB SSD)",
+    "slug": "lenovo-ideapad-slim-3-87",
+    "brand_img": "/img/lenovo.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Intel Core i5-12500H",
+      "ram": "16GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 469,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+IdeaPad+Slim+3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-88",
+    "name": "Dell Inspiron 15 (Ryzen 7 5800H, 32GB, 1TB SSD)",
+    "slug": "dell-inspiron-15-88",
+    "brand_img": "/img/dell.jpg",
+    "category": "business",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "32GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 870,
+    "affiliate_link": "https://www.amazon.es/s?k=Dell+Inspiron+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-89",
+    "name": "Lenovo IdeaPad Slim 3 (Intel Core i3-1215U, 8GB, 1TB SSD)",
+    "slug": "lenovo-ideapad-slim-3-89",
+    "brand_img": "/img/lenovo.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Intel Core i3-1215U",
+      "ram": "8GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 330,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+IdeaPad+Slim+3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-90",
+    "name": "Dell Inspiron 15 (Apple M2, 32GB, 1TB SSD)",
+    "slug": "dell-inspiron-15-90",
+    "brand_img": "/img/dell.jpg",
+    "category": "business",
+    "specs": {
+      "cpu": "Apple M2",
+      "ram": "32GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 1079,
+    "affiliate_link": "https://www.amazon.es/s?k=Dell+Inspiron+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-91",
+    "name": "Dell Inspiron 15 (Intel Core i3-1215U, 16GB, 1TB SSD)",
+    "slug": "dell-inspiron-15-91",
+    "brand_img": "/img/dell.jpg",
+    "category": "business",
+    "specs": {
+      "cpu": "Intel Core i3-1215U",
+      "ram": "16GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 425,
+    "affiliate_link": "https://www.amazon.es/s?k=Dell+Inspiron+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-92",
+    "name": "MacBook Air M1 (Apple M2, 32GB, 256GB SSD)",
+    "slug": "macbook-air-m1-92",
+    "brand_img": "/img/macbook.jpg",
+    "category": "top business student",
+    "specs": {
+      "cpu": "Apple M2",
+      "ram": "32GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 1046,
+    "affiliate_link": "https://www.amazon.es/s?k=MacBook+Air+M1&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-93",
+    "name": "ASUS TUF Gaming F15 (Ryzen 7 5800H, 16GB, 512GB SSD)",
+    "slug": "asus-tuf-gaming-f15-93",
+    "brand_img": "/img/asus.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 904,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+TUF+Gaming+F15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-94",
+    "name": "ASUS TUF Gaming F15 (Ryzen 7 5800H, 32GB, 1TB SSD)",
+    "slug": "asus-tuf-gaming-f15-94",
+    "brand_img": "/img/asus.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "32GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 1029,
+    "affiliate_link": "https://www.amazon.es/s?k=ASUS+TUF+Gaming+F15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-95",
+    "name": "Lenovo V15 G3 (Ryzen 7 5800H, 32GB, 1TB SSD)",
+    "slug": "lenovo-v15-g3-95",
+    "brand_img": "/img/lenovo-v15.jpg",
+    "category": "business student",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "32GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 855,
+    "affiliate_link": "https://www.amazon.es/s?k=Lenovo+V15+G3&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-96",
+    "name": "Dell Inspiron 15 (Apple M2, 32GB, 512GB SSD)",
+    "slug": "dell-inspiron-15-96",
+    "brand_img": "/img/dell.jpg",
+    "category": "business",
+    "specs": {
+      "cpu": "Apple M2",
+      "ram": "32GB",
+      "storage": "512GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 1041,
+    "affiliate_link": "https://www.amazon.es/s?k=Dell+Inspiron+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-97",
+    "name": "HP Victus 15 (Ryzen 7 5800H, 16GB, 1TB SSD)",
+    "slug": "hp-victus-15-97",
+    "brand_img": "/img/hp.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "16GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 885,
+    "affiliate_link": "https://www.amazon.es/s?k=HP+Victus+15&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-98",
+    "name": "MacBook Air M1 (Intel Core i5-12500H, 16GB, 256GB SSD)",
+    "slug": "macbook-air-m1-98",
+    "brand_img": "/img/macbook.jpg",
+    "category": "top business student",
+    "specs": {
+      "cpu": "Intel Core i5-12500H",
+      "ram": "16GB",
+      "storage": "256GB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 443,
+    "affiliate_link": "https://www.amazon.es/s?k=MacBook+Air+M1&tag=comparadorjai-21"
+  },
+  {
+    "id": "mock-99",
+    "name": "MacBook Air M1 (Ryzen 7 5800H, 32GB, 1TB SSD)",
+    "slug": "macbook-air-m1-99",
+    "brand_img": "/img/macbook.jpg",
+    "category": "top business student",
+    "specs": {
+      "cpu": "Ryzen 7 5800H",
+      "ram": "32GB",
+      "storage": "1TB SSD",
+      "weight": "1.8 kg"
+    },
+    "price_eur": 885,
+    "affiliate_link": "https://www.amazon.es/s?k=MacBook+Air+M1&tag=comparadorjai-21"
+  }
 ]
