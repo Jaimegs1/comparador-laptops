@@ -1,8 +1,7 @@
 ---
 import laptops from '../data/laptops.json';
 
-// --- CONFIGURACIÓN DE OFERTAS FLASH (ACTUALIZADA: CROSS-SELLING) ---
-// --- CONFIGURACIÓN DE OFERTAS FLASH (IMÁGENES CORREGIDAS) ---
+// --- CONFIGURACIÓN DE OFERTAS FLASH (IMÁGENES CORREGIDAS Y ESTABLES) ---
 const flashOffers = [
     {
         name: "Auriculares Bluetooth 5.4 (2025)",
@@ -10,7 +9,8 @@ const flashOffers = [
         price: 26.99,
         oldPrice: 89.99,
         link: "https://amzn.to/3MWfV3z",
-        img: "https://m.media-amazon.com/images/I/71alE42vhGL._AC_SX679_.jpg", // OK
+        // Imagen Auriculares
+        img: "https://m.media-amazon.com/images/I/71alE42vhGL._AC_SX679_.jpg",
         discount: "-70%"
     },
     {
@@ -18,8 +18,8 @@ const flashOffers = [
         desc: "Monitor de salud, 100+ deportes y batería de 10 días.",
         price: 39.99,
         oldPrice: 99.99,
-        link: "https://amzn.to/3XXX_TU_ENLACE_AQUI", 
-        // 👇 IMAGEN CORREGIDA: Smartwatch genérico alta calidad
+        link: "https://amzn.to/3XXX_TU_ENLACE_AQUI", // ⚠️ ¡CAMBIAR POR TU LINK DE AFILIADO!
+        // Imagen Smartwatch Genérico (Estable)
         img: "https://m.media-amazon.com/images/I/61ZjlBOp+rL._AC_SL1500_.jpg", 
         discount: "-60%"
     },
@@ -29,7 +29,8 @@ const flashOffers = [
         price: 4.95,
         oldPrice: 12.99,
         link: "https://amzn.to/49iQsJ7",
-        img: "https://m.media-amazon.com/images/I/61hzuoXwjqL._AC_SY300_SX300_QL70_ML2_.jpg", // OK
+        // Imagen Ratón Logitech
+        img: "https://m.media-amazon.com/images/I/61hzuoXwjqL._AC_SY300_SX300_QL70_ML2_.jpg", 
         discount: "-60%"
     },
     {
@@ -37,8 +38,8 @@ const flashOffers = [
         desc: "Sonido HD, ventosa fuerte y luces LED rítmicas.",
         price: 18.99,
         oldPrice: 29.99,
-        link: "https://amzn.to/3YYY_TU_ENLACE_AQUI", 
-        // 👇 IMAGEN CORREGIDA: Altavoz ducha negro/azul
+        link: "https://amzn.to/3YYY_TU_ENLACE_AQUI", // ⚠️ ¡CAMBIAR POR TU LINK DE AFILIADO!
+        // Imagen Altavoz Ducha (Estable)
         img: "https://m.media-amazon.com/images/I/71I3u7L+j7L._AC_SL1500_.jpg",
         discount: "-37%"
     },
@@ -48,10 +49,19 @@ const flashOffers = [
         price: 279.99,
         oldPrice: 999.00,
         link: "https://amzn.to/4qqhbKI",
-        img: "https://m.media-amazon.com/images/I/71WQY0brEFL._AC_SX679_.jpg", // OK
+        // Imagen Portátil SGIN/Genérico
+        img: "https://m.media-amazon.com/images/I/71WQY0brEFL._AC_SX679_.jpg",
         discount: "-72%"
     }
 ];
+
+// Función para calcular puntuación automática
+function getScore(price) {
+    if (price > 1200) return 99;
+    if (price > 900) return 97;
+    if (price > 700) return 94;
+    return 89;
+}
 
 // Extraemos las marcas únicas y RAMs disponibles del JSON para los filtros
 const allBrands = [...new Set(laptops.map(l => l.name.split(' ')[0]))].sort();
@@ -147,8 +157,11 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         h1 span { color: #818cf8; }
         p.subtitle { color: #e2e8f0; font-size: 1.2rem; max-width: 600px; margin: 30px auto 45px; line-height: 1.6; }
         .cta-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; align-items: center; }
-        .btn-telegram-hero { background: linear-gradient(135deg, #2AABEE 0%, #229ED9 100%); color: white; padding: 16px 35px; border-radius: 100px; font-weight: 800; font-size: 1rem; text-decoration: none; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 10px 30px rgba(42, 171, 238, 0.3); display: flex; align-items: center; gap: 10px; }
-        .btn-telegram-hero:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 15px 40px rgba(42, 171, 238, 0.5); }
+        
+        /* BOTÓN FLUSH REUTILIZADO (SIN TELEGRAM) */
+        .btn-flash-hero { background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); color: white; padding: 16px 35px; border-radius: 100px; font-weight: 800; font-size: 1rem; text-decoration: none; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3); display: flex; align-items: center; gap: 10px; }
+        .btn-flash-hero:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 15px 40px rgba(239, 68, 68, 0.5); }
+        
         .btn-compare-hero { background: white; color: #0f172a; padding: 16px 35px; border-radius: 100px; font-weight: 800; font-size: 1rem; text-decoration: none; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1); }
         .btn-compare-hero:hover { transform: scale(1.05) translateY(-3px); background-color: #f8fafc; }
 
@@ -169,7 +182,7 @@ const ramOptions = ["8GB", "16GB", "32GB"];
 
         .offers-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Ajustado para mejor responsive con más items */
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 20px;
         }
 
@@ -258,7 +271,7 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             align-content: flex-start;
         }
 
-        /* CARD CORREGIDA: AHORA ES UN ENLACE 'A' */
+        /* CARD CORREGIDA */
         .card { 
             background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.4) 100%); 
             border: 1px solid var(--card-border); 
@@ -268,8 +281,8 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             display: flex; 
             flex-direction: column; 
             transition: 0.3s;
-            text-decoration: none !important; /* Quitar subrayado del enlace */
-            color: var(--text-main); /* Forzar color de texto */
+            text-decoration: none !important;
+            color: var(--text-main);
             
             flex: 1 1 300px;
             max-width: 340px;
@@ -293,7 +306,6 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         .old-price-anchor { text-decoration: line-through; color: #64748b; font-size: 0.85rem; margin-bottom: 0px; }
         .price-display { font-size: 1.6rem; font-weight: 800; color: white; }
         
-        /* ESTILO NUEVO DEL BOTÓN FALSO */
         .btn-card { background: white; color: #0f172a; padding: 10px 18px; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 0.85rem; transition: background 0.2s; white-space: nowrap; }
         .card:hover .btn-card { background: #e2e8f0; }
 
@@ -332,7 +344,7 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             h1 { font-size: 2.3rem !important; line-height: 1.1 !important; margin-bottom: 15px !important; word-break: keep-all; }
             p.subtitle { font-size: 1rem !important; line-height: 1.4; padding: 0 15px; margin-bottom: 25px !important; }
             .cta-container { flex-direction: column; width: 100%; gap: 15px; }
-            .btn-telegram-hero, .btn-compare-hero { width: 90%; justify-content: center; font-size: 0.95rem; padding: 14px 20px; }
+            .btn-flash-hero, .btn-compare-hero { width: 90%; justify-content: center; font-size: 0.95rem; padding: 14px 20px; }
             .wizard-fab { bottom: 20px !important; right: 20px !important; font-size: 0.9rem !important; padding: 12px 20px !important; z-index: 9999; }
             
             .grid { justify-content: center; }
@@ -381,8 +393,7 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             <span class="nav-btn" id="nav-top">Top Ventas</span>
             <span class="nav-btn" id="nav-gaming">Gaming</span>
             <span class="nav-btn" id="nav-student">Estudiantes</span>
-            <a href="https://t.me/PreciosPortatilesES" target="_blank" style="background-color: #2AABEE; color: white; padding: 6px 14px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; gap: 5px; box-shadow: 0 4px 10px rgba(42, 171, 238, 0.3); transition: transform 0.2s; margin-left: 10px;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">✈️ Ofertas</a>
-        </div>
+            </div>
     </nav>
 
     <section class="hero">
@@ -394,12 +405,12 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         </p>
         
         <div class="cta-container">
-            <a href="https://t.me/PreciosPortatilesES" target="_blank" class="btn-telegram-hero">✈️ Únete al Canal de Ofertas</a>
+            <a href="#flash-offers" class="btn-flash-hero">🔥 Ver Ofertas Flash</a>
             <a href="/comparar" class="btn-compare-hero">⚖️ Ir al Comparador VS</a>
         </div>
     </section>
 
-    <div class="flash-section">
+    <div id="flash-offers" class="flash-section">
         <div class="section-header">
             <div class="pulse-dot"></div>
             <h2>OFERTAS FLASH (24H)</h2>
@@ -508,7 +519,6 @@ const ramOptions = ["8GB", "16GB", "32GB"];
                             <span class="old-price-anchor">{(laptop.price_eur * 1.2).toFixed(0)}€</span>
                             <span class="price-display">{laptop.price_eur} €</span>
                         </div>
-                        {/* Botón visual (es un span porque ya estamos dentro de un <a>) */}
                         <span class="btn-card">Ver en Amazon ➔</span>
                     </div>
                 </a>
@@ -674,7 +684,6 @@ const ramOptions = ["8GB", "16GB", "32GB"];
                 const imgElement = document.getElementById('wiz-img');
                 imgElement.src = winner.brand_img;
                 
-                // --- NUEVO: HACER CLICABLE LA IMAGEN DEL MAGO ---
                 imgElement.onclick = function() {
                     window.open(amazonLink, '_blank');
                 };
