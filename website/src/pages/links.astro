@@ -1,34 +1,43 @@
 ---
-// TUS ENLACES (Configúralos aquí)
+// src/pages/links.astro
+
+// 1. TUS ENLACES FIJOS (Telegram, Web, etc.)
+// He quitado los productos de aquí porque ahora tienen su propia sección VIP arriba
 const links = [
-  {
-    title: "🖱️ RATÓN LOGITECH: 4,95€",
-    subtitle: "¡Precio ridículo! Ideal para salir del paso",
-    url: "https://amzn.to/49iQsJ7", // <--- TU NUEVO ENLACE CORTO PUESTO AQUÍ
-    type: "featured", // Rojo destacado + Animación
-    icon: "🔥"
-  },
-  {
-    title: "💻 PORTÁTIL ESTUDIANTES 279€",
-    subtitle: "Rebaja del 70% (Ruzava) - El del vídeo",
-    url: "https://amzn.to/4qpBAPZ",
-    type: "standard", // Estilo normal para no saturar
-    icon: "💣"
-  },
   {
     title: "✈️ Únete al Canal de Telegram",
     subtitle: "Avisos de error de precio y chollos diarios",
     url: "https://t.me/PreciosPortatilesES",
-    type: "telegram", // Estilo azul
+    type: "telegram",
     icon: "📲"
   },
   {
     title: "💻 Ir al Comparador Web",
     subtitle: "Analiza y compara portátiles sin engaños",
-    url: "/",
-    type: "standard", // Estilo oscuro
+    url: "/", // Esto lleva a la home
+    type: "standard",
     icon: "🔍"
   }
+];
+
+// 2. TUS OFERTAS FLASH (Configúralas aquí para que sea fácil cambiar)
+const flashOffers = [
+    {
+        name: "Ratón Logitech B100",
+        price: "4,95€",
+        oldPrice: "12,99€",
+        discount: "-60%",
+        img: "https://m.media-amazon.com/images/I/61hzuoXwjqL._AC_SY300_SX300_QL70_ML2_.jpg",
+        url: "https://amzn.to/49iQsJ7" // <--- TU LINK DE AFILIADO
+    },
+    {
+        name: "Portátil Estudiantes 14''",
+        price: "279€",
+        oldPrice: "999€",
+        discount: "-72%",
+        img: "https://m.media-amazon.com/images/I/71WQY0brEFL._AC_SX679_.jpg",
+        url: "https://amzn.to/4qpBAPZ" // <--- TU LINK DE AFILIADO
+    }
 ];
 ---
 
@@ -57,11 +66,11 @@ const links = [
             --bg-dark: #0f172a;
             --text-main: #ffffff;
             --text-muted: #94a3b8;
+            --accent-red: #ef4444;
         }
 
         body {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-dark);
             background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #0f172a);
@@ -69,129 +78,120 @@ const links = [
             animation: gradientBG 15s ease infinite;
             color: var(--text-main);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: flex; flex-direction: column; align-items: center;
         }
 
         .container {
-            width: 100%;
-            max-width: 480px;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
+            width: 100%; max-width: 480px; padding: 40px 20px;
+            display: flex; flex-direction: column; align-items: center; gap: 15px;
         }
 
+        /* HEADER PERFIL */
         .profile-img-container {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            padding: 3px;
-            background: linear-gradient(to right, #3b82f6, #8b5cf6);
-            margin-bottom: 10px;
+            width: 100px; height: 100px; border-radius: 50%; padding: 3px;
+            background: linear-gradient(to right, #3b82f6, #8b5cf6); margin-bottom: 10px;
         }
-        
         .profile-img {
-            width: 100%;
-            height: 100%;
-            background-color: #1e293b;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            border: 3px solid #0f172a;
+            width: 100%; height: 100%; background-color: #1e293b;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 40px; border: 3px solid #0f172a;
         }
-
         h1 { margin: 0; font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; }
-        p.bio { color: var(--text-muted); text-align: center; font-size: 0.9rem; line-height: 1.5; margin-top: 5px; margin-bottom: 20px; }
+        p.bio { color: var(--text-muted); text-align: center; font-size: 0.9rem; line-height: 1.5; margin-top: 5px; margin-bottom: 10px; }
 
-        .link-card {
+        /* 🔥 ESTILOS NUEVOS PARA OFERTAS FLASH 🔥 */
+        .flash-section {
             width: 100%;
-            text-decoration: none;
-            padding: 16px 20px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.2s;
-            position: relative;
-            overflow: hidden;
-            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 20px; padding: 15px;
+            box-sizing: border-box; margin-bottom: 10px;
         }
 
-        .link-card:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        .flash-header {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            color: #ef4444; font-weight: 800; font-size: 0.75rem;
+            margin-bottom: 15px; letter-spacing: 1px; text-transform: uppercase;
+        }
+        .pulse-dot {
+            width: 6px; height: 6px; background: #ef4444; border-radius: 50%;
+            box-shadow: 0 0 8px #ef4444; animation: pulse 1.5s infinite;
         }
 
-        /* ESTILOS DE BOTONES */
-        .featured {
-            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
-            border: 1px solid rgba(255,255,255,0.2);
-            animation: pulse-border 2s infinite;
+        .flash-card {
+            display: flex; align-items: center; gap: 15px;
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px; padding: 12px;
+            text-decoration: none; color: white;
+            margin-bottom: 10px; position: relative;
+            transition: transform 0.2s;
+        }
+        .flash-card:last-child { margin-bottom: 0; }
+        .flash-card:hover { transform: scale(1.02); background: rgba(30, 41, 59, 0.9); border-color: #ef4444; }
+
+        .flash-img {
+            width: 60px; height: 60px; object-fit: contain;
+            background: white; border-radius: 10px; padding: 5px; flex-shrink: 0;
+        }
+        .flash-info h3 { margin: 0 0 4px; font-size: 0.9rem; font-weight: 700; line-height: 1.2; }
+        .price-row { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; }
+        .old-price { color: #64748b; text-decoration: line-through; }
+        .new-price { color: #ef4444; font-weight: 800; font-size: 1rem; }
+        .discount-badge {
+            margin-left: auto; background: #ef4444; color: white;
+            font-size: 0.7rem; font-weight: 800; padding: 4px 8px; border-radius: 6px;
         }
 
-        .telegram {
-            background: linear-gradient(135deg, #0088cc 0%, #005f8f 100%);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.1);
+        /* TUS ESTILOS DE BOTONES ORIGINALES */
+        .link-card {
+            width: 100%; text-decoration: none; padding: 16px 20px;
+            border-radius: 16px; display: flex; align-items: center; gap: 15px;
+            transition: transform 0.2s, box-shadow 0.2s; position: relative;
+            overflow: hidden; box-sizing: border-box;
         }
-
-        .standard {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: white;
-        }
-        .standard:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
+        .link-card:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        
+        .telegram { background: linear-gradient(135deg, #0088cc 0%, #005f8f 100%); color: white; border: 1px solid rgba(255,255,255,0.1); }
+        .standard { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); color: white; }
+        
         .icon { font-size: 1.5rem; }
         .text-content { display: flex; flex-direction: column; }
         .link-title { font-weight: 700; font-size: 1rem; line-height: 1.2; }
-        .link-subtitle { font-size: 0.75rem; opacity: 0.8; margin-top: 2px; font-weight: 400; }
+        .link-subtitle { font-size: 0.75rem; opacity: 0.8; margin-top: 2px; }
 
-        footer {
-            margin-top: auto;
-            padding: 30px 20px;
-            text-align: center;
-            font-size: 0.7rem;
-            color: #475569;
-            max-width: 400px;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        @keyframes pulse-border {
-            0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
-        }
-
+        footer { margin-top: auto; padding: 30px 20px; text-align: center; font-size: 0.7rem; color: #475569; }
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="profile-img-container">
-            <div class="profile-img">⚡</div>
-        </div>
-
+        <div class="profile-img-container"><div class="profile-img">⚡</div></div>
         <div>
             <h1 style="text-align: center;">@LaptopComparator</h1>
-            <p class="bio">
-                Ofertas verificadas de tecnología.<br>
-                👇 <b>CHOLLOS ACTIVOS</b> 👇
-            </p>
+            <p class="bio">Ofertas verificadas de tecnología.<br>👇 <b>CHOLLOS ACTIVOS</b> 👇</p>
+        </div>
+
+        <div class="flash-section">
+            <div class="flash-header">
+                <div class="pulse-dot"></div><span>OFERTAS FLASH (24H)</span><div class="pulse-dot"></div>
+            </div>
+            
+            {flashOffers.map(offer => (
+                <a href={offer.url} target="_blank" rel="noopener noreferrer" class="flash-card">
+                    <img src={offer.img} alt={offer.name} class="flash-img">
+                    <div class="flash-info">
+                        <h3>{offer.name}</h3>
+                        <div class="price-row">
+                            <span class="old-price">{offer.oldPrice}</span>
+                            <span class="new-price">{offer.price}</span>
+                        </div>
+                    </div>
+                    <div class="discount-badge">{offer.discount}</div>
+                </a>
+            ))}
         </div>
 
         {links.map(link => (
