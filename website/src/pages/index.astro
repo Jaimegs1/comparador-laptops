@@ -1,66 +1,242 @@
 ---
 // src/pages/index.astro
-import Layout from '../layouts/Layout.astro'; // Ojo, si no usas layouts, mantén tu cabecera aquí
 ---
 
-<html lang="es">
+<html lang="es-ES">
 <head>
-    <meta charset="UTF-8">
-    <title>MasterTech | Elige tu categoría</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MasterTech | El Buscador de Ofertas</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- COLORES VIBRANTES (ESTILO VERSIÓN 1.0 MEJORADO) --- */
+        :root {
+            /* Fondo: Un degradado rico en lugar de negro plano */
+            --bg-deep: #1e1b4b; 
+            --bg-gradient: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #0f172a 100%);
+            
+            --primary: #6366f1; /* Índigo eléctrico */
+            --secondary: #a855f7; /* Púrpura */
+            --accent: #22d3ee; /* Cian brillante para detalles */
+            
+            --glass-bg: rgba(255, 255, 255, 0.07);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --text-main: #ffffff;
+            --text-muted: #cbd5e1; /* Gris más claro para que se lea mejor */
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            margin: 0; padding: 0;
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* LUCES AMBIENTALES (Adiós a la oscuridad) */
+        .glow-spot {
+            position: absolute; border-radius: 50%; filter: blur(80px); z-index: -1;
+            opacity: 0.6; animation: float 10s infinite ease-in-out;
+        }
+        .glow-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(#4338ca, transparent); }
+        .glow-2 { bottom: -10%; right: -10%; width: 40vw; height: 40vw; background: radial-gradient(#7e22ce, transparent); }
+        .glow-3 { top: 20%; right: 20%; width: 20vw; height: 20vw; background: radial-gradient(#0ea5e9, transparent); opacity: 0.3; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+
+        /* NAVBAR PREMIUM */
+        .top-nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 25px 40px; width: 100%; max-width: 1300px; margin: 0 auto;
+            box-sizing: border-box; z-index: 50;
+        }
+        .logo { font-size: 1.8rem; font-weight: 800; text-decoration: none; color: white; letter-spacing: -1px; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .logo span { color: var(--accent); }
+
+        /* BOTÓN CUENTA (NUEVO) */
+        .account-btn {
+            display: flex; align-items: center; gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 20px; border-radius: 50px;
+            color: white; text-decoration: none; font-weight: 600; font-size: 0.9rem;
+            transition: 0.3s; backdrop-filter: blur(5px);
+        }
+        .account-btn:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .notification-dot { width: 8px; height: 8px; background: #ef4444; border-radius: 50%; box-shadow: 0 0 8px #ef4444; }
+
+        /* HERO SECTION */
+        .hero-container {
+            flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 40px 20px; width: 100%; max-width: 1000px; margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 5rem; line-height: 1; margin: 0 0 25px; font-weight: 800; letter-spacing: -2px;
+            text-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+        h1 span {
+            background: linear-gradient(to right, #ffffff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem; color: #e0e7ff; margin-bottom: 50px; max-width: 700px; line-height: 1.6; opacity: 0.9;
+        }
+
+        /* BUSCADOR GLOW (Más brillante) */
+        .search-wrapper { width: 100%; max-width: 650px; position: relative; margin-bottom: 70px; }
+        
+        .search-input {
+            width: 100%; padding: 22px 65px 22px 30px;
+            border-radius: 20px; 
+            border: 2px solid rgba(255, 255, 255, 0.1); /* Borde sutil */
+            background: rgba(255, 255, 255, 0.95); /* Fondo casi blanco para contraste máximo */
+            color: #0f172a; /* Texto oscuro para legibilidad */
+            font-size: 1.1rem; font-family: inherit; font-weight: 600;
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.4); /* Resplandor azul */
+            transition: all 0.3s ease; box-sizing: border-box;
+        }
+        .search-input::placeholder { color: #64748b; font-weight: 500; }
+        .search-input:focus {
+            transform: scale(1.02);
+            box-shadow: 0 0 60px rgba(99, 102, 241, 0.6);
+            border-color: var(--primary); outline: none;
+        }
+        .search-icon {
+            position: absolute; right: 25px; top: 50%; transform: translateY(-50%);
+            font-size: 1.4rem; color: var(--primary); pointer-events: none;
+        }
+
+        /* GRID CATEGORÍAS */
+        .grid-section {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; width: 100%;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.05); /* Cristal más claro */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 28px; padding: 30px; text-align: left;
+            text-decoration: none; color: white; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex; flex-direction: column; justify-content: space-between;
+            height: 220px; position: relative; overflow: hidden; backdrop-filter: blur(10px);
+        }
+        
+        /* Hover Explosivo */
+        .category-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent);
+            box-shadow: 0 20px 50px -10px rgba(0,0,0,0.5);
+        }
+        
+        .cat-icon { font-size: 3rem; margin-bottom: 15px; display: block; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); }
+        .cat-title { font-size: 1.5rem; font-weight: 800; margin: 0 0 8px; }
+        .cat-desc { font-size: 0.95rem; color: #cbd5e1; margin: 0; line-height: 1.4; }
+        
+        .cta-arrow {
+            width: 40px; height: 40px; background: white; border-radius: 50%;
+            color: var(--primary); display: flex; align-items: center; justify-content: center;
+            font-weight: bold; position: absolute; bottom: 25px; right: 25px;
+            opacity: 0; transform: scale(0.5); transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .category-card:hover .cta-arrow { opacity: 1; transform: scale(1); }
+
+        /* Disabled states */
+        .disabled { opacity: 0.6; filter: grayscale(0.8); cursor: not-allowed; }
+        .disabled:hover { transform: none; background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); box-shadow: none; }
+        .badge { 
+            position: absolute; top: 20px; right: 20px;
+            background: rgba(0,0,0,0.3); color: #cbd5e1; padding: 5px 10px; border-radius: 8px;
+            font-size: 0.7rem; font-weight: 700; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .grid-section { grid-template-columns: 1fr; }
+            .search-input { padding: 18px 50px 18px 20px; font-size: 1rem; }
+            .top-nav { padding: 20px; }
+            .logo { font-size: 1.4rem; }
+        }
+    </style>
 </head>
-<body class="bg-slate-900 text-white font-sans">
+<body>
 
-    <nav class="p-6 border-b border-white/10 flex justify-between items-center bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
-        <a href="/" class="text-3xl font-bold tracking-tighter">MasterTech<span class="text-blue-500">.</span></a>
-        </nav>
+    <div class="glow-spot glow-1"></div>
+    <div class="glow-spot glow-2"></div>
+    <div class="glow-spot glow-3"></div>
 
-    <header class="text-center py-20 px-4">
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text">
-            Tecnología al precio real.
-        </h1>
-        <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-            Rastreamos millones de precios en Amazon cada hora. Elige qué estás buscando hoy.
-        </p>
-    </header>
+    <nav class="top-nav">
+        <a href="/" class="logo">MasterTech<span>.</span></a>
+        
+        <a href="#" class="account-btn" onclick="alert('¡Función próximamente! Podrás configurar alertas de precio aquí.')">
+            <span class="notification-dot"></span> <span>Mi Cuenta</span>
+        </a>
+    </nav>
 
-    <main class="max-w-7xl mx-auto px-4 pb-20">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <main class="hero-container">
+        
+        <h1><span>Tecnología al</span><br>precio real.</h1>
+        <p class="subtitle">Analizamos millones de precios. Dile adiós al marketing, hola al rendimiento.</p>
 
-            <a href="/portatiles" class="group relative overflow-hidden rounded-3xl bg-slate-800 border border-white/10 hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/20 aspect-video flex flex-col justify-end p-8">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent z-10"></div>
-                <div class="relative z-20">
-                    <h3 class="text-3xl font-bold mb-2 group-hover:text-blue-400 transition-colors">💻 Portátiles</h3>
-                    <p class="text-gray-400 text-sm">Gaming, Ultrabooks y MacBooks al mejor precio.</p>
+        <div class="search-wrapper">
+            <input type="text" class="search-input" placeholder="¿Qué estás buscando? (Ej: RTX 4060, Ratón...)" id="main-search" autofocus>
+            <span class="search-icon">🔍</span>
+        </div>
+
+        <div class="grid-section">
+            
+            <a href="/portatiles" class="category-card">
+                <div>
+                    <span class="cat-icon">💻</span>
+                    <h3 class="cat-title">Portátiles</h3>
+                    <p class="cat-desc">Comparativa técnica real. Gaming, MacBooks y Ultrabooks al mejor precio.</p>
                 </div>
+                <div class="cta-arrow">➜</div>
             </a>
 
-            <a href="#" class="group relative overflow-hidden rounded-3xl bg-slate-800 border border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20 aspect-video flex flex-col justify-end p-8 opacity-75 grayscale hover:grayscale-0 hover:opacity-100">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent z-10"></div>
-                <div class="relative z-20">
-                    <h3 class="text-3xl font-bold mb-2 group-hover:text-purple-400 transition-colors">🖱️ Periféricos</h3>
-                    <p class="text-gray-400 text-sm">Ratones, Teclados y Auriculares.</p>
-                    <span class="inline-block mt-2 text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded">Próximamente</span>
+            <div class="category-card disabled">
+                <span class="badge">Pronto</span>
+                <div>
+                    <span class="cat-icon">🖱️</span>
+                    <h3 class="cat-title">Periféricos</h3>
+                    <p class="cat-desc">Ratones, teclados mecánicos y audio profesional.</p>
                 </div>
-            </a>
+            </div>
 
-            <a href="#" class="group relative overflow-hidden rounded-3xl bg-slate-800 border border-white/10 hover:border-green-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-green-500/20 aspect-video flex flex-col justify-end p-8 opacity-75 grayscale hover:grayscale-0 hover:opacity-100">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent z-10"></div>
-                <div class="relative z-20">
-                    <h3 class="text-3xl font-bold mb-2 group-hover:text-green-400 transition-colors">🖥️ Monitores</h3>
-                    <p class="text-gray-400 text-sm">4K, Gaming 144Hz y Ultrawide.</p>
-                    <span class="inline-block mt-2 text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded">Próximamente</span>
+            <div class="category-card disabled">
+                <span class="badge">Pronto</span>
+                <div>
+                    <span class="cat-icon">🖥️</span>
+                    <h3 class="cat-title">Monitores</h3>
+                    <p class="cat-desc">Paneles 4K, 144Hz+ y Ultrawide para productividad.</p>
                 </div>
-            </a>
-
-            <div class="lg:col-span-3 bg-gradient-to-r from-blue-900/40 to-purple-900/40 rounded-3xl p-8 text-center border border-white/10 flex flex-col items-center justify-center">
-                <h3 class="text-2xl font-bold mb-2">¿Buscas algo más específico?</h3>
-                <p class="text-gray-400 mb-6">Pronto añadiremos componentes de PC, móviles y tablets.</p>
-                <button class="bg-white text-slate-900 px-6 py-2 rounded-full font-bold hover:bg-gray-200 transition">Unirse al Telegram para avisos</button>
             </div>
 
         </div>
+
     </main>
+
+    <script>
+        const input = document.getElementById('main-search');
+        input.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                if(input.value.toLowerCase().includes('portatil') || input.value.toLowerCase().includes('laptop')) {
+                    window.location.href = '/portatiles';
+                } else {
+                    alert('De momento solo tenemos la sección de Portátiles activa. ¡Prueba a buscar eso!');
+                }
+            }
+        });
+    </script>
 
 </body>
 </html>

@@ -12,8 +12,8 @@ sys.stdout.reconfigure(encoding='utf-8')
 
 # --- 🔐 TUS CLAVES DE AMAZON (PÉGALAS AQUÍ) ---
 # ¡NO SUBAS ESTE ARCHIVO A GITHUB CON LAS CLAVES PUESTAS!
-ACCESS_KEY = ""
-SECRET_KEY = ""
+ACCESS_KEY = "AKPAUQ80281767429602"
+SECRET_KEY = "FFhj2Ibf3WPsOg85vXhkBKThROvCMpdlBn4ywAvN"
 PARTNER_TAG = "comparadorjai-21"
 
 # --- CONFIGURACIÓN TÉCNICA ---
