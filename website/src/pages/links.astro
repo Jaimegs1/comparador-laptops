@@ -1,60 +1,69 @@
 ---
 // src/pages/links.astro
 
-// --- 1. CONFIGURACIÓN DE PRODUCTOS (OFERTAS FLASH) ---
+// --- 1. CONFIGURACIÓN DE PRODUCTOS (SINCRONIZADO CON PORTADA) ---
 const flashOffers = [
     {
-        name: "Xiaomi Redmi Watch 5",
-        desc: "Llamadas Bluetooth, 18 días batería y pantalla gigante 2''.",
-        price: "24,59€",
-        oldPrice: "35,99€",
-        discount: "-32%",
+        name: "Auriculares Bluetooth 5.3",
+        desc: "Cancelación ruido, 50H batería, IPX7.",
+        price: "21,99€",
+        oldPrice: "59,99€",
+        discount: "-63%",
+        img: "https://m.media-amazon.com/images/I/71J44QhNuKL._AC_SX679_.jpg", // ✅ FOTO CORRECTA
+        url: "https://amzn.to/4q7C1Pt" // ✅ TU LINK
+    },
+    {
+        name: "Mochila Tech Antirrobo",
+        desc: "Impermeable, carga USB y para portátil 15.6''.",
+        price: "16,98€",
+        oldPrice: "29,99€",
+        discount: "-43%",
+        img: "https://m.media-amazon.com/images/I/71Cf4ATO-RL._AC_SX679_.jpg", // ✅ FOTO CORRECTA
+        url: "https://amzn.to/3LnkinL" // ✅ TU LINK
+    },
+    {
+        name: "Smartwatch Deportivo",
+        desc: "Llamadas BT y batería de 10 días.",
+        price: "39,99€",
+        oldPrice: "99,99€",
+        discount: "-60%",
         img: "https://m.media-amazon.com/images/I/51lP8jxFxVL._AC_SX425_.jpg",
-        url: "https://amzn.to/3NbKqCB" // ✅ TU LINK NUEVO
+        url: "https://amzn.to/4jI3xRf" 
     },
     {
         name: "Altavoz Ducha Impermeable",
-        desc: "Ventosa fuerte, sonido HD y 100% resistente al agua.",
-        price: "10,44€",
-        oldPrice: "19,99€",
-        discount: "-48%",
+        desc: "Ventosa fuerte, sonido HD y luces LED.",
+        price: "18,99€",
+        oldPrice: "29,99€",
+        discount: "-37%",
         img: "https://m.media-amazon.com/images/I/71n+D0vaORL._AC_SX679_.jpg",
-        url: "https://amzn.to/4qDXjnv" // ✅ TU LINK NUEVO
+        url: "https://amzn.to/3MZdn4R"
     },
     {
         name: "Ratón Logitech B100",
-        desc: "El clásico de oficina. Indestructible y preciso.",
+        desc: "El clásico de oficina. Indestructible.",
         price: "4,95€",
         oldPrice: "12,99€",
         discount: "-60%",
         img: "https://m.media-amazon.com/images/I/61hzuoXwjqL._AC_SY300_SX300_QL70_ML2_.jpg",
         url: "https://amzn.to/49iQsJ7" 
-    },
-    {
-        name: "Portátil Estudiantes 14''",
-        desc: "Windows 11, 8GB RAM. Ideal ofimática y Netflix.",
-        price: "279€",
-        oldPrice: "999€",
-        discount: "-70%",
-        img: "https://m.media-amazon.com/images/I/71WQY0brEFL._AC_SX679_.jpg",
-        url: "https://amzn.to/4qpBAPZ"
     }
 ];
 
 // --- 2. CONFIGURACIÓN DE BOTONES (NAVEGACIÓN) ---
 const navLinks = [
   {
-    title: "✈️ Únete al Canal de Telegram",
+    title: "✈️ Únete al Canal de Ofertas",
     subtitle: "Avisos de error de precio y chollos diarios",
-    url: "https://t.me/PreciosPortatilesES",
-    type: "telegram", // Estilo azul
+    url: "https://t.me/PreciosPortatilesES", // ⚠️ OJO: Amazon prefiere que no uses Telegram directo si no tienes API, pero en Linktree se suele tolerar mejor. Si quieres máxima seguridad, pon "/" (la home).
+    type: "telegram", 
     icon: "📲"
   },
   {
     title: "🔍 Ir al Comparador Web",
     subtitle: "Analiza y compara portátiles sin engaños",
-    url: "/", // Lleva a la home
-    type: "standard", // Estilo oscuro
+    url: "/", 
+    type: "standard", 
     icon: "💻"
   }
 ];
@@ -93,7 +102,6 @@ const navLinks = [
             margin: 0; padding: 0;
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-dark);
-            /* Fondo animado sutil */
             background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #0f172a);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -154,12 +162,12 @@ const navLinks = [
         .flash-card:hover { transform: scale(1.02); background: rgba(30, 41, 59, 0.9); border-color: var(--accent-red); }
 
         .flash-img {
-            width: 70px; height: 70px; object-fit: contain;
+            width: 80px; height: 80px; object-fit: contain; /* AUMENTADO TAMAÑO */
             background: white; border-radius: 12px; padding: 5px; flex-shrink: 0;
         }
-        .flash-info { flex: 1; }
+        .flash-info { flex: 1; min-width: 0; /* Evita desbordamiento de texto */ }
         .flash-info h3 { margin: 0 0 4px; font-size: 0.95rem; font-weight: 700; line-height: 1.2; }
-        .flash-desc { font-size: 0.75rem; color: var(--text-muted); margin: 0 0 8px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .flash-desc { font-size: 0.75rem; color: var(--text-muted); margin: 0 0 8px; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         
         .price-row { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; }
         .old-price { color: #64748b; text-decoration: line-through; font-size: 0.8rem;}
