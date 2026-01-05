@@ -1,30 +1,47 @@
 ---
 import laptops from '../data/laptops.json';
 
-// --- CONFIGURACIÓN DE OFERTAS FLASH (DATOS EXACTOS DEL USUARIO) ---
+// --- CONFIGURACIÓN DE OFERTAS FLASH (ACTUALIZADO CON TUS PRODUCTOS) ---
 const flashOffers = [
     {
-        name: "Auriculares Bluetooth 5.4 (2025)",
-        desc: "Cancelación de ruido, 50H batería e impermeables IP7.",
-        price: 26.99,
-        oldPrice: 89.99,
-        link: "https://amzn.to/3MWfV3z",
-        img: "https://m.media-amazon.com/images/I/71alE42vhGL._AC_SX679_.jpg",
-        discount: "-70%"
+        name: "Auriculares Bluetooth 5.3",
+        desc: "Cancelación ruido, 50H batería e impermeables IPX7.",
+        price: 21.99,
+        oldPrice: 59.99,
+        link: "https://amzn.to/4q7C1Pt", // ✅ TU ENLACE NUEVO
+        img: "https://m.media-amazon.com/images/I/71J44QhNuKL._AC_SX679_.jpg", // ✅ TU FOTO NUEVA
+        discount: "-63%"
     },
     {
-        name: "Smartwatch Deportivo (Llamadas BT)",
-        desc: "Monitor de salud, 100+ deportes y batería de 10 días.",
-        price: 24.59,
+        name: "Mochila Tech Antirrobo",
+        desc: "Impermeable, puerto USB y cabe portátil 15.6''.",
+        price: 16.98,
+        oldPrice: 29.99,
+        link: "https://amzn.to/3LnkinL", // ✅ TU ENLACE NUEVO
+        img: "https://m.media-amazon.com/images/I/71Cf4ATO-RL._AC_SX679_.jpg", // ✅ TU FOTO NUEVA
+        discount: "-43%"
+    },
+    {
+        name: "Smartwatch Deportivo",
+        desc: "Llamadas BT, Monitor de salud y batería de 10 días.",
+        price: 39.99,
         oldPrice: 99.99,
-        // 👇 TUS DATOS DEL RELOJ
-        link: "https://amzn.to/4jI3xRf", 
+        link: "https://amzn.to/4jI3xRf",
         img: "https://m.media-amazon.com/images/I/51lP8jxFxVL._AC_SX425_.jpg", 
         discount: "-60%"
     },
     {
+        name: "Altavoz Ducha Impermeable",
+        desc: "Sonido HD, ventosa fuerte y luces LED rítmicas.",
+        price: 18.99,
+        oldPrice: 29.99,
+        link: "https://amzn.to/3MZdn4R",
+        img: "https://m.media-amazon.com/images/I/71n+D0vaORL._AC_SX679_.jpg",
+        discount: "-37%"
+    },
+    {
         name: "Ratón Logitech B100",
-        desc: "El clásico de oficina. Indestructible, cable USB y preciso.",
+        desc: "El clásico de oficina. Indestructible y preciso.",
         price: 4.95,
         oldPrice: 12.99,
         link: "https://amzn.to/49iQsJ7",
@@ -32,18 +49,8 @@ const flashOffers = [
         discount: "-60%"
     },
     {
-        name: "Altavoz Ducha Impermeable IP7",
-        desc: "Sonido HD, ventosa fuerte y luces LED rítmicas.",
-        price: 10.44,
-        oldPrice: 29.99,
-        // 👇 TUS DATOS DEL ALTAVOZ
-        link: "https://amzn.to/3MZdn4R", 
-        img: "https://m.media-amazon.com/images/I/71n+D0vaORL._AC_SX679_.jpg",
-        discount: "-37%"
-    },
-    {
-        name: "Portátil 14'' FHD (8GB RAM + 256GB SSD)",
-        desc: "El rey del bajo coste. Windows 11, ligero y perfecto para estudiantes.",
+        name: "Portátil 14'' FHD (8GB/256GB)",
+        desc: "El rey del bajo coste. Windows 11, perfecto estudiantes.",
         price: 279.99,
         oldPrice: 999.00,
         link: "https://amzn.to/4qqhbKI",
@@ -179,7 +186,7 @@ const ramOptions = ["8GB", "16GB", "32GB"];
 
         .offers-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
         }
 
@@ -265,7 +272,7 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             gap: 25px; 
             width: 100%; 
             justify-content: flex-start;
-            align-content: flex-start;
+            align-content: flex-start; 
         }
 
         /* CARD CORREGIDA */
@@ -390,7 +397,7 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             <span class="nav-btn" id="nav-top">Top Ventas</span>
             <span class="nav-btn" id="nav-gaming">Gaming</span>
             <span class="nav-btn" id="nav-student">Estudiantes</span>
-            </div>
+        </div>
     </nav>
 
     <section class="hero">
@@ -483,7 +490,6 @@ const ramOptions = ["8GB", "16GB", "32GB"];
 
         <main class="grid" id="laptops-grid">
             {laptops.map((laptop, index) => {
-                // GENERAR LINK AMAZON AFILIADO
                 const amazonLink = `https://www.amazon.es/s?k=${laptop.name.replace(/ /g, '+')}&tag=comparadorjai-21`;
                 
                 return (
