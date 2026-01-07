@@ -1,7 +1,7 @@
 ---
 // src/pages/links.astro
 
-// --- 1. CONFIGURACIÓN DE PRODUCTOS (SINCRONIZADO CON PORTADA) ---
+// --- 1. CONFIGURACIÓN DE PRODUCTOS (ACTUALIZADO: RATÓN VERTICAL AÑADIDO) ---
 const flashOffers = [
     {
         name: "Auriculares Bluetooth 5.3",
@@ -9,8 +9,8 @@ const flashOffers = [
         price: "21,99€",
         oldPrice: "59,99€",
         discount: "-63%",
-        img: "https://m.media-amazon.com/images/I/71J44QhNuKL._AC_SX679_.jpg", // ✅ FOTO CORRECTA
-        url: "https://amzn.to/4q7C1Pt" // ✅ TU LINK
+        img: "https://m.media-amazon.com/images/I/71J44QhNuKL._AC_SX679_.jpg",
+        url: "https://amzn.to/4q7C1Pt"
     },
     {
         name: "Mochila Tech Antirrobo",
@@ -18,8 +18,8 @@ const flashOffers = [
         price: "16,98€",
         oldPrice: "29,99€",
         discount: "-43%",
-        img: "https://m.media-amazon.com/images/I/71Cf4ATO-RL._AC_SX679_.jpg", // ✅ FOTO CORRECTA
-        url: "https://amzn.to/3LnkinL" // ✅ TU LINK
+        img: "https://m.media-amazon.com/images/I/71Cf4ATO-RL._AC_SX679_.jpg",
+        url: "https://amzn.to/3LnkinL"
     },
     {
         name: "Smartwatch Deportivo",
@@ -47,6 +47,15 @@ const flashOffers = [
         discount: "-60%",
         img: "https://m.media-amazon.com/images/I/61hzuoXwjqL._AC_SY300_SX300_QL70_ML2_.jpg",
         url: "https://amzn.to/49iQsJ7" 
+    },
+    {
+        name: "Ratón Vertical Ergonómico",
+        desc: "Adiós dolor de muñeca. LED, 1600 DPI y cable USB.",
+        price: "10,97€",
+        oldPrice: "24,99€",
+        discount: "-56%",
+        img: "https://m.media-amazon.com/images/I/61zdXL7k6eL._AC_SX679_.jpg", // ✅ FOTO RATÓN VERTICAL
+        url: "https://amzn.to/3NfMKZm" // ✅ TU ENLACE NUEVO
     }
 ];
 
@@ -55,7 +64,7 @@ const navLinks = [
   {
     title: "✈️ Únete al Canal de Ofertas",
     subtitle: "Avisos de error de precio y chollos diarios",
-    url: "https://t.me/PreciosPortatilesES", // ⚠️ OJO: Amazon prefiere que no uses Telegram directo si no tienes API, pero en Linktree se suele tolerar mejor. Si quieres máxima seguridad, pon "/" (la home).
+    url: "https://t.me/PreciosPortatilesES", 
     type: "telegram", 
     icon: "📲"
   },
