@@ -1,7 +1,7 @@
 ---
 import laptops from '../data/laptops.json';
 
-// --- CONFIGURACIÓN DE OFERTAS FLASH (ACTUALIZADO: TECLADO TRUST AÑADIDO) ---
+// --- CONFIGURACIÓN DE OFERTAS FLASH ---
 const flashOffers = [
     {
         name: "Auriculares Bluetooth 5.3",
@@ -35,8 +35,8 @@ const flashOffers = [
         desc: "Iluminación LED, Anti-Ghosting y Modo Juego.",
         price: 18.79,
         oldPrice: 29.99,
-        link: "https://amzn.to/3NA9zHh", // ✅ TU ENLACE
-        img: "https://m.media-amazon.com/images/I/81ugMJjYPtL._AC_SX679_.jpg", // ✅ TU FOTO
+        link: "https://amzn.to/3NA9zHh",
+        img: "https://m.media-amazon.com/images/I/81ugMJjYPtL._AC_SX679_.jpg",
         discount: "-37%"
     },
     {
@@ -143,8 +143,6 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             padding-right: 20px; 
             overflow: hidden; 
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            
-            /* EFECTO MOVIMIENTO SUAVE */
             background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #0f172a);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -162,84 +160,50 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         p.subtitle { color: #e2e8f0; font-size: 1.2rem; max-width: 600px; margin: 30px auto 45px; line-height: 1.6; }
         .cta-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; align-items: center; }
         
-        /* BOTÓN FLUSH REUTILIZADO (SIN TELEGRAM) */
         .btn-flash-hero { background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); color: white; padding: 16px 35px; border-radius: 100px; font-weight: 800; font-size: 1rem; text-decoration: none; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3); display: flex; align-items: center; gap: 10px; }
         .btn-flash-hero:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 15px 40px rgba(239, 68, 68, 0.5); }
-        
         .btn-compare-hero { background: white; color: #0f172a; padding: 16px 35px; border-radius: 100px; font-weight: 800; font-size: 1rem; text-decoration: none; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1); }
         .btn-compare-hero:hover { transform: scale(1.05) translateY(-3px); background-color: #f8fafc; }
 
+        /* 🔥 BANNER ESTUDIANTES 🔥 */
+        .student-banner {
+            width: 100%; max-width: 1200px; margin: 40px auto 20px; padding: 0 20px; box-sizing: border-box; z-index: 10; position: relative;
+        }
+        .student-card {
+            background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%);
+            border-radius: 16px; padding: 20px 30px;
+            display: flex; justify-content: space-between; align-items: center;
+            color: #0f172a; text-decoration: none;
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.2);
+            transition: transform 0.2s;
+        }
+        .student-card:hover { transform: scale(1.01); }
+        .student-info h3 { margin: 0; font-size: 1.3rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+        .student-info p { margin: 5px 0 0; font-size: 0.95rem; font-weight: 600; opacity: 0.9; }
+        .student-btn {
+            background: #0f172a; color: white; padding: 12px 25px; border-radius: 50px; font-weight: 800; white-space: nowrap; font-size: 0.9rem;
+        }
+
         /* 🔥 SECCIÓN OFERTAS FLASH (GRID) 🔥 */
         .flash-section {
-            width: 100%;
-            max-width: 1200px;
-            margin: -40px auto 0;
-            padding: 0 20px;
-            z-index: 10;
-            position: relative;
-            box-sizing: border-box;
+            width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; z-index: 10; position: relative; box-sizing: border-box;
         }
-        
         .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
         .section-header h2 { font-size: 1.2rem; margin: 0; color: white; display: flex; align-items: center; gap: 8px; }
         .pulse-dot { width: 10px; height: 10px; background: #ef4444; border-radius: 50%; animation: pulse-red 1.5s infinite; }
 
-        .offers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .offer-card {
-            background: #1e293b;
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            border-radius: 16px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            position: relative;
-            transition: transform 0.2s, box-shadow 0.2s;
-            overflow: hidden;
-        }
-        .offer-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.2);
-            border-color: #ef4444;
-        }
-
-        .discount-tag {
-            position: absolute; top: 10px; left: 10px;
-            background: #ef4444; color: white;
-            font-size: 0.75rem; font-weight: 800;
-            padding: 4px 8px; border-radius: 6px;
-            z-index: 5;
-        }
-
-        .offer-img {
-            width: 100%;
-            height: 150px;
-            object-fit: contain;
-            background: white;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-
+        .offers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .offer-card { background: #1e293b; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 16px; padding: 15px; display: flex; flex-direction: column; text-decoration: none; position: relative; transition: transform 0.2s, box-shadow 0.2s; overflow: hidden; }
+        .offer-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(239, 68, 68, 0.2); border-color: #ef4444; }
+        .discount-tag { position: absolute; top: 10px; left: 10px; background: #ef4444; color: white; font-size: 0.75rem; font-weight: 800; padding: 4px 8px; border-radius: 6px; z-index: 5; }
+        .offer-img { width: 100%; height: 150px; object-fit: contain; background: white; border-radius: 8px; margin-bottom: 15px; padding: 10px; box-sizing: border-box; }
         .offer-info h3 { margin: 0 0 5px 0; font-size: 0.95rem; color: white; line-height: 1.3; font-weight: 700; height: 2.6em; overflow: hidden; }
         .offer-desc { font-size: 0.8rem; color: #94a3b8; margin: 0 0 10px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
         .offer-price { display: flex; align-items: flex-end; gap: 10px; margin-top: auto; }
         .offer-new-price { font-size: 1.2rem; font-weight: 800; color: #ef4444; }
         .offer-old-price { font-size: 0.8rem; text-decoration: line-through; color: #64748b; margin-bottom: 3px; }
-        .btn-offer-grab { 
-            margin-left: auto; background: rgba(239, 68, 68, 0.1); color: #ef4444; 
-            font-size: 0.75rem; padding: 6px 10px; border-radius: 6px; font-weight: 700; 
-        }
-
+        .btn-offer-grab { margin-left: auto; background: rgba(239, 68, 68, 0.1); color: #ef4444; font-size: 0.75rem; padding: 6px 10px; border-radius: 6px; font-weight: 700; }
         @keyframes pulse-red { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
-
 
         /* MAIN & SIDEBAR */
         .main-container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 60px 20px 100px; display: flex; gap: 50px; flex: 1; box-sizing: border-box; }
@@ -255,7 +219,6 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         .custom-checkbox input { appearance: none; width: 18px; height: 18px; border: 2px solid #475569; border-radius: 4px; background: transparent; cursor: pointer; position: relative; }
         .custom-checkbox input:checked { background-color: #818cf8; border-color: #818cf8; }
         .custom-checkbox input:checked::after { content: '✔'; position: absolute; color: white; font-size: 12px; top: -1px; left: 3px; }
-
         .range-container { width: 100%; }
         .range-header { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.9rem; color: white; font-weight: bold; }
         input[type=range] { width: 100%; -webkit-appearance: none; background: transparent; cursor: pointer; }
@@ -265,36 +228,8 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         .filter-item:hover { color: white; transform: translateX(5px); }
 
         /* GRID Y CARDS */
-        .grid { 
-            flex: 1; 
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: 25px; 
-            width: 100%; 
-            justify-content: flex-start;
-            align-content: flex-start; 
-        }
-
-        /* CARD CORREGIDA */
-        .card { 
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.4) 100%); 
-            border: 1px solid var(--card-border); 
-            border-radius: 24px; 
-            padding: 30px; 
-            position: relative; 
-            display: flex; 
-            flex-direction: column; 
-            transition: 0.3s;
-            text-decoration: none !important;
-            color: var(--text-main);
-            
-            flex: 1 1 300px;
-            max-width: 340px;
-            min-width: 280px;
-            box-sizing: border-box;
-            cursor: pointer;
-        }
-        
+        .grid { flex: 1; display: flex; flex-wrap: wrap; gap: 25px; width: 100%; justify-content: flex-start; align-content: flex-start; }
+        .card { background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.4) 100%); border: 1px solid var(--card-border); border-radius: 24px; padding: 30px; position: relative; display: flex; flex-direction: column; transition: 0.3s; text-decoration: none !important; color: var(--text-main); flex: 1 1 300px; max-width: 340px; min-width: 280px; box-sizing: border-box; cursor: pointer; }
         .card:hover { transform: translateY(-8px); border-color: #818cf8; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.4); background: rgba(30, 41, 59, 0.9); }
         .winner-card { border: 2px solid var(--gold); box-shadow: 0 0 30px rgba(251, 191, 36, 0.15); background: linear-gradient(145deg, rgba(30, 41, 59, 0.9) 0%, rgba(66, 50, 15, 0.2) 100%); transform: scale(1.02); }
         .winner-badge-label { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #0f172a; font-size: 0.7rem; font-weight: 800; padding: 6px 16px; border-radius: 50px; box-shadow: 0 5px 15px rgba(0,0,0,0.4); z-index: 30; white-space: nowrap; text-transform: uppercase; }
@@ -309,11 +244,10 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         .price-container { display: flex; flex-direction: column; align-items: flex-start; }
         .old-price-anchor { text-decoration: line-through; color: #64748b; font-size: 0.85rem; margin-bottom: 0px; }
         .price-display { font-size: 1.6rem; font-weight: 800; color: white; }
-        
         .btn-card { background: white; color: #0f172a; padding: 10px 18px; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 0.85rem; transition: background 0.2s; white-space: nowrap; }
         .card:hover .btn-card { background: #e2e8f0; }
 
-        /* FOOTER */
+        /* FOOTER & LEGAL */
         .site-footer { background-color: var(--bg-footer); border-top: 1px solid var(--card-border); padding: 60px 20px 40px; margin-top: auto; width: 100%; box-sizing: border-box; }
         .footer-content { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; align-items: center; text-align: center; }
         .footer-brand h3 { margin: 0; font-size: 1.2rem; color: white; }
@@ -350,11 +284,11 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             .cta-container { flex-direction: column; width: 100%; gap: 15px; }
             .btn-flash-hero, .btn-compare-hero { width: 90%; justify-content: center; font-size: 0.95rem; padding: 14px 20px; }
             .wizard-fab { bottom: 20px !important; right: 20px !important; font-size: 0.9rem !important; padding: 12px 20px !important; z-index: 9999; }
+            .grid { justify-content: center; } .card { max-width: 400px; } .offers-grid { grid-template-columns: 1fr; } .flash-section { margin-top: 0; padding: 20px; }
             
-            .grid { justify-content: center; }
-            .card { max-width: 400px; }
-            .offers-grid { grid-template-columns: 1fr; }
-            .flash-section { margin-top: 0; padding: 20px; }
+            /* Ajuste banner móvil */
+            .student-card { flex-direction: column; text-align: center; gap: 15px; }
+            .student-info h3 { justify-content: center; }
         }
     </style>
 </head>
@@ -414,6 +348,15 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         </div>
     </section>
 
+    <div class="student-banner">
+        <a href="http://www.amazon.es/joinstudent?tag=comparadorjai-21" target="_blank" rel="noopener noreferrer" class="student-card">
+            <div class="student-info">
+                <h3>🎓 ¿ERES ESTUDIANTE?</h3>
+                <p>Prueba Amazon Prime GRATIS durante 90 Días. Cancela cuando quieras.</p>
+            </div>
+            <span class="student-btn">ACTIVAR PRUEBA GRATIS ➔</span>
+        </a>
+    </div>
     <div id="flash-offers" class="flash-section">
         <div class="section-header">
             <div class="pulse-dot"></div>
