@@ -1,7 +1,7 @@
 ---
 // src/pages/links.astro
 
-// --- 1. CONFIGURACIÓN DE PRODUCTOS (ACTUALIZADO: TECLADO TRUST AÑADIDO) ---
+// --- 1. CONFIGURACIÓN DE PRODUCTOS (OFERTAS FLASH) ---
 const flashOffers = [
     {
         name: "Auriculares Bluetooth 5.3",
@@ -36,8 +36,8 @@ const flashOffers = [
         price: "18,79€",
         oldPrice: "29,99€",
         discount: "-37%",
-        img: "https://m.media-amazon.com/images/I/81ugMJjYPtL._AC_SX679_.jpg", // ✅ FOTO TECLADO
-        url: "https://amzn.to/3NA9zHh" // ✅ TU ENLACE
+        img: "https://m.media-amazon.com/images/I/81ugMJjYPtL._AC_SX679_.jpg",
+        url: "https://amzn.to/3NA9zHh"
     },
     {
         name: "Ratón Logitech B100",
@@ -61,6 +61,13 @@ const flashOffers = [
 
 // --- 2. CONFIGURACIÓN DE BOTONES (NAVEGACIÓN) ---
 const navLinks = [
+  {
+    title: "🎓 Prime Student: 90 Días GRATIS",
+    subtitle: "Envíos rápidos, Prime Video y descuentos exclusivos.",
+    url: "http://www.amazon.es/joinstudent?tag=comparadorjai-21", // ✅ ENLACE DE BONUS CORREGIDO
+    type: "bonus", // Nuevo estilo destacado
+    icon: "🎁"
+  },
   {
     title: "✈️ Únete al Canal de Ofertas",
     subtitle: "Avisos de error de precio y chollos diarios",
@@ -105,6 +112,7 @@ const navLinks = [
             --text-muted: #94a3b8;
             --accent-red: #ef4444;
             --telegram-blue: #0088cc;
+            --amazon-gold: #fbbf24;
         }
 
         body {
@@ -171,10 +179,10 @@ const navLinks = [
         .flash-card:hover { transform: scale(1.02); background: rgba(30, 41, 59, 0.9); border-color: var(--accent-red); }
 
         .flash-img {
-            width: 80px; height: 80px; object-fit: contain; /* AUMENTADO TAMAÑO */
+            width: 80px; height: 80px; object-fit: contain;
             background: white; border-radius: 12px; padding: 5px; flex-shrink: 0;
         }
-        .flash-info { flex: 1; min-width: 0; /* Evita desbordamiento de texto */ }
+        .flash-info { flex: 1; min-width: 0; }
         .flash-info h3 { margin: 0 0 4px; font-size: 0.95rem; font-weight: 700; line-height: 1.2; }
         .flash-desc { font-size: 0.75rem; color: var(--text-muted); margin: 0 0 8px; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         
@@ -199,11 +207,12 @@ const navLinks = [
         
         .telegram { background: linear-gradient(135deg, #0088cc 0%, #005f8f 100%); color: white; border: 1px solid rgba(255,255,255,0.1); }
         .standard { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); color: white; }
-        
+        .bonus { background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%); color: #0f172a; border: 1px solid rgba(255, 255, 255, 0.2); font-weight: bold; }
+
         .icon { font-size: 1.5rem; }
         .text-content { display: flex; flex-direction: column; }
-        .link-title { font-weight: 700; font-size: 1rem; line-height: 1.2; }
-        .link-subtitle { font-size: 0.75rem; opacity: 0.8; margin-top: 2px; }
+        .link-title { font-weight: 800; font-size: 1rem; line-height: 1.2; }
+        .link-subtitle { font-size: 0.75rem; opacity: 0.9; margin-top: 2px; }
 
         footer { margin-top: auto; padding: 30px 20px; text-align: center; font-size: 0.75rem; color: #475569; }
         
@@ -219,6 +228,16 @@ const navLinks = [
             <h1>@MasterTech</h1>
             <p class="bio">Ofertas verificadas de tecnología.<br>👇 <b>CHOLLOS ACTIVOS</b> 👇</p>
         </div>
+
+        {navLinks.map(link => (
+            <a href={link.url} target="_blank" rel="noopener noreferrer" class={`link-card ${link.type}`}>
+                <span class="icon">{link.icon}</span>
+                <div class="text-content">
+                    <span class="link-title">{link.title}</span>
+                    {link.subtitle && <span class="link-subtitle">{link.subtitle}</span>}
+                </div>
+            </a>
+        ))}
 
         <div class="flash-section">
             <div class="flash-header">
@@ -240,16 +259,6 @@ const navLinks = [
                 </a>
             ))}
         </div>
-
-        {navLinks.map(link => (
-            <a href={link.url} target="_blank" rel="noopener noreferrer" class={`link-card ${link.type}`}>
-                <span class="icon">{link.icon}</span>
-                <div class="text-content">
-                    <span class="link-title">{link.title}</span>
-                    {link.subtitle && <span class="link-subtitle">{link.subtitle}</span>}
-                </div>
-            </a>
-        ))}
     </div>
 
     <footer>
