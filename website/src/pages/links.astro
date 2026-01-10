@@ -34,8 +34,8 @@ const flashOffers = [
         name: "Ratón Logitech B100",
         desc: "El clásico de oficina. Indestructible.",
         price: "4,95€",
-        oldPrice: "12,99€",
-        discount: "-60%",
+        oldPrice: null, // ✅ CAMBIO: Eliminamos el precio tachado falso
+        discount: "¡CHOLLO!", // ✅ CAMBIO: Etiqueta de oportunidad
         img: "https://m.media-amazon.com/images/I/61hzuoXwjqL._AC_SY300_SX300_QL70_ML2_.jpg",
         url: "https://amzn.to/49iQsJ7" 
     },
@@ -55,8 +55,8 @@ const navLinks = [
   {
     title: "🎓 Prime Student: 90 Días GRATIS",
     subtitle: "Envíos rápidos, Prime Video y descuentos exclusivos.",
-    url: "http://www.amazon.es/joinstudent?tag=comparadorjai-21", // ✅ ENLACE DE BONUS CORREGIDO
-    type: "bonus", // Nuevo estilo destacado
+    url: "http://www.amazon.es/joinstudent?tag=comparadorjai-21",
+    type: "bonus",
     icon: "🎁"
   },
   {
@@ -102,6 +102,7 @@ const navLinks = [
             --text-main: #ffffff;
             --text-muted: #94a3b8;
             --accent-red: #ef4444;
+            --accent-green: #16a34a; /* ✅ NUEVO: Color para chollos */
             --telegram-blue: #0088cc;
             --amazon-gold: #fbbf24;
         }
@@ -181,10 +182,15 @@ const navLinks = [
         .old-price { color: #64748b; text-decoration: line-through; font-size: 0.8rem;}
         .new-price { color: var(--accent-red); font-weight: 800; font-size: 1.1rem; }
         
+        /* ✅ LÓGICA DE COLORES DE BADGE */
         .discount-badge {
             background: var(--accent-red); color: white;
             font-size: 0.75rem; font-weight: 800; padding: 4px 8px; border-radius: 6px;
             white-space: nowrap; align-self: flex-start;
+        }
+        /* Clase para chollos sin % de descuento (verde) */
+        .discount-badge.bargain {
+            background: var(--accent-green);
         }
 
         /* BOTONES DE NAVEGACIÓN */
@@ -242,11 +248,15 @@ const navLinks = [
                         <h3>{offer.name}</h3>
                         <p class="flash-desc">{offer.desc}</p>
                         <div class="price-row">
-                            <span class="old-price">{offer.oldPrice}</span>
+                            {/* ✅ LÓGICA: Solo renderiza precio anterior si existe */}
+                            {offer.oldPrice && <span class="old-price">{offer.oldPrice}</span>}
                             <span class="new-price">{offer.price}</span>
                         </div>
                     </div>
-                    <div class="discount-badge">{offer.discount}</div>
+                    {/* ✅ LÓGICA: Si el texto no tiene %, aplica clase 'bargain' (verde) */}
+                    <div class={`discount-badge ${offer.discount.includes('%') ? '' : 'bargain'}`}>
+                        {offer.discount}
+                    </div>
                 </a>
             ))}
         </div>
