@@ -1,15 +1,14 @@
 ---
 import laptops from '../data/laptops.json';
 
-// --- CONFIGURACIÓN DE OFERTAS FLASH (Ganchos de entrada) ---
-// ESTRATEGIA: Productos baratos y curiosos PRIMERO para activar la cookie.
+// --- CONFIGURACIÓN DE OFERTAS FLASH ---
 const flashOffers = [
     {
         name: "Funda MagSafe iPhone 17",
         desc: "Transparente, antigolpes y no amarillea. Protección total.",
-        price: "9,91€", // Corregido a String con €
-        oldPrice: "11,99€", // Corregido a String con €
-        url: "https://amzn.to/45FUw59", // ✅ CORREGIDO: 'link' cambiado a 'url'
+        price: "9,91€",
+        oldPrice: "11,99€",
+        url: "https://amzn.to/45FUw59",
         img: "https://m.media-amazon.com/images/I/71n+zzkhJXL._AC_SX679_.jpg",
         discount: "-17%"
     },
@@ -60,7 +59,7 @@ const flashOffers = [
     }
 ];
 
-// Función de Puntuación (Psicológica)
+// Función de Puntuación
 function getScore(price) {
     if (price > 900) return 98;
     if (price > 700) return 96;
@@ -68,7 +67,6 @@ function getScore(price) {
     return 91; 
 }
 
-// Filtros dinámicos
 const allBrands = [...new Set(laptops.map(l => l.name.split(' ')[0]))].sort();
 const ramOptions = ["8GB", "16GB", "32GB"];
 ---
@@ -343,7 +341,7 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         
         <div class="offers-grid">
             {flashOffers.map((offer) => (
-                <a href={offer.link} target="_blank" class="offer-card">
+                <a href={offer.url} target="_blank" class="offer-card">
                     <div class={`discount-tag ${offer.discount.includes('%') ? '' : 'bargain'}`}>
                         {offer.discount}
                     </div>
@@ -353,8 +351,8 @@ const ramOptions = ["8GB", "16GB", "32GB"];
                         <p class="offer-desc">{offer.desc}</p>
                     </div>
                     <div class="offer-price">
-                        <span class="offer-new-price">{offer.price}€</span>
-                        {offer.oldPrice && <span class="offer-old-price">{offer.oldPrice}€</span>}
+                        <span class="offer-new-price">{offer.price}</span>
+                        {offer.oldPrice && <span class="offer-old-price">{offer.oldPrice}</span>}
                         <span class="btn-offer-grab">VER</span>
                     </div>
                 </a>
@@ -390,8 +388,7 @@ const ramOptions = ["8GB", "16GB", "32GB"];
 
         <main class="grid" id="laptops-grid">
             {laptops.map((laptop, index) => {
-                // ✅ CORRECCIÓN ESTRATÉGICA: GENERAMOS EL ENLACE DE BÚSQUEDA AUTOMÁTICO
-                // Así nunca da error 404 ni sale el perro de Amazon.
+                // Generamos enlace de búsqueda para evitar enlaces rotos
                 const searchUrl = `https://www.amazon.es/s?k=${encodeURIComponent(laptop.name)}&tag=comparadorjai-21`;
                 
                 return (
@@ -489,7 +486,7 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             sortedCards.forEach(card => { card.style.display = 'flex'; grid.appendChild(card); applyFilters(); });
         }
 
-        // --- WIZARD (CORREGIDO TAMBIÉN) ---
+        // --- WIZARD (CORREGIDO CON LÓGICA REAL) ---
         let wizardData = { maxPrice: 9999, use: '' };
         const modal = document.getElementById('wizard-overlay');
         document.getElementById('wizard-trigger').addEventListener('click', () => modal.classList.add('active'));
@@ -506,14 +503,35 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             document.getElementById('wizard-loading').style.display = 'block';
             document.getElementById('wizard-match').style.display = 'none';
             setTimeout(() => {
-                let filtered = laptops.filter(l => l.price_eur <= wizardData.maxPrice);
-                if (wizardData.use === 'gaming') { let gaming = filtered.filter(l => l.category.includes('gaming') || l.specs.gpu); if(gaming.length > 0) filtered = gaming; }
-                else if (wizardData.use === 'student') { filtered.sort((a,b) => a.price_eur - b.price_eur); }
-                else if (wizardData.use === 'code') { let pro = filtered.filter(l => l.specs.ram.includes('16GB') || l.specs.ram.includes('32GB')); if(pro.length > 0) filtered = pro; }
+                // 1. Filtrar por precio base
+                let candidates = laptops.filter(l => l.price_eur <= wizardData.maxPrice);
+
+                // 2. Lógica específica y ORDENACIÓN (Crucial)
+                if (wizardData.use === 'gaming') {
+                    // Gaming: Buscamos GPU o tag 'gaming' y ordenamos por PRECIO DESCENDENTE (mejor rendimiento)
+                    const gamers = candidates.filter(l => 
+                        (l.category && l.category.toLowerCase().includes('gaming')) || 
+                        (l.specs.gpu && l.specs.gpu.length > 3)
+                    );
+                    if(gamers.length > 0) candidates = gamers;
+                    // Ordenar: El más caro dentro del presupuesto suele ser el más potente
+                    candidates.sort((a, b) => b.price_eur - a.price_eur);
+                } 
+                else if (wizardData.use === 'student') {
+                    // Estudiante: Ordenar por PRECIO ASCENDENTE (ahorro)
+                    candidates.sort((a, b) => a.price_eur - b.price_eur);
+                } 
+                else if (wizardData.use === 'code') {
+                    // Pro: Priorizar RAM 16GB+
+                    const coders = candidates.filter(l => l.specs.ram.includes('16GB') || l.specs.ram.includes('32GB'));
+                    if(coders.length > 0) candidates = coders;
+                    // Ordenar por PRECIO DESCENDENTE (fiabilidad)
+                    candidates.sort((a, b) => b.price_eur - a.price_eur);
+                }
+
+                // 3. Seleccionar ganador
+                let winner = candidates.length > 0 ? candidates[0] : laptops[0];
                 
-                let winner = filtered.length > 0 ? filtered[0] : laptops[0];
-                
-                // ✅ CORRECCIÓN TAMBIÉN AQUÍ: Usamos búsqueda en vez de enlace fijo
                 const searchUrl = `https://www.amazon.es/s?k=${encodeURIComponent(winner.name)}&tag=comparadorjai-21`;
 
                 document.getElementById('wizard-loading').style.display = 'none';
