@@ -64,7 +64,7 @@
       "os": "Sin Sistema Operativo"
     },
     "price_eur": 469,
-    "best_for": "Trabajo diario",
+    "best_for": "Ofimática",
     "affiliate_link": "https://www.amazon.es/dp/B0D2PDMNQP?tag=comparadorjai-21"
   },
   {
@@ -99,6 +99,210 @@
     },
     "price_eur": 199,
     "best_for": "Instituto / Básico",
+    "affiliate_link": "https://www.amazon.es/dp/B0C6FR4B5Y?tag=comparadorjai-21"
+  },
+  {
+    "id": "real-7",
+    "name": "Apple MacBook Air (2022)",
+    "slug": "macbook-air-m2",
+    "brand_img": "/img/apple.jpg",
+    "category": "premium business",
+    "specs": {
+      "cpu": "Apple M2",
+      "ram": "8GB",
+      "storage": "256GB SSD",
+      "display": "13.6\" Liquid Retina",
+      "battery": "Hasta 18h"
+    },
+    "price_eur": 1099,
+    "best_for": "Portabilidad Top",
+    "affiliate_link": "https://www.amazon.es/dp/B0B3C6F7M9?tag=comparadorjai-21"
+  },
+  {
+    "id": "real-8",
+    "name": "MSI Thin GF63",
+    "slug": "msi-thin-gf63",
+    "brand_img": "/img/msi.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Intel Core i7-12650H",
+      "ram": "16GB",
+      "storage": "1TB SSD",
+      "gpu": "RTX 4050 6GB",
+      "display": "144Hz"
+    },
+    "price_eur": 899,
+    "best_for": "Potencia Bruta",
+    "affiliate_link": "https://www.amazon.es/dp/B0C6FR4B5Y?tag=comparadorjai-21"
+  },
+  {
+    "id": "real-9",
+    "name": "ASUS Vivobook 15",
+    "slug": "asus-vivobook-15-oled",
+    "brand_img": "/img/asus.jpg",
+    "category": "student business",
+    "specs": {
+      "cpu": "Ryzen 5 7520U",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "display": "15.6\" OLED",
+      "os": "Windows 11"
+    },
+    "price_eur": 549,
+    "best_for": "Multimedia / Cine",
+    "affiliate_link": "https://www.amazon.es/dp/B0C6FR4B5Y?tag=comparadorjai-21"
+  },
+  {
+    "id": "real-10",
+    "name": "Acer Aspire 3",
+    "slug": "acer-aspire-3",
+    "brand_img": "/img/acer.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Intel Core i5-1235U",
+      "ram": "8GB",
+      "storage": "512GB SSD",
+      "display": "15.6\" FHD",
+      "os": "Windows 11"
+    },
+    "price_eur": 429,
+    "best_for": "Económico",
+    "affiliate_link": "https://www.amazon.es/dp/B0C6FR4B5Y?tag=comparadorjai-21"
+  },
+  {
+    "id": "real-11",
+    "name": "Lenovo Legion Slim 5",
+    "slug": "lenovo-legion-slim-5",
+    "brand_img": "/img/lenovo.jpg",
+    "category": "gaming premium",
+    "specs": {
+      "cpu": "Ryzen 7 7840HS",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "gpu": "RTX 4060 8GB",
+      "display": "16\" WQXGA"
+    },
+    "price_eur": 1249,
+    "best_for": "Gaming Ultra",
+    "affiliate_link": "https://www.amazon.es/dp/B0C6FR4B5Y?tag=comparadorjai-21"
+  },
+  {
+    "id": "real-12",
+    "name": "LG Gram 14",
+    "slug": "lg-gram-14",
+    "brand_img": "/img/lg.jpg",
+    "category": "premium business",
+    "specs": {
+      "cpu": "Intel Core i7-1360P",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "display": "14\" IPS",
+      "weight": "999g"
+    },
+    "price_eur": 1199,
+    "best_for": "Viajeros (Ultraligero)",
+    "affiliate_link": "https://www.amazon.es/dp/B0C6FR4B5Y?tag=comparadorjai-21"
+  },
+  {
+    "id": "real-13",
+    "name": "HP Victus 16",
+    "slug": "hp-victus-16",
+    "brand_img": "/img/hp.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Intel Core i5-13500H",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "gpu": "RTX 4060 8GB",
+      "display": "16.1\" FHD"
+    },
+    "price_eur": 999,
+    "best_for": "Gaming y Creadores",
+    "affiliate_link": "https://www.amazon.es/dp/B0C6FR4B5Y?tag=comparadorjai-21"
+  },
+  {
+    "id": "real-14",
+    "name": "Samsung Galaxy Book3",
+    "slug": "samsung-galaxy-book3",
+    "brand_img": "/img/samsung.jpg",
+    "category": "business",
+    "specs": {
+      "cpu": "Intel Core i5-1335U",
+      "ram": "8GB",
+      "storage": "256GB SSD",
+      "display": "15.6\" FHD",
+      "os": "Windows 11"
+    },
+    "price_eur": 649,
+    "best_for": "Ecosistema Samsung",
+    "affiliate_link": "https://www.amazon.es/dp/B0C6FR4B5Y?tag=comparadorjai-21"
+  },
+  {
+    "id": "real-15",
+    "name": "Acer Chromebook Plus 515",
+    "slug": "acer-chromebook-plus",
+    "brand_img": "/img/acer.jpg",
+    "category": "student",
+    "specs": {
+      "cpu": "Intel Core i3-1215U",
+      "ram": "8GB",
+      "storage": "128GB UFS",
+      "display": "15.6\" FHD",
+      "os": "ChromeOS"
+    },
+    "price_eur": 399,
+    "best_for": "Estudiantes Secundaria",
+    "affiliate_link": "https://www.amazon.es/dp/B0C6FR4B5Y?tag=comparadorjai-21"
+  },
+  {
+    "id": "real-16",
+    "name": "ASUS Zenbook 14 OLED",
+    "slug": "asus-zenbook-14",
+    "brand_img": "/img/asus.jpg",
+    "category": "premium",
+    "specs": {
+      "cpu": "Intel Core Ultra 7",
+      "ram": "16GB",
+      "storage": "1TB SSD",
+      "display": "14\" OLED Touch",
+      "os": "Windows 11"
+    },
+    "price_eur": 1299,
+    "best_for": "Ejecutivos",
+    "affiliate_link": "https://www.amazon.es/dp/B0C6FR4B5Y?tag=comparadorjai-21"
+  },
+  {
+    "id": "real-17",
+    "name": "Lenovo IdeaPad Gaming 3",
+    "slug": "lenovo-ideapad-gaming-3",
+    "brand_img": "/img/lenovo.jpg",
+    "category": "gaming",
+    "specs": {
+      "cpu": "Ryzen 5 6600H",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "gpu": "RTX 3050",
+      "display": "15.6\" 120Hz"
+    },
+    "price_eur": 679,
+    "best_for": "Gaming Entrada",
+    "affiliate_link": "https://www.amazon.es/dp/B0C6FR4B5Y?tag=comparadorjai-21"
+  },
+  {
+    "id": "real-18",
+    "name": "Apple MacBook Pro 14",
+    "slug": "macbook-pro-14-m3",
+    "brand_img": "/img/apple.jpg",
+    "category": "premium",
+    "specs": {
+      "cpu": "Apple M3",
+      "ram": "8GB",
+      "storage": "512GB SSD",
+      "display": "14.2\" XDR",
+      "battery": "Hasta 22h"
+    },
+    "price_eur": 1849,
+    "best_for": "Profesionales Top",
     "affiliate_link": "https://www.amazon.es/dp/B0C6FR4B5Y?tag=comparadorjai-21"
   }
 ]
