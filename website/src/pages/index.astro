@@ -2,7 +2,26 @@
 import laptops from '../data/laptops.json';
 
 // --- CONFIGURACIÓN DE OFERTAS FLASH (Ganchos de entrada) ---
+// ESTRATEGIA: Productos baratos y curiosos PRIMERO para activar la cookie.
 const flashOffers = [
+    {
+        name: "Funda MagSafe iPhone 17",
+        desc: "Transparente, antigolpes y no amarillea. Protección total.",
+        price: 9.91,
+        oldPrice: 11.99,
+        link: "https://amzn.to/45FUw59",
+        img: "https://m.media-amazon.com/images/I/71n+zzkhJXL._AC_SX679_.jpg",
+        discount: "-17%"
+    },
+    {
+        name: "Kit Limpieza Pro 7-en-1",
+        desc: "Limpia teclado, pantalla y Airpods. Cepillo, spray y extractor.",
+        price: 8.99,
+        oldPrice: 19.99,
+        link: "https://www.amazon.es/s?k=kit+limpieza+teclado&tag=comparadorjai-21", 
+        img: "https://m.media-amazon.com/images/I/61v-s9X4JVL._AC_SX679_.jpg",
+        discount: "-55%"
+    },
     {
         name: "Auriculares Bluetooth 5.3",
         desc: "Cancelación ruido, 50H batería e impermeables IPX7.",
@@ -22,15 +41,6 @@ const flashOffers = [
         discount: "-60%"
     },
     {
-        name: "Teclado Gaming Trust Azor",
-        desc: "Iluminación LED, Anti-Ghosting y Modo Juego.",
-        price: 18.79,
-        oldPrice: 29.99,
-        link: "https://amzn.to/3NA9zHh",
-        img: "https://m.media-amazon.com/images/I/81ugMJjYPtL._AC_SX679_.jpg",
-        discount: "-37%"
-    },
-    {
         name: "Ratón Logitech B100",
         desc: "El clásico de oficina. Indestructible y preciso.",
         price: 4.95,
@@ -38,25 +48,7 @@ const flashOffers = [
         link: "https://amzn.to/49iQsJ7",
         img: "https://m.media-amazon.com/images/I/61hzuoXwjqL._AC_SY300_SX300_QL70_ML2_.jpg", 
         discount: "¡CHOLLO!" 
-    },
-    {
-        name: "Ratón Vertical Ergonómico",
-        desc: "Adiós dolor de muñeca. LED, 1600 DPI y cable USB.",
-        price: 10.97,
-        oldPrice: 24.99,
-        link: "https://amzn.to/3NfMKZm",
-        img: "https://m.media-amazon.com/images/I/61zdXL7k6eL._AC_SX679_.jpg",
-        discount: "-56%"
-    },
-    {
-        name: "Funda MagSafe iPhone 17",
-        desc: "Transparente, antigolpes y no amarillea. Protección total.",
-        price: 9.91,
-        oldPrice: 11.99,
-        link: "https://amzn.to/45FUw59",
-        img: "https://m.media-amazon.com/images/I/71n+zzkhJXL._AC_SX679_.jpg",
-        discount: "-17%"
-    },
+    }
 ];
 
 // Función de Puntuación (Psicológica)
@@ -64,10 +56,10 @@ function getScore(price) {
     if (price > 900) return 98;
     if (price > 700) return 96;
     if (price > 500) return 94;
-    return 91; // Incluso los baratos tienen buena nota si son calidad/precio
+    return 91; 
 }
 
-// Filtros dinámicos basados en el nuevo JSON
+// Filtros dinámicos
 const allBrands = [...new Set(laptops.map(l => l.name.split(' ')[0]))].sort();
 const ramOptions = ["8GB", "16GB", "32GB"];
 ---
@@ -78,8 +70,8 @@ const ramOptions = ["8GB", "16GB", "32GB"];
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MasterTech | Las Mejores Ofertas en Portátiles 2024</title>
     <meta name="description" content="Comparador de portátiles reales. Seleccionamos manualmente las mejores ofertas de Amazon España para Estudiantes, Gaming y Trabajo." />
-    
     <meta name="geo.region" content="ES" />
+    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DHN4XB4R6G"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -124,7 +116,7 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         .nav-vs-link { color: #4ade80; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: transform 0.2s; }
         .nav-vs-link:hover { transform: scale(1.05); color: #86efac; }
         
-        /* HERO ANIMADO */
+        /* HERO */
         .hero { 
             position: relative; 
             min-height: auto; 
@@ -143,58 +135,39 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
         }
-
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
         .badge-pill { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #e0e7ff; padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; margin-bottom: 30px; backdrop-filter: blur(4px); }
         h1 { font-size: 4rem; font-weight: 800; margin: 0; line-height: 1.1; letter-spacing: -2px; color: #ffffff; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         h1 span { color: #818cf8; }
         p.subtitle { color: #e2e8f0; font-size: 1.2rem; max-width: 600px; margin: 30px auto 45px; line-height: 1.6; }
         .cta-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; align-items: center; }
-        
         .btn-flash-hero { background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); color: white; padding: 16px 35px; border-radius: 100px; font-weight: 800; font-size: 1rem; text-decoration: none; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3); display: flex; align-items: center; gap: 10px; }
         .btn-flash-hero:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 15px 40px rgba(239, 68, 68, 0.5); }
         .btn-compare-hero { background: white; color: #0f172a; padding: 16px 35px; border-radius: 100px; font-weight: 800; font-size: 1rem; text-decoration: none; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1); }
         .btn-compare-hero:hover { transform: scale(1.05) translateY(-3px); background-color: #f8fafc; }
 
-        /* 🔥 BANNER ESTUDIANTES 🔥 */
-        .student-banner {
-            width: 100%; max-width: 1200px; margin: 40px auto 20px; padding: 0 20px; box-sizing: border-box; z-index: 10; position: relative;
-        }
-        .student-card {
-            background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%);
-            border-radius: 16px; padding: 20px 30px;
-            display: flex; justify-content: space-between; align-items: center;
-            color: #0f172a; text-decoration: none;
-            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.2);
-            transition: transform 0.2s;
-        }
+        /* BANNER */
+        .student-banner { width: 100%; max-width: 1200px; margin: 40px auto 20px; padding: 0 20px; box-sizing: border-box; z-index: 10; position: relative; }
+        .student-card { background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%); border-radius: 16px; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; color: #0f172a; text-decoration: none; box-shadow: 0 10px 30px rgba(251, 191, 36, 0.2); transition: transform 0.2s; }
         .student-card:hover { transform: scale(1.01); }
         .student-info h3 { margin: 0; font-size: 1.3rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
         .student-info p { margin: 5px 0 0; font-size: 0.95rem; font-weight: 600; opacity: 0.9; }
-        .student-btn {
-            background: #0f172a; color: white; padding: 12px 25px; border-radius: 50px; font-weight: 800; white-space: nowrap; font-size: 0.9rem;
-        }
+        .student-btn { background: #0f172a; color: white; padding: 12px 25px; border-radius: 50px; font-weight: 800; white-space: nowrap; font-size: 0.9rem; }
 
-        /* 🔥 SECCIÓN OFERTAS FLASH (GRID) 🔥 */
-        .flash-section {
-            width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; z-index: 10; position: relative; box-sizing: border-box;
-        }
+        /* FLASH OFFERS */
+        .flash-section { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; z-index: 10; position: relative; box-sizing: border-box; }
         .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
         .section-header h2 { font-size: 1.2rem; margin: 0; color: white; display: flex; align-items: center; gap: 8px; }
         .pulse-dot { width: 10px; height: 10px; background: #ef4444; border-radius: 50%; animation: pulse-red 1.5s infinite; }
-
         .offers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
         .offer-card { background: #1e293b; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 16px; padding: 15px; display: flex; flex-direction: column; text-decoration: none; position: relative; transition: transform 0.2s, box-shadow 0.2s; overflow: hidden; }
         .offer-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(239, 68, 68, 0.2); border-color: #ef4444; }
-        
         .discount-tag { position: absolute; top: 10px; left: 10px; background: var(--flash-red); color: white; font-size: 0.75rem; font-weight: 800; padding: 4px 8px; border-radius: 6px; z-index: 5; }
         .discount-tag.bargain { background: var(--flash-green); }
-
         .offer-img { width: 100%; height: 150px; object-fit: contain; background: white; border-radius: 8px; margin-bottom: 15px; padding: 10px; box-sizing: border-box; }
         .offer-info h3 { margin: 0 0 5px 0; font-size: 0.95rem; color: white; line-height: 1.3; font-weight: 700; height: 2.6em; overflow: hidden; }
         .offer-desc { font-size: 0.8rem; color: #94a3b8; margin: 0 0 10px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -204,12 +177,12 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         .btn-offer-grab { margin-left: auto; background: rgba(239, 68, 68, 0.1); color: #ef4444; font-size: 0.75rem; padding: 6px 10px; border-radius: 6px; font-weight: 700; }
         @keyframes pulse-red { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
 
-        /* MAIN & SIDEBAR */
+        /* MAIN */
         .main-container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 60px 20px 100px; display: flex; gap: 50px; flex: 1; box-sizing: border-box; }
         .sidebar { width: 280px; display: none; flex-shrink: 0; }
         @media (min-width: 1000px) { .sidebar { display: block; } }
 
-        /* FILTROS */
+        /* FILTERS */
         .filter-box { margin-bottom: 35px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 25px; }
         .filter-box:last-child { border-bottom: none; }
         .filter-title { font-weight: 700; margin-bottom: 15px; display: block; font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 1px; }
@@ -223,8 +196,8 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         input[type=range] { width: 100%; -webkit-appearance: none; background: transparent; cursor: pointer; }
         input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 6px; background: #334155; border-radius: 10px; }
         input[type=range]::-webkit-slider-thumb { height: 20px; width: 20px; border-radius: 50%; background: #818cf8; -webkit-appearance: none; margin-top: -7px; box-shadow: 0 0 10px rgba(129, 140, 248, 0.5); border: 2px solid #1e293b; }
-        
-        /* GRID Y CARDS */
+
+        /* GRID */
         .grid { flex: 1; display: flex; flex-wrap: wrap; gap: 25px; width: 100%; justify-content: flex-start; align-content: flex-start; }
         .card { background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(30, 41, 59, 0.4) 100%); border: 1px solid var(--card-border); border-radius: 24px; padding: 30px; position: relative; display: flex; flex-direction: column; transition: 0.3s; text-decoration: none !important; color: var(--text-main); flex: 1 1 300px; max-width: 340px; min-width: 280px; box-sizing: border-box; cursor: pointer; }
         .card:hover { transform: translateY(-8px); border-color: #818cf8; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.4); background: rgba(30, 41, 59, 0.9); }
@@ -235,10 +208,7 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         .product-img { width: 100%; height: 220px; object-fit: contain; margin: 15px 0 30px; background: #ffffff; border-radius: 16px; padding: 20px; box-sizing: border-box; position: relative; z-index: 1; transition: transform 0.3s ease; }
         .product-img:hover { transform: scale(1.02); }
         h2 { font-size: 1.3rem; font-weight: 700; margin: 0 0 15px 0; height: 3em; overflow: hidden; line-height: 1.4; color: white; }
-        
-        /* 🔥 NUEVO: Badge Ideal Para */
         .best-for-badge { display: inline-block; background: rgba(129, 140, 248, 0.15); color: #818cf8; border: 1px solid rgba(129, 140, 248, 0.3); padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
-
         .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 16px; }
         .spec-item { font-size: 0.85rem; color: #cbd5e1; display: flex; gap: 8px; align-items: center;}
         .price-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); }
@@ -248,7 +218,7 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         .btn-card { background: white; color: #0f172a; padding: 10px 18px; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 0.85rem; transition: background 0.2s; white-space: nowrap; }
         .card:hover .btn-card { background: #e2e8f0; }
 
-        /* FOOTER & LEGAL */
+        /* FOOTER */
         .site-footer { background-color: var(--bg-footer); border-top: 1px solid var(--card-border); padding: 60px 20px 40px; margin-top: auto; width: 100%; box-sizing: border-box; }
         .footer-content { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; align-items: center; text-align: center; }
         .footer-brand h3 { margin: 0; font-size: 1.2rem; color: white; }
@@ -286,8 +256,6 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             .btn-flash-hero, .btn-compare-hero { width: 90%; justify-content: center; font-size: 0.95rem; padding: 14px 20px; }
             .wizard-fab { bottom: 20px !important; right: 20px !important; font-size: 0.9rem !important; padding: 12px 20px !important; z-index: 9999; }
             .grid { justify-content: center; } .card { max-width: 400px; } .offers-grid { grid-template-columns: 1fr; } .flash-section { margin-top: 0; padding: 20px; }
-            
-            /* Ajuste banner móvil */
             .student-card { flex-direction: column; text-align: center; gap: 15px; }
             .student-info h3 { justify-content: center; }
         }
@@ -342,7 +310,6 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             Analizamos el mercado diariamente para encontrar los portátiles que realmente valen lo que cuestan.
             <br> <span style="color: #4ade80; font-weight: bold;">⚡ Potencia real al mejor precio.</span>
         </p>
-        
         <div class="cta-container">
             <a href="#flash-offers" class="btn-flash-hero">🔥 Ver Ofertas Flash</a>
             <a href="/comparar" class="btn-compare-hero">⚖️ Ir al Comparador VS</a>
@@ -390,56 +357,37 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         <aside class="sidebar">
             <div class="filter-box">
                 <span class="filter-title">Ordenar Por</span>
-                <label class="custom-checkbox">
-                    <input type="radio" name="sort" id="sort-score" checked>
-                    <span>⚡ Mejor Puntuación</span>
-                </label>
-                <label class="custom-checkbox">
-                    <input type="radio" name="sort" id="sort-price-asc">
-                    <span>💰 Precio: Bajo a Alto</span>
-                </label>
-                <label class="custom-checkbox">
-                    <input type="radio" name="sort" id="sort-price-desc">
-                    <span>💎 Precio: Alto a Bajo</span>
-                </label>
+                <label class="custom-checkbox"><input type="radio" name="sort" id="sort-score" checked><span>⚡ Mejor Puntuación</span></label>
+                <label class="custom-checkbox"><input type="radio" name="sort" id="sort-price-asc"><span>💰 Precio: Bajo a Alto</span></label>
+                <label class="custom-checkbox"><input type="radio" name="sort" id="sort-price-desc"><span>💎 Precio: Alto a Bajo</span></label>
             </div>
-
             <div class="filter-box">
-                <div class="range-header">
-                    <span>Presupuesto Máx.</span>
-                    <span id="price-value-display">2500€</span>
-                </div>
-                <div class="range-container">
-                    <input type="range" id="price-slider" min="200" max="2500" step="50" value="2500">
-                </div>
+                <div class="range-header"><span>Presupuesto Máx.</span><span id="price-value-display">2500€</span></div>
+                <div class="range-container"><input type="range" id="price-slider" min="200" max="2500" step="50" value="2500"></div>
             </div>
-
             <div class="filter-box">
                 <span class="filter-title">Marcas</span>
                 {allBrands.map(brand => (
-                    <label class="custom-checkbox">
-                        <input type="checkbox" class="brand-filter" value={brand}>
-                        <span>{brand}</span>
-                    </label>
+                    <label class="custom-checkbox"><input type="checkbox" class="brand-filter" value={brand}><span>{brand}</span></label>
                 ))}
             </div>
-
              <div class="filter-box">
                 <span class="filter-title">Memoria RAM</span>
                 {ramOptions.map(ram => (
-                    <label class="custom-checkbox">
-                        <input type="checkbox" class="ram-filter" value={ram}>
-                        <span>{ram}</span>
-                    </label>
+                    <label class="custom-checkbox"><input type="checkbox" class="ram-filter" value={ram}><span>{ram}</span></label>
                 ))}
             </div>
         </aside>
 
         <main class="grid" id="laptops-grid">
             {laptops.map((laptop, index) => {
+                // ✅ CORRECCIÓN ESTRATÉGICA: GENERAMOS EL ENLACE DE BÚSQUEDA AUTOMÁTICO
+                // Así nunca da error 404 ni sale el perro de Amazon.
+                const searchUrl = `https://www.amazon.es/s?k=${encodeURIComponent(laptop.name)}&tag=comparadorjai-21`;
+                
                 return (
                 <a 
-                    href={laptop.affiliate_link}
+                    href={searchUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     class={`card ${index === 0 ? 'winner-card' : ''}`} 
@@ -450,21 +398,14 @@ const ramOptions = ["8GB", "16GB", "32GB"];
                     data-ram={laptop.specs.ram}
                 >
                     {index === 0 && <div class="winner-badge-label">🏆 MEJOR OPCIÓN 2024</div>}
-
-                    <div class="score-badge">
-                        {getScore(laptop.price_eur)} <span class="score-label">PTS</span>
-                    </div>
+                    <div class="score-badge">{getScore(laptop.price_eur)} <span class="score-label">PTS</span></div>
                     <img src={laptop.brand_img} alt={laptop.name} class="product-img" loading="lazy" />
-                    
-                    {/* ✅ NUEVO: Badge de Ideal Para */}
                     {laptop.best_for && <div class="best-for-badge">★ {laptop.best_for}</div>}
-                    
                     <h2>{laptop.name}</h2>
                     <div class="specs-grid">
                         <div class="spec-item">🧠 {laptop.specs.cpu}</div>
                         <div class="spec-item">💾 {laptop.specs.ram}</div>
                         <div class="spec-item">💿 {laptop.specs.storage}</div>
-                        {/* ✅ LOGICA INTELIGENTE: Si tiene gráfica la muestra, sino la pantalla */}
                         <div class="spec-item">🖥️ {laptop.specs.gpu || laptop.specs.display || "15.6\" FHD"}</div>
                     </div>
                     <div class="price-row">
@@ -485,58 +426,24 @@ const ramOptions = ["8GB", "16GB", "32GB"];
                 <h3>LaptopComparator</h3>
                 <p>&copy; {new Date().getFullYear()} - Calidad/Precio Garantizada.</p>
             </div>
-            <div class="footer-links">
-                <a href="#">Aviso Legal</a>
-                <a href="#">Privacidad</a>
-                <a href="#">Contacto</a>
-            </div>
+            <div class="footer-links"><a href="#">Aviso Legal</a><a href="#">Privacidad</a><a href="#">Contacto</a></div>
         </div>
         <div class="amazon-legal-box">
-            <p class="legal-text">
-                Esta web participa en el Programa de Afiliados de Amazon.es, un programa de publicidad para afiliados diseñado para ofrecer a sitios web un modo de obtener comisiones por publicidad, publicitando e incluyendo enlaces a Amazon.es.
-            </p>
+            <p class="legal-text">Esta web participa en el Programa de Afiliados de Amazon.es...</p>
         </div>
     </footer>
 
     <script define:vars={{laptops}}>
-        // --- GESTIÓN DE FILTROS AVANZADA ---
+        // --- FILTROS ---
         const grid = document.getElementById('laptops-grid');
         const cards = Array.from(document.querySelectorAll('.card'));
-        
-        let state = {
-            maxPrice: 2500,
-            brands: [],
-            ram: [],
-            category: 'all'
-        };
-
+        let state = { maxPrice: 2500, brands: [], ram: [], category: 'all' };
         const priceSlider = document.getElementById('price-slider');
         const priceDisplay = document.getElementById('price-value-display');
         
-        priceSlider.addEventListener('input', (e) => {
-            state.maxPrice = parseInt(e.target.value);
-            priceDisplay.innerText = state.maxPrice + '€';
-            applyFilters();
-        });
-
-        document.querySelectorAll('.brand-filter').forEach(cb => {
-            cb.addEventListener('change', (e) => {
-                const value = e.target.value;
-                if(e.target.checked) state.brands.push(value);
-                else state.brands = state.brands.filter(b => b !== value);
-                applyFilters();
-            });
-        });
-
-        document.querySelectorAll('.ram-filter').forEach(cb => {
-            cb.addEventListener('change', (e) => {
-                const value = e.target.value;
-                if(e.target.checked) state.ram.push(value);
-                else state.ram = state.ram.filter(r => r !== value);
-                applyFilters();
-            });
-        });
-
+        priceSlider.addEventListener('input', (e) => { state.maxPrice = parseInt(e.target.value); priceDisplay.innerText = state.maxPrice + '€'; applyFilters(); });
+        document.querySelectorAll('.brand-filter').forEach(cb => { cb.addEventListener('change', (e) => { if(e.target.checked) state.brands.push(e.target.value); else state.brands = state.brands.filter(b => b !== e.target.value); applyFilters(); }); });
+        document.querySelectorAll('.ram-filter').forEach(cb => { cb.addEventListener('change', (e) => { if(e.target.checked) state.ram.push(e.target.value); else state.ram = state.ram.filter(r => r !== e.target.value); applyFilters(); }); });
         document.getElementById('sort-score').addEventListener('click', () => sortGrid('score'));
         document.getElementById('sort-price-asc').addEventListener('click', () => sortGrid('price-asc'));
         document.getElementById('sort-price-desc').addEventListener('click', () => sortGrid('price-desc'));
@@ -549,32 +456,20 @@ const ramOptions = ["8GB", "16GB", "32GB"];
         if(navStudent) navStudent.addEventListener('click', () => setCategory('student'));
         document.getElementById('reset-home').addEventListener('click', () => setCategory('all'));
 
-        function setCategory(cat) {
-            state.category = cat;
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            applyFilters();
-        }
-
+        function setCategory(cat) { state.category = cat; window.scrollTo({ top: 0, behavior: 'smooth' }); applyFilters(); }
         function applyFilters() {
             cards.forEach(card => {
                 const price = parseFloat(card.dataset.price);
                 const name = card.dataset.name;
                 const ram = card.dataset.ram;
                 const categories = card.dataset.category || "";
-
                 let matchPrice = price <= state.maxPrice;
                 let matchBrand = state.brands.length === 0 || state.brands.some(b => name.includes(b));
                 let matchRam = state.ram.length === 0 || state.ram.some(r => ram.includes(r));
                 let matchCat = state.category === 'all' || categories.includes(state.category);
-
-                if (matchPrice && matchBrand && matchRam && matchCat) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
+                card.style.display = (matchPrice && matchBrand && matchRam && matchCat) ? 'flex' : 'none';
             });
         }
-
         function sortGrid(criteria) {
             let sortedCards = cards.sort((a, b) => {
                 if (criteria === 'score') return b.dataset.score - a.dataset.score;
@@ -585,65 +480,42 @@ const ramOptions = ["8GB", "16GB", "32GB"];
             sortedCards.forEach(card => { card.style.display = 'flex'; grid.appendChild(card); applyFilters(); });
         }
 
-        // --- WIZARD LOGIC (CORREGIDA PARA ENLACES DIRECTOS) ---
+        // --- WIZARD (CORREGIDO TAMBIÉN) ---
         let wizardData = { maxPrice: 9999, use: '' };
         const modal = document.getElementById('wizard-overlay');
         document.getElementById('wizard-trigger').addEventListener('click', () => modal.classList.add('active'));
         document.getElementById('close-wizard').addEventListener('click', () => modal.classList.remove('active'));
 
         window.nextStep = function(step, value) {
-            if (step === 1) {
-                wizardData.maxPrice = value;
-                document.getElementById('step-1').classList.remove('active');
-                document.getElementById('step-2').classList.add('active');
-            } else if (step === 2) {
-                wizardData.use = value;
-                document.getElementById('step-2').classList.remove('active');
-                document.getElementById('step-result').classList.add('active');
-                calculateResult();
-            }
+            if (step === 1) { wizardData.maxPrice = value; document.getElementById('step-1').classList.remove('active'); document.getElementById('step-2').classList.add('active'); }
+            else if (step === 2) { wizardData.use = value; document.getElementById('step-2').classList.remove('active'); document.getElementById('step-result').classList.add('active'); calculateResult(); }
         };
 
-        window.resetWizard = function() {
-            document.getElementById('step-result').classList.remove('active');
-            document.getElementById('step-1').classList.add('active');
-            wizardData = { maxPrice: 9999, use: '' };
-        };
+        window.resetWizard = function() { document.getElementById('step-result').classList.remove('active'); document.getElementById('step-1').classList.add('active'); wizardData = { maxPrice: 9999, use: '' }; };
 
         function calculateResult() {
             document.getElementById('wizard-loading').style.display = 'block';
             document.getElementById('wizard-match').style.display = 'none';
-
             setTimeout(() => {
                 let filtered = laptops.filter(l => l.price_eur <= wizardData.maxPrice);
-                if (wizardData.use === 'gaming') {
-                    let gaming = filtered.filter(l => l.category.includes('gaming') || l.specs.gpu);
-                    if(gaming.length > 0) filtered = gaming;
-                } else if (wizardData.use === 'student') {
-                    // Para estudiantes priorizamos precio
-                    filtered.sort((a,b) => a.price_eur - b.price_eur);
-                } else if (wizardData.use === 'code') {
-                    let pro = filtered.filter(l => l.specs.ram.includes('16GB') || l.specs.ram.includes('32GB'));
-                    if(pro.length > 0) filtered = pro;
-                }
+                if (wizardData.use === 'gaming') { let gaming = filtered.filter(l => l.category.includes('gaming') || l.specs.gpu); if(gaming.length > 0) filtered = gaming; }
+                else if (wizardData.use === 'student') { filtered.sort((a,b) => a.price_eur - b.price_eur); }
+                else if (wizardData.use === 'code') { let pro = filtered.filter(l => l.specs.ram.includes('16GB') || l.specs.ram.includes('32GB')); if(pro.length > 0) filtered = pro; }
                 
-                // Si no hay filtro exacto, devolvemos el primero disponible
                 let winner = filtered.length > 0 ? filtered[0] : laptops[0];
                 
-                // ✅ CAMBIO CRÍTICO: Usar el link de afiliado directo del JSON
-                const affiliateLink = winner.affiliate_link;
+                // ✅ CORRECCIÓN TAMBIÉN AQUÍ: Usamos búsqueda en vez de enlace fijo
+                const searchUrl = `https://www.amazon.es/s?k=${encodeURIComponent(winner.name)}&tag=comparadorjai-21`;
 
                 document.getElementById('wizard-loading').style.display = 'none';
                 document.getElementById('wizard-match').style.display = 'block';
-                
                 const imgElement = document.getElementById('wiz-img');
                 imgElement.src = winner.brand_img;
-                imgElement.onclick = function() { window.open(affiliateLink, '_blank'); };
-                
+                imgElement.onclick = function() { window.open(searchUrl, '_blank'); };
                 document.getElementById('wiz-name').innerText = winner.name;
                 document.getElementById('wiz-price').innerText = winner.price_eur + ' €';
                 const wizLinkBtn = document.getElementById('wiz-link');
-                wizLinkBtn.href = affiliateLink;
+                wizLinkBtn.href = searchUrl;
                 wizLinkBtn.innerText = '🛒 Ver Oferta en Amazon';
                 wizLinkBtn.target = '_blank'; 
                 wizLinkBtn.rel = 'noopener noreferrer';

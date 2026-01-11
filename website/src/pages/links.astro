@@ -2,7 +2,17 @@
 // src/pages/links.astro
 
 // --- 1. CONFIGURACIÓN DE PRODUCTOS (OFERTAS FLASH) ---
+// --- 1. CONFIGURACIÓN DE PRODUCTOS (OFERTAS FLASH) ---
 const flashOffers = [
+    {
+        name: "Funda MagSafe iPhone 17",
+        desc: "Transparente, antigolpes y no amarillea. Protección total.",
+        price: "9,91€", // Corregido a String con €
+        oldPrice: "11,99€", // Corregido a String con €
+        url: "https://amzn.to/45FUw59", // ✅ CORREGIDO: 'link' cambiado a 'url'
+        img: "https://m.media-amazon.com/images/I/71n+zzkhJXL._AC_SX679_.jpg",
+        discount: "-17%"
+    },
     {
         name: "Auriculares Bluetooth 5.3",
         desc: "Cancelación ruido, 50H batería, IPX7.",
@@ -34,8 +44,8 @@ const flashOffers = [
         name: "Ratón Logitech B100",
         desc: "El clásico de oficina. Indestructible.",
         price: "4,95€",
-        oldPrice: null, // ✅ CAMBIO: Eliminamos el precio tachado falso
-        discount: "¡CHOLLO!", // ✅ CAMBIO: Etiqueta de oportunidad
+        oldPrice: null,
+        discount: "¡CHOLLO!",
         img: "https://m.media-amazon.com/images/I/61hzuoXwjqL._AC_SY300_SX300_QL70_ML2_.jpg",
         url: "https://amzn.to/49iQsJ7" 
     },
@@ -47,16 +57,7 @@ const flashOffers = [
         discount: "-56%",
         img: "https://m.media-amazon.com/images/I/61zdXL7k6eL._AC_SX679_.jpg",
         url: "https://amzn.to/3NfMKZm"
-    },
-    {
-        name: "Funda MagSafe iPhone 17",
-        desc: "Transparente, antigolpes y no amarillea. Protección total.",
-        price: 9.91,
-        oldPrice: 11.99,
-        link: "https://amzn.to/45FUw59",
-        img: "https://m.media-amazon.com/images/I/71n+zzkhJXL._AC_SX679_.jpg",
-        discount: "-17%"
-    },
+    }
 ];
 
 // --- 2. CONFIGURACIÓN DE BOTONES (NAVEGACIÓN) ---
