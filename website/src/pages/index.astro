@@ -7,47 +7,56 @@ const flashOffers = [
     {
         name: "Funda MagSafe iPhone 17",
         desc: "Transparente, antigolpes y no amarillea. Protección total.",
-        price: 9.91,
-        oldPrice: 11.99,
-        link: "https://amzn.to/45FUw59",
+        price: "9,91€", // Corregido a String con €
+        oldPrice: "11,99€", // Corregido a String con €
+        url: "https://amzn.to/45FUw59", // ✅ CORREGIDO: 'link' cambiado a 'url'
         img: "https://m.media-amazon.com/images/I/71n+zzkhJXL._AC_SX679_.jpg",
         discount: "-17%"
     },
     {
-        name: "Kit Limpieza Pro 7-en-1",
-        desc: "Limpia teclado, pantalla y Airpods. Cepillo, spray y extractor.",
-        price: 8.99,
-        oldPrice: 19.99,
-        link: "https://www.amazon.es/s?k=kit+limpieza+teclado&tag=comparadorjai-21", 
-        img: "https://m.media-amazon.com/images/I/61v-s9X4JVL._AC_SX679_.jpg",
-        discount: "-55%"
-    },
-    {
         name: "Auriculares Bluetooth 5.3",
-        desc: "Cancelación ruido, 50H batería e impermeables IPX7.",
-        price: 20.89,
-        oldPrice: 59.99,
-        link: "https://amzn.to/4q7C1Pt",
+        desc: "Cancelación ruido, 50H batería, IPX7.",
+        price: "20,89€",
+        oldPrice: "59,99€",
+        discount: "-63%",
         img: "https://m.media-amazon.com/images/I/71J44QhNuKL._AC_SX679_.jpg",
-        discount: "-63%"
+        url: "https://amzn.to/4q7C1Pt"
     },
     {
         name: "Smartwatch Deportivo",
-        desc: "Llamadas BT, Monitor de salud y batería de 10 días.",
-        price: 28.00,
-        oldPrice: 99.99,
-        link: "https://amzn.to/4jI3xRf",
-        img: "https://m.media-amazon.com/images/I/51lP8jxFxVL._AC_SX425_.jpg", 
-        discount: "-60%"
+        desc: "Llamadas BT y batería de 10 días.",
+        price: "28,00€",
+        oldPrice: "99,99€",
+        discount: "-60%",
+        img: "https://m.media-amazon.com/images/I/51lP8jxFxVL._AC_SX425_.jpg",
+        url: "https://amzn.to/4jI3xRf" 
+    },
+    {
+        name: "Teclado Gaming Trust Azor",
+        desc: "Iluminación LED, Anti-Ghosting y Modo Juego.",
+        price: "18,79€",
+        oldPrice: "29,99€",
+        discount: "-37%",
+        img: "https://m.media-amazon.com/images/I/81ugMJjYPtL._AC_SX679_.jpg",
+        url: "https://amzn.to/3NA9zHh"
     },
     {
         name: "Ratón Logitech B100",
-        desc: "El clásico de oficina. Indestructible y preciso.",
-        price: 4.95,
-        oldPrice: null, 
-        link: "https://amzn.to/49iQsJ7",
-        img: "https://m.media-amazon.com/images/I/61hzuoXwjqL._AC_SY300_SX300_QL70_ML2_.jpg", 
-        discount: "¡CHOLLO!" 
+        desc: "El clásico de oficina. Indestructible.",
+        price: "4,95€",
+        oldPrice: null,
+        discount: "¡CHOLLO!",
+        img: "https://m.media-amazon.com/images/I/61hzuoXwjqL._AC_SY300_SX300_QL70_ML2_.jpg",
+        url: "https://amzn.to/49iQsJ7" 
+    },
+    {
+        name: "Ratón Vertical Ergonómico",
+        desc: "Adiós dolor de muñeca. LED, 1600 DPI y cable USB.",
+        price: "10,97€",
+        oldPrice: "24,99€",
+        discount: "-56%",
+        img: "https://m.media-amazon.com/images/I/61zdXL7k6eL._AC_SX679_.jpg",
+        url: "https://amzn.to/3NfMKZm"
     }
 ];
 
